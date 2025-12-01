@@ -1,0 +1,346 @@
+<app-header></app-header>
+
+<div class="area-page container py-4 text-light">
+      <div class="row">
+            <!-- Calculator Section -->
+            <div class="col-12 col-md-6 col-lg-5 mb-4">
+                  <h1 class="h4 fw-bold mb-3 text-info">🍳 Cooking Conversion Calculator</h1>
+
+                  <div class="calculator-shell shadow-lg rounded-4 p-4 mb-4">
+                        <div class="calculator-content">
+                              <div class="text-center mb-4">
+                                    <h2 class="h5 text-dark fw-bold mb-3">Cooking Conversions</h2>
+                              </div>
+
+                              <!-- Combined Calculator (No Tabs) -->
+
+                              <!-- From Unit -->
+                              <div class="input-group">
+                                    <label for="fromUnit">From:</label>
+                                    <select id="fromUnit" class="form-select" [(ngModel)]="fromUnit">
+                                          <optgroup *ngFor="let group of groupedUnits" [label]="group.name">
+                                                <option *ngFor="let unit of group.units" [value]="unit.value">
+                                                      {{ unit.label }}
+                                                </option>
+                                          </optgroup>
+                                    </select>
+                              </div>
+
+                              <!-- To Unit -->
+                              <div class="input-group">
+                                    <label for="toUnit">To:</label>
+                                    <select id="toUnit" class="form-select" [(ngModel)]="toUnit">
+                                          <optgroup *ngFor="let group of groupedUnits" [label]="group.name">
+                                                <option *ngFor="let unit of group.units" [value]="unit.value">
+                                                      {{ unit.label }}
+                                                </option>
+                                          </optgroup>
+                                    </select>
+                              </div>
+
+                              <!-- Value Input -->
+                              <div class="input-group">
+                                    <label for="inputValue">Value to Convert</label>
+                                    <input type="number" id="inputValue" class="form-control" [(ngModel)]="inputValue"
+                                          placeholder="1" step="0.01">
+                              </div>
+
+                              <!-- Buttons -->
+                              <div class="button-group">
+                                    <button class="btn-clear" (click)="clear()">Clear</button>
+                                    <button class="btn-calculate" (click)="calculate()">Calculate</button>
+                              </div>
+
+                              <!-- Results -->
+                              <!-- Results -->
+                              <div *ngIf="result" class="results-section">
+                                    <h3 class="h5 fw-bold mb-4">Answer:</h3>
+
+                                    <div class="text-center mb-4">
+                                          <div class="h4 fw-bold mb-3">
+                                                = {{ formatNumber(result.value) }} {{ result.toUnit }}
+                                          </div>
+                                          <div class="text-muted mb-2" style="font-size: 1.1rem;">
+                                                {{ result.calculationStep }}
+                                          </div>
+                                          <div class="h5 fw-bold text-dark">
+                                                = {{ formatNumber(result.value) }} {{ result.toUnit }}
+                                          </div>
+                                    </div>
+
+                                    <div class="border-top border-secondary my-4 opacity-25"></div>
+
+                                    <div class="text-center fst-italic text-muted mb-4" *ngIf="result.quickTip">
+                                          {{ result.quickTip }}
+                                    </div>
+
+                                    <div class="border-top border-secondary my-4 opacity-25"></div>
+
+                                    <h3 class="h5 fw-bold mb-3">Solution</h3>
+                                    <div class="solution-content text-muted" [innerHTML]="result.solutionText"></div>
+                              </div>
+                        </div>
+                  </div>
+            </div>
+
+            <!-- Information Section -->
+            <div class="col-12 col-md-6 col-lg-5">
+                  <!-- Liquid Measures Reference -->
+                  <div class="functions-section p-4 rounded-3 mb-4" *ngIf="currentType === 'liquid'">
+                        <h2 class="h5 fw-semibold mb-3 text-white">💧 Liquid Measures</h2>
+                        <div class="table-responsive small">
+                              <table class="table table-dark table-sm align-middle mb-0">
+                                    <tbody>
+                                          <tr>
+                                                <td>1 tbsp</td>
+                                                <td>3 tsp</td>
+                                          </tr>
+                                          <tr>
+                                                <td>1 cup</td>
+                                                <td>16 tbsp</td>
+                                          </tr>
+                                          <tr>
+                                                <td>1 cup</td>
+                                                <td>8 fl oz</td>
+                                          </tr>
+                                          <tr>
+                                                <td>1 gal</td>
+                                                <td>4 qt</td>
+                                          </tr>
+                                    </tbody>
+                              </table>
+                        </div>
+                  </div>
+
+                  <!-- Weight Measures Reference -->
+                  <div class="functions-section p-4 rounded-3 mb-4" *ngIf="currentType === 'weight'">
+                        <h2 class="h5 fw-semibold mb-3 text-white">⚖️ Weight Measures</h2>
+                        <div class="table-responsive small">
+                              <table class="table table-dark table-sm align-middle mb-0">
+                                    <tbody>
+                                          <tr>
+                                                <td>1 kg</td>
+                                                <td>1000 g</td>
+                                          </tr>
+                                          <tr>
+                                                <td>1 lb</td>
+                                                <td>16 oz</td>
+                                          </tr>
+                                          <tr>
+                                                <td>1 lb</td>
+                                                <td>≈ 454 g</td>
+                                          </tr>
+                                          <tr>
+                                                <td>1 oz</td>
+                                                <td>≈ 28 g</td>
+                                          </tr>
+                                    </tbody>
+                              </table>
+                        </div>
+                  </div>
+
+                  <!-- Temperature Reference -->
+                  <div class="functions-section p-4 rounded-3 mb-4" *ngIf="currentType === 'temperature'">
+                        <h2 class="h5 fw-semibold mb-3 text-white">🌡️ Temperature</h2>
+                        <div class="table-responsive small">
+                              <table class="table table-dark table-sm align-middle mb-0">
+                                    <thead>
+                                          <tr>
+                                                <th>Type</th>
+                                                <th>°F</th>
+                                                <th>°C</th>
+                                          </tr>
+                                    </thead>
+                                    <tbody>
+                                          <tr>
+                                                <td>Slow</td>
+                                                <td>300-325</td>
+                                                <td>150-165</td>
+                                          </tr>
+                                          <tr>
+                                                <td>Mod</td>
+                                                <td>350-375</td>
+                                                <td>175-190</td>
+                                          </tr>
+                                          <tr>
+                                                <td>Hot</td>
+                                                <td>400-425</td>
+                                                <td>200-220</td>
+                                          </tr>
+                                    </tbody>
+                              </table>
+                        </div>
+                  </div>
+
+                  <!-- Length Reference -->
+                  <div class="functions-section p-4 rounded-3 mb-4" *ngIf="currentType === 'length'">
+                        <h2 class="h5 fw-semibold mb-3 text-white">📏 Length</h2>
+                        <div class="table-responsive small">
+                              <table class="table table-dark table-sm align-middle mb-0">
+                                    <tbody>
+                                          <tr>
+                                                <td>1 in</td>
+                                                <td>2.54 cm</td>
+                                          </tr>
+                                          <tr>
+                                                <td>1 ft</td>
+                                                <td>12 in</td>
+                                          </tr>
+                                          <tr>
+                                                <td>1 m</td>
+                                                <td>100 cm</td>
+                                          </tr>
+                                    </tbody>
+                              </table>
+                        </div>
+                  </div>
+
+                  <!-- General Cooking Basics -->
+                  <div class="functions-section p-4 rounded-3 mb-4">
+                        <h2 class="h5 fw-semibold mb-3 text-white">📋 Basics</h2>
+                        <div class="table-responsive small">
+                              <table class="table table-dark table-sm align-middle mb-0">
+                                    <tbody>
+                                          <tr>
+                                                <td><strong>Pinch</strong></td>
+                                                <td>Thumb & finger</td>
+                                          </tr>
+                                          <tr>
+                                                <td><strong>Dash</strong></td>
+                                                <td>~1/8 tsp</td>
+                                          </tr>
+                                    </tbody>
+                              </table>
+                        </div>
+                  </div>
+            </div>
+      </div>
+      <div class="row mt-5">
+            <div class="col-12">
+                  <div class="comprehensive-guide">
+                        <h2 class="h4 fw-bold mb-4 text-white text-center">📚 Cooking Calculator Guide</h2>
+
+                        <div class="row">
+                              <div class="col-12 col-md-6 col-lg-4 mb-4">
+                                    <div class="guide-section">
+                                          <h3 class="h6 fw-semibold text-white mb-3">💧 Liquid Measurements</h3>
+                                          <ul class="text-white small">
+                                                <li><strong>Fluid Ounces:</strong> Standard US liquid measure</li>
+                                                <li><strong>Cups:</strong> 8 fluid ounces or 16 tablespoons</li>
+                                                <li><strong>Pints:</strong> 2 cups or 16 fluid ounces</li>
+                                                <li><strong>Quarts:</strong> 2 pints or 4 cups</li>
+                                                <li><strong>Gallons:</strong> 4 quarts or 128 fluid ounces</li>
+                                          </ul>
+                                    </div>
+                              </div>
+
+                              <div class="col-12 col-md-6 col-lg-4 mb-4">
+                                    <div class="guide-section">
+                                          <h3 class="h6 fw-semibold text-white mb-3">⚖️ Dry Measurements</h3>
+                                          <ul class="text-white small">
+                                                <li><strong>Teaspoons:</strong> Smallest common unit (tsp)</li>
+                                                <li><strong>Tablespoons:</strong> 3 teaspoons (tbsp)</li>
+                                                <li><strong>Ounces:</strong> Weight measurement (oz)</li>
+                                                <li><strong>Pounds:</strong> 16 ounces (lb)</li>
+                                                <li><strong>Grams/Kilograms:</strong> Metric weight units</li>
+                                          </ul>
+                                    </div>
+                              </div>
+
+                              <div class="col-12 col-md-6 col-lg-4 mb-4">
+                                    <div class="guide-section">
+                                          <h3 class="h6 fw-semibold text-white mb-3">🌡️ Temperature Guide</h3>
+                                          <ul class="text-white small">
+                                                <li><strong>Fahrenheit:</strong> Standard US oven scale</li>
+                                                <li><strong>Celsius:</strong> Metric temperature scale</li>
+                                                <li><strong>Water Boils:</strong> 212°F / 100°C</li>
+                                                <li><strong>Water Freezes:</strong> 32°F / 0°C</li>
+                                                <li><strong>Simmer:</strong> 185-205°F / 85-96°C</li>
+                                          </ul>
+                                    </div>
+                              </div>
+
+                              <div class="col-12 col-md-6 col-lg-4 mb-4">
+                                    <div class="guide-section">
+                                          <h3 class="h6 fw-semibold text-white mb-3">📏 Length Conversions</h3>
+                                          <ul class="text-white small">
+                                                <li><strong>Inches:</strong> Common for pan sizes</li>
+                                                <li><strong>Centimeters:</strong> Metric length unit</li>
+                                                <li><strong>Baking Pans:</strong> Often measured in inches</li>
+                                                <li><strong>Thickness:</strong> Dough rolling thickness</li>
+                                                <li><strong>1 Inch:</strong> Exactly 2.54 centimeters</li>
+                                          </ul>
+                                    </div>
+                              </div>
+
+                              <div class="col-12 col-md-6 col-lg-4 mb-4">
+                                    <div class="guide-section">
+                                          <h3 class="h6 fw-semibold text-white mb-3">📝 Common Abbreviations</h3>
+                                          <ul class="text-white small">
+                                                <li><strong>tsp:</strong> Teaspoon (t)</li>
+                                                <li><strong>tbsp:</strong> Tablespoon (T)</li>
+                                                <li><strong>c:</strong> Cup</li>
+                                                <li><strong>oz:</strong> Ounce</li>
+                                                <li><strong>lb:</strong> Pound (#)</li>
+                                          </ul>
+                                    </div>
+                              </div>
+
+                              <div class="col-12 col-md-6 col-lg-4 mb-4">
+                                    <div class="guide-section">
+                                          <h3 class="h6 fw-semibold text-white mb-3">💡 Measuring Tips</h3>
+                                          <ul class="text-white small">
+                                                <li><strong>Flour:</strong> Spoon into cup and level off</li>
+                                                <li><strong>Brown Sugar:</strong> Pack firmly into cup</li>
+                                                <li><strong>Liquids:</strong> Use glass measuring cup at eye level</li>
+                                                <li><strong>Sticky Items:</strong> Oil the cup first (honey/syrup)</li>
+                                                <li><strong>Sifting:</strong> Sift before measuring if specified</li>
+                                          </ul>
+                                    </div>
+                              </div>
+
+                              <div class="col-12 col-md-6 col-lg-4 mb-4">
+                                    <div class="guide-section">
+                                          <h3 class="h6 fw-semibold text-white mb-3">🔄 Metric vs Imperial</h3>
+                                          <ul class="text-white small">
+                                                <li><strong>US System:</strong> Cups, spoons, ounces</li>
+                                                <li><strong>Metric:</strong> Grams, liters, milliliters</li>
+                                                <li><strong>Baking:</strong> Metric (weight) is more accurate</li>
+                                                <li><strong>Conversion:</strong> 1 cup flour ≈ 120g</li>
+                                                <li><strong>Conversion:</strong> 1 cup sugar ≈ 200g</li>
+                                          </ul>
+                                    </div>
+                              </div>
+
+                              <div class="col-12 col-md-6 col-lg-4 mb-4">
+                                    <div class="guide-section">
+                                          <h3 class="h6 fw-semibold text-white mb-3">🧈 Butter Conversions</h3>
+                                          <ul class="text-white small">
+                                                <li><strong>1 Stick:</strong> 1/2 cup or 8 tbsp</li>
+                                                <li><strong>1 Stick:</strong> 4 ounces or 113 grams</li>
+                                                <li><strong>1 Pound:</strong> 4 sticks or 2 cups</li>
+                                                <li><strong>1 Tbsp:</strong> Approx 14 grams</li>
+                                                <li><strong>Wrapper:</strong> Usually marked in tbsp</li>
+                                          </ul>
+                                    </div>
+                              </div>
+
+                              <div class="col-12 col-md-6 col-lg-4 mb-4">
+                                    <div class="guide-section">
+                                          <h3 class="h6 fw-semibold text-white mb-3">🥚 Egg Sizes</h3>
+                                          <ul class="text-white small">
+                                                <li><strong>Large Egg:</strong> Standard for recipes</li>
+                                                <li><strong>Volume:</strong> Approx 3.25 tbsp per large egg</li>
+                                                <li><strong>White:</strong> Approx 2 tbsp per large egg</li>
+                                                <li><strong>Yolk:</strong> Approx 1 tbsp per large egg</li>
+                                                <li><strong>Weight:</strong> Approx 50g (without shell)</li>
+                                          </ul>
+                                    </div>
+                              </div>
+                        </div>
+                  </div>
+            </div>
+      </div>
+</div>
+
+<app-footer></app-footer>

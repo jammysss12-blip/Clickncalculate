@@ -1,0 +1,630 @@
+<app-header></app-header>
+
+<div class="area-page container py-4 text-light">
+  <div class="row">
+    <!-- Loan Calculator Section -->
+    <div class="col-12 col-md-6 col-lg-5 mb-4">
+      <h1 class="h4 fw-bold mb-3 text-info">💰 Loan Calculator</h1>
+      
+      <div class="calculator-shell shadow-lg rounded-4 p-4 mb-4">
+        <!-- Tab Navigation -->
+        <ul class="nav nav-tabs nav-fill mb-4" role="tablist">
+          <li class="nav-item" role="presentation">
+            <button class="nav-link" [class.active]="activeTab === 'amortized'" (click)="activeTab = 'amortized'" type="button">
+              🏠 Amortized
+            </button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button class="nav-link" [class.active]="activeTab === 'deferred'" (click)="activeTab = 'deferred'" type="button">
+              ⏳ Deferred
+            </button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button class="nav-link" [class.active]="activeTab === 'bond'" (click)="activeTab = 'bond'" type="button">
+              📈 Bond
+            </button>
+          </li>
+        </ul>
+
+    <!-- Amortized Loan Calculator -->
+    <div *ngIf="activeTab === 'amortized'" class="calculator-content">
+      <div class="input-group">
+        <label for="loanAmount">Loan Amount ($)</label>
+        <input 
+          type="number" 
+          id="loanAmount" 
+          [(ngModel)]="loanAmount" 
+          placeholder="Enter loan amount"
+          min="1000"
+          step="1000"
+          class="form-control"
+        >
+      </div>
+
+      <div class="input-group">
+        <label for="interestRate">Interest Rate (%)</label>
+        <input 
+          type="number" 
+          id="interestRate" 
+          [(ngModel)]="interestRate" 
+          placeholder="Enter interest rate"
+          min="0.1"
+          step="0.1"
+          class="form-control"
+        >
+      </div>
+
+      <div class="input-group">
+        <label for="loanTerm">Loan Term (years)</label>
+        <input 
+          type="number" 
+          id="loanTerm" 
+          [(ngModel)]="loanTerm" 
+          placeholder="Enter loan term"
+          min="1"
+          max="50"
+          class="form-control"
+        >
+      </div>
+
+      <div class="input-group">
+        <label for="startDate">Start Date</label>
+        <input 
+          type="date" 
+          id="startDate" 
+          [(ngModel)]="loanStartDate"
+          class="form-control date-input"
+        >
+      </div>
+
+      <div class="button-group">
+        <button class="btn-clear" (click)="clearAmortizedLoan()">Clear</button>
+        <button class="btn-calculate" (click)="calculateAmortizedLoan()">Calculate</button>
+      </div>
+
+      <!-- Results Section -->
+      <div *ngIf="loanResult" class="results-section">
+        <h3>Loan Summary</h3>
+        
+        <div class="result-item">
+          <div class="result-label">Monthly Payment</div>
+          <div class="result-value">{{ formatCurrency(loanResult.monthlyPayment) }}</div>
+        </div>
+        
+        <div class="result-item">
+          <div class="result-label">Total Interest</div>
+          <div class="result-value">{{ formatCurrency(loanResult.totalInterest) }}</div>
+        </div>
+        
+        <div class="result-item">
+          <div class="result-label">Total Payment</div>
+          <div class="result-value">{{ formatCurrency(loanResult.totalPayment) }}</div>
+        </div>
+        
+        <div class="result-item">
+          <div class="result-label">Loan Term</div>
+          <div class="result-value">{{ loanTerm }} years ({{ (loanTerm || 0) * 12 }} months)</div>
+        </div>
+
+        <!-- Amortization Schedule Toggle -->
+        <div class="amortization-toggle">
+          <button class="btn-toggle" (click)="showAmortizationTable = !showAmortizationTable">
+            {{ showAmortizationTable ? 'Hide' : 'Show' }} Amortization Schedule
+          </button>
+        </div>
+
+        <!-- Amortization Table -->
+        <div class="amortization-table" *ngIf="showAmortizationTable && loanResult.amortizationSchedule">
+          <table>
+            <thead>
+              <tr>
+                <th>Month</th>
+                <th>Payment</th>
+                <th>Principal</th>
+                <th>Interest</th>
+                <th>Balance</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let payment of loanResult.amortizationSchedule; let i = index" 
+                  [class.highlight]="i === 0 || i === loanResult.amortizationSchedule!.length - 1">
+                <td>{{ payment.month }}</td>
+                <td>{{ formatCurrency(payment.payment) }}</td>
+                <td>{{ formatCurrency(payment.principal) }}</td>
+                <td>{{ formatCurrency(payment.interest) }}</td>
+                <td>{{ formatCurrency(payment.balance) }}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+        <!-- Deferred Payment Calculator Tab Content -->
+        <div *ngIf="activeTab === 'deferred'">
+          <div class="text-center mb-4">
+            <h2 class="h5 text-dark fw-bold mb-3">Deferred Payment Loan Calculator</h2>
+            <p class="text-dark small mb-3">Calculate payments for loans with an initial interest-only or payment-free period.</p>
+          </div>
+
+          <!-- Loan Amount -->
+          <div class="mb-3">
+            <label class="form-label text-dark fw-semibold">Loan Amount ($):</label>
+            <input type="number" class="form-control form-control-lg" [(ngModel)]="deferredLoanAmount" min="100" step="100">
+          </div>
+
+          <!-- Interest Rate -->
+          <div class="mb-3">
+            <label class="form-label text-dark fw-semibold">Annual Interest Rate (%):</label>
+            <input type="number" class="form-control form-control-lg" [(ngModel)]="deferredInterestRate" min="0.1" step="0.1">
+          </div>
+
+          <!-- Loan Term -->
+          <div class="mb-3">
+            <label class="form-label text-dark fw-semibold">Total Loan Term (years):</label>
+            <input type="number" class="form-control form-control-lg" [(ngModel)]="deferredTerm" min="1" max="50">
+          </div>
+
+          <!-- Deferment Period -->
+          <div class="mb-3">
+            <label class="form-label text-dark fw-semibold">Deferment Period (years):</label>
+            <input type="number" class="form-control form-control-lg" [(ngModel)]="defermentPeriod" min="0.5" [max]="(deferredTerm || 30) - 1" step="0.5">
+            <div class="form-text text-dark small">Period during which you make no or interest-only payments</div>
+          </div>
+
+          <!-- Action Buttons -->
+          <div class="button-group">
+            <button class="btn-clear" (click)="clearDeferredLoan()">Clear</button>
+            <button class="btn-calculate" (click)="calculateDeferredLoan()">Calculate</button>
+          </div>
+
+          <!-- Results Section -->
+          <div class="answer-section" *ngIf="deferredResult !== null">
+            <div class="row g-3 mb-4">
+              <div class="col-md-6">
+                <div class="card bg-light h-100">
+                  <div class="card-body text-center">
+                    <h6 class="text-dark fw-semibold">Monthly Payment After Deferment</h6>
+                    <h4 class="text-primary fw-bold">{{ formatCurrency(deferredResult.regularPayment) }}</h4>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="card bg-light h-100">
+                  <div class="card-body text-center">
+                    <h6 class="text-dark fw-semibold">Total Interest</h6>
+                    <h4 class="text-danger fw-bold">{{ formatCurrency(deferredResult.totalInterest) }}</h4>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="card bg-light h-100">
+                  <div class="card-body text-center">
+                    <h6 class="text-dark fw-semibold">Total Cost of Loan</h6>
+                    <h4 class="text-success fw-bold">{{ formatCurrency(deferredResult.totalCost) }}</h4>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="card bg-light h-100">
+                  <div class="card-body text-center">
+                    <h6 class="text-dark fw-semibold">Deferment Interest</h6>
+                    <h6 class="text-warning fw-bold">{{ formatCurrency(deferredResult.deferredInterest) }}</h6>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="alert alert-info">
+              <h6 class="alert-heading">Loan Summary</h6>
+              <ul class="mb-0">
+                <li>Deferment Period: {{ deferredResult.deferredMonths }} months (no payments)</li>
+                <li>Repayment Period: {{ deferredResult.paymentMonths }} months</li>
+                <li>Total Loan Term: {{ deferredResult.totalMonths }} months ({{ (deferredResult.totalMonths / 12).toFixed(1) }} years)</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- Bond Yield Calculator Tab Content -->
+        <div *ngIf="activeTab === 'bond'">
+          <div class="text-center mb-4">
+            <h2 class="h5 text-dark fw-bold mb-3">Bond Yield Calculator</h2>
+            <p class="text-dark small mb-3">Calculate bond yields, prices, and returns</p>
+          </div>
+
+          <!-- Face Value -->
+          <div class="mb-3">
+            <label class="form-label text-dark fw-semibold">Face Value ($):</label>
+            <input type="number" class="form-control form-control-lg" [(ngModel)]="bondFaceValue" min="100" step="100">
+            <div class="form-text text-dark small">The amount the bond will be worth at maturity</div>
+          </div>
+
+          <!-- Coupon Rate -->
+          <div class="mb-3">
+            <label class="form-label text-dark fw-semibold">Annual Coupon Rate (%):</label>
+            <input type="number" class="form-control form-control-lg" [(ngModel)]="bondCouponRate" min="0" step="0.1">
+            <div class="form-text text-dark small">The annual interest rate paid by the bond</div>
+          </div>
+
+          <!-- Years to Maturity -->
+          <div class="mb-3">
+            <label class="form-label text-dark fw-semibold">Years to Maturity:</label>
+            <input type="number" class="form-control form-control-lg" [(ngModel)]="bondYearsToMaturity" min="1" max="100" step="1">
+          </div>
+
+          <!-- Current Price -->
+          <div class="mb-3">
+            <label class="form-label text-dark fw-semibold">Current Market Price ($):</label>
+            <input type="number" class="form-control form-control-lg" [(ngModel)]="bondCurrentPrice" min="1" step="0.01">
+            <div class="form-text text-dark small">The current trading price of the bond</div>
+          </div>
+
+          <!-- Action Buttons -->
+          <div class="button-group">
+            <button class="btn-clear" (click)="clearBond()">Clear</button>
+            <button class="btn-calculate" (click)="calculateBond()">Calculate</button>
+          </div>
+
+          <!-- Results Section -->
+          <div class="answer-section" *ngIf="bondResult !== null">
+            <div class="row g-3 mb-4">
+              <div class="col-md-6">
+                <div class="card bg-light h-100">
+                  <div class="card-body text-center">
+                    <h6 class="text-dark fw-semibold">Current Yield</h6>
+                    <h4 class="text-primary fw-bold">{{ formatPercent(bondResult.currentYield) }}</h4>
+                    <div class="small text-muted">Annual Income / Current Price</div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="card bg-light h-100">
+                  <div class="card-body text-center">
+                    <h6 class="text-dark fw-semibold">Yield to Maturity</h6>
+                    <h4 class="text-success fw-bold">{{ formatPercent(bondResult.yieldToMaturity) }}</h4>
+                    <div class="small text-muted">Estimated annual return if held to maturity</div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="card bg-light h-100">
+                  <div class="card-body text-center">
+                    <h6 class="text-dark fw-semibold">Annual Interest</h6>
+                    <h5 class="text-info fw-bold">{{ formatCurrency(bondResult.annualInterest) }}</h5>
+                    <div class="small text-muted">Per ${{ bondResult.faceValue }} bond</div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="card bg-light h-100">
+                  <div class="card-body text-center">
+                    <h6 class="text-dark fw-semibold">Total Payout at Maturity</h6>
+                    <h5 class="text-purple fw-bold">{{ formatCurrency(bondResult.totalPayout) }}</h5>
+                    <div class="small text-muted">Principal + Interest</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="alert" [ngClass]="bondResult.profit >= 0 ? 'alert-success' : 'alert-danger'">
+              <div class="d-flex justify-content-between align-items-center">
+                <strong>Total {{ bondResult.profit >= 0 ? 'Profit' : 'Loss' }} at Maturity:</strong>
+                <span class="h5 mb-0 fw-bold">{{ formatCurrency(bondResult.profit) }} ({{ formatPercent(bondResult.profit / bondCurrentPrice!) }})</span>
+              </div>
+              <div class="small mt-1">Based on current market price of {{ formatCurrency(bondCurrentPrice!) }}</div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+    
+    <!-- Information Section -->
+    <div class="col-12 col-md-6 col-lg-5">
+      <!-- Amortized Loan Quick Reference -->
+      <div class="functions-section p-4 rounded-3 mb-4" *ngIf="activeTab === 'amortized'">
+        <h2 class="h5 fw-semibold mb-3 text-white">💰 Amortized Loan – Quick Reference</h2>
+        <h3 class="h6 text-white mt-3 mb-3">How Amortization Works</h3>
+        <div class="table-responsive small">
+          <table class="table table-dark table-sm align-middle mb-3">
+            <thead>
+              <tr><th>Term</th><th>Description</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Principal</td><td>Original loan amount</td></tr>
+              <tr><td>Interest Rate</td><td>Annual percentage rate (APR)</td></tr>
+              <tr><td>Term</td><td>Loan duration in years</td></tr>
+              <tr><td>Monthly Payment</td><td>Fixed payment amount</td></tr>
+              <tr><td>Amortization</td><td>Gradual repayment schedule</td></tr>
+              <tr><td>Equity</td><td>Portion of property owned</td></tr>
+            </tbody>
+          </table>
+        </div>
+        
+        <div class="border-top border-secondary my-4"></div>
+        <h3 class="h6 text-white mb-3">Key Benefits</h3>
+        <div class="table-responsive small">
+          <table class="table table-dark table-sm align-middle">
+            <tbody>
+              <tr>
+                <td class="text-center" style="width: 30px;">✅</td>
+                <td>Fixed monthly payments</td>
+              </tr>
+              <tr>
+                <td class="text-center">✅</td>
+                <td>Builds equity over time</td>
+              </tr>
+              <tr>
+                <td class="text-center">✅</td>
+                <td>Interest may be tax-deductible</td>
+              </tr>
+              <tr>
+                <td class="text-center">✅</td>
+                <td>Fixed rate options available</td>
+              </tr>
+              <tr>
+                <td class="text-center">✅</td>
+                <td>Clear payoff date</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Deferred Payment Quick Reference -->
+      <div class="functions-section p-4 rounded-3 mb-4" *ngIf="activeTab === 'deferred'">
+        <h2 class="h5 fw-semibold mb-3 text-white">⏳ Deferred Payment – Quick Reference</h2>
+        <h3 class="h6 text-white mt-3 mb-3">How Deferred Payments Work</h3>
+        <div class="table-responsive small">
+          <table class="table table-dark table-sm align-middle mb-3">
+            <thead>
+              <tr><th>Term</th><th>Description</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Deferment Period</td><td>Initial period with no payments</td></tr>
+              <tr><td>Accrued Interest</td><td>Interest accumulates during deferment</td></tr>
+              <tr><td>Capitalization</td><td>Interest added to principal</td></tr>
+              <tr><td>Repayment Term</td><td>Duration after deferment</td></tr>
+              <tr><td>Total Cost</td><td>Principal + Accrued Interest</td></tr>
+            </tbody>
+          </table>
+        </div>
+        
+        <div class="border-top border-secondary my-4"></div>
+        <h3 class="h6 text-white mb-3">When to Use</h3>
+        <div class="table-responsive small">
+          <table class="table table-dark table-sm align-middle">
+            <tbody>
+              <tr>
+                <td class="text-nowrap">Early Years</td>
+                <td>Higher interest, lower principal</td>
+              </tr>
+              <tr>
+                <td>Later Years</td>
+                <td>Lower interest, higher principal</td>
+              </tr>
+              <tr>
+                <td>Total Interest</td>
+                <td>Higher than simple interest</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        
+        <div class="border-top border-secondary my-4"></div>
+        <h3 class="h6 text-white mb-3">Common Use Cases</h3>
+        <div class="table-responsive small">
+          <table class="table table-dark table-sm align-middle">
+            <tbody>
+              <tr>
+                <td class="text-nowrap">Student Loans</td>
+                <td>During school or residency</td>
+              </tr>
+              <tr>
+                <td>Business Start-up</td>
+                <td>Initial financing for new ventures</td>
+              </tr>
+              <tr>
+                <td>Construction Loans</td>
+                <td>Interest-only payments during construction</td>
+              </tr>
+              <tr>
+                <td>Medical Residency</td>
+                <td>Financing during medical training</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Bond Calculator Quick Reference -->
+      <div class="functions-section p-4 rounded-3 mb-4" *ngIf="activeTab === 'bond'">
+        <h2 class="h5 fw-semibold mb-3 text-white">📈 Bond Calculator – Quick Reference</h2>
+        
+        <h3 class="h6 text-white mt-3 mb-3">Key Bond Terms</h3>
+        <div class="table-responsive small">
+          <table class="table table-dark table-sm align-middle mb-3">
+            <thead>
+              <tr><th>Term</th><th>Definition</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Face Value</td><td>Principal amount at maturity</td></tr>
+              <tr><td>Coupon Rate</td><td>Annual interest payment</td></tr>
+              <tr><td>Yield to Maturity</td><td>Total return if held to maturity</td></tr>
+              <tr><td>Maturity Date</td><td>Bond's expiration date</td></tr>
+              <tr><td>Current Yield</td><td>Annual income / Current price</td></tr>
+              <tr><td>Duration</td><td>Price sensitivity to rate changes</td></tr>
+            </tbody>
+          </table>
+        </div>
+        
+        <h3 class="h6 text-white mt-4 mb-2">Bond Types</h3>
+        <div class="table-responsive small">
+          <table class="table table-dark table-sm align-middle mb-3">
+            <thead>
+              <tr><th>Type</th><th>Features</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Government</td><td>Low risk, tax benefits</td></tr>
+              <tr><td>Corporate</td><td>Higher yield, higher risk</td></tr>
+              <tr><td>Municipal</td><td>Tax-free interest, local projects</td></tr>
+              <tr><td>Zero-Coupon</td><td>No periodic interest payments</td></tr>
+              <tr><td>Convertible</td><td>Can convert to stock</td></tr>
+            </tbody>
+          </table>
+        </div>
+        
+        <h3 class="h6 text-white mt-4 mb-2">Risk Factors</h3>
+        <div class="table-responsive small">
+          <table class="table table-dark table-sm align-middle">
+            <thead>
+              <tr><th>Risk</th><th>Impact</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Interest Rate</td><td>Prices fall when rates rise</td></tr>
+              <tr><td>Credit/Default</td><td>Issuer may not pay</td></tr>
+              <tr><td>Inflation</td><td>Reduces purchasing power</td></tr>
+              <tr><td>Liquidity</td><td>May be hard to sell</td></tr>
+              <tr><td>Call Risk</td><td>Issuer may redeem early</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  
+  <div class="row mt-5">
+    <div class="col-12">
+      <div class="comprehensive-guide">
+        <h2 class="h4 fw-bold mb-4 text-white text-center">📚 Loan Calculator Guide</h2>
+        
+        <div class="row">
+          <div class="col-12 col-md-6 col-lg-4 mb-4">
+            <div class="guide-section">
+              <h3 class="h6 fw-semibold text-white mb-3">💰 About Amortized Loans</h3>
+              <ul class="text-white small">
+                <li><strong>Fixed Payments:</strong> Equal monthly installments</li>
+                <li><strong>Interest Front-loaded:</strong> Early payments are mostly interest</li>
+                <li><strong>Equity Building:</strong> Principal reduces with each payment</li>
+                <li><strong>Amortization Schedule:</strong> Detailed payment breakdown</li>
+                <li><strong>Prepayment Options:</strong> May reduce total interest</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="col-12 col-md-6 col-lg-4 mb-4">
+            <div class="guide-section">
+              <h3 class="h6 fw-semibold text-white mb-3">🏠 Common Loan Types</h3>
+              <ul class="text-white small">
+                <li><strong>Mortgages:</strong> 15-30 year terms, secured by property</li>
+                <li><strong>Auto Loans:</strong> 3-7 year terms, secured by vehicle</li>
+                <li><strong>Personal Loans:</strong> 1-7 year terms, unsecured</li>
+                <li><strong>Student Loans:</strong> 10-25 year terms, education financing</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="col-12 col-md-6 col-lg-4 mb-4">
+            <div class="guide-section">
+              <h3 class="h6 fw-semibold text-white mb-3">⏳ About Deferred Payments</h3>
+              <ul class="text-white small">
+                <li><strong>Grace Period:</strong> No payments during deferment</li>
+                <li><strong>Interest Accrual:</strong> Interest continues to accumulate</li>
+                <li><strong>Capitalization:</strong> Interest may be added to principal</li>
+                <li><strong>Extended Terms:</strong> Longer repayment after deferment</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="col-12 col-md-6 col-lg-4 mb-4">
+            <div class="guide-section">
+              <h3 class="h6 fw-semibold text-white mb-3">📊 Loan Impact</h3>
+              <ul class="text-white small">
+                <li><strong>Credit Score:</strong> Affects interest rates</li>
+                <li><strong>Debt-to-Income:</strong> Key approval factor</li>
+                <li><strong>Loan-to-Value:</strong> Collateral requirements</li>
+                <li><strong>Payment History:</strong> Affects future credit</li>
+                <li><strong>Prepayment Penalties:</strong> Check terms</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="col-12 col-md-6 col-lg-4 mb-4">
+            <div class="guide-section">
+              <h3 class="h6 fw-semibold text-white mb-3">📈 Interest Rate Factors</h3>
+              <ul class="text-white small">
+                <li><strong>Credit Score:</strong> Higher score = lower rates</li>
+                <li><strong>Loan Term:</strong> Shorter terms = lower rates</li>
+                <li><strong>Loan Amount:</strong> Larger loans may have better rates</li>
+                <li><strong>Down Payment:</strong> More down = better rates</li>
+                <li><strong>Market Conditions:</strong> Follows Fed rates</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="col-12 col-md-6 col-lg-4 mb-4">
+            <div class="guide-section">
+              <h3 class="h6 fw-semibold text-white mb-3">💳 Loan Costs</h3>
+              <ul class="text-white small">
+                <li><strong>APR:</strong> Annual Percentage Rate</li>
+                <li><strong>Origination Fees:</strong> 0.5-1% of loan amount</li>
+                <li><strong>Prepayment Penalties:</strong> Check terms</li>
+                <li><strong>Late Fees:</strong> Typically 3-5% of payment</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="col-12 col-md-6 col-lg-4 mb-4">
+            <div class="guide-section">
+              <h3 class="h6 fw-semibold text-white mb-3">📅 Loan Terms</h3>
+              <ul class="text-white small">
+                <li><strong>Short-term:</strong> 1-3 years</li>
+                <li><strong>Medium-term:</strong> 3-7 years</li>
+                <li><strong>Long-term:</strong> 10-30+ years</li>
+                <li><strong>Balloon:</strong> Large final payment</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="col-12 col-md-6 col-lg-4 mb-4">
+            <div class="guide-section">
+              <h3 class="h6 fw-semibold text-white mb-3">📈 About Bond Yields</h3>
+              <ul class="text-white small">
+                <li><strong>Current Yield:</strong> Annual income / Market price</li>
+                <li><strong>Yield to Maturity:</strong> Total return if held to maturity</li>
+                <li><strong>Yield to Call:</strong> If called by issuer</li>
+                <li><strong>Yield to Worst:</strong> Worst-case scenario return</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="col-12 col-md-6 col-lg-4 mb-4">
+            <div class="guide-section">
+              <h3 class="h6 fw-semibold text-white mb-3">🌐 Bond Markets</h3>
+              <ul class="text-white small">
+                <li><strong>Government:</strong> Treasury bonds, bills, notes</li>
+                <li><strong>Corporate:</strong> Investment grade to junk</li>
+                <li><strong>Municipal:</strong> Tax-exempt, local projects</li>
+                <li><strong>International:</strong> Sovereign and corporate</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="col-12 col-md-6 col-lg-4 mb-4">
+            <div class="guide-section">
+              <h3 class="h6 fw-semibold text-white mb-3">📊 Bond Strategies</h3>
+              <ul class="text-white small">
+                <li><strong>Laddering:</strong> Stagger maturities</li>
+                <li><strong>Barbell:</strong> Short and long-term mix</li>
+                <li><strong>Bullet:</strong> All bonds mature same year</li>
+                <li><strong>Active vs Passive:</strong> Managed or index funds</li>
+                <li><strong>Tax-Loss Harvesting:</strong> Offset capital gains</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<app-footer></app-footer>

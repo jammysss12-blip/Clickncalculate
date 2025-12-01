@@ -1,0 +1,957 @@
+<app-header></app-header>
+
+<div class="area-page container py-4 text-light">
+  <div class="row">
+    <!-- Calculator Section -->
+    <div class="col-12 col-md-6 col-lg-5 mb-4">
+      <h1 class="h4 fw-bold mb-3 text-info">🏗️ Concrete Calculator</h1>
+
+      <div class="calculator-shell shadow-lg rounded-4 p-4 mb-4">
+        <!-- Tab Navigation -->
+        <ul class="nav nav-tabs nav-fill mb-4" role="tablist">
+          <li class="nav-item" role="presentation">
+            <button class="nav-link" [class.active]="activeTab === 'slab'" (click)="activeTab = 'slab'" type="button">
+              🏗️ Slabs
+            </button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button class="nav-link" [class.active]="activeTab === 'stairs'" (click)="activeTab = 'stairs'"
+              type="button">
+              🪜 Stairs
+            </button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button class="nav-link" [class.active]="activeTab === 'circular'" (click)="activeTab = 'circular'"
+              type="button">
+              ⭕ Circular
+            </button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button class="nav-link" [class.active]="activeTab === 'hole'" (click)="activeTab = 'hole'" type="button">
+              🕳️ Holes
+            </button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button class="nav-link" [class.active]="activeTab === 'curb'" (click)="activeTab = 'curb'" type="button">
+              🛣️ Curbs
+            </button>
+          </li>
+        </ul>
+
+        <!-- Slabs Calculator -->
+        <div *ngIf="activeTab === 'slab'" class="calculator-content">
+          <div class="text-center mb-4">
+            <h2 class="h5 text-dark fw-bold mb-3">Slabs, Square Footings, or Walls</h2>
+            <p class="text-dark small mb-3">Calculate concrete volume for rectangular structures</p>
+          </div>
+
+          <div class="input-group">
+            <label for="slabLength">Length (l)</label>
+            <div class="row g-2">
+              <div class="col-7">
+                <input type="number" id="slabLength" class="form-control" [(ngModel)]="slabLength" placeholder="5"
+                  min="0" step="0.1">
+              </div>
+              <div class="col-5">
+                <select class="form-select" [(ngModel)]="slabLengthUnit">
+                  <option value="meters">meters</option>
+                  <option value="centimeters">cm</option>
+                  <option value="feet">feet</option>
+                  <option value="inches">inches</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <div class="input-group">
+            <label for="slabWidth">Width (w)</label>
+            <div class="row g-2">
+              <div class="col-7">
+                <input type="number" id="slabWidth" class="form-control" [(ngModel)]="slabWidth" placeholder="2.5"
+                  min="0" step="0.1">
+              </div>
+              <div class="col-5">
+                <select class="form-select" [(ngModel)]="slabWidthUnit">
+                  <option value="meters">meters</option>
+                  <option value="centimeters">cm</option>
+                  <option value="feet">feet</option>
+                  <option value="inches">inches</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <div class="input-group">
+            <label for="slabThickness">Thickness or Height (h)</label>
+            <div class="row g-2">
+              <div class="col-7">
+                <input type="number" id="slabThickness" class="form-control" [(ngModel)]="slabThickness" placeholder="5"
+                  min="0" step="0.1">
+              </div>
+              <div class="col-5">
+                <select class="form-select" [(ngModel)]="slabThicknessUnit">
+                  <option value="centimeters">cm</option>
+                  <option value="meters">meters</option>
+                  <option value="inches">inches</option>
+                  <option value="feet">feet</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <div class="input-group">
+            <label for="slabQuantity">Quantity</label>
+            <input type="number" id="slabQuantity" class="form-control" [(ngModel)]="slabQuantity" placeholder="1"
+              min="1" step="1">
+          </div>
+
+          <div class="button-group">
+            <button class="btn-clear" (click)="clearSlab()">Clear</button>
+            <button class="btn-calculate" (click)="calculateSlab()">Calculate</button>
+          </div>
+
+          <!-- Results -->
+          <div *ngIf="slabResult" class="results-section">
+            <h3>Results</h3>
+            <div class="result-item">
+              <div class="result-label">Volume</div>
+              <div class="result-value">{{ formatNumber(slabResult.volumeCubicMeters!) }} m³ ({{
+                formatNumber(slabResult.volumeCubicYards!) }} yd³)</div>
+            </div>
+            <div class="result-item">
+              <div class="result-label">Approximate Weight</div>
+              <div class="result-value">{{ formatNumber(slabResult.weight!) }} kg</div>
+            </div>
+            <div class="result-item">
+              <div class="result-label">Cement Bags Needed</div>
+              <div class="result-value">~{{ slabResult.bags }} bags</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Stairs Calculator -->
+        <div *ngIf="activeTab === 'stairs'" class="calculator-content">
+          <div class="text-center mb-4">
+            <h2 class="h5 text-dark fw-bold mb-3">Stairs Calculator</h2>
+            <p class="text-dark small mb-3">Calculate concrete volume for stairways</p>
+          </div>
+
+          <div class="input-group">
+            <label for="stairRun">Run</label>
+            <div class="row g-2">
+              <div class="col-7">
+                <input type="number" id="stairRun" class="form-control" [(ngModel)]="stairRun" placeholder="12" min="0"
+                  step="0.1">
+              </div>
+              <div class="col-5">
+                <select class="form-select" [(ngModel)]="stairRunUnit">
+                  <option value="centimeters">cm</option>
+                  <option value="meters">meters</option>
+                  <option value="inches">inches</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <div class="input-group">
+            <label for="stairRise">Rise</label>
+            <div class="row g-2">
+              <div class="col-7">
+                <input type="number" id="stairRise" class="form-control" [(ngModel)]="stairRise" placeholder="6" min="0"
+                  step="0.1">
+              </div>
+              <div class="col-5">
+                <select class="form-select" [(ngModel)]="stairRiseUnit">
+                  <option value="centimeters">cm</option>
+                  <option value="meters">meters</option>
+                  <option value="inches">inches</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <div class="input-group">
+            <label for="stairWidth">Width</label>
+            <div class="row g-2">
+              <div class="col-7">
+                <input type="number" id="stairWidth" class="form-control" [(ngModel)]="stairWidth" placeholder="50"
+                  min="0" step="0.1">
+              </div>
+              <div class="col-5">
+                <select class="form-select" [(ngModel)]="stairWidthUnit">
+                  <option value="centimeters">cm</option>
+                  <option value="meters">meters</option>
+                  <option value="inches">inches</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <div class="input-group">
+            <label for="stairPlatformDepth">Platform Depth</label>
+            <div class="row g-2">
+              <div class="col-7">
+                <input type="number" id="stairPlatformDepth" class="form-control" [(ngModel)]="stairPlatformDepth"
+                  placeholder="5" min="0" step="0.1">
+              </div>
+              <div class="col-5">
+                <select class="form-select" [(ngModel)]="stairPlatformUnit">
+                  <option value="centimeters">cm</option>
+                  <option value="meters">meters</option>
+                  <option value="inches">inches</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <div class="input-group">
+            <label for="stairNumberOfSteps">Number of Steps</label>
+            <input type="number" id="stairNumberOfSteps" class="form-control" [(ngModel)]="stairNumberOfSteps"
+              placeholder="5" min="1" step="1">
+          </div>
+
+          <div class="button-group">
+            <button class="btn-clear" (click)="clearStairs()">Clear</button>
+            <button class="btn-calculate" (click)="calculateStairs()">Calculate</button>
+          </div>
+
+          <!-- Results -->
+          <div *ngIf="stairResult" class="results-section">
+            <h3>Results</h3>
+            <div class="result-item">
+              <div class="result-label">Volume</div>
+              <div class="result-value">{{ formatNumber(stairResult.volumeCubicMeters!) }} m³ ({{
+                formatNumber(stairResult.volumeCubicYards!) }} yd³)</div>
+            </div>
+            <div class="result-item">
+              <div class="result-label">Approximate Weight</div>
+              <div class="result-value">{{ formatNumber(stairResult.weight!) }} kg</div>
+            </div>
+            <div class="result-item">
+              <div class="result-label">Cement Bags Needed</div>
+              <div class="result-value">~{{ stairResult.bags }} bags</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Circular Calculator -->
+        <div *ngIf="activeTab === 'circular'" class="calculator-content">
+          <div class="text-center mb-4">
+            <h2 class="h5 text-dark fw-bold mb-3">Circular Slab or Tube</h2>
+            <p class="text-dark small mb-3">Calculate concrete volume for circular structures</p>
+          </div>
+
+          <div class="input-group">
+            <label for="circularOuterDiameter">Outer Diameter (d₁)</label>
+            <div class="row g-2">
+              <div class="col-7">
+                <input type="number" id="circularOuterDiameter" class="form-control" [(ngModel)]="circularOuterDiameter"
+                  placeholder="5" min="0" step="0.1">
+              </div>
+              <div class="col-5">
+                <select class="form-select" [(ngModel)]="circularOuterUnit">
+                  <option value="meters">meters</option>
+                  <option value="centimeters">cm</option>
+                  <option value="feet">feet</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <div class="input-group">
+            <label for="circularInnerDiameter">Inner Diameter (d₂)</label>
+            <div class="row g-2">
+              <div class="col-7">
+                <input type="number" id="circularInnerDiameter" class="form-control" [(ngModel)]="circularInnerDiameter"
+                  placeholder="4" min="0" step="0.1">
+              </div>
+              <div class="col-5">
+                <select class="form-select" [(ngModel)]="circularInnerUnit">
+                  <option value="meters">meters</option>
+                  <option value="centimeters">cm</option>
+                  <option value="feet">feet</option>
+                </select>
+              </div>
+            </div>
+            <small class="form-text text-dark">Leave at 0 for solid circular slab</small>
+          </div>
+
+          <div class="input-group">
+            <label for="circularHeight">Length or Height (h)</label>
+            <div class="row g-2">
+              <div class="col-7">
+                <input type="number" id="circularHeight" class="form-control" [(ngModel)]="circularHeight"
+                  placeholder="6" min="0" step="0.1">
+              </div>
+              <div class="col-5">
+                <select class="form-select" [(ngModel)]="circularHeightUnit">
+                  <option value="centimeters">cm</option>
+                  <option value="meters">meters</option>
+                  <option value="inches">inches</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <div class="input-group">
+            <label for="circularQuantity">Quantity</label>
+            <input type="number" id="circularQuantity" class="form-control" [(ngModel)]="circularQuantity"
+              placeholder="1" min="1" step="1">
+          </div>
+
+          <div class="button-group">
+            <button class="btn-clear" (click)="clearCircular()">Clear</button>
+            <button class="btn-calculate" (click)="calculateCircular()">Calculate</button>
+          </div>
+
+          <!-- Results -->
+          <div *ngIf="circularResult" class="results-section">
+            <h3>Results</h3>
+            <div class="result-item">
+              <div class="result-label">Volume</div>
+              <div class="result-value">{{ formatNumber(circularResult.volumeCubicMeters!) }} m³ ({{
+                formatNumber(circularResult.volumeCubicYards!) }} yd³)</div>
+            </div>
+            <div class="result-item">
+              <div class="result-label">Approximate Weight</div>
+              <div class="result-value">{{ formatNumber(circularResult.weight!) }} kg</div>
+            </div>
+            <div class="result-item">
+              <div class="result-label">Cement Bags Needed</div>
+              <div class="result-value">~{{ circularResult.bags }} bags</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Hole/Column Calculator -->
+        <div *ngIf="activeTab === 'hole'" class="calculator-content">
+          <div class="text-center mb-4">
+            <h2 class="h5 text-dark fw-bold mb-3">Hole, Column, or Round Footings</h2>
+            <p class="text-dark small mb-3">Calculate concrete volume for cylindrical structures</p>
+          </div>
+
+          <div class="input-group">
+            <label for="holeDiameter">Diameter (d)</label>
+            <div class="row g-2">
+              <div class="col-7">
+                <input type="number" id="holeDiameter" class="form-control" [(ngModel)]="holeDiameter" placeholder="2.5"
+                  min="0" step="0.1">
+              </div>
+              <div class="col-5">
+                <select class="form-select" [(ngModel)]="holeDiameterUnit">
+                  <option value="meters">meters</option>
+                  <option value="centimeters">cm</option>
+                  <option value="feet">feet</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <div class="input-group">
+            <label for="holeDepth">Depth or Height (h)</label>
+            <div class="row g-2">
+              <div class="col-7">
+                <input type="number" id="holeDepth" class="form-control" [(ngModel)]="holeDepth" placeholder="6" min="0"
+                  step="0.1">
+              </div>
+              <div class="col-5">
+                <select class="form-select" [(ngModel)]="holeDepthUnit">
+                  <option value="meters">meters</option>
+                  <option value="centimeters">cm</option>
+                  <option value="feet">feet</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <div class="input-group">
+            <label for="holeQuantity">Quantity</label>
+            <input type="number" id="holeQuantity" class="form-control" [(ngModel)]="holeQuantity" placeholder="1"
+              min="1" step="1">
+          </div>
+
+          <div class="button-group">
+            <button class="btn-clear" (click)="clearHole()">Clear</button>
+            <button class="btn-calculate" (click)="calculateHole()">Calculate</button>
+          </div>
+
+          <!-- Results -->
+          <div *ngIf="holeResult" class="results-section">
+            <h3>Results</h3>
+            <div class="result-item">
+              <div class="result-label">Volume</div>
+              <div class="result-value">{{ formatNumber(holeResult.volumeCubicMeters!) }} m³ ({{
+                formatNumber(holeResult.volumeCubicYards!) }} yd³)</div>
+            </div>
+            <div class="result-item">
+              <div class="result-label">Approximate Weight</div>
+              <div class="result-value">{{ formatNumber(holeResult.weight!) }} kg</div>
+            </div>
+            <div class="result-item">
+              <div class="result-label">Cement Bags Needed</div>
+              <div class="result-value">~{{ holeResult.bags }} bags</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Curb Calculator -->
+        <div *ngIf="activeTab === 'curb'" class="calculator-content">
+          <div class="text-center mb-4">
+            <h2 class="h5 text-dark fw-bold mb-3">Curb and Gutter Barrier</h2>
+            <p class="text-dark small mb-3">Calculate concrete volume for curbs and gutters</p>
+          </div>
+
+          <div class="input-group">
+            <label for="curbDepth">Curb Depth</label>
+            <div class="row g-2">
+              <div class="col-7">
+                <input type="number" id="curbDepth" class="form-control" [(ngModel)]="curbDepth" placeholder="4" min="0"
+                  step="0.1">
+              </div>
+              <div class="col-5">
+                <select class="form-select" [(ngModel)]="curbDepthUnit">
+                  <option value="centimeters">cm</option>
+                  <option value="meters">meters</option>
+                  <option value="inches">inches</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <div class="input-group">
+            <label for="curbWidth">Gutter Width</label>
+            <div class="row g-2">
+              <div class="col-7">
+                <input type="number" id="curbWidth" class="form-control" [(ngModel)]="curbWidth" placeholder="10"
+                  min="0" step="0.1">
+              </div>
+              <div class="col-5">
+                <select class="form-select" [(ngModel)]="curbWidthUnit">
+                  <option value="centimeters">cm</option>
+                  <option value="meters">meters</option>
+                  <option value="inches">inches</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <div class="input-group">
+            <label for="curbHeight">Curb Height</label>
+            <div class="row g-2">
+              <div class="col-7">
+                <input type="number" id="curbHeight" class="form-control" [(ngModel)]="curbHeight" placeholder="4"
+                  min="0" step="0.1">
+              </div>
+              <div class="col-5">
+                <select class="form-select" [(ngModel)]="curbHeightUnit">
+                  <option value="centimeters">cm</option>
+                  <option value="meters">meters</option>
+                  <option value="inches">inches</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <div class="input-group">
+            <label for="curbFlagThickness">Flag Thickness</label>
+            <div class="row g-2">
+              <div class="col-7">
+                <input type="number" id="curbFlagThickness" class="form-control" [(ngModel)]="curbFlagThickness"
+                  placeholder="5" min="0" step="0.1">
+              </div>
+              <div class="col-5">
+                <select class="form-select" [(ngModel)]="curbFlagUnit">
+                  <option value="centimeters">cm</option>
+                  <option value="meters">meters</option>
+                  <option value="inches">inches</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <div class="input-group">
+            <label for="curbLength">Length</label>
+            <div class="row g-2">
+              <div class="col-7">
+                <input type="number" id="curbLength" class="form-control" [(ngModel)]="curbLength" placeholder="10"
+                  min="0" step="0.1">
+              </div>
+              <div class="col-5">
+                <select class="form-select" [(ngModel)]="curbLengthUnit">
+                  <option value="meters">meters</option>
+                  <option value="centimeters">cm</option>
+                  <option value="feet">feet</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <div class="input-group">
+            <label for="curbQuantity">Quantity</label>
+            <input type="number" id="curbQuantity" class="form-control" [(ngModel)]="curbQuantity" placeholder="1"
+              min="1" step="1">
+          </div>
+
+          <div class="button-group">
+            <button class="btn-clear" (click)="clearCurb()">Clear</button>
+            <button class="btn-calculate" (click)="calculateCurb()">Calculate</button>
+          </div>
+
+          <!-- Results -->
+          <div *ngIf="curbResult" class="results-section">
+            <h3>Results</h3>
+            <div class="result-item">
+              <div class="result-label">Volume</div>
+              <div class="result-value">{{ formatNumber(curbResult.volumeCubicMeters!) }} m³ ({{
+                formatNumber(curbResult.volumeCubicYards!) }} yd³)</div>
+            </div>
+            <div class="result-item">
+              <div class="result-label">Approximate Weight</div>
+              <div class="result-value">{{ formatNumber(curbResult.weight!) }} kg</div>
+            </div>
+            <div class="result-item">
+              <div class="result-label">Cement Bags Needed</div>
+              <div class="result-value">~{{ curbResult.bags }} bags</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Information Section -->
+    <div class="col-12 col-md-6 col-lg-5">
+      <!-- Quick Reference - Changes based on active tab -->
+      <div class="functions-section p-4 rounded-3 mb-4" *ngIf="activeTab === 'slab'">
+        <h2 class="h5 fw-semibold mb-3 text-white">🏗️ Slabs & Footings – Quick Reference</h2>
+        <h3 class="h6 text-white mt-3 mb-3">Common Applications</h3>
+        <div class="table-responsive small">
+          <table class="table table-dark table-sm align-middle mb-3">
+            <tbody>
+              <tr>
+                <td>Floors</td>
+                <td>10-15 cm thickness</td>
+              </tr>
+              <tr>
+                <td>Foundations</td>
+                <td>15-30 cm thickness</td>
+              </tr>
+              <tr>
+                <td>Driveways</td>
+                <td>10-15 cm thickness</td>
+              </tr>
+              <tr>
+                <td>Patios</td>
+                <td>8-10 cm thickness</td>
+              </tr>
+              <tr>
+                <td>Sidewalks</td>
+                <td>10 cm thickness</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="border-top border-secondary my-4"></div>
+        <h3 class="h6 text-white mb-3">Key Tips</h3>
+        <div class="table-responsive small">
+          <table class="table table-dark table-sm align-middle">
+            <tbody>
+              <tr>
+                <td class="text-center" style="width: 30px;">✅</td>
+                <td>Add 5-10% extra for waste</td>
+              </tr>
+              <tr>
+                <td class="text-center">✅</td>
+                <td>Use rebar for strength</td>
+              </tr>
+              <tr>
+                <td class="text-center">✅</td>
+                <td>Keep moist for 7 days</td>
+              </tr>
+              <tr>
+                <td class="text-center">✅</td>
+                <td>Level ground before pouring</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="functions-section p-4 rounded-3 mb-4" *ngIf="activeTab === 'stairs'">
+        <h2 class="h5 fw-semibold mb-3 text-white">🪜 Stairs – Quick Reference</h2>
+        <h3 class="h6 text-white mt-3 mb-3">Standard Dimensions</h3>
+        <div class="table-responsive small">
+          <table class="table table-dark table-sm align-middle mb-3">
+            <tbody>
+              <tr>
+                <td>Rise</td>
+                <td>15-20 cm per step</td>
+              </tr>
+              <tr>
+                <td>Run</td>
+                <td>25-30 cm per step</td>
+              </tr>
+              <tr>
+                <td>Width</td>
+                <td>Min 90 cm (residential)</td>
+              </tr>
+              <tr>
+                <td>Platform</td>
+                <td>Level and stable</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="border-top border-secondary my-4"></div>
+        <h3 class="h6 text-white mb-3">Safety Tips</h3>
+        <div class="table-responsive small">
+          <table class="table table-dark table-sm align-middle">
+            <tbody>
+              <tr>
+                <td class="text-center" style="width: 30px;">✅</td>
+                <td>Use formwork and reinforcement</td>
+              </tr>
+              <tr>
+                <td class="text-center">✅</td>
+                <td>Ensure consistent rise/run</td>
+              </tr>
+              <tr>
+                <td class="text-center">✅</td>
+                <td>Add non-slip finish</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="functions-section p-4 rounded-3 mb-4" *ngIf="activeTab === 'circular'">
+        <h2 class="h5 fw-semibold mb-3 text-white">⭕ Circular – Quick Reference</h2>
+        <h3 class="h6 text-white mt-3 mb-3">Common Uses</h3>
+        <div class="table-responsive small">
+          <table class="table table-dark table-sm align-middle mb-3">
+            <tbody>
+              <tr>
+                <td>Water Tanks</td>
+                <td>Solid or hollow</td>
+              </tr>
+              <tr>
+                <td>Silos</td>
+                <td>Agricultural storage</td>
+              </tr>
+              <tr>
+                <td>Circular Foundations</td>
+                <td>For round structures</td>
+              </tr>
+              <tr>
+                <td>Pipes/Tubes</td>
+                <td>Use inner diameter</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="border-top border-secondary my-4"></div>
+        <h3 class="h6 text-white mb-3">Construction Tips</h3>
+        <div class="table-responsive small">
+          <table class="table table-dark table-sm align-middle">
+            <tbody>
+              <tr>
+                <td class="text-center" style="width: 30px;">✅</td>
+                <td>Radial and circumferential rebar</td>
+              </tr>
+              <tr>
+                <td class="text-center">✅</td>
+                <td>Use flexible formwork materials</td>
+              </tr>
+              <tr>
+                <td class="text-center">✅</td>
+                <td>Pour in continuous operation</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="functions-section p-4 rounded-3 mb-4" *ngIf="activeTab === 'hole'">
+        <h2 class="h5 fw-semibold mb-3 text-white">🕳️ Holes & Columns – Quick Reference</h2>
+        <h3 class="h6 text-white mt-3 mb-3">Common Applications</h3>
+        <div class="table-responsive small">
+          <table class="table table-dark table-sm align-middle mb-3">
+            <tbody>
+              <tr>
+                <td>Fence Posts</td>
+                <td>30-60 cm depth</td>
+              </tr>
+              <tr>
+                <td>Deck Piers</td>
+                <td>Below frost line</td>
+              </tr>
+              <tr>
+                <td>Round Columns</td>
+                <td>Load-bearing structures</td>
+              </tr>
+              <tr>
+                <td>Sonotubes</td>
+                <td>Easy forming method</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="border-top border-secondary my-4"></div>
+        <h3 class="h6 text-white mb-3">Best Practices</h3>
+        <div class="table-responsive small">
+          <table class="table table-dark table-sm align-middle">
+            <tbody>
+              <tr>
+                <td class="text-center" style="width: 30px;">✅</td>
+                <td>Vertical rebar with ties</td>
+              </tr>
+              <tr>
+                <td class="text-center">✅</td>
+                <td>Below frost line for footings</td>
+              </tr>
+              <tr>
+                <td class="text-center">✅</td>
+                <td>Use sonotube for easy forming</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="functions-section p-4 rounded-3 mb-4" *ngIf="activeTab === 'curb'">
+        <h2 class="h5 fw-semibold mb-3 text-white">🛣️ Curbs & Gutters – Quick Reference</h2>
+        <h3 class="h6 text-white mt-3 mb-3">Standard Specifications</h3>
+        <div class="table-responsive small">
+          <table class="table table-dark table-sm align-middle mb-3">
+            <tbody>
+              <tr>
+                <td>Height</td>
+                <td>15-20 cm above pavement</td>
+              </tr>
+              <tr>
+                <td>Gutter Slope</td>
+                <td>1-2% for drainage</td>
+              </tr>
+              <tr>
+                <td>Joints</td>
+                <td>Every 3-4 meters</td>
+              </tr>
+              <tr>
+                <td>Finish</td>
+                <td>Smooth trowel finish</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="border-top border-secondary my-4"></div>
+        <h3 class="h6 text-white mb-3">Installation Tips</h3>
+        <div class="table-responsive small">
+          <table class="table table-dark table-sm align-middle">
+            <tbody>
+              <tr>
+                <td class="text-center" style="width: 30px;">✅</td>
+                <td>Proper drainage slope essential</td>
+              </tr>
+              <tr>
+                <td class="text-center">✅</td>
+                <td>Use expansion joints</td>
+              </tr>
+              <tr>
+                <td class="text-center">✅</td>
+                <td>Compact base thoroughly</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- General Concrete Basics (always visible) -->
+      <div class="functions-section p-4 rounded-3 mb-4">
+        <h2 class="h5 fw-semibold mb-3 text-white">📋 Concrete Basics</h2>
+        <div class="table-responsive small">
+          <table class="table table-dark table-sm align-middle mb-3">
+            <thead>
+              <tr>
+                <th>Property</th>
+                <th>Value</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Density</td>
+                <td>~2,400 kg/m³</td>
+              </tr>
+              <tr>
+                <td>Bags per m³</td>
+                <td>~30 bags</td>
+              </tr>
+              <tr>
+                <td>1 m³</td>
+                <td>1.308 yd³</td>
+              </tr>
+              <tr>
+                <td>Curing Time</td>
+                <td>28 days (full)</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="border-top border-secondary my-4"></div>
+        <h3 class="h6 text-white mb-3">Volume Formulas</h3>
+        <div class="table-responsive small">
+          <table class="table table-dark table-sm align-middle">
+            <tbody>
+              <tr>
+                <td class="text-nowrap">Rectangle</td>
+                <td>L × W × H</td>
+              </tr>
+              <tr>
+                <td>Circle</td>
+                <td>π × r² × h</td>
+              </tr>
+              <tr>
+                <td>Tube</td>
+                <td>π × (R² - r²) × h</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Calculator Guidance -->
+  <div class="row mt-5">
+    <div class="col-12">
+      <div class="comprehensive-guide">
+        <h2 class="h4 fw-bold mb-4 text-white text-center">📚 Concrete Calculator Guide</h2>
+
+        <div class="row">
+          <div class="col-12 col-md-6 col-lg-4 mb-4">
+            <div class="guide-section">
+              <h3 class="h6 fw-semibold text-white mb-3">🏗️ Slabs & Footings</h3>
+              <ul class="text-white small">
+                <li><strong>Use for:</strong> Floors, foundations, driveways, patios</li>
+                <li><strong>Minimum thickness:</strong> 10 cm for light loads</li>
+                <li><strong>Reinforcement:</strong> Use rebar for strength</li>
+                <li><strong>Tip:</strong> Add 5-10% extra for waste</li>
+                <li><strong>Curing:</strong> Keep moist for 7 days minimum</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="col-12 col-md-6 col-lg-4 mb-4">
+            <div class="guide-section">
+              <h3 class="h6 fw-semibold text-white mb-3">🪜 Stairs</h3>
+              <ul class="text-white small">
+                <li><strong>Standard rise:</strong> 15-20 cm per step</li>
+                <li><strong>Standard run:</strong> 25-30 cm per step</li>
+                <li><strong>Width:</strong> Minimum 90 cm for residential</li>
+                <li><strong>Platform:</strong> Should be level and stable</li>
+                <li><strong>Safety:</strong> Use formwork and reinforcement</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="col-12 col-md-6 col-lg-4 mb-4">
+            <div class="guide-section">
+              <h3 class="h6 fw-semibold text-white mb-3">⭕ Circular Slabs</h3>
+              <ul class="text-white small">
+                <li><strong>Use for:</strong> Tanks, silos, circular foundations</li>
+                <li><strong>Tubes:</strong> Enter inner diameter for hollow sections</li>
+                <li><strong>Solid slabs:</strong> Leave inner diameter at 0</li>
+                <li><strong>Reinforcement:</strong> Radial and circumferential rebar</li>
+                <li><strong>Formwork:</strong> Use flexible materials for curves</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="col-12 col-md-6 col-lg-4 mb-4">
+            <div class="guide-section">
+              <h3 class="h6 fw-semibold text-white mb-3">🕳️ Columns & Holes</h3>
+              <ul class="text-white small">
+                <li><strong>Use for:</strong> Posts, piers, round columns</li>
+                <li><strong>Depth:</strong> Below frost line for footings</li>
+                <li><strong>Diameter:</strong> Based on load requirements</li>
+                <li><strong>Reinforcement:</strong> Vertical rebar with ties</li>
+                <li><strong>Tip:</strong> Use sonotube for easy forming</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="col-12 col-md-6 col-lg-4 mb-4">
+            <div class="guide-section">
+              <h3 class="h6 fw-semibold text-white mb-3">🛣️ Curbs & Gutters</h3>
+              <ul class="text-white small">
+                <li><strong>Use for:</strong> Street edges, drainage control</li>
+                <li><strong>Standard height:</strong> 15-20 cm above pavement</li>
+                <li><strong>Gutter slope:</strong> 1-2% for drainage</li>
+                <li><strong>Joints:</strong> Every 3-4 meters</li>
+                <li><strong>Finish:</strong> Smooth trowel finish</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="col-12 col-md-6 col-lg-4 mb-4">
+            <div class="guide-section">
+              <h3 class="h6 fw-semibold text-white mb-3">⚖️ Mix Ratios</h3>
+              <ul class="text-white small">
+                <li><strong>Standard:</strong> 1:2:3 (cement:sand:gravel)</li>
+                <li><strong>High strength:</strong> 1:1.5:2.5</li>
+                <li><strong>Foundation:</strong> 1:2:4</li>
+                <li><strong>Water ratio:</strong> 0.4-0.6 by weight</li>
+                <li><strong>Slump:</strong> 5-10 cm for most applications</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="col-12 col-md-6 col-lg-4 mb-4">
+            <div class="guide-section">
+              <h3 class="h6 fw-semibold text-white mb-3">🌡️ Temperature & Weather</h3>
+              <ul class="text-white small">
+                <li><strong>Ideal temp:</strong> 10-30°C for pouring</li>
+                <li><strong>Hot weather:</strong> Use retarders, keep moist</li>
+                <li><strong>Cold weather:</strong> Use accelerators, protect from frost</li>
+                <li><strong>Rain:</strong> Cover fresh concrete</li>
+                <li><strong>Wind:</strong> Prevent rapid drying</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="col-12 col-md-6 col-lg-4 mb-4">
+            <div class="guide-section">
+              <h3 class="h6 fw-semibold text-white mb-3">🔧 Tools & Equipment</h3>
+              <ul class="text-white small">
+                <li><strong>Mixing:</strong> Concrete mixer or wheelbarrow</li>
+                <li><strong>Pouring:</strong> Chutes, buckets, pumps</li>
+                <li><strong>Finishing:</strong> Trowels, floats, edgers</li>
+                <li><strong>Safety:</strong> Gloves, boots, eye protection</li>
+                <li><strong>Curing:</strong> Plastic sheeting, curing compound</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="col-12 col-md-6 col-lg-4 mb-4">
+            <div class="guide-section">
+              <h3 class="h6 fw-semibold text-white mb-3">💡 Pro Tips</h3>
+              <ul class="text-white small">
+                <li><strong>Order extra:</strong> 5-10% more than calculated</li>
+                <li><strong>Pour continuously:</strong> Avoid cold joints</li>
+                <li><strong>Vibrate properly:</strong> Remove air pockets</li>
+                <li><strong>Cure properly:</strong> Critical for strength</li>
+                <li><strong>Plan ahead:</strong> Have all materials ready</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<app-footer></app-footer>

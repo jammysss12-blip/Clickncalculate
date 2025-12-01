@@ -1,0 +1,420 @@
+<app-header></app-header>
+
+<div class="calc-page container py-4 text-light">
+  <div class="row">
+    <!-- Main Calculator Section -->
+    <div class="col-12 col-md-5 col-lg-4">
+      <h1 class="h4 fw-bold mb-2 text-info">📝 Words & Text Tools</h1>
+      <div class="calculator-shell shadow-lg rounded-4 p-3 mb-4">
+        <!-- Tab Navigation -->
+        <ul class="nav nav-tabs nav-fill mb-3" role="tablist">
+          <li class="nav-item" role="presentation">
+            <button class="nav-link" [class.active]="activeTab === 'counter'" (click)="setActiveTab('counter')"
+              type="button">
+              🔢 Counter
+            </button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button class="nav-link" [class.active]="activeTab === 'reverser'" (click)="setActiveTab('reverser')"
+              type="button">
+              🔄 Reverser
+            </button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button class="nav-link" [class.active]="activeTab === 'converter'" (click)="setActiveTab('converter')"
+              type="button">
+              🔤 Case Converter
+            </button>
+          </li>
+        </ul>
+
+        <!-- Word Counter Tab -->
+        <div *ngIf="activeTab === 'counter'">
+          <div class="text-center mb-4">
+            <h2 class="h5 text-dark fw-bold mb-3">Word & Character Counter</h2>
+            <p class="text-dark small">Type or paste your text below to count words, characters, and more.</p>
+          </div>
+
+          <div class="mb-3">
+            <textarea class="form-control form-control-lg" rows="8" placeholder="Type or paste your text here..."
+              [(ngModel)]="inputText" (input)="countWords()"></textarea>
+          </div>
+
+          <div class="d-flex gap-3 mb-3">
+            <button class="btn btn-secondary flex-fill" (click)="clearCounter()">Clear</button>
+          </div>
+
+          <!-- Results -->
+          <div class="answer-section" *ngIf="inputText.trim()">
+            <div class="row g-2 mb-3">
+              <div class="col-6 col-md-4">
+                <div class="result-box p-2 text-center">
+                  <div class="text-dark fw-bold">{{ wordCount }}</div>
+                  <div class="text-muted small">Words</div>
+                </div>
+              </div>
+              <div class="col-6 col-md-4">
+                <div class="result-box p-2 text-center">
+                  <div class="text-dark fw-bold">{{ charCount }}</div>
+                  <div class="text-muted small">Characters</div>
+                </div>
+              </div>
+              <div class="col-6 col-md-4">
+                <div class="result-box p-2 text-center">
+                  <div class="text-dark fw-bold">{{ charNoSpaceCount }}</div>
+                  <div class="text-muted small">No Spaces</div>
+                </div>
+              </div>
+              <div class="col-6 col-md-4">
+                <div class="result-box p-2 text-center">
+                  <div class="text-dark fw-bold">{{ sentenceCount }}</div>
+                  <div class="text-muted small">Sentences</div>
+                </div>
+              </div>
+              <div class="col-6 col-md-4">
+                <div class="result-box p-2 text-center">
+                  <div class="text-dark fw-bold">{{ paragraphCount }}</div>
+                  <div class="text-muted small">Paragraphs</div>
+                </div>
+              </div>
+              <div class="col-6 col-md-4">
+                <div class="result-box p-2 text-center">
+                  <div class="text-dark fw-bold">{{ readingTime }} min</div>
+                  <div class="text-muted small">Reading Time</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Text Reverser Tab -->
+        <div *ngIf="activeTab === 'reverser'">
+          <div class="text-center mb-4">
+            <h2 class="h5 text-dark fw-bold mb-3">Text Reverser</h2>
+            <p class="text-dark small">Reverse your text with options to preserve case.</p>
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label text-dark fw-semibold">Enter text to reverse:</label>
+            <textarea class="form-control form-control-lg" rows="4" placeholder="Type or paste text here..."
+              [(ngModel)]="reverseInput"></textarea>
+          </div>
+
+          <div class="form-check form-switch mb-3">
+            <input class="form-check-input" type="checkbox" id="preserveCase" [(ngModel)]="preserveCase">
+            <label class="form-check-label text-dark fw-semibold" for="preserveCase">Preserve case</label>
+          </div>
+
+          <div class="d-flex gap-3 mb-4">
+            <button class="btn btn-secondary flex-fill" (click)="clearReverser()">Clear</button>
+            <button class="btn btn-calculate flex-fill" (click)="reverseText()">Reverse Text</button>
+          </div>
+
+          <div *ngIf="reversedText">
+            <label class="form-label text-dark fw-semibold">Reversed Text:</label>
+            <div class="result-box p-3 mb-3">
+              <p class="mb-0 text-break">{{ reversedText }}</p>
+            </div>
+            <button class="btn btn-outline-secondary w-100" (click)="copyReversedText()">
+              <i class="bi bi-clipboard me-2"></i>Copy to Clipboard
+            </button>
+          </div>
+        </div>
+
+        <!-- Case Converter Tab -->
+        <div *ngIf="activeTab === 'converter'">
+          <div class="text-center mb-4">
+            <h2 class="h5 text-dark fw-bold mb-3">Case Converter</h2>
+            <p class="text-dark small">Convert text to different case formats.</p>
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label text-dark fw-semibold">Enter text to convert:</label>
+            <textarea class="form-control form-control-lg" rows="4" placeholder="Type or paste text here..."
+              [(ngModel)]="caseInput"></textarea>
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label text-dark fw-semibold">Convert to:</label>
+            <div class="d-flex flex-wrap gap-2 mb-3">
+              <button *ngFor="let type of ['uppercase', 'lowercase', 'sentence', 'title', 'alternating']"
+                class="btn btn-sm" [class.btn-primary]="caseType === type"
+                [class.btn-outline-secondary]="caseType !== type" (click)="caseType = type; convertCase()">
+                {{ type | titlecase }}
+              </button>
+            </div>
+          </div>
+
+          <div class="d-flex gap-3 mb-4">
+            <button class="btn btn-secondary flex-fill" (click)="clearConverter()">Clear</button>
+            <button class="btn btn-calculate flex-fill" (click)="convertCase()">Convert</button>
+          </div>
+
+          <div *ngIf="convertedText">
+            <label class="form-label text-dark fw-semibold">Converted Text:</label>
+            <div class="result-box p-3 mb-3">
+              <p class="mb-0 text-break">{{ convertedText }}</p>
+            </div>
+            <button class="btn btn-outline-secondary w-100" (click)="copyConvertedText()">
+              <i class="bi bi-clipboard me-2"></i>Copy to Clipboard
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Information Section -->
+    <div class="col-12 col-md-5 col-lg-4">
+      <!-- Word Counter Info -->
+      <div class="functions-section mb-4" *ngIf="activeTab === 'counter'">
+        <h2 class="h5 fw-semibold mb-3 text-white">🔢 Word Counter – Quick Reference</h2>
+
+        <h3 class="h6 text-white mt-3 mb-2">What's Being Counted?</h3>
+        <ul class="text-white small">
+          <li class="mb-2"><strong>Words:</strong> Groups of characters separated by spaces</li>
+          <li class="mb-2"><strong>Characters:</strong> All visible characters and spaces</li>
+          <li class="mb-2"><strong>No Spaces:</strong> Only visible characters (no spaces)</li>
+          <li class="mb-2"><strong>Sentences:</strong> Text ending with . ! or ? followed by a space</li>
+          <li class="mb-2"><strong>Paragraphs:</strong> Blocks of text separated by blank lines</li>
+        </ul>
+
+        <h3 class="h6 text-white mt-4 mb-2">Reading & Speaking Time</h3>
+        <ul class="text-white small">
+          <li class="mb-2"><strong>Reading Time:</strong> Based on 200 words per minute</li>
+          <li class="mb-2"><strong>Speaking Time:</strong> Based on 125 words per minute</li>
+        </ul>
+      </div>
+
+      <!-- Text Reverser Info -->
+      <div class="functions-section mb-4" *ngIf="activeTab === 'reverser'">
+        <h2 class="h5 fw-semibold mb-3 text-white">🔄 Text Reverser – Quick Reference</h2>
+
+        <h3 class="h6 text-white mt-3 mb-2">How It Works</h3>
+        <p class="text-white small">The text reverser flips your text character by character. You can choose to preserve
+          the original case or convert everything to lowercase before reversing.</p>
+
+        <h3 class="h6 text-white mt-4 mb-2">Example</h3>
+        <div class="bg-dark p-3 rounded mb-3">
+          <p class="mb-1 text-muted small">Original:</p>
+          <p class="mb-0 text-white">Hello, World!</p>
+          <p class="mb-1 text-muted small mt-3">Reversed (preserve case):</p>
+          <p class="mb-0 text-white">!dlroW ,olleH</p>
+          <p class="mb-1 text-muted small mt-3">Reversed (lowercase):</p>
+          <p class="mb-0 text-white">!dlrow ,olleh</p>
+        </div>
+      </div>
+
+      <!-- Case Converter Info -->
+      <div class="functions-section mb-4" *ngIf="activeTab === 'converter'">
+        <h2 class="h5 fw-semibold mb-3 text-white">🔤 Case Converter – Quick Reference</h2>
+
+        <h3 class="h6 text-white mt-3 mb-2">Available Case Types</h3>
+        <ul class="text-white small">
+          <li class="mb-2"><strong>Uppercase:</strong> CONVERTS ALL TEXT TO UPPERCASE</li>
+          <li class="mb-2"><strong>Lowercase:</strong> converts all text to lowercase</li>
+          <li class="mb-2"><strong>Sentence case:</strong> Capitalizes first letter of each sentence</li>
+          <li class="mb-2"><strong>Title Case:</strong> Capitalizes First Letter Of Each Word</li>
+          <li class="mb-2"><strong>aLtErNaTiNg cAsE:</strong> aLtErNaTeS bEtWeEn LoWeR aNd UpPeR cAsE</li>
+        </ul>
+
+        <h3 class="h6 text-white mt-4 mb-2">Common Uses</h3>
+        <ul class="text-white small">
+          <li class="mb-2">Formatting titles and headings</li>
+          <li class="mb-2">Preparing text for programming</li>
+          <li class="mb-2">Creating stylistic text for social media</li>
+          <li class="mb-2">Standardizing text formatting</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Comprehensive Guide Section -->
+<div class="row mt-5">
+  <div class="col-12">
+    <div class="comprehensive-guide">
+      <h2 class="h4 fw-bold mb-4 text-white text-center">📚 Words & Text Tools Guide</h2>
+
+      <div class="row">
+        <!-- Word Counter Guide -->
+        <div class="col-12 col-md-6 col-lg-4 mb-4">
+          <div class="guide-section p-4 rounded-3 h-100">
+            <h3 class="h5 fw-semibold text-white mb-3">🔢 Word Counter</h3>
+            <p class="text-white-50 small mb-3">Analyze your text with precision and get detailed statistics.</p>
+
+            <h4 class="h6 text-white mb-2">Features:</h4>
+            <ul class="text-white small">
+              <li class="mb-2"><strong>Word Count</strong> - Counts the number of words in your text</li>
+              <li class="mb-2"><strong>Character Count</strong> - Shows total characters (with and without spaces)</li>
+              <li class="mb-2"><strong>Reading Time</strong> - Estimates reading duration at 200 WPM</li>
+              <li class="mb-2"><strong>Speaking Time</strong> - Estimates speaking duration at 125 WPM</li>
+              <li class="mb-2"><strong>Paragraphs & Sentences</strong> - Counts paragraphs and sentences</li>
+            </ul>
+
+            <h4 class="h6 text-white mt-4 mb-2">Best For:</h4>
+            <ul class="text-white small">
+              <li class="mb-2">✓ Writers and content creators</li>
+              <li class="mb-2">✓ Students working on assignments</li>
+              <li class="mb-2">✓ Social media post optimization</li>
+              <li class="mb-2">✓ Academic writing and research</li>
+            </ul>
+
+            <div class="alert alert-info mt-4 p-3 small bg-dark border-info">
+              <i class="bi bi-info-circle-fill me-2"></i> <strong>Tip:</strong> The word counter updates in real-time as
+              you type.
+            </div>
+          </div>
+        </div>
+
+        <!-- Text Reverser Guide -->
+        <div class="col-12 col-md-6 col-lg-4 mb-4">
+          <div class="guide-section p-4 rounded-3 h-100">
+            <h3 class="h5 fw-semibold text-white mb-3">🔄 Text Reverser</h3>
+            <p class="text-white-50 small mb-3">Reverse your text with options to preserve or modify the case.</p>
+
+            <h4 class="h6 text-white mb-2">How to Use:</h4>
+            <ol class="text-white small">
+              <li class="mb-2">Type or paste your text in the input area</li>
+              <li class="mb-2">Toggle "Preserve Case" to maintain original capitalization</li>
+              <li class="mb-2">Click "Reverse Text" to see the result</li>
+              <li class="mb-2">Use "Copy to Clipboard" to save your reversed text</li>
+            </ol>
+
+            <h4 class="h6 text-white mt-4 mb-2">Use Cases:</h4>
+            <ul class="text-white small">
+              <li class="mb-2">✓ Creating secret messages</li>
+              <li class="mb-2">✓ Testing text rendering</li>
+              <li class="mb-2">✓ Language learning exercises</li>
+              <li class="mb-2">✓ Creative writing and poetry</li>
+            </ul>
+
+            <div class="alert alert-warning mt-4 p-3 small bg-dark border-warning">
+              <i class="bi bi-lightbulb-fill me-2"></i> <strong>Did you know?</strong> Reversing text can help identify
+              patterns and improve reading skills.
+            </div>
+          </div>
+        </div>
+
+        <!-- Case Converter Guide -->
+        <div class="col-12 col-md-6 col-lg-4 mb-4">
+          <div class="guide-section p-4 rounded-3 h-100">
+            <h3 class="h5 fw-semibold text-white mb-3">🔤 Case Converter</h3>
+            <p class="text-white-50 small mb-3">Convert text between different case formats with a single click.</p>
+
+            <h4 class="h6 text-white mb-2">Available Case Types:</h4>
+            <ul class="text-white small">
+              <li class="mb-2"><strong>UPPERCASE</strong> - Converts all text to capital letters</li>
+              <li class="mb-2"><strong>lowercase</strong> - Converts all text to small letters</li>
+              <li class="mb-2"><strong>Title Case</strong> - Capitalizes The First Letter Of Each Word</li>
+              <li class="mb-2"><strong>Sentence case</strong> - Capitalizes first letter of each sentence</li>
+              <li class="mb-2"><strong>aLtErNaTiNg cAsE</strong> - Alternates between upper and lower case</li>
+            </ul>
+
+            <h4 class="h6 text-white mt-4 mb-2">Best Practices:</h4>
+            <ul class="text-white small">
+              <li class="mb-2">✓ Use Title Case for headings and titles</li>
+              <li class="mb-2">✓ Use Sentence case for regular paragraphs</li>
+              <li class="mb-2">✓ UPPERCASE for emphasis (use sparingly)</li>
+              <li class="mb-2">✓ Alternating case for stylistic text</li>
+            </ul>
+
+            <div class="alert alert-success mt-4 p-3 small bg-dark border-success">
+              <i class="bi bi-check-circle-fill me-2"></i> <strong>Note:</strong> The converter preserves line breaks
+              and paragraph structure.
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tips & FAQ Section -->
+      <div class="row mt-4">
+        <div class="col-12 col-lg-6 mb-4">
+          <div class="functions-section p-4 rounded-3 h-100">
+            <h3 class="h5 fw-semibold text-white mb-4">💡 Tips & Tricks</h3>
+            <div class="row g-4">
+              <div class="col-md-6">
+                <div class="bg-dark p-3 rounded-3 h-100">
+                  <h4 class="h6 text-white mb-3">Keyboard Shortcuts</h4>
+                  <ul class="text-white small">
+                    <li class="mb-3"><kbd class="bg-secondary">Ctrl + A</kbd> - Select all text</li>
+                    <li class="mb-3"><kbd class="bg-secondary">Ctrl + C</kbd> - Copy selected text</li>
+                    <li class="mb-3"><kbd class="bg-secondary">Ctrl + V</kbd> - Paste text</li>
+                    <li><kbd class="bg-secondary">Tab</kbd> - Navigate between elements</li>
+                  </ul>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="bg-dark p-3 rounded-3 h-100">
+                  <h4 class="h6 text-white mb-3">Best Practices</h4>
+                  <ul class="text-white small">
+                    <li class="mb-3">✓ Use the word counter for readability analysis</li>
+                    <li class="mb-3">✓ Standardize text formats with case converter</li>
+                    <li class="mb-3">✓ Clear fields between tasks for accuracy</li>
+                    <li>✓ Bookmark for quick access</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-12 col-lg-6 mb-4">
+          <div class="functions-section p-4 rounded-3 h-100">
+            <h3 class="h5 fw-semibold text-white mb-4">❓ Frequently Asked Questions</h3>
+
+            <div class="accordion" id="faqAccordion">
+              <div class="accordion-item bg-transparent border-0 mb-3">
+                <h4 class="accordion-header">
+                  <button class="accordion-button bg-dark text-white collapsed py-3" type="button"
+                    data-bs-toggle="collapse" data-bs-target="#faq1">
+                    How accurate is the word counter?
+                  </button>
+                </h4>
+                <div id="faq1" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                  <div class="accordion-body bg-dark rounded-bottom p-3 small">
+                    The word counter is highly accurate for standard text. It counts words as groups of characters
+                    separated by whitespace. For specialized documents with complex formatting, some manual verification
+                    might be needed.
+                  </div>
+                </div>
+              </div>
+
+              <div class="accordion-item bg-transparent border-0 mb-3">
+                <h4 class="accordion-header">
+                  <button class="accordion-button bg-dark text-white collapsed py-3" type="button"
+                    data-bs-toggle="collapse" data-bs-target="#faq2">
+                    Can I use this tool for multiple languages?
+                  </button>
+                </h4>
+                <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                  <div class="accordion-body bg-dark rounded-bottom p-3 small">
+                    Yes! The word counter and text reverser work with any language that uses standard Unicode
+                    characters. The case converter is optimized for English but works with most Latin-based scripts.
+                  </div>
+                </div>
+              </div>
+
+              <div class="accordion-item bg-transparent border-0">
+                <h4 class="accordion-header">
+                  <button class="accordion-button bg-dark text-white collapsed py-3" type="button"
+                    data-bs-toggle="collapse" data-bs-target="#faq3">
+                    Is my text stored or processed on a server?
+                  </button>
+                </h4>
+                <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                  <div class="accordion-body bg-dark rounded-bottom p-3 small">
+                    No, all text processing happens directly in your browser. Your text is never sent to any server,
+                    ensuring complete privacy and security.
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<app-footer></app-footer>
