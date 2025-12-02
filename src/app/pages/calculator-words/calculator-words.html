@@ -15,9 +15,9 @@
             </button>
           </li>
           <li class="nav-item" role="presentation">
-            <button class="nav-link" [class.active]="activeTab === 'reverser'" (click)="setActiveTab('reverser')"
-              type="button">
-              🔄 Reverser
+            <button class="nav-link" [class.active]="activeTab === 'wordsToNumber'"
+              (click)="setActiveTab('wordsToNumber')" type="button">
+              📝➡️🔢 Words to Number
             </button>
           </li>
           <li class="nav-item" role="presentation">
@@ -93,35 +93,31 @@
           </div>
         </div>
 
-        <!-- Text Reverser Tab -->
-        <div *ngIf="activeTab === 'reverser'">
+        <!-- Words to Number Tab -->
+        <div *ngIf="activeTab === 'wordsToNumber'">
           <div class="text-center mb-4">
-            <h2 class="h5 text-dark fw-bold mb-3">Text Reverser</h2>
-            <p class="text-dark small">Reverse your text with options to preserve case.</p>
+            <h2 class="h5 text-dark fw-bold mb-3">Words to Number Converter</h2>
+            <p class="text-dark small">Convert written numbers to numeric form.</p>
           </div>
 
           <div class="mb-3">
-            <label class="form-label text-dark fw-semibold">Enter text to reverse:</label>
-            <textarea class="form-control form-control-lg" rows="4" placeholder="Type or paste text here..."
-              [(ngModel)]="reverseInput"></textarea>
-          </div>
-
-          <div class="form-check form-switch mb-3">
-            <input class="form-check-input" type="checkbox" id="preserveCase" [(ngModel)]="preserveCase">
-            <label class="form-check-label text-dark fw-semibold" for="preserveCase">Preserve case</label>
+            <label class="form-label text-dark fw-semibold">Enter number in words:</label>
+            <textarea class="form-control form-control-lg" rows="4"
+              placeholder="e.g., eighty-eight thousand eight hundred eighty-eight" [(ngModel)]="wordsInput"></textarea>
           </div>
 
           <div class="d-flex gap-3 mb-4">
-            <button class="btn btn-secondary flex-fill" (click)="clearReverser()">Clear</button>
-            <button class="btn btn-calculate flex-fill" (click)="reverseText()">Reverse Text</button>
+            <button class="btn btn-secondary flex-fill" (click)="clearWordsToNumber()">Clear</button>
+            <button class="btn btn-calculate flex-fill" (click)="convertWordsToNumber()">Convert</button>
           </div>
 
-          <div *ngIf="reversedText">
-            <label class="form-label text-dark fw-semibold">Reversed Text:</label>
+          <div *ngIf="numberResult">
+            <label class="form-label text-dark fw-semibold">Result:</label>
             <div class="result-box p-3 mb-3">
-              <p class="mb-0 text-break text-dark fw-semibold">{{ reversedText }}</p>
+              <p class="mb-0 text-break text-dark fw-semibold">{{ numberResult }}</p>
             </div>
-            <button class="btn btn-outline-secondary w-100" (click)="copyReversedText()">
+            <button class="btn btn-outline-secondary w-100" (click)="copyNumberResult()"
+              *ngIf="!numberResult.includes('Invalid') && !numberResult.includes('Error')">
               <i class="bi bi-clipboard me-2"></i>Copy to Clipboard
             </button>
           </div>
@@ -221,23 +217,31 @@
         </ul>
       </div>
 
-      <!-- Text Reverser Info -->
-      <div class="functions-section mb-4" *ngIf="activeTab === 'reverser'">
-        <h2 class="h5 fw-semibold mb-3 text-white">🔄 Text Reverser – Quick Reference</h2>
+      <!-- Words to Number Info -->
+      <div class="functions-section mb-4" *ngIf="activeTab === 'wordsToNumber'">
+        <h2 class="h5 fw-semibold mb-3 text-white">📝➡️🔢 Words to Number – Quick Reference</h2>
 
         <h3 class="h6 text-white mt-3 mb-2">How It Works</h3>
-        <p class="text-white small">The text reverser flips your text character by character. You can choose to preserve
-          the original case or convert everything to lowercase before reversing.</p>
+        <p class="text-white small">This tool converts written English numbers into their numeric form. Simply type the
+          number in words and get the numeric value instantly.</p>
 
-        <h3 class="h6 text-white mt-4 mb-2">Example</h3>
+        <h3 class="h6 text-white mt-4 mb-2">Examples</h3>
         <div class="bg-dark p-3 rounded mb-3">
-          <p class="mb-1 text-muted small">Original:</p>
-          <p class="mb-0 text-white">Hello, World!</p>
-          <p class="mb-1 text-muted small mt-3">Reversed (preserve case):</p>
-          <p class="mb-0 text-white">!dlroW ,olleH</p>
-          <p class="mb-1 text-muted small mt-3">Reversed (lowercase):</p>
-          <p class="mb-0 text-white">!dlrow ,olleh</p>
+          <p class="mb-1 text-muted small">Input: eighty-eight thousand eight hundred eighty-eight</p>
+          <p class="mb-0 text-white">Output: 88,888</p>
+          <p class="mb-1 text-muted small mt-3">Input: one million two hundred thirty-four thousand</p>
+          <p class="mb-0 text-white">Output: 1,234,000</p>
+          <p class="mb-1 text-muted small mt-3">Input: negative forty-two</p>
+          <p class="mb-0 text-white">Output: -42</p>
         </div>
+
+        <h3 class="h6 text-white mt-4 mb-2">Supported Features</h3>
+        <ul class="text-white small">
+          <li class="mb-2"><strong>Large Numbers:</strong> Up to trillions</li>
+          <li class="mb-2"><strong>Negative Numbers:</strong> Use "negative" or "minus" prefix</li>
+          <li class="mb-2"><strong>Flexible Input:</strong> Works with hyphens or spaces</li>
+          <li class="mb-2"><strong>Word "and":</strong> Automatically ignored</li>
+        </ul>
       </div>
 
       <!-- Case Converter Info -->
@@ -331,31 +335,39 @@
           </div>
         </div>
 
-        <!-- Text Reverser Guide -->
+        <!-- Words to Number Guide -->
         <div class="col-12 col-md-6 col-lg-4 mb-4">
           <div class="guide-section p-4 rounded-3 h-100">
-            <h3 class="h5 fw-semibold text-white mb-3">🔄 Text Reverser</h3>
-            <p class="text-white-50 small mb-3">Reverse your text with options to preserve or modify the case.</p>
+            <h3 class="h5 fw-semibold text-white mb-3">📝➡️🔢 Words to Number</h3>
+            <p class="text-white-50 small mb-3">Convert written English numbers into their numeric representation.</p>
 
             <h4 class="h6 text-white mb-2">How to Use:</h4>
             <ol class="text-white small">
-              <li class="mb-2">Type or paste your text in the input area</li>
-              <li class="mb-2">Toggle "Preserve Case" to maintain original capitalization</li>
-              <li class="mb-2">Click "Reverse Text" to see the result</li>
-              <li class="mb-2">Use "Copy to Clipboard" to save your reversed text</li>
+              <li class="mb-2">Type or paste the number in words</li>
+              <li class="mb-2">Click "Convert" to see the numeric result</li>
+              <li class="mb-2">Copy the result to clipboard if needed</li>
+              <li class="mb-2">Supports hyphens, spaces, and the word "and"</li>
             </ol>
 
-            <h4 class="h6 text-white mt-4 mb-2">Use Cases:</h4>
+            <h4 class="h6 text-white mt-4 mb-2">Examples:</h4>
             <ul class="text-white small">
-              <li class="mb-2">✓ Creating secret messages</li>
-              <li class="mb-2">✓ Testing text rendering</li>
-              <li class="mb-2">✓ Language learning exercises</li>
-              <li class="mb-2">✓ Creative writing and poetry</li>
+              <li class="mb-2">✓ "eighty-eight thousand" → 88,000</li>
+              <li class="mb-2">✓ "one hundred and twenty-three" → 123</li>
+              <li class="mb-2">✓ "five million" → 5,000,000</li>
+              <li class="mb-2">✓ "negative fifteen" → -15</li>
+            </ul>
+
+            <h4 class="h6 text-white mt-4 mb-2">Best For:</h4>
+            <ul class="text-white small">
+              <li class="mb-2">✓ Processing written financial amounts</li>
+              <li class="mb-2">✓ Converting legal document numbers</li>
+              <li class="mb-2">✓ Data entry and validation</li>
+              <li class="mb-2">✓ Educational purposes</li>
             </ul>
 
             <div class="alert alert-warning mt-4 p-3 small bg-dark border-warning">
-              <i class="bi bi-lightbulb-fill me-2"></i> <strong>Did you know?</strong> Reversing text can help identify
-              patterns and improve reading skills.
+              <i class="bi bi-lightbulb-fill me-2"></i> <strong>Tip:</strong> You can use hyphens or spaces between
+              words - both work perfectly!
             </div>
           </div>
         </div>

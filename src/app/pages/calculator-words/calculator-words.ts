@@ -25,10 +25,9 @@ export class CalculatorWords {
   readingTime: number = 0;
   speakingTime: number = 0;
 
-  // Text Reverser properties
-  reverseInput: string = '';
-  reversedText: string = '';
-  preserveCase: boolean = true;
+  // Words to Number properties
+  wordsInput: string = '';
+  numberResult: string = '';
 
   // Case Converter properties
   caseInput: string = '';
@@ -86,32 +85,109 @@ export class CalculatorWords {
     this.speakingTime = 0;
   }
 
-  // Text Reverser Methods
-  reverseText() {
-    if (!this.reverseInput) {
-      this.reversedText = '';
+  // Words to Number Methods
+  convertWordsToNumber() {
+    if (!this.wordsInput || this.wordsInput.trim() === '') {
+      this.numberResult = '';
       return;
     }
 
-    if (this.preserveCase) {
-      // Preserve original case
-      this.reversedText = this.reverseInput.split('').reverse().join('');
-    } else {
-      // Convert to lowercase before reversing to normalize case
-      this.reversedText = this.reverseInput.toLowerCase().split('').reverse().join('');
+    try {
+      const result = this.parseWordsToNumber(this.wordsInput.trim().toLowerCase());
+      if (result === null) {
+        this.numberResult = 'Invalid input. Please enter a valid number in words.';
+      } else {
+        this.numberResult = result.toLocaleString();
+      }
+    } catch (error) {
+      this.numberResult = 'Error: Unable to parse the input.';
     }
   }
 
-  copyReversedText() {
-    if (this.reversedText) {
-      navigator.clipboard.writeText(this.reversedText);
-      // You can add a toast notification here if needed
+  private parseWordsToNumber(words: string): number | null {
+    // Handle special case for zero
+    if (words === 'zero') return 0;
+
+    // Remove extra spaces and normalize
+    words = words.replace(/\s+/g, ' ').trim();
+
+    // Handle negative numbers
+    let isNegative = false;
+    if (words.startsWith('negative ') || words.startsWith('minus ')) {
+      isNegative = true;
+      words = words.replace(/^(negative|minus)\s+/, '');
+    }
+
+    // Define number words
+    const ones: { [key: string]: number } = {
+      'zero': 0, 'one': 1, 'two': 2, 'three': 3, 'four': 4, 'five': 5,
+      'six': 6, 'seven': 7, 'eight': 8, 'nine': 9, 'ten': 10,
+      'eleven': 11, 'twelve': 12, 'thirteen': 13, 'fourteen': 14, 'fifteen': 15,
+      'sixteen': 16, 'seventeen': 17, 'eighteen': 18, 'nineteen': 19
+    };
+
+    const tens: { [key: string]: number } = {
+      'twenty': 20, 'thirty': 30, 'forty': 40, 'fifty': 50,
+      'sixty': 60, 'seventy': 70, 'eighty': 80, 'ninety': 90
+    };
+
+    const scales: { [key: string]: number } = {
+      'hundred': 100,
+      'thousand': 1000,
+      'million': 1000000,
+      'billion': 1000000000,
+      'trillion': 1000000000000
+    };
+
+    // Split by major scale words
+    let total = 0;
+    let current = 0;
+
+    // Replace hyphens with spaces for easier parsing
+    words = words.replace(/-/g, ' ');
+
+    const tokens = words.split(' ').filter(token => token.length > 0);
+
+    for (let i = 0; i < tokens.length; i++) {
+      const token = tokens[i];
+
+      if (ones[token] !== undefined) {
+        current += ones[token];
+      } else if (tens[token] !== undefined) {
+        current += tens[token];
+      } else if (token === 'hundred') {
+        current *= 100;
+      } else if (scales[token] !== undefined && scales[token] >= 1000) {
+        current *= scales[token];
+        total += current;
+        current = 0;
+      } else if (token === 'and') {
+        // Skip 'and' - it's just a connector
+        continue;
+      } else if (token === 'point') {
+        // Handle decimal point - for now, just return what we have
+        return isNegative ? -1 * (total + current) : total + current;
+      } else {
+        // Unknown word
+        return null;
+      }
+    }
+
+    const result = total + current;
+    return isNegative ? -1 * result : result;
+  }
+
+  copyNumberResult() {
+    if (this.numberResult && !this.numberResult.includes('Invalid') && !this.numberResult.includes('Error')) {
+      // Remove commas before copying
+      const cleanNumber = this.numberResult.replace(/,/g, '');
+      navigator.clipboard.writeText(cleanNumber);
     }
   }
 
-  clearReverser() {
-    this.reverseInput = '';
-    this.reversedText = '';
+  clearWordsToNumber() {
+    this.wordsInput = '';
+    this.numberResult = '';
   }
 
   // Case Converter Methods
