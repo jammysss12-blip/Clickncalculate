@@ -1,4 +1,4 @@
-.area-page {
+.calc-page {
   background: #E3F2FD;
   min-height: 100vh;
   margin-left: 70px;
@@ -30,14 +30,17 @@
 
     @media (max-width: 768px) {
       padding: 1.5rem;
+      max-width: 450px;
     }
 
     @media (max-width: 576px) {
       padding: 1.25rem;
+      max-width: 380px;
     }
 
     @media (max-width: 480px) {
       padding: 1rem;
+      max-width: 320px;
     }
   }
 
@@ -205,6 +208,7 @@
 
     &:active {
       transform: translateY(0);
+      background-color: #000000;
     }
   }
 
@@ -424,7 +428,7 @@
     overflow: hidden;
 
     thead {
-      background: rgba(0, 0, 0, 0.05) !important;
+      background: #e9ecef !important;
 
       th {
         color: #000000 !important;
@@ -501,7 +505,7 @@
 }
 
 @media (max-width: 360px) {
-  .area-page {
+  .calc-page {
     background: #E3F2FD;
     margin-left: 0;
     padding: 0 10px;

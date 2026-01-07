@@ -1,12 +1,12 @@
 <app-header></app-header>
 
-<div class="area-page container py-4 text-light">
+<div class="calc-page container py-4 text-light">
   <div class="row">
     <!-- Calculator Section -->
-    <div class="col-12 col-md-6 col-lg-5 mb-4">
-      <h1 class="h4 fw-bold mb-3 text-info">🏗️ Concrete Calculator</h1>
+    <div class="col-12 col-md-12 col-lg-6 mb-4">
+      <h1 class="h4 fw-bold mb-3 text-info text-center">🏗️ Concrete Calculator</h1>
 
-      <div class="calculator-shell shadow-lg rounded-4 p-4 mb-4">
+      <div class="calculator-shell shadow-lg rounded-4 p-4 mb-4 mx-auto">
         <!-- Tab Navigation -->
         <ul class="nav nav-tabs nav-fill mb-4" role="tablist">
           <li class="nav-item" role="presentation">
@@ -518,8 +518,44 @@
       </div>
     </div>
 
+    <!-- Description Section -->
+    <div class="col-12 col-md-12 col-lg-6 mb-4">
+      <div class="description-panel">
+        <div class="d-flex justify-content-between text-muted mb-3 opacity-50">
+          <span class="fs-5">√</span>
+          <span class="fs-5 symbol-dots">..</span>
+        </div>
+
+        <h2 class="display-6 fw-bold mb-4 text-dark font-serif">Concrete<br>Calculator</h2>
+
+        <p class="text-secondary mb-4 small">
+          The <strong>Concrete Calculator</strong> is an essential tool for construction projects, helping you estimate
+          the volume of concrete needed for slabs, stairs, footings, and curbs. It prevents material wastage and ensures
+          accurate ordering.
+        </p>
+
+        <p class="text-secondary mb-4 small">
+          Users can calculate requirements for different shapes and structures. The calculator also provides estimates
+          for the number of cement bags required, simplifying complex calculations for professionals and DIY
+          enthusiasts.
+        </p>
+
+        <p class="text-secondary mb-4 small">
+          Calculations include safety margins for waste. However, all estimates should be verified with a structural
+          engineer before major construction.
+        </p>
+
+        <div class="d-flex justify-content-between text-muted mt-auto pt-4 opacity-50">
+          <span class="fs-5 symbol-dots">..</span>
+          <span class="fs-5">✕</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row justify-content-center mt-4">
     <!-- Information Section -->
-    <div class="col-12 col-md-6 col-lg-5">
+    <div class="col-12">
       <!-- Quick Reference - Changes based on active tab -->
       <div class="functions-section p-4 rounded-3 mb-4" *ngIf="activeTab === 'slab'">
         <h2 class="h5 fw-semibold mb-3 text-white">🏗️ Slabs & Footings – Quick Reference</h2>

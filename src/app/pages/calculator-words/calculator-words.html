@@ -3,9 +3,9 @@
 <div class="calc-page container py-4 text-light">
   <div class="row">
     <!-- Main Calculator Section -->
-    <div class="col-12 col-md-5 col-lg-4">
-      <h1 class="h4 fw-bold mb-2 text-info">📝 Words & Text Tools</h1>
-      <div class="calculator-shell shadow-lg rounded-4 p-3 mb-4">
+    <div class="col-12 col-md-12 col-lg-6 mb-4">
+      <h1 class="h4 fw-bold mb-2 text-info text-center">📝 Words & Text Tools</h1>
+      <div class="calculator-shell shadow-lg rounded-4 p-3 mb-4 mx-auto">
         <!-- Tab Navigation -->
         <ul class="nav nav-tabs nav-fill mb-3" role="tablist">
           <li class="nav-item" role="presentation">
@@ -195,8 +195,41 @@
       </div>
     </div>
 
+    <div class="col-12 col-md-12 col-lg-6 mb-4">
+      <div class="description-panel">
+        <div class="d-flex justify-content-between text-muted mb-3 opacity-50">
+          <span class="fs-5">√</span>
+          <span class="fs-5 symbol-dots">..</span>
+        </div>
+
+        <h2 class="display-6 fw-bold mb-4 text-dark font-serif">Words & Text<br>Tools</h2>
+
+        <p class="text-secondary mb-4 small">
+          The <strong>Words & Text Tools</strong> provide a collection of utilities including a Word Counter, Case
+          Converter, Words to Number, and Numbers to Words converter. These tools are essential for writers, editors,
+          students, and professionals working with text.
+        </p>
+
+        <p class="text-secondary mb-4 small">
+          Users can analyze text statistics, change capitalization styles, and convert numerical values to text or vice
+          versa. The tools are designed for efficiency and accuracy.
+        </p>
+
+        <p class="text-secondary mb-4 small">
+          All processing is done locally in your browser for privacy and speed. No text is sent to external servers.
+        </p>
+
+        <div class="d-flex justify-content-between text-muted mt-auto pt-4 opacity-50">
+          <span class="fs-5 symbol-dots">..</span>
+          <span class="fs-5">✕</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row justify-content-center mt-4">
     <!-- Information Section -->
-    <div class="col-12 col-md-5 col-lg-4">
+    <div class="col-12">
       <!-- Word Counter Info -->
       <div class="functions-section mb-4" *ngIf="activeTab === 'counter'">
         <h2 class="h5 fw-semibold mb-3 text-white">🔢 Word Counter – Quick Reference</h2>
@@ -290,7 +323,7 @@
         <ul class="text-white small">
           <li class="mb-2"><strong>Large Numbers:</strong> Up to 999 trillion</li>
           <li class="mb-2"><strong>Negative Numbers:</strong> Automatically adds "negative" prefix</li>
-          <li class="mb-2"><strong>Decimals:</strong> Converts decimal points and digits</li>
+          <li class="mb-2"><strong>Decimals:</strong> Converts decimal points and fractional parts</li>
           <li class="mb-2"><strong>Real-time:</strong> Updates as you type</li>
         </ul>
       </div>
@@ -522,6 +555,5 @@
     </div>
   </div>
 </div>
-
 
 <app-footer></app-footer>

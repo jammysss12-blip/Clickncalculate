@@ -1,7 +1,24 @@
 footer {
-  color: #000000 !important;
+  color: #000000;
   text-align: center;
-  background-color: #E3F2FD !important;
-
+  background-color: transparent !important; // Let the page background show
   margin-top: 3rem;
+  padding-bottom: 2rem;
+
+  a {
+    color: #396aaa !important; // Blue color
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.2s ease;
+
+    &:hover {
+      color: #224796 !important;
+      opacity: 0.8;
+    }
+  }
+
+  .separator {
+    color: #888 !important;
+    opacity: 0.5;
+  }
 }

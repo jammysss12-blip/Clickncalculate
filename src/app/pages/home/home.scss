@@ -41,6 +41,35 @@
     }
   }
 
+  .header-nav {
+    @media (min-width: 768px) {
+      h1 {
+        margin-bottom: 0 !important;
+      }
+    }
+  }
+
+  .nav-link-item {
+    color: #396aaa !important; // Blue color from screenshot
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 1.1rem;
+    transition: all 0.2s ease;
+    white-space: nowrap;
+
+    &:hover {
+      color: #224796 !important;
+      text-decoration: none;
+      opacity: 0.8;
+    }
+  }
+
+  .separator {
+    font-size: 1.1rem;
+    color: #888 !important;
+    font-weight: 300;
+  }
+
   .lead {
     color: #333 !important; // Dark gray subtitle
     font-size: 1.125rem;

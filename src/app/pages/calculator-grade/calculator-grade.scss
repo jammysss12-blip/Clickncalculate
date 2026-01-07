@@ -1,4 +1,4 @@
-.grade-page {
+.calc-page {
   background: #E3F2FD;
   min-height: 100vh;
   margin-left: 70px;
@@ -203,6 +203,8 @@
 
       &:active {
         transform: translateY(0);
+        background-color: #000000;
+        color: white;
       }
     }
 
@@ -544,12 +546,12 @@
     --bs-table-bg: transparent;
 
     thead {
-      background-color: #010101 !important;
+      background-color: #e9ecef !important;
 
       th {
-        background-color: #343a40 !important;
+        background-color: #e9ecef !important;
         color: #000000 !important;
-        border-bottom: 2px solid #495057 !important;
+        border-bottom: 2px solid #dee2e6 !important;
         font-weight: 600 !important;
         padding: 0.75rem !important;
         text-align: left !important;

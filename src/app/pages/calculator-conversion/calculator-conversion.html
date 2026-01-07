@@ -1,22 +1,24 @@
 <app-header></app-header>
 
-<div class="conversion-page container py-4 text-light">
+<div class="calc-page container py-4 text-light">
   <div class="row">
     <!-- Calculator Section -->
-    <div class="col-12 col-md-5 col-lg-4">
-      <h1 class="h4 fw-bold mb-2 text-info">🔄 Unit Converter</h1>
-      <p class="text-white-50 small mb-3">Convert temperature, length, mass, and speed.</p>
-      
-      <div class="calculator-shell shadow-lg rounded-4 p-4 mb-4">
+    <div class="col-12 col-md-12 col-lg-6 mb-4">
+      <h1 class="h4 fw-bold mb-2 text-dark text-center">🔄 Unit Converter</h1>
+      <p class="text-white-50 small mb-3 text-center">Convert temperature, length, mass, and speed.</p>
+
+      <div class="calculator-shell shadow-lg rounded-4 p-4 mb-4 mx-auto">
         <!-- Tab Navigation -->
         <ul class="nav nav-tabs nav-fill mb-4" role="tablist">
           <li class="nav-item" role="presentation">
-            <button class="nav-link" [class.active]="activeTab === 'length'" (click)="switchTab('length')" type="button">
+            <button class="nav-link" [class.active]="activeTab === 'length'" (click)="switchTab('length')"
+              type="button">
               📏 Length
             </button>
           </li>
           <li class="nav-item" role="presentation">
-            <button class="nav-link" [class.active]="activeTab === 'temperature'" (click)="switchTab('temperature')" type="button">
+            <button class="nav-link" [class.active]="activeTab === 'temperature'" (click)="switchTab('temperature')"
+              type="button">
               🌡️ Temperature
             </button>
           </li>
@@ -56,11 +58,11 @@
 
             <!-- Action Buttons -->
             <div class="d-flex gap-3 mb-3">
+              <button class="btn btn-clear flex-fill" (click)="clearDensityCalculator()">
+                Clear
+              </button>
               <button class="btn btn-calculate flex-fill" (click)="calculateMass()">
                 Calculate
-              </button>
-              <button class="btn btn-secondary flex-fill" (click)="clearDensityCalculator()">
-                Clear
               </button>
             </div>
 
@@ -109,17 +111,20 @@
             <div class="speed-calculator-buttons mb-3">
               <div class="row g-2">
                 <div class="col-4">
-                  <button class="btn btn-calculate w-100" (click)="calculateDistance()" title="Calculate Distance from Speed and Time">
+                  <button class="btn btn-calculate w-100" (click)="calculateDistance()"
+                    title="Calculate Distance from Speed and Time">
                     Calc<br>Distance
                   </button>
                 </div>
                 <div class="col-4">
-                  <button class="btn btn-calculate w-100" (click)="calculateTime()" title="Calculate Time from Distance and Speed">
+                  <button class="btn btn-calculate w-100" (click)="calculateTime()"
+                    title="Calculate Time from Distance and Speed">
                     Calc<br>Time
                   </button>
                 </div>
                 <div class="col-4">
-                  <button class="btn btn-calculate w-100" (click)="calculateSpeed()" title="Calculate Speed from Distance and Time">
+                  <button class="btn btn-calculate w-100" (click)="calculateSpeed()"
+                    title="Calculate Speed from Distance and Time">
                     Calc<br>Speed
                   </button>
                 </div>
@@ -128,7 +133,7 @@
 
             <!-- Clear Button -->
             <div class="mb-3">
-              <button class="btn btn-secondary w-100" (click)="clearSpeedCalculator()">
+              <button class="btn btn-clear w-100" (click)="clearSpeedCalculator()">
                 Clear All
               </button>
             </div>
@@ -157,7 +162,8 @@
             <!-- From Section -->
             <div class="conversion-section mb-3">
               <label class="form-label fw-bold">From:</label>
-              <input type="number" class="form-control mb-2" [(ngModel)]="fromValue" (input)="convert()" placeholder="Enter value">
+              <input type="number" class="form-control mb-2" [(ngModel)]="fromValue" (input)="convert()"
+                placeholder="Enter value">
               <select class="form-select" [(ngModel)]="fromUnit" (change)="convert()">
                 <option *ngFor="let unit of getCurrentUnits()" [value]="unit.value">{{ unit.label }}</option>
               </select>
@@ -182,14 +188,14 @@
             <!-- Result Display -->
             <div *ngIf="toValue" class="result-display text-center">
               <div class="result-text">
-                <strong>{{ fromValue }} {{ getUnitLabel(fromUnit) }}</strong> = 
+                <strong>{{ fromValue }} {{ getUnitLabel(fromUnit) }}</strong> =
                 <strong class="text-primary">{{ toValue }} {{ getUnitLabel(toUnit) }}</strong>
               </div>
             </div>
 
             <!-- Clear Button -->
             <div class="text-center mt-3">
-              <button class="btn btn-secondary w-100" (click)="clear()">
+              <button class="btn btn-clear w-100" (click)="clear()">
                 <i class="bi bi-arrow-counterclockwise"></i> Clear
               </button>
             </div>
@@ -198,45 +204,132 @@
       </div>
     </div>
 
-    <!-- Quick Reference Section -->
-    <div class="col-12 col-md-7 col-lg-5">
-      <div class="reference-section">
-        <h2 class="h5 fw-semibold mb-3 text-white">📚 {{ getTabTitle() }} - Quick Reference</h2>
-        
+    <!-- Description Section -->
+    <div class="col-12 col-md-12 col-lg-6 mb-4">
+      <div class="description-panel">
+        <div class="d-flex justify-content-between text-muted mb-3 opacity-50">
+          <span class="fs-5">√</span>
+          <span class="fs-5 symbol-dots">..</span>
+        </div>
+
+        <h2 class="display-6 fw-bold mb-4 text-dark font-serif">Unit<br>Converter</h2>
+
+        <p class="text-secondary mb-4 small">
+          The <strong>Unit Converter Calculator</strong> is a versatile tool for converting various units of measurement
+          including length, mass, temperature, and speed. It is designed for students, professionals, and anyone needing
+          quick conversions.
+        </p>
+
+        <p class="text-secondary mb-4 small">
+          Users can switch between different categories and instantly see converted values. The tool supports both
+          metric
+          and imperial systems making it usable globally for solving problems or planning projects.
+        </p>
+
+        <p class="text-secondary mb-4 small">
+          All conversions are based on standard international formulas. Results are provided for general reference and
+          educational use.
+        </p>
+
+        <div class="d-flex justify-content-between text-muted mt-auto pt-4 opacity-50">
+          <span class="fs-5 symbol-dots">..</span>
+          <span class="fs-5">✕</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row justify-content-center mt-4">
+    <div class="col-12">
+      <div class="functions-section p-4 rounded-3 mb-4">
+        <h2 class="h5 fw-semibold mb-3 text-dark">📚 {{ getTabTitle() }} - Quick Reference</h2>
+
         <!-- Length Reference -->
         <div *ngIf="activeTab === 'length'" class="table-responsive">
-          <table class="table table-dark table-sm">
+          <table class="table table-sm">
             <thead>
-              <tr><th>Unit</th><th>Symbol</th><th>Relation to Meter</th></tr>
+              <tr>
+                <th>Unit</th>
+                <th>Symbol</th>
+                <th>Relation to Meter</th>
+              </tr>
             </thead>
             <tbody>
-              <tr><td>Kilometer</td><td>km</td><td>1 km = 1,000 m</td></tr>
-              <tr><td>Meter</td><td>m</td><td>Base unit</td></tr>
-              <tr><td>Centimeter</td><td>cm</td><td>1 cm = 0.01 m</td></tr>
-              <tr><td>Millimeter</td><td>mm</td><td>1 mm = 0.001 m</td></tr>
-              <tr><td>Mile</td><td>mi</td><td>1 mi = 1,609.34 m</td></tr>
-              <tr><td>Yard</td><td>yd</td><td>1 yd = 0.9144 m</td></tr>
-              <tr><td>Foot</td><td>ft</td><td>1 ft = 0.3048 m</td></tr>
-              <tr><td>Inch</td><td>in</td><td>1 in = 0.0254 m</td></tr>
+              <tr>
+                <td>Kilometer</td>
+                <td>km</td>
+                <td>1 km = 1,000 m</td>
+              </tr>
+              <tr>
+                <td>Meter</td>
+                <td>m</td>
+                <td>Base unit</td>
+              </tr>
+              <tr>
+                <td>Centimeter</td>
+                <td>cm</td>
+                <td>1 cm = 0.01 m</td>
+              </tr>
+              <tr>
+                <td>Millimeter</td>
+                <td>mm</td>
+                <td>1 mm = 0.001 m</td>
+              </tr>
+              <tr>
+                <td>Mile</td>
+                <td>mi</td>
+                <td>1 mi = 1,609.34 m</td>
+              </tr>
+              <tr>
+                <td>Yard</td>
+                <td>yd</td>
+                <td>1 yd = 0.9144 m</td>
+              </tr>
+              <tr>
+                <td>Foot</td>
+                <td>ft</td>
+                <td>1 ft = 0.3048 m</td>
+              </tr>
+              <tr>
+                <td>Inch</td>
+                <td>in</td>
+                <td>1 in = 0.0254 m</td>
+              </tr>
             </tbody>
           </table>
         </div>
 
         <!-- Temperature Reference -->
         <div *ngIf="activeTab === 'temperature'" class="table-responsive">
-          <table class="table table-dark table-sm">
+          <table class="table table-sm">
             <thead>
-              <tr><th>Unit</th><th>Symbol</th><th>Formula</th></tr>
+              <tr>
+                <th>Unit</th>
+                <th>Symbol</th>
+                <th>Formula</th>
+              </tr>
             </thead>
             <tbody>
-              <tr><td>Celsius</td><td>°C</td><td>Base unit</td></tr>
-              <tr><td>Fahrenheit</td><td>°F</td><td>°F = (°C × 9/5) + 32</td></tr>
-              <tr><td>Kelvin</td><td>K</td><td>K = °C + 273.15</td></tr>
+              <tr>
+                <td>Celsius</td>
+                <td>°C</td>
+                <td>Base unit</td>
+              </tr>
+              <tr>
+                <td>Fahrenheit</td>
+                <td>°F</td>
+                <td>°F = (°C × 9/5) + 32</td>
+              </tr>
+              <tr>
+                <td>Kelvin</td>
+                <td>K</td>
+                <td>K = °C + 273.15</td>
+              </tr>
             </tbody>
           </table>
           <div class="conversion-examples mt-3">
-            <h6 class="text-white">Common Conversions:</h6>
-            <ul class="text-white small">
+            <h6 class="text-dark">Common Conversions:</h6>
+            <ul class="text-dark small">
               <li>0°C = 32°F = 273.15K (Freezing point)</li>
               <li>100°C = 212°F = 373.15K (Boiling point)</li>
               <li>37°C = 98.6°F = 310.15K (Body temp)</li>
@@ -247,31 +340,46 @@
         <!-- Mass Reference -->
         <div *ngIf="activeTab === 'mass'">
           <div class="conversion-examples mb-3">
-            <h6 class="text-white fw-semibold">Mass Calculator Formula:</h6>
-            <ul class="text-white small">
+            <h6 class="text-dark fw-semibold">Mass Calculator Formula:</h6>
+            <ul class="text-dark small">
               <li><strong>Mass = Density × Volume</strong></li>
               <li>Enter density and volume to calculate mass</li>
               <li>Result is displayed in kilograms (kg)</li>
             </ul>
           </div>
-          
+
           <div class="table-responsive">
-            <table class="table table-dark table-sm">
+            <table class="table table-sm">
               <thead>
-                <tr><th>Density Unit</th><th>Common Use</th></tr>
+                <tr>
+                  <th>Density Unit</th>
+                  <th>Common Use</th>
+                </tr>
               </thead>
               <tbody>
-                <tr><td>kg/m³</td><td>SI unit for gases</td></tr>
-                <tr><td>g/cm³</td><td>Solids and liquids</td></tr>
-                <tr><td>kg/L</td><td>Liquids</td></tr>
-                <tr><td>lb/ft³</td><td>Imperial unit</td></tr>
+                <tr>
+                  <td>kg/m³</td>
+                  <td>SI unit for gases</td>
+                </tr>
+                <tr>
+                  <td>g/cm³</td>
+                  <td>Solids and liquids</td>
+                </tr>
+                <tr>
+                  <td>kg/L</td>
+                  <td>Liquids</td>
+                </tr>
+                <tr>
+                  <td>lb/ft³</td>
+                  <td>Imperial unit</td>
+                </tr>
               </tbody>
             </table>
           </div>
 
           <div class="conversion-examples mt-3">
-            <h6 class="text-white">Common Material Densities:</h6>
-            <ul class="text-white small">
+            <h6 class="text-dark">Common Material Densities:</h6>
+            <ul class="text-dark small">
               <li>Water: 1 g/cm³ = 1,000 kg/m³</li>
               <li>Iron: 7.87 g/cm³ = 7,870 kg/m³</li>
               <li>Aluminum: 2.70 g/cm³ = 2,700 kg/m³</li>
@@ -284,8 +392,8 @@
         <!-- Speed Reference -->
         <div *ngIf="activeTab === 'speed'">
           <div class="conversion-examples mb-3">
-            <h6 class="text-white fw-semibold">Speed Calculator Formulas:</h6>
-            <ul class="text-white small">
+            <h6 class="text-dark fw-semibold">Speed Calculator Formulas:</h6>
+            <ul class="text-dark small">
               <li><strong>Distance = Speed × Time</strong></li>
               <li><strong>Time = Distance ÷ Speed</strong></li>
               <li><strong>Speed = Distance ÷ Time</strong></li>
@@ -293,25 +401,45 @@
               <li><strong>3 Calculation Modes:</strong> Choose what to calculate</li>
             </ul>
           </div>
-          
+
           <div class="table-responsive mb-3">
-            <h6 class="text-white fw-semibold mb-2">Common Speed Units</h6>
-            <table class="table table-dark table-sm">
+            <h6 class="text-dark fw-semibold mb-2">Common Speed Units</h6>
+            <table class="table table-sm">
               <thead>
-                <tr><th>Unit</th><th>Symbol</th><th>Common Use</th></tr>
+                <tr>
+                  <th>Unit</th>
+                  <th>Symbol</th>
+                  <th>Common Use</th>
+                </tr>
               </thead>
               <tbody>
-                <tr><td>Meters/second</td><td>m/s</td><td>SI unit for speed</td></tr>
-                <tr><td>Kilometers/hour</td><td>km/h</td><td>Road speed (metric)</td></tr>
-                <tr><td>Miles/hour</td><td>mph</td><td>Road speed (imperial)</td></tr>
-                <tr><td>Knots</td><td>kn</td><td>Maritime/aviation</td></tr>
+                <tr>
+                  <td>Meters/second</td>
+                  <td>m/s</td>
+                  <td>SI unit for speed</td>
+                </tr>
+                <tr>
+                  <td>Kilometers/hour</td>
+                  <td>km/h</td>
+                  <td>Road speed (metric)</td>
+                </tr>
+                <tr>
+                  <td>Miles/hour</td>
+                  <td>mph</td>
+                  <td>Road speed (imperial)</td>
+                </tr>
+                <tr>
+                  <td>Knots</td>
+                  <td>kn</td>
+                  <td>Maritime/aviation</td>
+                </tr>
               </tbody>
             </table>
           </div>
 
           <div class="conversion-examples mt-3">
-            <h6 class="text-white">Common Speed Examples:</h6>
-            <ul class="text-white small">
+            <h6 class="text-dark">Common Speed Examples:</h6>
+            <ul class="text-dark small">
               <li>Walking: ~5 km/h (~3 mph)</li>
               <li>Running: ~15 km/h (~9 mph)</li>
               <li>City driving: ~50 km/h (~30 mph)</li>
@@ -329,14 +457,14 @@
   <div class="row mt-5">
     <div class="col-12">
       <div class="comprehensive-guide">
-        <h2 class="h4 fw-bold mb-4 text-white text-center">📐 Complete Unit Converter Guide</h2>
-        
+        <h2 class="h4 fw-bold mb-4 text-dark text-center">📐 Complete Unit Converter Guide</h2>
+
         <div class="row">
           <!-- Length Guide -->
           <div class="col-12 col-md-6 col-lg-4 mb-4">
             <div class="guide-section">
-              <h3 class="h6 fw-semibold text-white mb-3">📏 Length Conversions</h3>
-              <ul class="text-white small">
+              <h3 class="h6 fw-semibold text-dark mb-3">📏 Length Conversions</h3>
+              <ul class="text-dark small">
                 <li><strong>Metric:</strong> km, m, cm, mm (base 10)</li>
                 <li><strong>Imperial:</strong> mile, yard, foot, inch</li>
                 <li><strong>Common:</strong> 1 inch = 2.54 cm</li>
@@ -348,8 +476,8 @@
           <!-- Temperature Guide -->
           <div class="col-12 col-md-6 col-lg-4 mb-4">
             <div class="guide-section">
-              <h3 class="h6 fw-semibold text-white mb-3">🌡️ Temperature Conversions</h3>
-              <ul class="text-white small">
+              <h3 class="h6 fw-semibold text-dark mb-3">🌡️ Temperature Conversions</h3>
+              <ul class="text-dark small">
                 <li><strong>°C to °F:</strong> Multiply by 9/5, add 32</li>
                 <li><strong>°F to °C:</strong> Subtract 32, multiply by 5/9</li>
                 <li><strong>°C to K:</strong> Add 273.15</li>
@@ -361,8 +489,8 @@
           <!-- Mass Guide -->
           <div class="col-12 col-md-6 col-lg-4 mb-4">
             <div class="guide-section">
-              <h3 class="h6 fw-semibold text-white mb-3">⚖️ Mass Calculator</h3>
-              <ul class="text-white small">
+              <h3 class="h6 fw-semibold text-dark mb-3">⚖️ Mass Calculator</h3>
+              <ul class="text-dark small">
                 <li><strong>Formula:</strong> Mass = Density × Volume</li>
                 <li><strong>Density Units:</strong> kg/m³, g/cm³, kg/L, lb/ft³</li>
                 <li><strong>Volume Units:</strong> m³, L, ft³, gal, etc.</li>
@@ -374,8 +502,8 @@
           <!-- Speed Guide -->
           <div class="col-12 col-md-6 col-lg-4 mb-4">
             <div class="guide-section">
-              <h3 class="h6 fw-semibold text-white mb-3">🚀 Speed Calculator</h3>
-              <ul class="text-white small">
+              <h3 class="h6 fw-semibold text-dark mb-3">🚀 Speed Calculator</h3>
+              <ul class="text-dark small">
                 <li><strong>Distance:</strong> Speed × Time</li>
                 <li><strong>Time:</strong> Distance ÷ Speed</li>
                 <li><strong>Speed:</strong> Distance ÷ Time</li>
@@ -387,8 +515,8 @@
           <!-- Tips & Tricks -->
           <div class="col-12 col-md-6 col-lg-4 mb-4">
             <div class="guide-section">
-              <h3 class="h6 fw-semibold text-white mb-3">💡 Conversion Tips</h3>
-              <ul class="text-white small">
+              <h3 class="h6 fw-semibold text-dark mb-3">💡 Conversion Tips</h3>
+              <ul class="text-dark small">
                 <li><strong>Metric:</strong> Easy base-10 conversions</li>
                 <li><strong>Imperial:</strong> Use conversion factors</li>
                 <li><strong>Accuracy:</strong> More decimals = more precise</li>
@@ -400,6 +528,6 @@
       </div>
     </div>
   </div>
-</div>
 
-<app-footer></app-footer>
+
+  <app-footer></app-footer>

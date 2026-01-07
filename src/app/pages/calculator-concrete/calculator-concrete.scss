@@ -1,11 +1,14 @@
 // Main container styles
-.area-page,
-.concrete-page {
+.calc-page {
   background: #E3F2FD;
   color: #1a2a4a;
   min-height: 100vh;
   margin-left: 70px;
   padding: 2rem 1rem;
+
+  .text-info {
+    color: #000000 !important;
+  }
 
   @media (max-width: 1200px) {
     margin-left: 30px;
@@ -45,21 +48,25 @@
     border-radius: 16px;
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
     padding: 2rem;
+    max-width: 500px;
     width: 100%;
     margin-bottom: 2rem;
 
     @media (max-width: 768px) {
       padding: 1.5rem;
+      max-width: 450px;
     }
 
     @media (max-width: 576px) {
       padding: 1.25rem;
       border-radius: 12px;
+      max-width: 380px;
     }
 
     @media (max-width: 480px) {
       padding: 1rem;
       border-radius: 10px;
+      max-width: 320px;
     }
 
     h1,
@@ -249,6 +256,10 @@
         background-color: #64B5F6 !important;
       }
 
+      &:active {
+        background-color: #000000 !important;
+      }
+
       svg {
         margin-left: 0.5rem;
       }
@@ -358,7 +369,7 @@
     }
 
     th {
-      background: rgba(255, 215, 0, 0.1);
+      background: #e9ecef;
       color: #000000;
       font-weight: 600;
       text-transform: uppercase;
@@ -542,8 +553,7 @@
     }
   }
 
-  .area-page .button-group,
-  .concrete-page .button-group {
+  .calc-page .button-group {
     flex-direction: column;
 
     button {

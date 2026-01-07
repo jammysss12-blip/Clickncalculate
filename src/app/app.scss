@@ -1,12 +1,94 @@
-/* App-level styles with consistent background color */
-app-root {
-  background-color: #E3F2FD !important;
-  min-height: 100vh;
-  display: block;
+/* Global overrides for calculator guides to ensure readability on light theme */
+.functions-section,
+.comprehensive-guide {
+      color: #000000 !important;
+
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6,
+      p,
+      li,
+      span,
+      div,
+      strong,
+      em,
+      small {
+            color: #000000 !important;
+      }
+
+      .text-white,
+      .text-light,
+      .text-white-50 {
+            color: #000000 !important;
+      }
+
+      /* Ensure tables in these sections are readable */
+      table {
+            color: #000000 !important;
+
+            th,
+            td {
+                  color: #000000 !important;
+                  border-color: #dee2e6 !important;
+            }
+
+            thead th {
+                  background-color: #e9ecef !important;
+                  color: #000000 !important;
+            }
+
+            tbody tr:hover {
+                  background-color: rgba(0, 0, 0, 0.05) !important;
+            }
+      }
+
+      /* Ensure guide sections have distinct background if needed, though handled in component scss usually */
+      /* forcing text colors is the main priority here */
 }
 
-/* Ensure router outlet and all pages use the same background */
-router-outlet+* {
-  background-color: #E3F2FD !important;
-  min-height: 100vh;
+/* Info container styles */
+.info-container {
+      background-color: #E3F2FD;
+      min-height: 100vh;
+      padding: 2rem 0;
+}
+
+/* Description Panel for Right Side of Calculators */
+.description-panel {
+      background: #ffffff;
+      border-radius: 16px;
+      padding: 2rem;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+      height: 100%;
+      border: 1px solid rgba(0, 0, 0, 0.05);
+
+      h2 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            color: #1a2a4a;
+            position: relative;
+            padding-bottom: 0.75rem;
+
+            &::after {
+                  content: '';
+                  position: absolute;
+                  bottom: 0;
+                  left: 0;
+                  width: 60px;
+                  height: 3px;
+                  background: #42A5F5;
+                  border-radius: 2px;
+            }
+      }
+
+      p {
+            color: #4b5563;
+            line-height: 1.7;
+            margin-bottom: 1.25rem;
+            font-size: 1rem;
+      }
 }

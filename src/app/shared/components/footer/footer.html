@@ -1,3 +1,10 @@
-<footer class="mt-5 text-muted small">
+<footer class="mt-5 mb-4 small text-center">
+  <div class="mb-2" *ngIf="isHomePage()">
+    <a routerLink="/privacy-policy" class="mx-2">Privacy Policy</a>
+    <span class="separator">|</span>
+    <a routerLink="/terms-conditions" class="mx-2">Terms & Conditions</a>
+  </div>
+  <div>
     ©️ 2025 ClicknCalculate | All Rights Reserved
-  </footer>
+  </div>
+</footer>

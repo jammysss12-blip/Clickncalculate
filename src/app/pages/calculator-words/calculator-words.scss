@@ -34,14 +34,17 @@
 
     @media (max-width: 768px) {
       padding: 1.25rem;
+      max-width: 450px;
     }
 
     @media (max-width: 576px) {
       padding: 1rem;
+      max-width: 380px;
     }
 
     @media (max-width: 480px) {
       padding: 0.75rem;
+      max-width: 320px;
     }
   }
 
@@ -218,8 +221,8 @@
     }
 
     &:active {
-      background-color: #e6c200 !important;
-      border-color: #d4b100 !important;
+      background-color: #000000 !important;
+      border-color: #000000 !important;
     }
   }
 
@@ -707,7 +710,7 @@
 
 // Responsive adjustments for mobile
 @media (max-width: 768px) {
-  .area-page {
+  .calc-page {
     .calculator-shell {
       padding: 1.25rem;
     }
@@ -727,7 +730,7 @@
 }
 
 @media (max-width: 576px) {
-  .area-page {
+  .calc-page {
     .calculator-shell {
       padding: 1rem;
     }

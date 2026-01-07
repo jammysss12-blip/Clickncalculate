@@ -1,19 +1,20 @@
 <app-header></app-header>
 
-<div class="grade-page container py-4 text-light">
+<div class="calc-page container py-4 text-light">
   <div class="row">
     <!-- Calculator Section -->
-    <div class="col-12 col-md-5 col-lg-4">
-      <h1 class="h4 fw-bold mb-2 text-info">📊 Grade & Percentage Calculator</h1>
-      
-      <div class="calculator-shell shadow-lg rounded-4 p-3 mb-4">
+    <div class="col-12 col-md-12 col-lg-6 mb-4">
+      <h1 class="h4 fw-bold mb-2 text-info text-center">📊 Grade & Percentage Calculator</h1>
+
+      <div class="calculator-shell shadow-lg rounded-4 p-3 mb-4 mx-auto">
         <!-- Custom Tab Bar -->
         <div class="custom-tab-bar">
           <button class="tab-option" [class.active]="activeTab === 'grade'" (click)="activeTab = 'grade'" type="button">
             <span class="tab-icon">🧮</span>
             <span class="tab-label">Grade</span>
           </button>
-          <button class="tab-option" [class.active]="activeTab === 'percentage'" (click)="activeTab = 'percentage'" type="button">
+          <button class="tab-option" [class.active]="activeTab === 'percentage'" (click)="activeTab = 'percentage'"
+            type="button">
             <span class="tab-icon">🔬</span>
             <span class="tab-label">Percentage</span>
           </button>
@@ -22,7 +23,7 @@
         <!-- Grade Calculator Tab -->
         <div *ngIf="activeTab === 'grade'">
           <h5 class="mb-3 fw-bold text-center">Assignment/Exam Grades</h5>
-          
+
           <!-- Header Row -->
           <div class="row mb-2 small fw-bold text-secondary">
             <div class="col-5">Assignment/Exam (optional)</div>
@@ -46,9 +47,9 @@
                 <input type="number" class="form-control" [(ngModel)]="assignment.weight" min="0" placeholder="0">
               </div>
               <div class="col-2 col-md-1 text-center">
-                <i class="bi bi-x-circle-fill remove-btn fs-5" (click)="removeAssignment(i)" 
-                   [style.cursor]="assignments.length > 1 ? 'pointer' : 'not-allowed'"
-                   [style.opacity]="assignments.length > 1 ? '1' : '0.3'"></i>
+                <i class="bi bi-x-circle-fill remove-btn fs-5" (click)="removeAssignment(i)"
+                  [style.cursor]="assignments.length > 1 ? 'pointer' : 'not-allowed'"
+                  [style.opacity]="assignments.length > 1 ? '1' : '0.3'"></i>
               </div>
             </div>
           </div>
@@ -139,7 +140,8 @@
               </div>
             </div>
             <div *ngIf="percentageResult > 0" class="alert alert-success mt-2 mb-0 small">
-              <strong>Result:</strong> {{ percentageValue }}% of {{ percentageOf }} = <strong>{{ percentageResult }}</strong>
+              <strong>Result:</strong> {{ percentageValue }}% of {{ percentageOf }} = <strong>{{ percentageResult
+                }}</strong>
             </div>
           </div>
 
@@ -162,7 +164,8 @@
               </div>
             </div>
             <div *ngIf="whatIsResult > 0" class="alert alert-success mt-2 mb-0 small">
-              <strong>Result:</strong> {{ whatIsValue }} is <strong>{{ whatIsResult.toFixed(2) }}%</strong> of {{ whatIsOf }}
+              <strong>Result:</strong> {{ whatIsValue }} is <strong>{{ whatIsResult.toFixed(2) }}%</strong> of {{
+              whatIsOf }}
             </div>
           </div>
 
@@ -185,7 +188,8 @@
               </div>
             </div>
             <div *ngIf="isWhatResult > 0" class="alert alert-success mt-2 mb-0 small">
-              <strong>Result:</strong> {{ isWhatValue }} is {{ isWhatPercentOf }}% of <strong>{{ isWhatResult.toFixed(2) }}</strong>
+              <strong>Result:</strong> {{ isWhatValue }} is {{ isWhatPercentOf }}% of <strong>{{ isWhatResult.toFixed(2)
+                }}</strong>
             </div>
           </div>
 
@@ -199,32 +203,123 @@
       </div>
     </div>
 
+    <!-- Description Section -->
+    <div class="col-12 col-md-12 col-lg-6 mb-4">
+      <div class="description-panel">
+        <div class="d-flex justify-content-between text-muted mb-3 opacity-50">
+          <span class="fs-5">√</span>
+          <span class="fs-5 symbol-dots">..</span>
+        </div>
+
+        <h2 class="display-6 fw-bold mb-4 text-dark font-serif">Grade & Percentage<br>Calculator</h2>
+
+        <p class="text-secondary mb-4 small">
+          The <strong>Grade & Percentage Calculator</strong> helps users calculate percentages, grades, and score
+          distributions quickly and accurately. It is especially useful for students, teachers, and academic
+          professionals.
+        </p>
+
+        <p class="text-secondary mb-4 small">
+          By entering total marks and obtained scores, users can instantly calculate percentages and grades without
+          manual formulas. This saves time and ensures consistency in results.
+        </p>
+
+        <p class="text-secondary mb-4 small">
+          The calculator is simple to use and works on all devices, helping students track academic performance and
+          understand grading outcomes clearly.
+        </p>
+
+        <div class="d-flex justify-content-between text-muted mt-auto pt-4 opacity-50">
+          <span class="fs-5 symbol-dots">..</span>
+          <span class="fs-5">✕</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row justify-content-center mt-4">
     <!-- Quick Reference Section -->
-    <div class="col-12 col-md-7 col-lg-5">
+    <div class="col-12">
       <!-- Grade Calculator Quick Guide -->
       <div class="functions-section" *ngIf="activeTab === 'grade'">
         <h2 class="h5 fw-semibold mb-3 text-white">📝 Grade Calculator – Quick Reference</h2>
-        
+
         <h3 class="h6 text-white mt-3 mb-2">Grade Scale</h3>
         <div class="table-responsive small">
           <table class="table table-dark table-sm align-middle mb-3">
             <thead>
-              <tr><th>Letter Grade</th><th>Percentage Range</th><th>Quality Points</th></tr>
+              <tr>
+                <th>Letter Grade</th>
+                <th>Percentage Range</th>
+                <th>Quality Points</th>
+              </tr>
             </thead>
             <tbody>
-              <tr><td>A+</td><td>97-100%</td><td>4.0</td></tr>
-              <tr><td>A</td><td>93-96%</td><td>4.0</td></tr>
-              <tr><td>A-</td><td>90-92%</td><td>3.7</td></tr>
-              <tr><td>B+</td><td>87-89%</td><td>3.3</td></tr>
-              <tr><td>B</td><td>83-86%</td><td>3.0</td></tr>
-              <tr><td>B-</td><td>80-82%</td><td>2.7</td></tr>
-              <tr><td>C+</td><td>77-79%</td><td>2.3</td></tr>
-              <tr><td>C</td><td>73-76%</td><td>2.0</td></tr>
-              <tr><td>C-</td><td>70-72%</td><td>1.7</td></tr>
-              <tr><td>D+</td><td>67-69%</td><td>1.3</td></tr>
-              <tr><td>D</td><td>63-66%</td><td>1.0</td></tr>
-              <tr><td>D-</td><td>60-62%</td><td>0.7</td></tr>
-              <tr><td>F</td><td>0-59%</td><td>0.0</td></tr>
+              <tr>
+                <td>A+</td>
+                <td>97-100%</td>
+                <td>4.0</td>
+              </tr>
+              <tr>
+                <td>A</td>
+                <td>93-96%</td>
+                <td>4.0</td>
+              </tr>
+              <tr>
+                <td>A-</td>
+                <td>90-92%</td>
+                <td>3.7</td>
+              </tr>
+              <tr>
+                <td>B+</td>
+                <td>87-89%</td>
+                <td>3.3</td>
+              </tr>
+              <tr>
+                <td>B</td>
+                <td>83-86%</td>
+                <td>3.0</td>
+              </tr>
+              <tr>
+                <td>B-</td>
+                <td>80-82%</td>
+                <td>2.7</td>
+              </tr>
+              <tr>
+                <td>C+</td>
+                <td>77-79%</td>
+                <td>2.3</td>
+              </tr>
+              <tr>
+                <td>C</td>
+                <td>73-76%</td>
+                <td>2.0</td>
+              </tr>
+              <tr>
+                <td>C-</td>
+                <td>70-72%</td>
+                <td>1.7</td>
+              </tr>
+              <tr>
+                <td>D+</td>
+                <td>67-69%</td>
+                <td>1.3</td>
+              </tr>
+              <tr>
+                <td>D</td>
+                <td>63-66%</td>
+                <td>1.0</td>
+              </tr>
+              <tr>
+                <td>D-</td>
+                <td>60-62%</td>
+                <td>0.7</td>
+              </tr>
+              <tr>
+                <td>F</td>
+                <td>0-59%</td>
+                <td>0.0</td>
+              </tr>
             </tbody>
           </table>
         </div>
@@ -233,15 +328,36 @@
         <div class="table-responsive small">
           <table class="table table-dark table-sm align-middle">
             <thead>
-              <tr><th>Feature</th><th>Description</th></tr>
+              <tr>
+                <th>Feature</th>
+                <th>Description</th>
+              </tr>
             </thead>
             <tbody>
-              <tr><td>Assignment Name</td><td>Optional label for each grade entry</td></tr>
-              <tr><td>Grade Selection</td><td>Choose letter grade (A+ through F or "-" to skip)</td></tr>
-              <tr><td>Weight/Points</td><td>Enter weight value (points, percentage, etc.)</td></tr>
-              <tr><td>Add Rows</td><td>Click "Add More Rows" to add assignments</td></tr>
-              <tr><td>Final Grade Goal</td><td>Set target grade to calculate what's needed</td></tr>
-              <tr><td>Calculation</td><td>Weighted average based on all entered grades</td></tr>
+              <tr>
+                <td>Assignment Name</td>
+                <td>Optional label for each grade entry</td>
+              </tr>
+              <tr>
+                <td>Grade Selection</td>
+                <td>Choose letter grade (A+ through F or "-" to skip)</td>
+              </tr>
+              <tr>
+                <td>Weight/Points</td>
+                <td>Enter weight value (points, percentage, etc.)</td>
+              </tr>
+              <tr>
+                <td>Add Rows</td>
+                <td>Click "Add More Rows" to add assignments</td>
+              </tr>
+              <tr>
+                <td>Final Grade Goal</td>
+                <td>Set target grade to calculate what's needed</td>
+              </tr>
+              <tr>
+                <td>Calculation</td>
+                <td>Weighted average based on all entered grades</td>
+              </tr>
             </tbody>
           </table>
         </div>
@@ -250,17 +366,33 @@
       <!-- Percentage Calculator Quick Guide -->
       <div class="functions-section" *ngIf="activeTab === 'percentage'">
         <h2 class="h5 fw-semibold mb-3 text-white">🔢 Percentage Calculator – Quick Reference</h2>
-        
+
         <h3 class="h6 text-white mt-3 mb-2">Calculation Types</h3>
         <div class="table-responsive small">
           <table class="table table-dark table-sm align-middle mb-3">
             <thead>
-              <tr><th>Type</th><th>Formula</th><th>Example</th></tr>
+              <tr>
+                <th>Type</th>
+                <th>Formula</th>
+                <th>Example</th>
+              </tr>
             </thead>
             <tbody>
-              <tr><td>What is X% of Y?</td><td>(X ÷ 100) × Y</td><td>25% of 200 = 50</td></tr>
-              <tr><td>X is what % of Y?</td><td>(X ÷ Y) × 100</td><td>50 is 25% of 200</td></tr>
-              <tr><td>X is Y% of what?</td><td>X ÷ (Y ÷ 100)</td><td>50 is 25% of 200</td></tr>
+              <tr>
+                <td>What is X% of Y?</td>
+                <td>(X ÷ 100) × Y</td>
+                <td>25% of 200 = 50</td>
+              </tr>
+              <tr>
+                <td>X is what % of Y?</td>
+                <td>(X ÷ Y) × 100</td>
+                <td>50 is 25% of 200</td>
+              </tr>
+              <tr>
+                <td>X is Y% of what?</td>
+                <td>X ÷ (Y ÷ 100)</td>
+                <td>50 is 25% of 200</td>
+              </tr>
             </tbody>
           </table>
         </div>
@@ -269,28 +401,45 @@
         <div class="table-responsive small">
           <table class="table table-dark table-sm align-middle">
             <thead>
-              <tr><th>Application</th><th>Example</th></tr>
+              <tr>
+                <th>Application</th>
+                <th>Example</th>
+              </tr>
             </thead>
             <tbody>
-              <tr><td>Discounts</td><td>30% off $100 = $30 discount</td></tr>
-              <tr><td>Tax Calculation</td><td>8% tax on $100 = $8</td></tr>
-              <tr><td>Grade Percentage</td><td>45 out of 50 = 90%</td></tr>
-              <tr><td>Tip Amount</td><td>15% of $80 bill = $12</td></tr>
-              <tr><td>Interest Rate</td><td>5% of $1000 = $50</td></tr>
+              <tr>
+                <td>Discounts</td>
+                <td>30% off $100 = $30 discount</td>
+              </tr>
+              <tr>
+                <td>Tax Calculation</td>
+                <td>8% tax on $100 = $8</td>
+              </tr>
+              <tr>
+                <td>Grade Percentage</td>
+                <td>45 out of 50 = 90%</td>
+              </tr>
+              <tr>
+                <td>Tip Amount</td>
+                <td>15% of $80 bill = $12</td>
+              </tr>
+              <tr>
+                <td>Interest Rate</td>
+                <td>5% of $1000 = $50</td>
+              </tr>
             </tbody>
           </table>
         </div>
       </div>
     </div>
-    
-  
+  </div>
 
   <!-- Complete Calculator Guide -->
   <div class="row mt-5">
     <div class="col-12">
       <div class="comprehensive-guide">
         <h2 class="h4 fw-bold mb-4 text-white text-center">📚 Complete Grade & Percentage Calculator Guide</h2>
-        
+
         <div class="row">
           <!-- Grade Calculator Basics -->
           <div class="col-12 col-md-6 col-lg-4 mb-4">
