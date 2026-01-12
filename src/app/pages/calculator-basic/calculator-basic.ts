@@ -1,13 +1,13 @@
 import { CommonModule } from '@angular/common';
 import { Component, HostListener } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { Header } from '../../shared/components/header/header';
 import { Footer } from '../../shared/components/footer/footer';
 
 @Component({
   selector: 'app-calculator-basic',
-  imports: [CommonModule, FormsModule, Header, Footer],
+  imports: [CommonModule, FormsModule, Header, Footer, RouterModule],
   templateUrl: './calculator-basic.html',
   styleUrl: './calculator-basic.scss',
   standalone: true,
@@ -19,22 +19,22 @@ export class CalculatorBasic {
   storedValue: number | null = null;
   currentOperator: 'add' | 'sub' | 'mul' | 'div' | 'pow' | null = null;
   waitingForNewEntry = false;
-  lastOperand: number | null = null; 
+  lastOperand: number | null = null;
   memory = 0;
 
-  constructor(private router: Router) {}
+  constructor(private router: Router) { }
 
   @HostListener('window:keydown', ['$event'])
   handleKeyboardInput(event: KeyboardEvent) {
     event.preventDefault();
-    
+
     const key = event.key;
-    
+
     if (key >= '0' && key <= '9') {
       this.pressDigit(key);
       return;
     }
-    
+
     switch (key) {
       case '+':
         this.setOperator('add');
@@ -67,7 +67,7 @@ export class CalculatorBasic {
     }
   }
 
- 
+
 
   private toNumber(value: string): number {
     const parsed = Number(value.replace(/,/g, ''));
@@ -205,7 +205,7 @@ export class CalculatorBasic {
       rhs = this.lastOperand;
     } else {
       rhs = current;
-      this.lastOperand = current; 
+      this.lastOperand = current;
     }
     if (this.storedValue === null) {
       this.storedValue = current;

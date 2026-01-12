@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Header } from '../../shared/components/header/header';
@@ -6,7 +7,7 @@ import { Footer } from '../../shared/components/footer/footer';
 
 @Component({
   selector: 'app-calculator-words',
-  imports: [CommonModule, FormsModule, Header, Footer],
+  imports: [CommonModule, FormsModule, Header, Footer, RouterModule],
   templateUrl: './calculator-words.html',
   styleUrl: './calculator-words.scss',
   standalone: true,

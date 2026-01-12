@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Header } from '../../shared/components/header/header';
@@ -51,7 +52,7 @@ interface BondResult {
 @Component({
   selector: 'app-calculator-loan',
   standalone: true,
-  imports: [CommonModule, FormsModule, Header, Footer],
+  imports: [CommonModule, FormsModule, Header, Footer, RouterModule],
   templateUrl: './calculator-loan.html',
   styleUrl: './calculator-loan.scss',
 })

@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Header } from "../../shared/components/header/header";
@@ -11,14 +12,14 @@ interface Unit {
 
 @Component({
   selector: 'app-calculator-conversion',
-  imports: [Header, Footer, CommonModule, FormsModule],
+  imports: [Header, Footer, CommonModule, FormsModule, RouterModule],
   templateUrl: './calculator-conversion.html',
   styleUrl: './calculator-conversion.scss',
-  standalone: true, 
+  standalone: true,
 })
 export class CalculatorConversion {
   activeTab: 'length' | 'temperature' | 'mass' | 'speed' = 'length';
-  
+
   fromValue: number = 0;
   toValue: string = '';
   fromUnit: string = 'meter';
@@ -421,10 +422,10 @@ export class CalculatorConversion {
     const temp = this.fromUnit;
     this.fromUnit = this.toUnit;
     this.toUnit = temp;
-    
+
     const tempValue = this.fromValue;
     this.fromValue = parseFloat(this.toValue) || 0;
-    
+
     this.convert();
   }
 
@@ -442,13 +443,13 @@ export class CalculatorConversion {
 
     // Convert density to kg/m³
     const densityInKgPerM3 = this.densityValue * this.densityToKgPerM3[this.densityUnit];
-    
+
     // Convert volume to m³
     const volumeInM3 = this.volumeValue * this.volumeToCubicMeter[this.volumeUnit];
-    
+
     // Calculate mass in kg
     const massInKg = densityInKgPerM3 * volumeInM3;
-    
+
     this.massResult = this.formatResult(massInKg);
   }
 
@@ -468,16 +469,16 @@ export class CalculatorConversion {
 
     // Convert speed to m/s
     const speedInMeterPerSecond = this.speedValue * this.speedToMeterPerSecond[this.speedUnit];
-    
+
     // Convert time to seconds
     const timeInSeconds = this.timeValue * this.timeToSeconds[this.timeUnit];
-    
+
     // Calculate distance in meters: Distance = Speed × Time
     const distanceInMeters = speedInMeterPerSecond * timeInSeconds;
-    
+
     // Convert to desired distance unit
     const finalDistance = distanceInMeters / this.lengthToMeter[this.distanceUnit];
-    
+
     this.distanceResult = this.formatResult(finalDistance);
     this.timeResult = ''; // Clear other results
     this.speedResult = '';
@@ -491,16 +492,16 @@ export class CalculatorConversion {
 
     // Convert distance to meters
     const distanceInMeters = this.distanceValue * this.lengthToMeter[this.distanceUnit];
-    
+
     // Convert speed to m/s
     const speedInMeterPerSecond = this.speedValue * this.speedToMeterPerSecond[this.speedUnit];
-    
+
     // Calculate time in seconds: Time = Distance ÷ Speed
     const timeInSeconds = distanceInMeters / speedInMeterPerSecond;
-    
+
     // Convert to desired time unit
     const finalTime = timeInSeconds / this.timeToSeconds[this.timeUnit];
-    
+
     this.timeResult = this.formatResult(finalTime);
     this.distanceResult = ''; // Clear other results
     this.speedResult = '';
@@ -514,16 +515,16 @@ export class CalculatorConversion {
 
     // Convert distance to meters
     const distanceInMeters = this.distanceValue * this.lengthToMeter[this.distanceUnit];
-    
+
     // Convert time to seconds
     const timeInSeconds = this.timeValue * this.timeToSeconds[this.timeUnit];
-    
+
     // Calculate speed in m/s: Speed = Distance ÷ Time
     const speedInMeterPerSecond = distanceInMeters / timeInSeconds;
-    
+
     // Convert to desired speed unit
     const finalSpeed = speedInMeterPerSecond / this.speedToMeterPerSecond[this.speedUnit];
-    
+
     this.speedResult = this.formatResult(finalSpeed);
     this.distanceResult = ''; // Clear other results
     this.timeResult = '';
@@ -551,7 +552,7 @@ export class CalculatorConversion {
       if (!unit) unit = this.distanceUnits.find(u => u.value === unitValue);
       return unit ? unit.label : unitValue;
     }
-    
+
     const units = this.getCurrentUnits();
     const unit = units.find(u => u.value === unitValue);
     return unit ? unit.label : unitValue;

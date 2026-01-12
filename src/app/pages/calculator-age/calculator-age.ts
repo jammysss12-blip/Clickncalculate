@@ -1,12 +1,13 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { Header } from '../../shared/components/header/header';
 import { Footer } from '../../shared/components/footer/footer';
 
 @Component({
   selector: 'app-calculator-age',
-  imports: [CommonModule, FormsModule, Header, Footer],
+  imports: [CommonModule, FormsModule, Header, Footer, RouterModule],
   templateUrl: './calculator-age.html',
   styleUrl: './calculator-age.scss',
   standalone: true,
@@ -14,7 +15,7 @@ import { Footer } from '../../shared/components/footer/footer';
 export class CalculatorAge {
   birthDate: string = '';
   targetDate: string = '';
-  
+
   years: number = 0;
   months: number = 0;
   days: number = 0;
@@ -22,7 +23,7 @@ export class CalculatorAge {
   totalMonths: number = 0;
   totalWeeks: number = 0;
   nextBirthdayDays: number = 0;
-  
+
   result: any = null;
 
   // Tab control
@@ -187,12 +188,12 @@ export class CalculatorAge {
     if (this.heightInputType === 'feet') {
       const feet = this.heightFeet || 0;
       const inches = this.heightInches || 0;
-      
+
       if (feet === 0 && inches === 0) {
         alert('Please enter a valid height!');
         return;
       }
-      
+
       // Convert feet and inches to centimeters
       totalCm = (feet * 30.48) + (inches * 2.54);
     } else if (this.heightInputType === 'cm') {

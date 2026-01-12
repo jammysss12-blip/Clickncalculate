@@ -1,12 +1,13 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
+import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { Footer } from "../../shared/components/footer/footer";
 import { Header } from "../../shared/components/header/header";
 
 @Component({
   selector: 'app-calculator-volume',
-  imports: [CommonModule, FormsModule, Footer, Header],
+  imports: [CommonModule, FormsModule, Footer, Header, RouterModule],
   templateUrl: './calculator-volume.html',
   styleUrl: './calculator-volume.scss',
   standalone: true,
@@ -25,14 +26,14 @@ export class CalculatorVolume {
     length: number;
     width: number;
   } = {
-    side: 0,
-    radius: 0,
-    radius1: 0,
-    radius2: 0,
-    height: 0,
-    length: 0,
-    width: 0
-  };
+      side: 0,
+      radius: 0,
+      radius1: 0,
+      radius2: 0,
+      height: 0,
+      length: 0,
+      width: 0
+    };
 
   onShapeChange() {
     this.result = null;
@@ -53,8 +54,8 @@ export class CalculatorVolume {
     switch (this.selectedShape) {
       case 'capsule':
         // V = πr²((4/3)r + h) = volume of cylinder + 2 hemispheres
-        volume = Math.PI * Math.pow(this.inputs.radius, 2) * 
-                 ((4 / 3) * this.inputs.radius + this.inputs.height);
+        volume = Math.PI * Math.pow(this.inputs.radius, 2) *
+          ((4 / 3) * this.inputs.radius + this.inputs.height);
         break;
 
       case 'cone':
@@ -64,10 +65,10 @@ export class CalculatorVolume {
 
       case 'conical-frustum':
         // V = (1/3)πh(r1² + r1×r2 + r2²)
-        volume = (1 / 3) * Math.PI * this.inputs.height * 
-                 (Math.pow(this.inputs.radius1, 2) + 
-                  this.inputs.radius1 * this.inputs.radius2 + 
-                  Math.pow(this.inputs.radius2, 2));
+        volume = (1 / 3) * Math.PI * this.inputs.height *
+          (Math.pow(this.inputs.radius1, 2) +
+            this.inputs.radius1 * this.inputs.radius2 +
+            Math.pow(this.inputs.radius2, 2));
         break;
 
       case 'cube':
@@ -102,8 +103,8 @@ export class CalculatorVolume {
 
       case 'spherical-cap':
         // V = (1/3)πh²(3r - h)
-        volume = (1 / 3) * Math.PI * Math.pow(this.inputs.height, 2) * 
-                 (3 * this.inputs.radius - this.inputs.height);
+        volume = (1 / 3) * Math.PI * Math.pow(this.inputs.height, 2) *
+          (3 * this.inputs.radius - this.inputs.height);
         break;
 
       case 'triangular-prism':

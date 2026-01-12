@@ -214,12 +214,28 @@
         <h2 class="display-6 fw-bold mb-4 text-dark font-serif">Volume<br>Calculator</h2>
 
         <p class="text-secondary mb-4 small">
-          The <strong>Volume Calculator</strong> helps you calculate the volume of different three-dimensional shapes
-          such
-          as cubes, cuboids, cylinders, and spheres. Volume calculation is essential in construction, engineering,
-          packaging, and academic studies.
+          The <strong>Volume Calculator</strong> enables you to calculate the volume of various three-dimensional
+          objects, including
+          cubes, rectangular prisms, cylinders, and spheres. Calculating volume is crucial in various fields, including
+          construction, engineering, packaging, and education. By inputting the necessary measurements, this tool
+          quickly applies the appropriate mathematical formulas to deliver precise results. It removes the need for
+          manual calculations, thereby diminishing the likelihood of mistakes. This resource is particularly beneficial
+          for students studying geometry, professionals dealing with measurements, and anyone requiring quick volume
+          calculations. The calculator is straightforward, quick, and compatible with all devices. The volume results
+          provided are meant for general guidance and estimation; for technical or commercial applications, it is
+          advisable to seek professional confirmation.
         </p>
 
+        <div class="mt-4 border-top pt-3">
+          <h3 class="h6 fw-bold text-dark mb-3">Related Calculators:</h3>
+          <div class="d-flex flex-wrap gap-2">
+            <a routerLink="/area-conversion" class="btn btn-related">Area Conversion</a>
+            <a routerLink="/unit-converter" class="btn btn-related">Unit Converter</a>
+            <a routerLink="/concrete-calculator" class="btn btn-related">Concrete
+              Calculator</a>
+          </div>
+        </div>
+        <!-- 
         <p class="text-secondary mb-4 small">
           By entering the required dimensions, this calculator instantly applies the correct mathematical formulas to
           provide accurate results, eliminating the need for manual calculations and reducing the risk of errors.
@@ -228,7 +244,7 @@
         <p class="text-secondary mb-4 small">
           This tool is especially useful for students learning geometry, professionals working on measurements, and
           anyone needing quick volume estimations. The calculator is easy to use, fast, and accessible on all devices.
-        </p>
+        </p> -->
 
         <div class="d-flex justify-content-between text-muted mt-auto pt-4 opacity-50">
           <span class="fs-5 symbol-dots">..</span>
@@ -299,18 +315,21 @@
   <div class="row mt-5">
     <div class="col-12">
       <div class="comprehensive-guide">
-        <h2 class="h4 fw-bold mb-4 text-white text-center">📚 Complete Calculator Guide</h2>
+        <h2 class="h4 fw-bold mb-4 text-white text-center">📚 Complete Volume Calculator Guide</h2>
+
+        <p class="text-white mb-4">This guide explains common 3D shapes along with their volume and surface area
+          formulas. These calculations are widely used in mathematics, engineering, architecture, and education.</p>
 
         <div class="row">
           <div class="col-12 col-md-6 col-lg-4 mb-4">
             <div class="guide-section">
-              <h3 class="h6 fw-semibold text-white mb-3">🏔 Pyramid</h3>
+              <h3 class="h6 fw-semibold text-white mb-3">🏔 Square Pyramid</h3>
+              <p class="text-white small mb-2">A pyramid has a square base and triangular sides.</p>
               <ul class="text-white small">
-                <li><strong>Volume:</strong>V=31​a2h</li>
-                <li><strong>Lateral Surface Area:</strong>L=aa2+4h2
-                  ​</li>
-                <li><strong>Base Surface Area:</strong>B=a2</li>
-                <li><strong>Total Surface Area:</strong>S=L+B</li>
+                <li><strong>Volume:</strong><br>V = (1/3) × a² × h</li>
+                <li><strong>Lateral Surface Area:</strong><br>L = 2a√(a²/4 + h²)</li>
+                <li><strong>Base Area:</strong><br>B = a²</li>
+                <li><strong>Total Surface Area:</strong><br>S = L + B</li>
               </ul>
             </div>
           </div>
@@ -318,32 +337,39 @@
           <div class="col-12 col-md-6 col-lg-4 mb-4">
             <div class="guide-section">
               <h3 class="h6 fw-semibold text-white mb-3">🧊 Cube</h3>
+              <p class="text-white small mb-2">A cube has six equal square faces.</p>
               <ul class="text-white small">
-                <li><strong>Addition/Subtraction:</strong> 3 + 5 = 8, 7 - 9 = -2</li>
-                <li><strong>Multiplication/Division:</strong> 13 × 3 = 39, 25 ÷ 2 = 12.5</li>
-                <li><strong>Repeating:</strong> Use = repeatedly to repeat the last operation.</li>
+                <li><strong>Volume:</strong><br>V = a³</li>
+                <li><strong>Lateral Surface Area:</strong><br>L = 4a²</li>
+                <li><strong>Base Area:</strong><br>B = a²</li>
+                <li><strong>Total Surface Area:</strong><br>S = 6a²</li>
               </ul>
             </div>
           </div>
+
           <div class="col-12 col-md-6 col-lg-4 mb-4">
             <div class="guide-section">
               <h3 class="h6 fw-semibold text-white mb-3">🍦 Circular Cone</h3>
+              <p class="text-white small mb-2">A cone has a circular base that narrows to a point.</p>
               <ul class="text-white small">
-                <li><strong>Volume:</strong>V=31​πr2h</li>
-                <li><strong>Lateral Surface Area:</strong>L=πrl</li>
-                <li><strong>Base Surface Area:</strong>B=πr2</li>
-                <li><strong>Total Surface Area:</strong>S=L+B</li>
+                <li><strong>Volume:</strong><br>V = (1/3)πr²h</li>
+                <li><strong>Lateral Surface Area:</strong><br>L = πrl</li>
+                <li><strong>Base Area:</strong><br>B = πr²</li>
+                <li><strong>Total Surface Area:</strong><br>S = L + B</li>
               </ul>
             </div>
           </div>
+
           <div class="col-12 col-md-6 col-lg-4 mb-4">
             <div class="guide-section">
               <h3 class="h6 fw-semibold text-white mb-3">🏺 Cylinder</h3>
+              <p class="text-white small mb-2">A cylinder consists of two circular bases connected by a curved surface.
+              </p>
               <ul class="text-white small">
-                <li><strong>Volume:</strong>V=πr2h</li>
-                <li><strong>Lateral Surface Area:</strong>L=2πrh</li>
-                <li><strong>Base Surface Area:</strong>B=πr2</li>
-                <li><strong>Total Surface Area:</strong>S=L+B</li>
+                <li><strong>Volume:</strong><br>V = πr²h</li>
+                <li><strong>Lateral Surface Area:</strong><br>L = 2πrh</li>
+                <li><strong>Base Area:</strong><br>B = πr²</li>
+                <li><strong>Total Surface Area:</strong><br>S = L + B</li>
               </ul>
             </div>
           </div>
@@ -351,64 +377,71 @@
           <div class="col-12 col-md-6 col-lg-4 mb-4">
             <div class="guide-section">
               <h3 class="h6 fw-semibold text-white mb-3">⚪ Sphere</h3>
+              <p class="text-white small mb-2">A sphere is a perfectly round 3D object.</p>
               <ul class="text-white small">
-                <li><strong>Volume:</strong>V=43​πr3</li>
-                <li><strong>Lateral Surface Area:</strong>L=4πr2</li>
-                <li><strong>Base Surface Area:</strong>B=πr2</li>
-                <li><strong>Total Surface Area:</strong>S=L+B</li>
+                <li><strong>Volume:</strong><br>V = (4/3)πr³</li>
+                <li><strong>Surface Area:</strong><br>S = 4πr²</li>
               </ul>
             </div>
           </div>
+
           <div class="col-12 col-md-6 col-lg-4 mb-4">
             <div class="guide-section">
               <h3 class="h6 fw-semibold text-white mb-3">🌗 Hemisphere</h3>
+              <p class="text-white small mb-2">A hemisphere is half of a sphere.</p>
               <ul class="text-white small">
-                <li><strong>Volume:</strong>V=23​πr3</li>
-                <li><strong>Lateral Surface Area:</strong>L=2πrh</li>
-                <li><strong>Base Surface Area:</strong>B=πr2</li>
-                <li><strong>Total Surface Area:</strong>S=L+B</li>
+                <li><strong>Volume:</strong><br>V = (2/3)πr³</li>
+                <li><strong>Curved Surface Area:</strong><br>L = 2πr²</li>
+                <li><strong>Base Area:</strong><br>B = πr²</li>
+                <li><strong>Total Surface Area:</strong><br>S = L + B</li>
               </ul>
             </div>
           </div>
+
           <div class="col-12 col-md-6 col-lg-4 mb-4">
             <div class="guide-section">
-              <h3 class="h6 fw-semibold text-white mb-3">📦 Rectangular Prism</h3>
+              <h3 class="h6 fw-semibold text-white mb-3">📦 Rectangular Prism (Cuboid)</h3>
+              <p class="text-white small mb-2">A rectangular prism has six rectangular faces.</p>
               <ul class="text-white small">
-                <li><strong>Volume:</strong>V=lwh</li>
-                <li><strong>Lateral Surface Area:</strong>L=2lh+2wh</li>
-                <li><strong>Base Surface Area:</strong>B=lw</li>
-                <li><strong>Total Surface Area:</strong>S=L+B</li>
+                <li><strong>Volume:</strong><br>V = l × w × h</li>
+                <li><strong>Lateral Surface Area:</strong><br>L = 2h(l + w)</li>
+                <li><strong>Base Area:</strong><br>B = l × w</li>
+                <li><strong>Total Surface Area:</strong><br>S = 2(lw + lh + wh)</li>
               </ul>
             </div>
           </div>
+
           <div class="col-12 col-md-6 col-lg-4 mb-4">
             <div class="guide-section">
               <h3 class="h6 fw-semibold text-white mb-3">🔻 Conical Frustum</h3>
+              <p class="text-white small mb-2">A frustum is a cone with its top cut off.</p>
               <ul class="text-white small">
-                <li><strong>Volume:</strong>V=13​πh(r12+r22+r1r2)</li>
-                <li><strong>Lateral Surface Area:</strong>L=π(r1+r2)l</li>
-                <li><strong>Base Surface Area:</strong>B=πr2</li>
-                <li><strong>Total Surface Area:</strong>S=L+B</li>
+                <li><strong>Volume:</strong><br>V = (1/3)πh(r₁² + r₂² + r₁r₂)</li>
+                <li><strong>Lateral Surface Area:</strong><br>L = π(r₁ + r₂)l</li>
+                <li><strong>Base Area:</strong><br>B = π(r₁² + r₂²)</li>
+                <li><strong>Total Surface Area:</strong><br>S = L + B</li>
               </ul>
             </div>
           </div>
+
           <div class="col-12 col-md-6 col-lg-4 mb-4">
             <div class="guide-section">
-              <h3 class="h6 fw-semibold text-white mb-3">💊 Capsule</h3>
+              <h3 class="h6 fw-semibold text-white mb-3">💊 Capsule (Cylinder with Hemispherical Ends)</h3>
+              <p class="text-white small mb-2">Commonly used in pharmaceutical and industrial designs.</p>
               <ul class="text-white small">
-                <li><strong>Volume:</strong>V=πr2(34​r+a)</li>
-                <li><strong>Surface Area:</strong>S=2πrh+2πr2</li>
-
+                <li><strong>Volume:</strong><br>V = πr²h + (4/3)πr³</li>
+                <li><strong>Surface Area:</strong><br>S = 2πrh + 4πr²</li>
               </ul>
             </div>
           </div>
+
           <div class="col-12 col-md-6 col-lg-4 mb-4">
             <div class="guide-section">
-              <h3 class="h6 fw-semibold text-white mb-3">🟣 Spherical Cap</h3>
+              <h3 class="h6 fw-semibold text-white mb-3">🧠 Spherical Cap</h3>
+              <p class="text-white small mb-2">A spherical cap is a portion sliced from a sphere.</p>
               <ul class="text-white small">
-                <li><strong>Volume:</strong>V=13​πh2(3r+h)</li>
-                <li><strong>Surface Area:</strong>S=2πrh+2wh</li>
-
+                <li><strong>Volume:</strong><br>V = (1/3)πh²(3r − h)</li>
+                <li><strong>Surface Area:</strong><br>S = 2πrh</li>
               </ul>
             </div>
           </div>
