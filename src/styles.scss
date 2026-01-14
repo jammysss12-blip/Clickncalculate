@@ -244,23 +244,20 @@ td {
 
 /* Related Calculator Links */
 .btn-related {
-  background-color: #ffffff !important;
-  color: #212529 !important;
-  border: 1px solid #6c757d !important;
-  border-radius: 50rem !important;
-  /* rounded-pill */
+  background-color: transparent !important;
+  color: #00008B !important;
+  border: none !important;
+  border-radius: 0 !important;
   padding: 0.5rem 1.2rem !important;
   font-size: 0.95rem !important;
-  text-decoration: none !important;
+  text-decoration: underline !important;
   transition: all 0.2s ease-in-out;
   display: inline-block;
   white-space: nowrap;
 }
 
 .btn-related:hover {
-  background-color: #f8f9fa !important;
-  border-color: #212529 !important;
-  color: #000000 !important;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  transform: translateY(-1px);
+  color: #0000CD !important;
+  text-decoration: underline !important;
+  opacity: 0.8;
 }
