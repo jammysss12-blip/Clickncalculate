@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { Meta, Title } from '@angular/platform-browser';
 import { Router, RouterLink } from '@angular/router';
 import { Footer } from '../../shared/components/footer/footer';
 
@@ -10,8 +11,23 @@ import { Footer } from '../../shared/components/footer/footer';
   styleUrl: './home.scss',
   standalone: true,
 })
-export class HomeComponent {
-  constructor(private router: Router) { }
+export class HomeComponent implements OnInit {
+  constructor(
+    private router: Router,
+    private titleService: Title,
+    private metaService: Meta
+  ) { }
+
+  ngOnInit(): void {
+    // Set page title
+    this.titleService.setTitle('ClicknCalculate – Free Online Calculators & Smart Converters');
+    
+    // Set meta description
+    this.metaService.updateTag({
+      name: 'description',
+      content: 'Use free online calculators for math, finance, health, unit conversion, cooking, grades & more. Fast, accurate & mobile-friendly tools.'
+    });
+  }
 
   calculators = [
     {
