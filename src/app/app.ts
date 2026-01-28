@@ -15,9 +15,11 @@ export class App {
     this.router.events
       .pipe(filter(event => event instanceof NavigationEnd))
       .subscribe((event: NavigationEnd) => {
-        gtag('config', 'G-E2J3GLK113', {
-          page_path: event.urlAfterRedirects,
-        });
+        if (typeof gtag !== 'undefined') {
+          gtag('config', 'G-E2J3GLK113', {
+            page_path: event.urlAfterRedirects,
+          });
+        }
       });
   }
 

@@ -21,7 +21,7 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
     // Set page title
     this.titleService.setTitle('ClicknCalculate – Free Online Calculators & Smart Converters');
-    
+
     // Set meta description
     this.metaService.updateTag({
       name: 'description',
@@ -32,7 +32,7 @@ export class HomeComponent implements OnInit {
   calculators = [
     {
       icon: '🧮',
-      title: 'Basic & Scientific',
+      title: 'Basic & Scientific Calculator',
       desc: 'Perform simple and scientific calculations.',
       route: '/basic-scientific-calculator',
     },
@@ -44,37 +44,37 @@ export class HomeComponent implements OnInit {
     },
     {
       icon: '📏',
-      title: 'Area Conversion',
+      title: 'Area Conversion Calculator',
       desc: 'Convert between sq.ft, sq.m, acres, and more.',
       route: '/area-conversion',
     },
     {
       icon: '⏱️',
-      title: 'Age, Height & Time',
+      title: 'Age, Height & Time Calculator',
       desc: 'Calculate age, height, and time differences.',
       route: '/age-height-time-calculator',
     },
     {
       icon: '📊',
-      title: 'Grade & Percentage',
+      title: 'Grade & Percentage Calculator',
       desc: 'Compute grades and percentage scores.',
       route: '/grade-percentage-calculator',
     },
     {
       icon: '🔄',
-      title: 'Unit Converter',
+      title: 'Unit Converter Calculator',
       desc: 'Convert temperature, length, mass, and speed.',
       route: '/unit-converter',
     },
     {
       icon: '🔢',
-      title: 'Numbers ↔️ Words',
+      title: 'Numbers ↔️ Words Calculator ',
       desc: 'Convert numbers to words and vice versa.',
       route: '/numbers-to-words',
     },
     {
       icon: '🏦',
-      title: 'Loan & EMI',
+      title: 'Loan & EMI Calculator',
       desc: 'Calculate monthly EMIs and loan payments.',
       route: '/loan-emi-calculator',
     },
@@ -86,7 +86,7 @@ export class HomeComponent implements OnInit {
     },
     {
       icon: '🍳',
-      title: 'Cooking Converter',
+      title: 'Cooking Converter Calculator',
       desc: 'Convert cups, grams, tablespoons, and ounces.',
       route: '/cooking-converter',
     },

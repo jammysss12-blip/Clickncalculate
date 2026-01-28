@@ -60,7 +60,7 @@
 
           <!-- Results Section -->
           <div *ngIf="loanResult" class="results-section">
-            <h3>Loan Summary</h3>
+            <h2>Loan Summary</h2>
 
             <div class="result-item">
               <div class="result-label">Monthly Payment</div>
@@ -119,7 +119,7 @@
         <!-- Deferred Payment Calculator Tab Content -->
         <div *ngIf="activeTab === 'deferred'">
           <div class="text-center mb-4">
-            <h2 class="h5 text-dark fw-bold mb-3">Deferred Payment Loan Calculator</h2>
+            <h2 class="text-dark fw-bold mb-3">Deferred Payment Loan Calculator</h2>
             <p class="text-dark small mb-3">Calculate payments for loans with an initial interest-only or payment-free
               period.</p>
           </div>
@@ -164,39 +164,39 @@
               <div class="col-md-6">
                 <div class="card bg-light h-100">
                   <div class="card-body text-center">
-                    <h6 class="text-dark fw-semibold">Monthly Payment After Deferment</h6>
-                    <h4 class="text-primary fw-bold">{{ formatCurrency(deferredResult.regularPayment) }}</h4>
+                    <h3 class="text-dark fw-semibold">Monthly Payment After Deferment</h3>
+                    <h2 class="text-primary fw-bold">{{ formatCurrency(deferredResult.regularPayment) }}</h2>
                   </div>
                 </div>
               </div>
               <div class="col-md-6">
                 <div class="card bg-light h-100">
                   <div class="card-body text-center">
-                    <h6 class="text-dark fw-semibold">Total Interest</h6>
-                    <h4 class="text-danger fw-bold">{{ formatCurrency(deferredResult.totalInterest) }}</h4>
+                    <h3 class="text-dark fw-semibold">Total Interest</h3>
+                    <h2 class="text-danger fw-bold">{{ formatCurrency(deferredResult.totalInterest) }}</h2>
                   </div>
                 </div>
               </div>
               <div class="col-md-6">
                 <div class="card bg-light h-100">
                   <div class="card-body text-center">
-                    <h6 class="text-dark fw-semibold">Total Cost of Loan</h6>
-                    <h4 class="text-success fw-bold">{{ formatCurrency(deferredResult.totalCost) }}</h4>
+                    <h3 class="text-dark fw-semibold">Total Cost of Loan</h3>
+                    <h2 class="text-success fw-bold">{{ formatCurrency(deferredResult.totalCost) }}</h2>
                   </div>
                 </div>
               </div>
               <div class="col-md-6">
                 <div class="card bg-light h-100">
                   <div class="card-body text-center">
-                    <h6 class="text-dark fw-semibold">Deferment Interest</h6>
-                    <h6 class="text-warning fw-bold">{{ formatCurrency(deferredResult.deferredInterest) }}</h6>
+                    <h3 class="text-dark fw-semibold">Deferment Interest</h3>
+                    <h3 class="text-warning fw-bold">{{ formatCurrency(deferredResult.deferredInterest) }}</h3>
                   </div>
                 </div>
               </div>
             </div>
 
             <div class="alert alert-info">
-              <h6 class="alert-heading">Loan Summary</h6>
+              <h3 class="alert-heading">Loan Summary</h3>
               <ul class="mb-0">
                 <li>Deferment Period: {{ deferredResult.deferredMonths }} months (no payments)</li>
                 <li>Repayment Period: {{ deferredResult.paymentMonths }} months</li>
@@ -210,7 +210,7 @@
         <!-- Bond Yield Calculator Tab Content -->
         <div *ngIf="activeTab === 'bond'">
           <div class="text-center mb-4">
-            <h2 class="h5 text-dark fw-bold mb-3">Bond Yield Calculator</h2>
+            <h2 class="text-dark fw-bold mb-3">Bond Yield Calculator</h2>
             <p class="text-dark small mb-3">Calculate bond yields, prices, and returns</p>
           </div>
 
@@ -255,8 +255,8 @@
               <div class="col-md-6">
                 <div class="card bg-light h-100">
                   <div class="card-body text-center">
-                    <h6 class="text-dark fw-semibold">Current Yield</h6>
-                    <h4 class="text-primary fw-bold">{{ formatPercent(bondResult.currentYield) }}</h4>
+                    <h3 class="text-dark fw-semibold">Current Yield</h3>
+                    <h2 class="text-primary fw-bold">{{ formatPercent(bondResult.currentYield) }}</h2>
                     <div class="small text-muted">Annual Income / Current Price</div>
                   </div>
                 </div>
@@ -264,8 +264,8 @@
               <div class="col-md-6">
                 <div class="card bg-light h-100">
                   <div class="card-body text-center">
-                    <h6 class="text-dark fw-semibold">Yield to Maturity</h6>
-                    <h4 class="text-success fw-bold">{{ formatPercent(bondResult.yieldToMaturity) }}</h4>
+                    <h3 class="text-dark fw-semibold">Yield to Maturity</h3>
+                    <h2 class="text-success fw-bold">{{ formatPercent(bondResult.yieldToMaturity) }}</h2>
                     <div class="small text-muted">Estimated annual return if held to maturity</div>
                   </div>
                 </div>
@@ -273,8 +273,8 @@
               <div class="col-md-6">
                 <div class="card bg-light h-100">
                   <div class="card-body text-center">
-                    <h6 class="text-dark fw-semibold">Annual Interest</h6>
-                    <h5 class="text-info fw-bold">{{ formatCurrency(bondResult.annualInterest) }}</h5>
+                    <h3 class="text-dark fw-semibold">Annual Interest</h3>
+                    <h2 class="text-info fw-bold">{{ formatCurrency(bondResult.annualInterest) }}</h2>
                     <div class="small text-muted">Per ${{ bondResult.faceValue }} bond</div>
                   </div>
                 </div>
@@ -282,8 +282,8 @@
               <div class="col-md-6">
                 <div class="card bg-light h-100">
                   <div class="card-body text-center">
-                    <h6 class="text-dark fw-semibold">Total Payout at Maturity</h6>
-                    <h5 class="text-purple fw-bold">{{ formatCurrency(bondResult.totalPayout) }}</h5>
+                    <h3 class="text-dark fw-semibold">Total Payout at Maturity</h3>
+                    <h2 class="text-purple fw-bold">{{ formatCurrency(bondResult.totalPayout) }}</h2>
                     <div class="small text-muted">Principal + Interest</div>
                   </div>
                 </div>
@@ -336,7 +336,7 @@
         </p> -->
 
         <div class="mt-4">
-          <h3 class="h6 fw-bold text-dark mb-3">Related Calculators:</h3>
+          <h3 class="fw-bold text-dark mb-3">Related Calculators:</h3>
           <div class="d-flex flex-wrap gap-2">
             <a routerLink="/unit-converter" class="btn-related">Unit Calculator</a>
             <a routerLink="/area-conversion" class="btn-related">Area Conversion</a>
@@ -357,8 +357,8 @@
     <div class="col-12">
       <!-- Amortized Loan Quick Reference -->
       <div class="functions-section p-4 rounded-3 mb-4" *ngIf="activeTab === 'amortized'">
-        <h2 class="h5 fw-semibold mb-3 text-dark">💰 Amortized Loan – Quick Reference</h2>
-        <h3 class="h6 text-dark mt-3 mb-3">How Amortization Works</h3>
+        <h2 class="fw-semibold mb-3 text-dark">💰 Amortized Loan – Quick Reference</h2>
+        <h3 class="text-dark mt-3 mb-3">How Amortization Works</h3>
         <div class="table-responsive small">
           <table class="table table-sm align-middle mb-3">
             <thead>
@@ -397,7 +397,7 @@
         </div>
 
         <div class="border-top border-secondary my-4"></div>
-        <h3 class="h6 text-dark mb-3">Key Benefits</h3>
+        <h3 class="text-dark mb-3">Key Benefits</h3>
         <div class="table-responsive small">
           <table class="table table-sm align-middle">
             <tbody>
@@ -428,8 +428,8 @@
 
       <!-- Deferred Payment Quick Reference -->
       <div class="functions-section p-4 rounded-3 mb-4" *ngIf="activeTab === 'deferred'">
-        <h2 class="h5 fw-semibold mb-3 text-dark">⏳ Deferred Payment – Quick Reference</h2>
-        <h3 class="h6 text-dark mt-3 mb-3">How Deferred Payments Work</h3>
+        <h2 class="fw-semibold mb-3 text-dark">⏳ Deferred Payment – Quick Reference</h2>
+        <h3 class="text-dark mt-3 mb-3">How Deferred Payments Work</h3>
         <div class="table-responsive small">
           <table class="table table-sm align-middle mb-3">
             <thead>
@@ -464,7 +464,7 @@
         </div>
 
         <div class="border-top border-secondary my-4"></div>
-        <h3 class="h6 text-dark mb-3">When to Use</h3>
+        <h3 class="text-dark mb-3">When to Use</h3>
         <div class="table-responsive small">
           <table class="table table-sm align-middle">
             <tbody>
@@ -485,7 +485,7 @@
         </div>
 
         <div class="border-top border-secondary my-4"></div>
-        <h3 class="h6 text-dark mb-3">Common Use Cases</h3>
+        <h3 class="text-dark mb-3">Common Use Cases</h3>
         <div class="table-responsive small">
           <table class="table table-sm align-middle">
             <tbody>
@@ -512,9 +512,9 @@
 
       <!-- Bond Calculator Quick Reference -->
       <div class="functions-section p-4 rounded-3 mb-4" *ngIf="activeTab === 'bond'">
-        <h2 class="h5 fw-semibold mb-3 text-dark">📈 Bond Calculator – Quick Reference</h2>
+        <h2 class="fw-semibold mb-3 text-dark">📈 Bond Calculator – Quick Reference</h2>
 
-        <h3 class="h6 text-dark mt-3 mb-3">Key Bond Terms</h3>
+        <h3 class="text-dark mt-3 mb-3">Key Bond Terms</h3>
         <div class="table-responsive small">
           <table class="table table-sm align-middle mb-3">
             <thead>
@@ -552,7 +552,7 @@
           </table>
         </div>
 
-        <h3 class="h6 text-dark mt-4 mb-2">Bond Types</h3>
+        <h3 class="text-dark mt-4 mb-2">Bond Types</h3>
         <div class="table-responsive small">
           <table class="table table-sm align-middle mb-3">
             <thead>
@@ -586,7 +586,7 @@
           </table>
         </div>
 
-        <h3 class="h6 text-dark mt-4 mb-2">Risk Factors</h3>
+        <h3 class="text-dark mt-4 mb-2">Risk Factors</h3>
         <div class="table-responsive small">
           <table class="table table-sm align-middle">
             <thead>
@@ -626,12 +626,12 @@
   <div class="row mt-5">
     <div class="col-12">
       <div class="comprehensive-guide">
-        <h2 class="h4 fw-bold mb-4 text-dark text-center">📚 Loan Calculator Guide</h2>
+        <h2 class="fw-bold mb-4 text-dark text-center">📚 Loan Calculator Guide</h2>
 
         <div class="row">
           <div class="col-12 col-md-6 col-lg-4 mb-4">
             <div class="guide-section">
-              <h3 class="h6 fw-semibold text-dark mb-3">💰 About Amortized Loans</h3>
+              <h3 class="fw-semibold text-dark mb-3">💰 About Amortized Loans</h3>
               <ul class="text-dark small">
                 <li><strong>Fixed Payments:</strong> Equal monthly installments</li>
                 <li><strong>Interest Front-loaded:</strong> Early payments are mostly interest</li>
@@ -644,7 +644,7 @@
 
           <div class="col-12 col-md-6 col-lg-4 mb-4">
             <div class="guide-section">
-              <h3 class="h6 fw-semibold text-dark mb-3">🏠 Common Loan Types</h3>
+              <h3 class="fw-semibold text-dark mb-3">🏠 Common Loan Types</h3>
               <ul class="text-dark small">
                 <li><strong>Mortgages:</strong> 15-30 year terms, secured by property</li>
                 <li><strong>Auto Loans:</strong> 3-7 year terms, secured by vehicle</li>
@@ -656,7 +656,7 @@
 
           <div class="col-12 col-md-6 col-lg-4 mb-4">
             <div class="guide-section">
-              <h3 class="h6 fw-semibold text-dark mb-3">⏳ About Deferred Payments</h3>
+              <h3 class="fw-semibold text-dark mb-3">⏳ About Deferred Payments</h3>
               <ul class="text-dark small">
                 <li><strong>Grace Period:</strong> No payments during deferment</li>
                 <li><strong>Interest Accrual:</strong> Interest continues to accumulate</li>
@@ -668,7 +668,7 @@
 
           <div class="col-12 col-md-6 col-lg-4 mb-4">
             <div class="guide-section">
-              <h3 class="h6 fw-semibold text-dark mb-3">📊 Loan Impact</h3>
+              <h3 class="fw-semibold text-dark mb-3">📊 Loan Impact</h3>
               <ul class="text-dark small">
                 <li><strong>Credit Score:</strong> Affects interest rates</li>
                 <li><strong>Debt-to-Income:</strong> Key approval factor</li>
@@ -681,7 +681,7 @@
 
           <div class="col-12 col-md-6 col-lg-4 mb-4">
             <div class="guide-section">
-              <h3 class="h6 fw-semibold text-dark mb-3">📈 Interest Rate Factors</h3>
+              <h3 class="fw-semibold text-dark mb-3">📈 Interest Rate Factors</h3>
               <ul class="text-dark small">
                 <li><strong>Credit Score:</strong> Higher score = lower rates</li>
                 <li><strong>Loan Term:</strong> Shorter terms = lower rates</li>
@@ -694,7 +694,7 @@
 
           <div class="col-12 col-md-6 col-lg-4 mb-4">
             <div class="guide-section">
-              <h3 class="h6 fw-semibold text-dark mb-3">💳 Loan Costs</h3>
+              <h3 class="fw-semibold text-dark mb-3">💳 Loan Costs</h3>
               <ul class="text-dark small">
                 <li><strong>APR:</strong> Annual Percentage Rate</li>
                 <li><strong>Origination Fees:</strong> 0.5-1% of loan amount</li>
@@ -706,7 +706,7 @@
 
           <div class="col-12 col-md-6 col-lg-4 mb-4">
             <div class="guide-section">
-              <h3 class="h6 fw-semibold text-dark mb-3">📅 Loan Terms</h3>
+              <h3 class="fw-semibold text-dark mb-3">📅 Loan Terms</h3>
               <ul class="text-dark small">
                 <li><strong>Short-term:</strong> 1-3 years</li>
                 <li><strong>Medium-term:</strong> 3-7 years</li>
@@ -718,7 +718,7 @@
 
           <div class="col-12 col-md-6 col-lg-4 mb-4">
             <div class="guide-section">
-              <h3 class="h6 fw-semibold text-dark mb-3">📈 About Bond Yields</h3>
+              <h3 class="fw-semibold text-dark mb-3">📈 About Bond Yields</h3>
               <ul class="text-dark small">
                 <li><strong>Current Yield:</strong> Annual income / Market price</li>
                 <li><strong>Yield to Maturity:</strong> Total return if held to maturity</li>
@@ -730,7 +730,7 @@
 
           <div class="col-12 col-md-6 col-lg-4 mb-4">
             <div class="guide-section">
-              <h3 class="h6 fw-semibold text-dark mb-3">🌐 Bond Markets</h3>
+              <h3 class="fw-semibold text-dark mb-3">🌐 Bond Markets</h3>
               <ul class="text-dark small">
                 <li><strong>Government:</strong> Treasury bonds, bills, notes</li>
                 <li><strong>Corporate:</strong> Investment grade to junk</li>
@@ -742,7 +742,7 @@
 
           <div class="col-12 col-md-6 col-lg-4 mb-4">
             <div class="guide-section">
-              <h3 class="h6 fw-semibold text-dark mb-3">📊 Bond Strategies</h3>
+              <h3 class="fw-semibold text-dark mb-3">📊 Bond Strategies</h3>
               <ul class="text-dark small">
                 <li><strong>Laddering:</strong> Stagger maturities</li>
                 <li><strong>Barbell:</strong> Short and long-term mix</li>
