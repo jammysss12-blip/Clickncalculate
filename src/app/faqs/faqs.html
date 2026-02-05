@@ -1,0 +1,106 @@
+<div class="faq-page">
+  <!-- Back Button -->
+  <div class="back-button-container">
+    <button (click)="goToHome()" class="back-button">
+      <span class="back-icon">←</span>
+      <span class="back-text">Back to Home</span>
+    </button>
+  </div>
+
+  <!-- Main Content -->
+  <article class="faq-article">
+    <!-- Header -->
+    <header class="faq-header">
+      <h1 class="faq-title">Frequently Asked Questions</h1>
+      <p class="faq-subtitle">
+        Find answers to common questions about ClicknCalculate. Can't find what you're looking for? 
+        <a routerLink="/contact-us" class="contact-link">Contact us</a>
+      </p>
+    </header>
+
+    <!-- Search Section -->
+    <section class="faq-search">
+      <div class="search-container">
+        <mat-form-field class="search-field" appearance="outline">
+          <mat-label>Search FAQs</mat-label>
+          <input 
+            matInput 
+            [(ngModel)]="searchText" 
+            placeholder="Type your question or keyword..."
+            autocomplete="off">
+          <mat-icon matPrefix></mat-icon>
+          <button 
+            *ngIf="searchText" 
+            matSuffix 
+            mat-icon-button 
+            (click)="searchText = ''"
+            aria-label="Clear search">
+            <!-- <mat-icon>close</mat-icon> -->
+          </button>
+        </mat-form-field>
+      </div>
+    </section>
+
+    <!-- Results Counter -->
+    <div class="results-info" *ngIf="searchText">
+      <p>
+        <mat-icon>filter_list</mat-icon>
+        Found {{ filteredFaqs.length }} result{{ filteredFaqs.length !== 1 ? 's' : '' }}
+      </p>
+    </div>
+
+    <!-- FAQ Content -->
+    <section class="faq-content">
+      <div class="faq-accordion">
+        <mat-accordion class="faq-expansion-panel" multi="true">
+          <mat-expansion-panel 
+            *ngFor="let faq of filteredFaqs; let i = index"
+            class="faq-panel"
+            [expanded]="panelOpenState[i]"
+            (opened)="panelOpenState[i] = true"
+            (closed)="panelOpenState[i] = false">
+            
+            <mat-expansion-panel-header class="faq-panel-header">
+              <mat-panel-title class="faq-panel-title">
+                <div class="title-content">
+                  <span class="question-text">{{ faq.question }}</span>
+                </div>
+              </mat-panel-title>
+            </mat-expansion-panel-header>
+
+            <div class="faq-panel-content">
+              <div class="answer-container">
+                <mat-icon class="answer-icon">lightbulb</mat-icon>
+                <p class="answer-text">{{ faq.answer }}</p>
+              </div>
+            </div>
+
+          </mat-expansion-panel>
+        </mat-accordion>
+
+        <!-- No Results Message -->
+        <div class="no-results" *ngIf="filteredFaqs.length === 0">
+          <mat-icon class="no-results-icon">search_off</mat-icon>
+          <h3>No results found</h3>
+          <p>We couldn't find any FAQs matching "{{ searchText }}"</p>
+          <button mat-raised-button color="primary" (click)="searchText = ''">
+            Clear Search
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="faq-cta">
+      <div class="contact-card">
+        <span class="contact-icon">🎧</span>
+        <h3>Still have questions?</h3>
+        <p>Our support team is here to help you with any questions or concerns.</p>
+        <button mat-raised-button color="primary" class="contact-button" (click)="goToContactUs()">
+          <span class="contact-icon-text">📧</span>
+          Contact Support
+        </button>
+      </div>
+    </section>
+  </article>
+</div>

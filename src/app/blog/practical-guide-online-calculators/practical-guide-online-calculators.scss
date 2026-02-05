@@ -1,0 +1,593 @@
+// Practical Guide Calculator Styles
+$primary-color: #10B981;
+$primary-dark: #059669;
+$text-primary: #1F2937;
+$text-secondary: #6B7280;
+$bg-light: #F9FAFB;
+$bg-white: #FFFFFF;
+$border-color: #E5E7EB;
+$bg-blue-light: #E0F2FE;
+$bg-blue-medium: #BAE6FD;
+$bg-green-light: #D1FAE5;
+$bg-yellow-light: #FEF3C7;
+$bg-red-light: #FEE2E2;
+$bg-purple-light: #EDE9FE;
+
+// Page Background
+body {
+  background: linear-gradient(135deg, $bg-blue-light 0%, $bg-blue-medium 100%);
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+}
+
+// Back Button Styles
+.back-button-container {
+  padding: 1rem 0;
+  animation: fadeInUp 0.6s ease-out;
+}
+
+.back-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: linear-gradient(135deg, $primary-color 0%, $primary-dark 100%);
+  color: white;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.75rem;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  position: relative;
+  overflow: hidden;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    
+    .back-icon {
+      transform: translateX(-3px);
+    }
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s ease;
+  }
+
+  &:hover::before {
+    left: 100%;
+  }
+}
+
+.back-icon {
+  font-size: 1.25rem;
+  transition: transform 0.3s ease;
+  font-weight: bold;
+}
+
+.back-text {
+  font-weight: 600;
+}
+
+// Main Blog Container
+.blog-article {
+  width: 100%;
+  margin: 0;
+  padding: 2rem 4rem;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(224, 242, 254, 0.9) 100%);
+  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  line-height: 1.6;
+  color: $text-primary;
+  backdrop-filter: blur(10px);
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+// Blog Header
+.blog-header {
+  text-align: center;
+  margin-bottom: 3rem;
+  padding-bottom: 2rem;
+  border-bottom: 2px solid $border-color;
+
+  .blog-title {
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: $text-primary;
+    margin-bottom: 1rem;
+    line-height: 1.2;
+  }
+
+  .blog-subtitle {
+    font-size: 1.25rem;
+    color: $text-secondary;
+    margin-bottom: 1.5rem;
+    font-weight: 500;
+  }
+
+  .blog-meta {
+    display: flex;
+    justify-content: center;
+    font-size: 0.9rem;
+    color: #1F2937;
+
+    .author {
+      font-weight: 600;
+      color: #1F2937;
+    }
+  }
+}
+
+// Blog Introduction
+.blog-intro {
+  margin-bottom: 3rem;
+  padding: 2rem 4rem;
+  background: linear-gradient(135deg, $bg-blue-light 0%, rgba(224, 242, 254, 0.7) 100%);
+  border-radius: 0;
+  border-left: none;
+  border-top: 4px solid $primary-color;
+  backdrop-filter: blur(5px);
+
+  p {
+    font-size: 1.1rem;
+    color: $text-secondary;
+    margin: 0;
+    line-height: 1.8;
+  }
+}
+
+// Blog Content
+.blog-content {
+  h2 {
+    font-size: 2rem;
+    font-weight: 700;
+    color: $text-primary;
+    margin: 3rem 0 1.5rem 0;
+    line-height: 1.3;
+  }
+
+  h3 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: $text-primary;
+    margin: 2rem 0 1rem 0;
+    line-height: 1.3;
+  }
+
+  h4 {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: $text-primary;
+    margin: 1rem 0 0.5rem 0;
+  }
+
+  p {
+    font-size: 1.05rem;
+    color: $text-secondary;
+    margin-bottom: 1.5rem;
+    line-height: 1.8;
+  }
+
+  ul {
+    margin: 1.5rem 0;
+    padding-left: 2rem;
+
+    li {
+      font-size: 1.05rem;
+      color: $text-secondary;
+      margin-bottom: 0.75rem;
+      line-height: 1.6;
+
+      strong {
+        color: $text-primary;
+        font-weight: 600;
+      }
+    }
+  }
+}
+
+// Guide Steps
+.guide-steps {
+  margin: 2rem 0;
+  
+  .step-item {
+    background: linear-gradient(135deg, $bg-white 0%, $bg-light 100%);
+    border-radius: 1rem;
+    padding: 2rem;
+    margin-bottom: 1.5rem;
+    border-left: 4px solid $primary-color;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+
+    &:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    }
+
+    h3 {
+      color: $primary-color;
+      margin-bottom: 1rem;
+      font-size: 1.3rem;
+    }
+
+    p {
+      margin-bottom: 0;
+      color: $text-secondary;
+    }
+  }
+}
+
+// Example Cards
+.example-card {
+  background: linear-gradient(135deg, $bg-white 0%, $bg-green-light 100%);
+  border-radius: 1rem;
+  padding: 2rem;
+  margin-bottom: 2rem;
+  border-left: 4px solid $primary-color;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  }
+
+  h3 {
+    color: $primary-dark;
+    margin-bottom: 1rem;
+    font-size: 1.3rem;
+  }
+
+  .result-list {
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 0.5rem;
+    padding: 1.5rem;
+    margin: 1rem 0;
+
+    li {
+      margin-bottom: 0.5rem;
+      padding-left: 0.5rem;
+
+      strong {
+        color: $primary-color;
+      }
+    }
+  }
+
+  .example-benefit {
+    background: linear-gradient(135deg, $primary-color 0%, $primary-dark 100%);
+    color: white;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    margin-top: 1rem;
+    font-weight: 500;
+    text-align: center;
+  }
+
+  .calculation-demo {
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 0.5rem;
+    padding: 1.5rem;
+    margin: 1rem 0;
+    text-align: center;
+
+    .calc-input {
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: $text-primary;
+
+      .result {
+        color: $primary-color;
+        font-size: 1.4rem;
+        font-weight: 700;
+      }
+    }
+  }
+}
+
+// Tips Grid
+.tips-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+  margin: 2rem 0;
+
+  .tip-item {
+    background: linear-gradient(135deg, $bg-white 0%, $bg-yellow-light 100%);
+    border-radius: 1rem;
+    padding: 1.5rem;
+    border-left: 4px solid #F59E0B;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+
+    &:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    }
+
+    .tip-icon {
+      background: linear-gradient(135deg, #F59E0B 0%, #D97706 100%);
+      color: white;
+      width: 2rem;
+      height: 2rem;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      flex-shrink: 0;
+    }
+
+    h4 {
+      color: #D97706;
+      margin-bottom: 0.5rem;
+    }
+
+    p {
+      margin-bottom: 0;
+      color: $text-secondary;
+      font-size: 0.95rem;
+    }
+  }
+}
+
+// Mistakes Section
+.mistakes-section {
+  margin: 2rem 0;
+
+  .mistake-item {
+    background: linear-gradient(135deg, $bg-white 0%, $bg-red-light 100%);
+    border-radius: 1rem;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    border-left: 4px solid #EF4444;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+
+    &:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    }
+
+    h3 {
+      color: #DC2626;
+      margin-bottom: 1rem;
+      font-size: 1.2rem;
+    }
+
+    p {
+      margin-bottom: 0;
+      color: $text-secondary;
+    }
+  }
+}
+
+// Features Section
+.features-section {
+  background: linear-gradient(135deg, $bg-white 0%, $bg-purple-light 100%);
+  border-radius: 1rem;
+  padding: 2rem;
+  margin: 2rem 0;
+  border-left: 4px solid #8B5CF6;
+
+  h3 {
+    color: #7C3AED;
+    margin-bottom: 1rem;
+    font-size: 1.3rem;
+  }
+
+  p {
+    margin-bottom: 1.5rem;
+    color: $text-secondary;
+  }
+}
+
+// Benefits Grid
+.benefits-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+  margin: 2rem 0;
+
+  .benefit-item {
+    background: linear-gradient(135deg, $bg-white 0%, $bg-green-light 100%);
+    border-radius: 1rem;
+    padding: 1.5rem;
+    text-align: center;
+    border: 2px solid $primary-color;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+
+    &:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    }
+
+    h4 {
+      color: $primary-color;
+      margin-bottom: 0.5rem;
+      font-size: 1.1rem;
+    }
+
+    p {
+      margin-bottom: 0;
+      color: $text-secondary;
+      font-size: 0.95rem;
+    }
+  }
+}
+
+// Getting Started Section
+.getting-started {
+  background: linear-gradient(135deg, $bg-white 0%, $bg-blue-light 100%);
+  border-radius: 1rem;
+  padding: 2rem;
+  margin: 2rem 0;
+  border-left: 4px solid #3B82F6;
+
+  h3 {
+    color: #2563EB;
+    margin-bottom: 1rem;
+    font-size: 1.2rem;
+  }
+
+  p {
+    margin-bottom: 1.5rem;
+    color: $text-secondary;
+  }
+}
+
+// Call to Action
+.blog-cta {
+  margin-top: 3rem;
+  padding: 2.5rem 4rem;
+  background: linear-gradient(135deg, $bg-blue-light 0%, $bg-blue-medium 100%);
+  border-radius: 0;
+  text-align: center;
+  border: none;
+  border-top: 2px solid rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(10px);
+
+  h3 {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: $text-primary;
+    margin-bottom: 1rem;
+  }
+
+  p {
+    font-size: 1.1rem;
+    color: $text-secondary;
+    margin-bottom: 2rem;
+    line-height: 1.6;
+  }
+
+  .cta-button {
+    background: linear-gradient(135deg, $primary-color 0%, $primary-dark 100%);
+    color: white;
+    border: none;
+    padding: 1rem 2.5rem;
+    border-radius: 0.75rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+
+    &:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    }
+
+    &:active {
+      transform: translateY(0);
+    }
+  }
+}
+
+// Animation
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+// Responsive Design
+@media (max-width: 768px) {
+  .blog-article {
+    width: 100%;
+    margin: 0;
+    padding: 1.5rem 1rem;
+  }
+
+  .blog-intro {
+    padding: 2rem 1rem;
+  }
+
+  .blog-cta {
+    padding: 2rem 1rem;
+  }
+
+  .blog-header {
+    .blog-title {
+      font-size: 2rem;
+    }
+
+    .blog-subtitle {
+      font-size: 1.1rem;
+    }
+
+    .blog-meta {
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+  }
+
+  .blog-content {
+    h2 {
+      font-size: 1.75rem;
+    }
+
+    h3 {
+      font-size: 1.3rem;
+    }
+
+    p {
+      font-size: 1rem;
+    }
+  }
+
+  .tips-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .benefits-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .guide-steps .step-item {
+    padding: 1.5rem;
+  }
+
+  .example-card {
+    padding: 1.5rem;
+  }
+
+  .blog-cta {
+    h3 {
+      font-size: 1.5rem;
+    }
+
+    p {
+      font-size: 1rem;
+    }
+
+    .cta-button {
+      padding: 0.875rem 2rem;
+      font-size: 1rem;
+    }
+  }
+}

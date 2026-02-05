@@ -1,91 +1,75 @@
-<div class="legal-page terms-page">
-      <div class="container py-5">
-            <div class="header-navigation mb-4">
-                  <a routerLink="/" class="btn-back">
-                        <span class="arrow">←</span> Back to Calculators
-                  </a>
-            </div>
+<div class="terms-page">
+  <!-- Back Button -->
+  <div class="back-button-container">
+    <button (click)="goToHome()" class="back-button">
+      <span class="back-icon">←</span>
+      <span class="back-text">Back to Home</span>
+    </button>
+  </div>
 
-            <div class="legal-container">
-                  <div class="glass-card">
-                        <div class="card-header text-center">
-                              <h1 class="title-gradient">Terms & Conditions</h1>
-                              <p class="subtitle">Terms and Conditions for ClicknCalculate</p>
-                        </div>
+  <!-- Main Content -->
+  <article class="terms-article">
+    <!-- Header -->
+    <header class="terms-header">
+      <h1 class="terms-title">Terms & Conditions</h1>
+      <p class="terms-subtitle">Terms and Conditions for ClicknCalculate - Your use of our services</p>
+    </header>
 
-                        <div class="card-body">
-                              <div class="welcome-box mb-5 text-center">
-                                    <h2 class="h4 fw-bold mb-3">Welcome to ClicknCalculate!</h2>
-                                    <p class="lead">By accessing this website, you agree to comply with and be bound by
-                                          the following terms and conditions.</p>
-                              </div>
-
-                              <section class="term-section">
-                                    <div class="section-title-wrapper">
-                                          <span class="section-number">01</span>
-                                          <h3 class="section-title">Use of Website</h3>
-                                    </div>
-                                    <div class="section-content">
-                                          <p>The calculators and tools provided on ClicknCalculate are for informational
-                                                and educational purposes only. We do not guarantee that results are
-                                                suitable for financial, legal, or professional decisions.</p>
-                                    </div>
-                              </section>
-
-                              <section class="term-section">
-                                    <div class="section-title-wrapper">
-                                          <span class="section-number">02</span>
-                                          <h3 class="section-title">Accuracy of Information</h3>
-                                    </div>
-                                    <div class="section-content">
-                                          <p>While we strive to provide accurate calculations, ClicknCalculate makes no
-                                                warranties regarding correctness or completeness of any results.</p>
-                                    </div>
-                              </section>
-
-                              <section class="term-section">
-                                    <div class="section-title-wrapper">
-                                          <span class="section-number">03</span>
-                                          <h3 class="section-title">Intellectual Property</h3>
-                                    </div>
-                                    <div class="section-content">
-                                          <p>All content, tools, design, and logos on this website are the property of
-                                                ClicknCalculate and may not be copied or reused without permission.</p>
-                                    </div>
-                              </section>
-
-                              <section class="term-section">
-                                    <div class="section-title-wrapper">
-                                          <span class="section-number">04</span>
-                                          <h3 class="section-title">Limitation of Liability</h3>
-                                    </div>
-                                    <div class="section-content">
-                                          <p>ClicknCalculate shall not be held liable for any losses or damages arising
-                                                from the use of this website.</p>
-                                    </div>
-                              </section>
-
-                              <section class="term-section">
-                                    <div class="section-title-wrapper">
-                                          <span class="section-number">05</span>
-                                          <h3 class="section-title">Changes to Terms</h3>
-                                    </div>
-                                    <div class="section-content">
-                                          <p>We reserve the right to update these terms at any time without prior
-                                                notice.</p>
-                                    </div>
-                              </section>
-
-                              <div class="card-footer text-center mt-5">
-                                    <p class="agreement-note mb-4">Agreement to Terms confirms your understanding of our
-                                          policies.</p>
-                                    <a routerLink="/"
-                                          class="btn btn-primary-gradient px-5 py-3 rounded-pill text-white fw-bold">Accept
-                                          & Return Home</a>
-                              </div>
-                        </div>
-                  </div>
-            </div>
+    <!-- Introduction -->
+    <section class="terms-intro">
+      <div class="intro-box">
+        <p>
+          <strong>Welcome to ClicknCalculate!</strong> By accessing this website, you agree to comply with and be bound by the following terms and conditions.
+        </p>
+        <p>
+          The calculators and tools provided on ClicknCalculate are for informational and educational purposes only. 
+          We do not guarantee that results are accurate, complete, or suitable for your specific needs.
+        </p>
       </div>
+    </section>
+
+    <!-- Main Content -->
+    <section class="terms-content">
+      <div class="term-section">
+        <h3 class="policy-title">1. Use of Website</h3>
+        <p>The calculators and tools provided on ClicknCalculate are for informational and educational purposes only. We do not guarantee that results are accurate, complete, or suitable for your specific needs.</p>
+        <p>You agree to use the website responsibly and not for any illegal or unauthorized purposes.</p>
+      </div>
+
+      <div class="term-section">
+        <h3 class="policy-title">2. Accuracy of Information</h3>
+        <p>While we strive to provide accurate calculations, we make no warranties about the accuracy, reliability, or completeness of the information provided.</p>
+        <p>Users should verify results independently and consult professionals for important financial, legal, or medical decisions.</p>
+      </div>
+
+      <div class="term-section">
+        <h3 class="policy-title">3. Limitation of Liability</h3>
+        <p>ClicknCalculate shall not be liable for any damages arising from the use of our calculators or website.</p>
+        <p>Your use of our services is at your own risk, and we disclaim all warranties, express or implied.</p>
+      </div>
+
+      <div class="term-section">
+        <h3 class="policy-title">4. Privacy Policy</h3>
+        <p>Your use of our website is also governed by our Privacy Policy, which outlines how we collect, use, and protect your information.</p>
+        <p>By using our services, you consent to the collection and use of information as described in our Privacy Policy.</p>
+      </div>
+
+      <div class="term-section">
+        <h3 class="policy-title">5. Changes to Terms</h3>
+        <p>We reserve the right to modify these terms and conditions at any time.</p>
+        <p>Changes will be effective immediately upon posting on the website, and your continued use of the service constitutes acceptance of the modified terms.</p>
+      </div>
+
+      <div class="term-section">
+        <h3 class="policy-title">6. Contact Information</h3>
+        <p>If you have any questions about these Terms & Conditions, please contact us through our website.</p>
+        <p>We are committed to addressing any concerns and providing clarification about our terms of service.</p>
+      </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="terms-cta">
+      <button (click)="goToHome()" class="cta-button">Accept & Return Home</button>
+    </section>
+  </article>
 </div>
-<app-footer></app-footer>

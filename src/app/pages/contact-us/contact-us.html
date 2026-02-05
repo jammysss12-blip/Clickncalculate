@@ -1,55 +1,186 @@
 <div class="contact-page">
-      <div class="container py-5">
-            <div class="header-navigation mb-4">
-                  <a routerLink="/" class="btn-back">
-                        <span class="arrow">←</span> Back to Calculators
-                  </a>
+  <!-- Back Button -->
+  <div class="back-button-container">
+    <button (click)="goToHome()" class="back-button">
+      <span class="back-icon">←</span>
+      <span class="back-text">Back to Home</span>
+    </button>
+  </div>
+
+  <!-- Hero Section -->
+  <div class="hero-section">
+    <div class="hero-content">
+      <h1 class="hero-title">Get in Touch</h1>
+      <p class="hero-subtitle">We're here to help and answer any questions you might have</p>
+    </div>
+    <div class="hero-decoration"></div>
+  </div>
+
+  <!-- Main Content -->
+  <div class="contact-container">
+    <div class="contact-wrapper">
+      
+      <!-- Contact Form -->
+      <div class="form-section">
+        <div class="section-header">
+          <div class="logo-container">
+            <img src="/assets/images/logo.png" alt="ClicknCalculate logo" class="site-logo">
+            <span class="company-name">ClickNCalculate</span>
+          </div>
+          <h2 class="section-title">Contact Customer Support</h2>
+        </div>
+
+        <form [formGroup]="contactForm" (ngSubmit)="onSubmit()" class="contact-form">
+          
+          <!-- Name Fields -->
+          <div class="form-row">
+            <div class="form-group">
+              <label for="firstName" class="form-label">First Name</label>
+              <input 
+                type="text" 
+                id="firstName" 
+                formControlName="firstName"
+                class="form-input"
+                [class.invalid]="submitted && f['firstName'].errors"
+                placeholder="First Name">
+              <div *ngIf="submitted && f['firstName'].errors" class="error-message">
+                <span *ngIf="f['firstName'].errors['required']">First name is required</span>
+                <span *ngIf="f['firstName'].errors['minlength']">First name must be at least 2 characters</span>
+              </div>
             </div>
 
-            <div class="contact-container">
-                  <div class="glass-card">
-                        <div class="card-header text-center">
-                              <h1 class="title-gradient">Contact Us</h1>
-                              <p class="subtitle">Contact ClicknCalculate</p>
-                        </div>
-
-                        <div class="card-body">
-                              <p class="description text-center">
-                                    If you have any questions, suggestions, or feedback, feel free to reach out to us.
-                              </p>
-
-                              <div class="contact-grid">
-                                    <a href="mailto:clickncalculate@gmail.com" class="contact-item">
-                                          <div class="icon-wrapper email">
-                                                <span class="emoji">📧</span>
-                                          </div>
-                                          <div class="content">
-                                                <span class="label">Email</span>
-                                                <span class="value">clickncalculate@gmail.com</span>
-                                          </div>
-                                          <div class="hover-tip">Send an email</div>
-                                    </a>
-
-                                    <a href="https://www.clickncalculate.com/" target="_blank" class="contact-item">
-                                          <div class="icon-wrapper website">
-                                                <span class="emoji">🌐</span>
-                                          </div>
-                                          <div class="content">
-                                                <span class="label">Website</span>
-                                                <span class="value">www.clickncalculate.com</span>
-                                          </div>
-                                          <div class="hover-tip">Visit our site</div>
-                                    </a>
-                              </div>
-
-                              <div class="card-footer text-center">
-                                    <p class="final-note">
-                                          We value your feedback and aim to respond as quickly as possible.
-                                    </p>
-                              </div>
-                        </div>
-                  </div>
+            <div class="form-group">
+              <label for="lastName" class="form-label">Last Name</label>
+              <input 
+                type="text" 
+                id="lastName" 
+                formControlName="lastName"
+                class="form-input"
+                [class.invalid]="submitted && f['lastName'].errors"
+                placeholder="Last Name">
+              <div *ngIf="submitted && f['lastName'].errors" class="error-message">
+                <span *ngIf="f['lastName'].errors['required']">Last name is required</span>
+                <span *ngIf="f['lastName'].errors['minlength']">Last name must be at least 2 characters</span>
+              </div>
             </div>
+          </div>
+
+          <!-- Email Field -->
+          <div class="form-group">
+            <label for="email" class="form-label">Email Address</label>
+            <input 
+              type="email" 
+              id="email" 
+              formControlName="email"
+              class="form-input"
+              [class.invalid]="submitted && f['email'].errors"
+              placeholder="Email Address">
+            <div *ngIf="submitted && f['email'].errors" class="error-message">
+              <span *ngIf="f['email'].errors['required']">Email is required</span>
+              <span *ngIf="f['email'].errors['email']">Please enter a valid email</span>
+            </div>
+          </div>
+
+          <!-- Phone Field -->
+          <div class="form-group">
+            <label for="phone" class="form-label">Phone Number</label>
+            <input 
+              type="tel" 
+              id="phone" 
+              formControlName="phone"
+              class="form-input"
+              [class.invalid]="submitted && f['phone'].errors"
+              placeholder="Phone Number">
+            <div *ngIf="submitted && f['phone'].errors" class="error-message">
+              <span *ngIf="f['phone'].errors['pattern']">Please enter a valid phone number</span>
+            </div>
+          </div>
+
+          <!-- Reason Dropdown -->
+          <div class="form-group">
+            <label for="reason" class="form-label">Reason for Contact</label>
+            <select 
+              id="reason" 
+              formControlName="reason"
+              class="form-select"
+              [class.invalid]="submitted && f['reason'].errors">
+              <option value="" disabled>Choose your reason for contacting us</option>
+              <option *ngFor="let reason of reasons" [value]="reason">{{ reason }}</option>
+            </select>
+            <div *ngIf="submitted && f['reason'].errors" class="error-message">
+              <span *ngIf="f['reason'].errors['required']">Please select a reason</span>
+            </div>
+          </div>
+
+          <!-- Message Field -->
+          <div class="form-group">
+            <label for="message" class="form-label">Message</label>
+            <textarea 
+              id="message" 
+              formControlName="message"
+              class="form-textarea"
+              [class.invalid]="submitted && f['message'].errors"
+              placeholder="Tell us more about your inquiry..."
+              rows="5"></textarea>
+            <div *ngIf="submitted && f['message'].errors" class="error-message">
+              <span *ngIf="f['message'].errors['required']">Message is required</span>
+              <span *ngIf="f['message'].errors['minlength']">Message must be at least 10 characters</span>
+            </div>
+          </div>
+
+          <!-- Submit Button -->
+          <button 
+            type="submit" 
+            class="submit-button"
+            [disabled]="isSubmitting">
+            <span *ngIf="!isSubmitting">Contact Us</span>
+            <span *ngIf="isSubmitting" class="loading">
+              <span class="spinner"></span>
+              Sending...
+            </span>
+          </button>
+        </form>
       </div>
+
+      <!-- Contact Info Sidebar -->
+      <div class="info-section">
+        <div class="info-card">
+          <div class="info-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+              <path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <h3 class="info-title">Email Us</h3>
+          <p class="info-text">clickncalculate@gmail.com</p>
+        </div>
+
+        <div class="info-card">
+          <div class="info-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+              <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <circle cx="12" cy="10" r="3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <h3 class="info-title">Visit Us</h3>
+          <p class="info-text">Street 07b, Al Jaddaf<br>Dubai, UAE</p>
+        </div>
+
+        <div class="info-card">
+          <div class="info-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+              <circle cx="12" cy="12" r="10" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M12 6v6l4 2" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <h3 class="info-title">Response Time</h3>
+          <p class="info-text">Within 24-48 hours</p>
+        </div>
+
+        <div class="commitment-box">
+          <h4 class="commitment-title">Our Commitment</h4>
+          <p class="commitment-text">We aim to respond to all inquiries within 24–48 hours. Your feedback helps us improve ClickNCalculate and deliver the best tools for free online calculations.</p>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
-<app-footer></app-footer>

@@ -2,47 +2,127 @@
 
 <div class="calc-page container py-4 text-light">
   <div class="row">
-    <!-- Area Converter Section -->
+    <!-- Square Footage Calculator Section -->
     <div class="col-12 col-md-12 col-lg-6 mb-4">
-      <h1 class="h4 fw-bold mb-3 text-info text-center">📏 Area Conversion Calculator</h1>
+      <h1 class="h4 fw-bold mb-3 text-info text-center">📏 Area Calculator</h1>
 
       <div class="calculator-shell shadow-lg rounded-4 p-4 mb-4 mx-auto">
         <div class="text-center mb-4">
-          <h2 class="text-dark fw-bold mb-3">Convert Area</h2>
+          <h2 class="text-dark fw-bold mb-3">Calculate Area</h2>
         </div>
 
-        <!-- From Unit -->
+        <!-- Area or Shape Selector -->
         <div class="mb-3">
-          <label class="form-label text-dark fw-semibold">From:</label>
-          <select class="form-select form-select-lg" [(ngModel)]="fromUnit">
-            <option *ngFor="let unit of areaUnits" [value]="unit.value">{{ unit.label }}</option>
+          <label class="form-label text-dark fw-semibold">Area or Shape</label>
+          <select class="form-select form-select-lg" [(ngModel)]="selectedShape">
+            <option *ngFor="let shape of shapes" [value]="shape.value">{{ shape.label }}</option>
           </select>
         </div>
 
-        <!-- Swap Button -->
-        <div class="text-center mb-3">
-          <button class="btn btn-swap" (click)="swap()">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M7 16V4M7 4L3 8M7 4l4 4"></path>
-              <path d="M17 8v12m0 0l4-4m-4 4l-4-4"></path>
-            </svg>
-          </button>
+        <!-- Known Area Input -->
+        <div class="mb-3" *ngIf="selectedShape === 'known-area'">
+          <label class="form-label text-dark fw-semibold">Known Area</label>
+          <div class="d-flex gap-2">
+            <input type="number" class="form-control" [(ngModel)]="knownAreaValue1" min="0" step="any">
+            <input type="number" class="form-control" [(ngModel)]="knownAreaValue2" min="0" step="1" max="99">
+            <select class="form-select" [(ngModel)]="knownAreaUnit" style="max-width: 150px;">
+              <option *ngFor="let unit of knownAreaUnits" [value]="unit.value">{{ unit.label }}</option>
+            </select>
+          </div>
         </div>
 
-        <!-- To Unit -->
+        <!-- Length Input -->
+        <div class="mb-3" *ngIf="getSelectedShape().requiresLength || getSelectedShape().requiresRadius">
+          <label class="form-label text-dark fw-semibold">
+            {{ getSelectedShape().requiresRadius ? 'Radius' : (selectedShape === 'square' ? 'Side' : (selectedShape === 'trapezoid' ? 'Base 1' : (selectedShape === 'triangle-half' ? 'Base' : 'Length'))) }}
+          </label>
+          <div class="d-flex gap-2">
+            <!-- Show feet & inches inputs when ft & in is selected -->
+            <div *ngIf="lengthUnit === 'ft & in'" class="d-flex gap-2 flex-fill">
+              <input type="number" class="form-control" [(ngModel)]="lengthFeet" min="0" step="any" placeholder="Feet">
+              <input type="number" class="form-control" [(ngModel)]="lengthInches" min="0" step="1" max="11" placeholder="Inches">
+            </div>
+            <!-- Show single input for other units -->
+            <input *ngIf="lengthUnit !== 'ft & in'" type="number" class="form-control" [(ngModel)]="lengthFeet" min="0" step="any" placeholder="Value">
+            <select class="form-select" [(ngModel)]="lengthUnit" style="max-width: 120px;">
+              <option *ngFor="let unit of units" [value]="unit.value">{{ unit.label }}</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Width Input -->
+        <div class="mb-3" *ngIf="getSelectedShape().requiresWidth">
+          <label class="form-label text-dark fw-semibold">
+            {{ selectedShape === 'triangle' ? 'Height' : (selectedShape === 'triangle-half' ? 'Height' : (selectedShape === 'trapezoid' ? 'Base 2' : 'Width')) }}
+          </label>
+          <div class="d-flex gap-2">
+            <!-- Show feet & inches inputs when ft & in is selected -->
+            <div *ngIf="widthUnit === 'ft & in'" class="d-flex gap-2 flex-fill">
+              <input type="number" class="form-control" [(ngModel)]="widthFeet" min="0" step="any" placeholder="Feet">
+              <input type="number" class="form-control" [(ngModel)]="widthInches" min="0" step="1" max="11" placeholder="Inches">
+            </div>
+            <!-- Show single input for other units -->
+            <input *ngIf="widthUnit !== 'ft & in'" type="number" class="form-control" [(ngModel)]="widthFeet" min="0" step="any" placeholder="Value">
+            <select class="form-select" [(ngModel)]="widthUnit" style="max-width: 120px;">
+              <option *ngFor="let unit of units" [value]="unit.value">{{ unit.label }}</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Height Input -->
+        <div class="mb-3" *ngIf="getSelectedShape().requiresHeight">
+          <label class="form-label text-dark fw-semibold">
+            {{ selectedShape === 'trapezoid' ? 'Height' : 'Height' }}
+          </label>
+          <div class="d-flex gap-2">
+            <!-- Show feet & inches inputs when ft & in is selected -->
+            <div *ngIf="heightUnit === 'ft & in'" class="d-flex gap-2 flex-fill">
+              <input type="number" class="form-control" [(ngModel)]="heightFeet" min="0" step="any" placeholder="Feet">
+              <input type="number" class="form-control" [(ngModel)]="heightInches" min="0" step="1" max="11" placeholder="Inches">
+            </div>
+            <!-- Show single input for other units -->
+            <input *ngIf="heightUnit !== 'ft & in'" type="number" class="form-control" [(ngModel)]="heightFeet" min="0" step="any" placeholder="Value">
+            <select class="form-select" [(ngModel)]="heightUnit" style="max-width: 120px;">
+              <option *ngFor="let unit of units" [value]="unit.value">{{ unit.label }}</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Quantity Input -->
         <div class="mb-3">
-          <label class="form-label text-dark fw-semibold">To:</label>
-          <select class="form-select form-select-lg" [(ngModel)]="toUnit">
-            <option *ngFor="let unit of areaUnits" [value]="unit.value">{{ unit.label }}</option>
-          </select>
+          <label class="form-label text-dark fw-semibold">Quantity</label>
+          <input type="number" class="form-control form-control-lg" [(ngModel)]="quantity" min="1" step="1">
         </div>
 
-        <!-- Value Input -->
-        <div class="mb-4">
-          <label class="form-label text-dark fw-semibold">Value to Convert</label>
-          <input type="number" class="form-control form-control-lg" [(ngModel)]="inputValue" placeholder="Enter value"
-            min="0" step="any">
+        <!-- Optional Waste Factor -->
+        <div class="mb-3">
+          <div class="d-flex align-items-center gap-2 mb-2">
+            <input type="checkbox" class="form-check-input" [(ngModel)]="includeWasteFactor" id="wasteFactor">
+            <label for="wasteFactor" class="form-check-label text-dark fw-semibold">Optional Waste Factor</label>
+          </div>
+          <div *ngIf="includeWasteFactor" class="d-flex gap-2 align-items-center">
+            <label class="text-dark">Add an extra</label>
+            <input type="number" class="form-control" style="width: 80px;" [(ngModel)]="wasteFactor" min="0" max="100" step="1">
+            <label class="text-dark">%</label>
+          </div>
+        </div>
+
+        <!-- Optional Cost Calculation -->
+        <div class="mb-3">
+          <div class="d-flex align-items-center gap-2 mb-2">
+            <input type="checkbox" class="form-check-input" [(ngModel)]="includeCostCalculation" id="costCalculation">
+            <label for="costCalculation" class="form-check-label text-dark fw-semibold">Optional Cost Calculation</label>
+          </div>
+          <div *ngIf="includeCostCalculation" class="d-flex gap-2 align-items-center">
+            <select class="form-select" style="max-width: 80px;" [(ngModel)]="currency">
+              <option *ngFor="let curr of currencies" [value]="curr">{{ curr }}</option>
+            </select>
+            <input type="number" class="form-control" style="width: 80px;" [(ngModel)]="costValue1" min="0" step="any">
+            <input type="number" class="form-control" style="width: 80px;" [(ngModel)]="costValue2" min="0" step="1" max="99">
+            <select class="form-select" [(ngModel)]="costUnit" style="max-width: 150px;">
+              <option *ngFor="let unit of costUnits" [value]="unit.value">{{ unit.label }}</option>
+            </select>
+          </div>
         </div>
 
         <!-- Action Buttons -->
@@ -53,9 +133,34 @@
 
         <!-- Answer Section -->
         <div class="answer-section" *ngIf="result !== null">
-          <h2 class="text-dark fw-semibold mb-3">Answer:</h2>
-          <div class="result-box">
-            <div class="result-value">{{ result | number:'1.0-6' }} {{ getUnitLabel(toUnit) }}</div>
+          <h2 class="text-dark fw-semibold mb-3">Answer</h2>
+          
+          <div *ngIf="includeWasteFactor && wasteFactor > 0" class="text-dark mb-2">
+            Including an extra {{ wasteFactor }}% for waste.
+          </div>
+
+          <div class="result-box mb-2">
+            <div class="result-value">Square Feet = {{ result.squareFeet | number:'1.2-2' }} ft²</div>
+          </div>
+
+          <div class="result-box mb-2">
+            <div class="result-value">Square Inches = {{ result.squareInches | number:'1.2-2' }} in²</div>
+          </div>
+
+          <div class="result-box mb-2">
+            <div class="result-value">Square Yards = {{ result.squareYards | number:'1.2-2' }} yd²</div>
+          </div>
+
+          <div class="result-box mb-2">
+            <div class="result-value">Square Meters = {{ result.squareMeters | number:'1.2-2' }} m²</div>
+          </div>
+
+          <div class="result-box mb-2">
+            <div class="result-value">Acres = {{ result.acres | number:'1.5-5' }} ac</div>
+          </div>
+
+          <div *ngIf="includeCostCalculation && result.totalCost !== undefined" class="result-box">
+            <div class="result-value">Total Cost = {{ currency }}{{ result.totalCost | number:'1.2-2' }}</div>
           </div>
         </div>
       </div>
@@ -69,41 +174,27 @@
           <span class="fs-5 symbol-dots">..</span>
         </div>
 
-        <h2 class="display-6 fw-bold mb-4 text-dark font-serif">Area Conversion<br>Calculator</h2>
+        <h2 class="display-6 fw-bold mb-4 text-dark font-serif">Area<br>Calculator</h2>
 
         <p class="text-secondary mb-4 small">
-          The <strong>Area Conversion Calculator</strong> lets you change area measurements between various units,
-          including square feet,
-          square meters, acres, hectares, and others. This tool is particularly beneficial for tasks involving property
-          measurements, construction designs, and land calculations. Rather than performing manual conversions or trying
-          to remember equations, it offers quick and precise conversions. Users can save time and prevent frequent
-          conversion errors with this resource. This calculator is well-suited for real estate agents, students,
-          engineers, and anyone handling area measurements. It operates seamlessly on all devices and delivers immediate
-          results. The conversion outcomes are intended for general informational use and should be regarded as
-          reference values.
+          The <strong>Area Calculator</strong> helps you calculate the area of different shapes and convert between various area units. 
+          This tool is perfect for construction projects, home renovations, landscaping, and any task that requires accurate area measurements. 
+          Simply select the shape, enter the dimensions, and get instant results in multiple units including square feet, square meters, acres, and more.
+        </p>
+
+        <p class="text-secondary mb-4 small">
+          Additional features include waste factor calculation for material ordering and cost estimation to help budget your projects accurately. 
+          The calculator supports both imperial and metric units, making it versatile for international use.
         </p>
 
         <div class="mt-4 border-top pt-3">
           <h3 class="fw-bold text-dark mb-3">Related Calculators:</h3>
           <div class="d-flex flex-wrap gap-2">
             <a routerLink="/unit-converter" class="btn btn-related">Unit Converter</a>
-            <a routerLink="/volume-calculator" class="btn btn-related">Volume
-              Calculator</a>
-            <a routerLink="/concrete-calculator" class="btn btn-related">Concrete
-              Calculator</a>
+            <a routerLink="/volume-calculator" class="btn btn-related">Volume Calculator</a>
+            <a routerLink="/concrete-calculator" class="btn btn-related">Concrete Calculator</a>
           </div>
         </div>
-
-        <!-- <p class="text-secondary mb-4 small">
-          Instead of manually converting units or memorizing formulas, this tool provides instant and accurate
-          conversions. It helps users save time and avoid common conversion mistakes, especially in property and
-          construction.
-        </p>
-
-        <p class="text-secondary mb-4 small">
-          This calculator is ideal for real estate professionals, students, engineers, and everyday users dealing with
-          area measurements. It works smoothly across all devices and provides real-time results.
-        </p> -->
 
         <div class="d-flex justify-content-between text-muted mt-auto pt-4 opacity-50">
           <span class="fs-5 symbol-dots">..</span>
@@ -189,91 +280,61 @@
   <div class="row mt-5">
     <div class="col-12">
       <div class="comprehensive-guide">
-        <h2 class="fw-bold mb-4 text-white text-center">📚 Area Conversion & Measurement Guide</h2>
+        <h2 class="fw-bold mb-4 text-white text-center">📚 Square Footage Calculation Guide</h2>
 
-        <p class="text-white mb-4">Understanding area units helps when working with land, construction projects,
-          agriculture, and large geographic regions. Below is a simple breakdown of common area units and where they are
-          typically used.</p>
+        <p class="text-white mb-4">Understanding how to calculate square footage is essential for construction, renovation, and property assessment. 
+          Below are the formulas and tips for calculating area for different shapes.</p>
 
         <div class="row">
           <div class="col-12 col-md-6 col-lg-4 mb-4">
             <div class="guide-section">
-              <h3 class="fw-semibold text-white mb-3">📐 Metric Area Units</h3>
-              <p class="text-white small mb-2">The metric system is widely used around the world for measuring area:</p>
-              <ul class="text-white small">
-                <li><strong>Square Meter (m²):</strong><br>The standard metric unit for measuring area.</li>
-                <li><strong>Square Kilometer (km²):</strong><br>Used for large spaces such as cities and countries.<br>1
-                  km² = 1,000,000 m²</li>
-                <li><strong>Hectare (ha):</strong><br>Common in agriculture and land measurement.<br>1 hectare = 10,000
-                  m²</li>
-                <li><strong>Square Centimeter (cm²):</strong><br>Used for small surface areas.<br>1 m² = 10,000 cm²</li>
-              </ul>
+              <h3 class="fw-semibold text-white mb-3">📐 Rectangle Area</h3>
+              <p class="text-white small mb-2">Formula: Length × Width</p>
+              <p class="text-white small">Multiply the length by the width to get the area. This is the most common shape for rooms and buildings.</p>
             </div>
           </div>
 
           <div class="col-12 col-md-6 col-lg-4 mb-4">
             <div class="guide-section">
-              <h3 class="fw-semibold text-white mb-3">📏 Imperial Area Units</h3>
-              <p class="text-white small mb-2">The imperial system is mainly used in the United States and a few other
-                regions:</p>
-              <ul class="text-white small">
-                <li><strong>Square Foot (ft²):</strong><br>Widely used for floor and room measurements.<br>1 ft² = 144
-                  in²</li>
-                <li><strong>Square Yard (yd²):</strong><br>Often used for land and outdoor spaces.<br>1 yd² = 9 ft²</li>
-                <li><strong>Acre:</strong><br>Common for land and property measurement.<br>1 acre = 43,560 ft²</li>
-                <li><strong>Square Mile (mi²):</strong><br>Used for very large land areas.<br>1 mi² = 640 acres</li>
-              </ul>
+              <h3 class="fw-semibold text-white mb-3">⭕ Circle Area</h3>
+              <p class="text-white small mb-2">Formula: π × Radius²</p>
+              <p class="text-white small">Multiply pi (3.14159) by the radius squared. Used for circular rooms, gardens, and features.</p>
             </div>
           </div>
 
           <div class="col-12 col-md-6 col-lg-4 mb-4">
             <div class="guide-section">
-              <h3 class="fw-semibold text-white mb-3">🏡 Real Estate Measurements</h3>
-              <p class="text-white small mb-2">In property and housing, area units help define land size and building
-                space:</p>
-              <ul class="text-white small">
-                <li>1 acre ≈ 4,047 m² ≈ 43,560 ft²</li>
-                <li>1 hectare ≈ 2.47 acres</li>
-                <li>Typical residential plot: around 0.25 acres</li>
-                <li>Standard football field: approximately 1.3 acres</li>
-              </ul>
+              <h3 class="fw-semibold text-white mb-3">📐 Square Area</h3>
+              <p class="text-white small mb-2">Formula: Side × Side</p>
+              <p class="text-white small">Multiply one side by itself. All sides are equal in a square.</p>
             </div>
           </div>
 
           <div class="col-12 col-md-6 col-lg-4 mb-4">
             <div class="guide-section">
-              <h3 class="fw-semibold text-white mb-3">🌾 Agricultural Land Measurement</h3>
-              <p class="text-white small mb-2">Farming land is usually measured using hectares or acres:</p>
-              <ul class="text-white small">
-                <li>1 hectare ≈ 2.47 acres</li>
-                <li>Small farms: 10–50 hectares</li>
-                <li>Large farms: more than 100 hectares</li>
-              </ul>
+              <h3 class="fw-semibold text-white mb-3">📐 Triangle Area</h3>
+              <p class="text-white small mb-2">Formula: ½ × Base × Height</p>
+              <p class="text-white small">Multiply the base by the height and divide by 2. Common in roofing and landscaping.</p>
             </div>
           </div>
 
           <div class="col-12 col-md-6 col-lg-4 mb-4">
             <div class="guide-section">
-              <h3 class="fw-semibold text-white mb-3">🏢 Construction Area Types</h3>
-              <p class="text-white small mb-2">Construction projects often classify area into different categories:</p>
-              <ul class="text-white small">
-                <li><strong>Floor Area:</strong> Total area of each floor</li>
-                <li><strong>Carpet Area:</strong> Usable indoor space</li>
-                <li><strong>Built-Up Area:</strong> Includes walls, balconies, and partitions</li>
-                <li><strong>Plot Area:</strong> Entire land size</li>
-              </ul>
+              <h3 class="fw-semibold text-white mb-3">💰 Material Cost Tips</h3>
+              <p class="text-white small mb-2">Always add 5-10% extra for waste</p>
+              <p class="text-white small">Materials like flooring, tiles, and paint require extra for cuts and mistakes. The waste factor helps you order enough.</p>
             </div>
           </div>
 
           <div class="col-12 col-md-6 col-lg-4 mb-4">
             <div class="guide-section">
-              <h3 class="fw-semibold text-white mb-3">🌍 Measuring Large Regions</h3>
-              <p class="text-white small mb-2">For large-scale measurements, bigger units are used:</p>
+              <h3 class="fw-semibold text-white mb-3">📏 Unit Conversions</h3>
+              <p class="text-white small mb-2">Common conversions to remember:</p>
               <ul class="text-white small">
-                <li>Countries and regions are measured in square kilometers</li>
-                <li>1 km² = 100 hectares ≈ 247 acres</li>
-                <li>1 mi² ≈ 2.59 km²</li>
-                <li>City areas are typically expressed in km²</li>
+                <li>1 square foot = 144 square inches</li>
+                <li>1 square yard = 9 square feet</li>
+                <li>1 square meter = 10.764 square feet</li>
+                <li>1 acre = 43,560 square feet</li>
               </ul>
             </div>
           </div>

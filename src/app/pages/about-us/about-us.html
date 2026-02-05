@@ -1,73 +1,117 @@
 <div class="about-page">
-      <div class="container py-5">
-            <div class="header-navigation mb-4">
-                  <a routerLink="/" class="btn-back">
-                        <span class="arrow">←</span> Back to Calculators
-                  </a>
+  <!-- Back Button -->
+  <div class="back-button-container">
+    <button (click)="goToHome()" class="back-button">
+      <span class="back-icon">←</span>
+      <span class="back-text">Back to Home</span>
+    </button>
+  </div>
+
+  <div class="hero-section">
+    <div class="hero-content">
+      <h1 class="hero-title">About ClicknCalculate</h1>
+      <p class="hero-subtitle">Precision tools that make everyday calculations effortless.</p>
+    </div>
+    <div class="hero-decoration"></div>
+  </div>
+
+  <div class="about-container">
+    <div class="about-card">
+      <div class="intro-grid">
+        <div>
+          <span class="eyebrow">Who We Are</span>
+          <h2>Fast, accurate calculators built for everyday decisions.</h2>
+          <p>
+            ClicknCalculate delivers fast, accurate, and easy-to-use online calculators for students,
+            professionals, and businesses. From basic math to finance, health, and conversions, our
+            platform is built to save time and improve confidence.
+          </p>
+          <div class="hero-actions">
+            <button class="primary-btn" (click)="scrollToSection('offerings')">Explore Our Tools</button>
+            <button class="ghost-btn" (click)="scrollToSection('values')">Our Values</button>
+          </div>
+        </div>
+        <div class="highlight-card">
+          <span class="hero-badge">Trusted Platform</span>
+          <h3>Built for clarity and speed</h3>
+          <p>Every calculator is optimized for precision, mobile use, and a clean user experience.</p>
+          <div class="hero-metrics">
+            <div>
+              <h4>100%</h4>
+              <span>Free to use</span>
             </div>
-
-            <div class="about-container">
-                  <div class="glass-card">
-                        <div class="card-header text-center">
-                              <h1 class="title-gradient">About ClicknCalculate</h1>
-                              <p class="subtitle">Your Trusted Calculation Partner</p>
-                        </div>
-
-                        <div class="card-body">
-                              <div class="intro-section mb-5 text-center">
-                                    <p class="lead-text">
-                                          Welcome to <strong>ClicknCalculate</strong>, your trusted destination for
-                                          fast, accurate, and easy-to-use online calculators.
-                                    </p>
-                              </div>
-
-                              <div class="mission-box mb-5">
-                                    <h3 class="section-title">Our Mission</h3>
-                                    <p>
-                                          At ClicknCalculate, our mission is to simplify everyday calculations and help
-                                          users save time. Whether you need to calculate loans, unit conversions,
-                                          percentages, volume, or other daily math problems, our tools are designed to
-                                          deliver instant and reliable results.
-                                    </p>
-                              </div>
-
-                              <div class="focus-grid mb-5">
-                                    <h3 class="section-title w-100 text-center mb-4">What We Focus On</h3>
-                                    <div class="focus-item">
-                                          <span class="check">✔</span>
-                                          <p>Simple and user-friendly calculators</p>
-                                    </div>
-                                    <div class="focus-item">
-                                          <span class="check">✔</span>
-                                          <p>Accurate calculation logic</p>
-                                    </div>
-                                    <div class="focus-item">
-                                          <span class="check">✔</span>
-                                          <p>Mobile-friendly and accessible tools</p>
-                                    </div>
-                                    <div class="focus-item">
-                                          <span class="check">✔</span>
-                                          <p>Continuous improvement and new features</p>
-                                    </div>
-                              </div>
-
-                              <div class="audience-section mb-5">
-                                    <p>
-                                          <strong>ClicknCalculate</strong> is created for students, professionals,
-                                          business owners, and anyone who needs quick calculations without complexity.
-                                    </p>
-                                    <p>
-                                          We are committed to providing helpful tools and valuable resources while
-                                          maintaining transparency, privacy, and a great user experience.
-                                    </p>
-                              </div>
-
-                              <div class="card-footer text-center">
-                                    <p class="thank-you">Thank you for using ClicknCalculate.</p>
-                              </div>
-                        </div>
-                  </div>
+            <div>
+              <h4>24/7</h4>
+              <span>Always online</span>
             </div>
+            <div>
+              <h4>Multi</h4>
+              <span>Category coverage</span>
+            </div>
+          </div>
+        </div>
       </div>
+    </div>
+
+    <section class="about-section" id="values">
+      <div class="section-header">
+        <span class="eyebrow">Our Values</span>
+        <h2>What drives ClicknCalculate</h2>
+        <p>We balance accuracy, transparency, and simplicity to deliver dependable calculators.</p>
+      </div>
+      <div class="value-grid">
+        <div class="value-card" *ngFor="let feature of features">
+          <div class="value-icon">{{ feature.icon }}</div>
+          <h3>{{ feature.title }}</h3>
+          <p>{{ feature.description }}</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="about-section" id="mission">
+      <div class="mission-card">
+        <div>
+          <span class="eyebrow">Mission</span>
+          <h2>We simplify complex calculations for everyone.</h2>
+          <p>
+            Our mission is to provide reliable and accessible calculation tools that help people make
+            informed decisions quickly.
+          </p>
+        </div>
+        <div class="mission-list">
+          <div class="mission-item" *ngFor="let point of missionPoints; let i = index">
+            <span>{{ i + 1 }}</span>
+            <p>{{ point }}</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="about-section" id="offerings">
+      <div class="section-header">
+        <span class="eyebrow">What We Offer</span>
+        <h2>Smart calculators for every use case</h2>
+        <p>Choose from a wide range of calculators and converters designed for everyday tasks.</p>
+      </div>
+      <div class="offer-grid">
+        <div class="offer-card" *ngFor="let calc of calculators">
+          <div class="offer-title">
+            <span class="dot"></span>
+            <h3>{{ calc.category }}</h3>
+          </div>
+          <ul>
+            <li *ngFor="let item of calc.items">{{ item }}</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="about-cta">
+      <div>
+        <h2>Ready to calculate with confidence?</h2>
+        <p>Explore our free tools and get accurate results in seconds.</p>
+      </div>
+      <button class="primary-btn" (click)="scrollToSection('offerings')">Start Now</button>
+    </section>
+  </div>
 </div>
-<app-footer></app-footer>

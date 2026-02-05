@@ -1,4 +1,4 @@
-// Terms Page Styles - Matching Blog Design
+// Simple Blog Styles
 $primary-color: #10B981;
 $primary-dark: #059669;
 $text-primary: #1F2937;
@@ -79,35 +79,29 @@ body {
   font-weight: 600;
 }
 
-// Main Terms Container
-.terms-page {
-  width: 100%;
-  margin: 0;
-  padding: 0;
-  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
-  line-height: 1.6;
-  color: $text-primary;
-}
-
-.terms-article {
+// Main Blog Container
+.blog-article {
   width: 100%;
   margin: 0;
   padding: 2rem 4rem;
   background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(224, 242, 254, 0.9) 100%);
+  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  line-height: 1.6;
+  color: $text-primary;
   backdrop-filter: blur(10px);
   border: none;
   border-radius: 0;
   box-shadow: none;
 }
 
-// Terms Header
-.terms-header {
+// Blog Header
+.blog-header {
   text-align: center;
   margin-bottom: 3rem;
   padding-bottom: 2rem;
   border-bottom: 2px solid $border-color;
 
-  .terms-title {
+  .blog-title {
     font-size: 2.5rem;
     font-weight: 800;
     color: $text-primary;
@@ -115,34 +109,78 @@ body {
     line-height: 1.2;
   }
 
-  .terms-subtitle {
+  .blog-subtitle {
     font-size: 1.25rem;
     color: $text-secondary;
     margin-bottom: 1.5rem;
     font-weight: 500;
   }
+
+  .blog-meta {
+    display: flex;
+    justify-content: center;
+    font-size: 0.9rem;
+    color: #1F2937;
+
+    .author {
+      font-weight: 600;
+      color: #1F2937;
+    }
+  }
 }
 
-// Terms Introduction
-.terms-intro {
+// Blog Introduction
+.blog-intro {
   margin-bottom: 3rem;
+  padding: 2rem 4rem;
+  background: linear-gradient(135deg, $bg-blue-light 0%, rgba(224, 242, 254, 0.7) 100%);
+  border-radius: 0;
+  border-left: none;
+  border-top: 4px solid $primary-color;
+  backdrop-filter: blur(5px);
 
-  .intro-box {
-    padding: 2rem 4rem;
-    background: linear-gradient(135deg, $bg-blue-light 0%, rgba(224, 242, 254, 0.7) 100%);
-    border-radius: 0;
-    border-top: 4px solid $primary-color;
-    backdrop-filter: blur(5px);
+  p {
+    font-size: 1.1rem;
+    color: $text-secondary;
+    margin: 0;
+    line-height: 1.8;
+  }
+}
 
-    p {
-      font-size: 1.1rem;
+// Blog Content
+.blog-content {
+  h2 {
+    font-size: 2rem;
+    font-weight: 700;
+    color: $text-primary;
+    margin: 3rem 0 1.5rem 0;
+    line-height: 1.3;
+  }
+
+  h3 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: $text-primary;
+    margin: 2rem 0 1rem 0;
+    line-height: 1.3;
+  }
+
+  p {
+    font-size: 1.05rem;
+    color: $text-secondary;
+    margin-bottom: 1.5rem;
+    line-height: 1.8;
+  }
+
+  ul {
+    margin: 1.5rem 0;
+    padding-left: 2rem;
+
+    li {
+      font-size: 1.05rem;
       color: $text-secondary;
-      margin-bottom: 1rem;
-      line-height: 1.8;
-
-      &:last-child {
-        margin-bottom: 0;
-      }
+      margin-bottom: 0.75rem;
+      line-height: 1.6;
 
       strong {
         color: $text-primary;
@@ -152,41 +190,30 @@ body {
   }
 }
 
-// Terms Content
-.terms-content {
-  .term-section {
-    margin-bottom: 2.5rem;
-
-    .policy-title {
-      font-size: 1.5rem;
-      font-weight: 600;
-      color: $text-primary;
-      margin-bottom: 1rem;
-      line-height: 1.3;
-    }
-
-    p {
-      font-size: 1.05rem;
-      color: $text-secondary;
-      margin-bottom: 1rem;
-      line-height: 1.8;
-
-      &:last-child {
-        margin-bottom: 0;
-      }
-    }
-  }
-}
-
 // Call to Action
-.terms-cta {
+.blog-cta {
   margin-top: 3rem;
   padding: 2.5rem 4rem;
   background: linear-gradient(135deg, $bg-blue-light 0%, $bg-blue-medium 100%);
   border-radius: 0;
   text-align: center;
+  border: none;
   border-top: 2px solid rgba(255, 255, 255, 0.3);
   backdrop-filter: blur(10px);
+
+  h3 {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: $text-primary;
+    margin-bottom: 1rem;
+  }
+
+  p {
+    font-size: 1.1rem;
+    color: $text-secondary;
+    margin-bottom: 2rem;
+    line-height: 1.6;
+  }
 
   .cta-button {
     background: linear-gradient(135deg, $primary-color 0%, $primary-dark 100%);
@@ -225,32 +252,41 @@ body {
 
 // Responsive Design
 @media (max-width: 768px) {
-  .terms-article {
+  .blog-article {
     width: 100%;
     margin: 0;
     padding: 1.5rem 1rem;
   }
 
-  .terms-intro .intro-box {
+  .blog-intro {
     padding: 2rem 1rem;
   }
 
-  .terms-cta {
+  .blog-cta {
     padding: 2rem 1rem;
   }
 
-  .terms-header {
-    .terms-title {
+  .blog-header {
+    .blog-title {
       font-size: 2rem;
     }
 
-    .terms-subtitle {
+    .blog-subtitle {
       font-size: 1.1rem;
+    }
+
+    .blog-meta {
+      flex-direction: column;
+      gap: 0.5rem;
     }
   }
 
-  .terms-content .term-section {
-    .policy-title {
+  .blog-content {
+    h2 {
+      font-size: 1.75rem;
+    }
+
+    h3 {
       font-size: 1.3rem;
     }
 
@@ -259,7 +295,15 @@ body {
     }
   }
 
-  .terms-cta {
+  .blog-cta {
+    h3 {
+      font-size: 1.5rem;
+    }
+
+    p {
+      font-size: 1rem;
+    }
+
     .cta-button {
       padding: 0.875rem 2rem;
       font-size: 1rem;

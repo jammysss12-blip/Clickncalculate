@@ -1,14 +1,19 @@
 import { Component } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { Footer } from '../../shared/components/footer/footer';
 
 @Component({
   selector: 'app-terms-conditions',
-  imports: [RouterLink, Footer],
+  imports: [],
   templateUrl: './terms-conditions.html',
   styleUrl: './terms-conditions.scss',
   standalone: true,
 })
 export class TermsConditions {
+constructor(private router: Router) {}
+
+goToHome() {
+  this.router.navigate(['/home']);
+}
 
 }
