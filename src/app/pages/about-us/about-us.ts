@@ -89,6 +89,7 @@ export class AboutUs {
     const element = document.getElementById(section);
     if (element) {
       element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      this.router.navigate(['/home']);
     }
   }
 

@@ -21,4 +21,24 @@ footer {
     color: #888 !important;
     opacity: 0.5;
   }
+  .footer-faqs-disclaimer {
+  margin-top: 18px;
+  padding-top: 12px;
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
+  font-size: 13px;
+  line-height: 1.6;
+  opacity: 0.9;
+}
+
+.footer-faqs,
+.footer-disclaimer {
+  margin: 6px 0;
+}
+
+.footer-link {
+  margin-left: 6px;
+  text-decoration: underline;
+  font-weight: 600;
+}
+
 }
