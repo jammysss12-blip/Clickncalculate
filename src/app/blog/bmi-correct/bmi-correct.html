@@ -1,0 +1,143 @@
+<!-- Back Button -->
+<div class="back-button-container">
+  <button (click)="goToBlog()" class="back-button">
+    <span class="back-icon">←</span>
+    <span class="back-text">Back to Blog</span>
+  </button>
+</div>
+
+<!-- Blog Article -->
+<article class="blog-article">
+  <!-- Header -->
+  <header class="blog-header">
+    <h1 class="blog-title">How to Calculate BMI Correctly </h1>
+    <p class="blog-subtitle">Understanding Your Body Mass Index for Better Health</p>
+    <div class="blog-meta">
+      <span class="author">By ClickNCalculate Team</span>
+    </div>
+  </header>
+
+  <!-- Introduction -->
+  <section class="blog-intro">
+    <p>
+      Maintaining a healthy weight is essential for overall well-being. One of the most
+      common methods used to assess whether your weight is appropriate for your height is the
+      Body Mass Index (BMI). It is a simple and widely used measurement that gives you an idea of your body condition.
+      Understanding how to calculate BMI correctly can help you track your health and make
+      better lifestyle choices.
+    </p>
+  </section>
+
+  <!-- Main Content -->
+  <section class="blog-content">
+    <h2>What is BMI?</h2>
+    <p>
+      Body Mass Index (BMI) is a numerical value calculated using your weight and height. It
+      helps determine whether you are underweight, normal weight, overweight, or obese.
+      BMI is commonly used by healthcare professionals as a general indicator of health risks
+      associated with body weight.
+    </p>
+
+    <h2>BMI Formula</h2>
+    <p>
+      BMI is calculated using the formula:
+    </p>
+    <div class="formula-box">
+      <strong>BMI = Weight (kg) ÷ Height² (m²)</strong>
+    </div>
+    <p>
+      This means you divide your weight in kilograms by the square of your height in meters.
+    </p>
+
+    <h2>Step-by-Step Example</h2>
+    <p>
+      Let's say:
+    </p>
+    <ul>
+      <li><strong>Weight = 70 kg</strong></li>
+      <li><strong>Height = 1.75 m</strong></li>
+    </ul>
+
+    <h3>Step 1: Square the height</h3>
+    <div class="calculation-box">
+      1.75 × 1.75 = 3.06
+    </div>
+
+    <h3>Step 2: Divide weight by height squared</h3>
+    <div class="calculation-box">
+      70 ÷ 3.06 = 22.9
+    </div>
+
+    <div class="result-box">
+      <strong>👉 BMI = 22.9</strong>
+    </div>
+
+    <h2>BMI Categories</h2>
+    <ul>
+      <li><strong>Underweight:</strong> Less than 18.5</li>
+      <li><strong>Normal weight:</strong> 18.5 – 24.9</li>
+      <li><strong>Overweight:</strong> 25 – 29.9</li>
+      <li><strong>Obese:</strong> 30 or above</li>
+    </ul>
+    <p>
+      These categories help you understand your health status.
+    </p>
+
+    <h2>Why BMI is Important</h2>
+    <p>
+      BMI is useful because it provides a quick overview of your body weight status. A high
+      BMI may indicate increased risk of health issues such as:
+    </p>
+    <ul>
+      <li>Heart disease</li>
+      <li>Diabetes</li>
+      <li>High blood pressure</li>
+    </ul>
+    <p>
+      A low BMI may indicate poor nutrition or underlying health problems.
+    </p>
+
+    <h2>Limitations of BMI</h2>
+    <p>
+      Although BMI is helpful, it is not perfect. It does not consider:
+    </p>
+    <ul>
+      <li>Muscle mass</li>
+      <li>Age</li>
+      <li>Body fat percentage</li>
+    </ul>
+    <p>
+      For example, athletes may have a high BMI due to muscle, not fat.
+    </p>
+
+    <h2>Tips to Maintain Healthy BMI</h2>
+    <ul>
+      <li>Eat a balanced diet</li>
+      <li>Exercise regularly</li>
+      <li>Avoid processed foods</li>
+      <li>Stay hydrated</li>
+      <li>Get enough sleep</li>
+    </ul>
+
+    <h2>Common Mistakes</h2>
+    <ul>
+      <li>Using incorrect units</li>
+      <li>Ignoring height accuracy</li>
+      <li>Relying only on BMI</li>
+    </ul>
+
+    <h2>Conclusion</h2>
+    <p>
+      BMI is a simple and effective tool to assess your body weight. While it is not perfect, it
+      provides a good starting point for understanding your health. Combine BMI with a
+      healthy lifestyle to achieve better results.
+    </p>
+  </section>
+
+  <!-- Call to Action -->
+  <section class="blog-cta">
+    <h3>Calculate Your BMI Now</h3>
+    <p>Use our free BMI calculator to get instant results and track your health journey!</p>
+    <button class="cta-button" (click)="Try_Our_Calculators()">Try Our BMI Calculator</button>
+  </section>
+</article>

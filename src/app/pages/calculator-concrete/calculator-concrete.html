@@ -526,18 +526,21 @@
           <span class="fs-5 symbol-dots">..</span>
         </div>
 
-        <h2 class="display-6 fw-bold mb-4 text-dark font-serif">Concrete<br>Calculator</h2>
+        <h2 class="display-6 fw-bold mb-4 text-dark font-serif">Concrete Calculator –<br>Calculate Cement, Sand, Aggregate & Volume</h2>
 
         <p class="text-secondary mb-4 small">
-          The <strong>Concrete Calculator</strong> assists in estimating the amounts of cement, sand, and aggregate
-          needed for building projects. It proves beneficial for slabs, foundations, columns, and various structural
-          tasks.
-          By inputting measurements, users can swiftly determine material needs, which aids in minimizing waste and
-          enhancing budget planning. This tool is perfect for contractors, engineers, and DIY enthusiasts. The
-          calculator
-          streamlines construction preparation and delivers rapid estimates. It can be accessed on any device and is
-          user-friendly. The results are approximate and should be confirmed by professionals for major or essential
-          projects.
+          <strong>Use our free Concrete Calculator to estimate cement, sand, aggregate, and volume for slabs, columns, and footings. Fast and accurate results.</strong><br><br>
+          
+          <strong>Introduction</strong><br>
+          Concrete is one of the most widely used materials in construction. Whether you are building a house, a slab, a column, or a foundation, calculating the correct amount of concrete is essential.<br><br>
+          
+          Incorrect estimation can lead to material waste, extra cost, or project delays. That's why using a Concrete Calculator is important for engineers, contractors, and even homeowners. Our Concrete Calculator helps you estimate concrete volume, cement quantity, sand quantity, and aggregate quantity. It provides quick and accurate results, saving both time and money.<br><br>
+          
+          <strong>What is Concrete?</strong><br>
+          Concrete is a mixture of Cement, Sand (fine aggregate), Aggregate (coarse material like gravel), and Water. The strength of concrete depends on the mix ratio and quality of materials.<br><br>
+          
+          <strong>Why Use a Concrete Calculator?</strong><br>
+          Manual calculations can be confusing and prone to errors. This tool helps you calculate accurate material quantities, avoid over-ordering or shortage, save cost, plan your project efficiently, and get instant results.
         </p>
 
         <!-- <p class="text-secondary mb-4 small">
@@ -557,6 +560,11 @@
             <a routerLink="/unit-converter" class="btn-related">Unit Calculator</a>
             <a routerLink="/area-conversion" class="btn-related">Area Conversion</a>
             <a routerLink="/volume-calculator" class="btn-related">Volume Calculator</a>
+            <a routerLink="/calculator-loan" class="btn-related">Loan & EMI Calculator</a>
+            <a routerLink="/grade-percentage-calculator" class="btn-related">Grade & Percentage Calculator</a>
+
+
+
           </div>
         </div>
 
@@ -568,441 +576,208 @@
     </div>
   </div>
 
-  <div class="row justify-content-center mt-4">
-    <!-- Information Section -->
-    <div class="col-12">
-      <!-- Quick Reference - Changes based on active tab -->
-      <div class="functions-section p-4 rounded-3 mb-4" *ngIf="activeTab === 'slab'">
-        <h2 class="h5 fw-semibold mb-3 text-white">🏗️ Slabs & Footings – Quick Reference</h2>
-        <h3 class="h6 text-white mt-3 mb-3">Common Applications</h3>
-        <div class="table-responsive small">
-          <table class="table table-dark table-sm align-middle mb-3">
-            <tbody>
-              <tr>
-                <td>Floors</td>
-                <td>10-15 cm thickness</td>
-              </tr>
-              <tr>
-                <td>Foundations</td>
-                <td>15-30 cm thickness</td>
-              </tr>
-              <tr>
-                <td>Driveways</td>
-                <td>10-15 cm thickness</td>
-              </tr>
-              <tr>
-                <td>Patios</td>
-                <td>8-10 cm thickness</td>
-              </tr>
-              <tr>
-                <td>Sidewalks</td>
-                <td>10 cm thickness</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-
-        <div class="border-top border-secondary my-4"></div>
-        <h3 class="h6 text-white mb-3">Key Tips</h3>
-        <div class="table-responsive small">
-          <table class="table table-dark table-sm align-middle">
-            <tbody>
-              <tr>
-                <td class="text-center" style="width: 30px;">✅</td>
-                <td>Add 5-10% extra for waste</td>
-              </tr>
-              <tr>
-                <td class="text-center">✅</td>
-                <td>Use rebar for strength</td>
-              </tr>
-              <tr>
-                <td class="text-center">✅</td>
-                <td>Keep moist for 7 days</td>
-              </tr>
-              <tr>
-                <td class="text-center">✅</td>
-                <td>Level ground before pouring</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-
-      <div class="functions-section p-4 rounded-3 mb-4" *ngIf="activeTab === 'stairs'">
-        <h2 class="h5 fw-semibold mb-3 text-white">🪜 Stairs – Quick Reference</h2>
-        <h3 class="h6 text-white mt-3 mb-3">Standard Dimensions</h3>
-        <div class="table-responsive small">
-          <table class="table table-dark table-sm align-middle mb-3">
-            <tbody>
-              <tr>
-                <td>Rise</td>
-                <td>15-20 cm per step</td>
-              </tr>
-              <tr>
-                <td>Run</td>
-                <td>25-30 cm per step</td>
-              </tr>
-              <tr>
-                <td>Width</td>
-                <td>Min 90 cm (residential)</td>
-              </tr>
-              <tr>
-                <td>Platform</td>
-                <td>Level and stable</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-
-        <div class="border-top border-secondary my-4"></div>
-        <h3 class="h6 text-white mb-3">Safety Tips</h3>
-        <div class="table-responsive small">
-          <table class="table table-dark table-sm align-middle">
-            <tbody>
-              <tr>
-                <td class="text-center" style="width: 30px;">✅</td>
-                <td>Use formwork and reinforcement</td>
-              </tr>
-              <tr>
-                <td class="text-center">✅</td>
-                <td>Ensure consistent rise/run</td>
-              </tr>
-              <tr>
-                <td class="text-center">✅</td>
-                <td>Add non-slip finish</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-
-      <div class="functions-section p-4 rounded-3 mb-4" *ngIf="activeTab === 'circular'">
-        <h2 class="h5 fw-semibold mb-3 text-white">⭕ Circular – Quick Reference</h2>
-        <h3 class="h6 text-white mt-3 mb-3">Common Uses</h3>
-        <div class="table-responsive small">
-          <table class="table table-dark table-sm align-middle mb-3">
-            <tbody>
-              <tr>
-                <td>Water Tanks</td>
-                <td>Solid or hollow</td>
-              </tr>
-              <tr>
-                <td>Silos</td>
-                <td>Agricultural storage</td>
-              </tr>
-              <tr>
-                <td>Circular Foundations</td>
-                <td>For round structures</td>
-              </tr>
-              <tr>
-                <td>Pipes/Tubes</td>
-                <td>Use inner diameter</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-
-        <div class="border-top border-secondary my-4"></div>
-        <h3 class="h6 text-white mb-3">Construction Tips</h3>
-        <div class="table-responsive small">
-          <table class="table table-dark table-sm align-middle">
-            <tbody>
-              <tr>
-                <td class="text-center" style="width: 30px;">✅</td>
-                <td>Radial and circumferential rebar</td>
-              </tr>
-              <tr>
-                <td class="text-center">✅</td>
-                <td>Use flexible formwork materials</td>
-              </tr>
-              <tr>
-                <td class="text-center">✅</td>
-                <td>Pour in continuous operation</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-
-      <div class="functions-section p-4 rounded-3 mb-4" *ngIf="activeTab === 'hole'">
-        <h2 class="h5 fw-semibold mb-3 text-white">🕳️ Holes & Columns – Quick Reference</h2>
-        <h3 class="h6 text-white mt-3 mb-3">Common Applications</h3>
-        <div class="table-responsive small">
-          <table class="table table-dark table-sm align-middle mb-3">
-            <tbody>
-              <tr>
-                <td>Fence Posts</td>
-                <td>30-60 cm depth</td>
-              </tr>
-              <tr>
-                <td>Deck Piers</td>
-                <td>Below frost line</td>
-              </tr>
-              <tr>
-                <td>Round Columns</td>
-                <td>Load-bearing structures</td>
-              </tr>
-              <tr>
-                <td>Sonotubes</td>
-                <td>Easy forming method</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-
-        <div class="border-top border-secondary my-4"></div>
-        <h3 class="h6 text-white mb-3">Best Practices</h3>
-        <div class="table-responsive small">
-          <table class="table table-dark table-sm align-middle">
-            <tbody>
-              <tr>
-                <td class="text-center" style="width: 30px;">✅</td>
-                <td>Vertical rebar with ties</td>
-              </tr>
-              <tr>
-                <td class="text-center">✅</td>
-                <td>Below frost line for footings</td>
-              </tr>
-              <tr>
-                <td class="text-center">✅</td>
-                <td>Use sonotube for easy forming</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-
-      <div class="functions-section p-4 rounded-3 mb-4" *ngIf="activeTab === 'curb'">
-        <h2 class="h5 fw-semibold mb-3 text-white">🛣️ Curbs & Gutters – Quick Reference</h2>
-        <h3 class="h6 text-white mt-3 mb-3">Standard Specifications</h3>
-        <div class="table-responsive small">
-          <table class="table table-dark table-sm align-middle mb-3">
-            <tbody>
-              <tr>
-                <td>Height</td>
-                <td>15-20 cm above pavement</td>
-              </tr>
-              <tr>
-                <td>Gutter Slope</td>
-                <td>1-2% for drainage</td>
-              </tr>
-              <tr>
-                <td>Joints</td>
-                <td>Every 3-4 meters</td>
-              </tr>
-              <tr>
-                <td>Finish</td>
-                <td>Smooth trowel finish</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-
-        <div class="border-top border-secondary my-4"></div>
-        <h3 class="h6 text-white mb-3">Installation Tips</h3>
-        <div class="table-responsive small">
-          <table class="table table-dark table-sm align-middle">
-            <tbody>
-              <tr>
-                <td class="text-center" style="width: 30px;">✅</td>
-                <td>Proper drainage slope essential</td>
-              </tr>
-              <tr>
-                <td class="text-center">✅</td>
-                <td>Use expansion joints</td>
-              </tr>
-              <tr>
-                <td class="text-center">✅</td>
-                <td>Compact base thoroughly</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-
-      <!-- General Concrete Basics (always visible) -->
-      <div class="functions-section p-4 rounded-3 mb-4">
-        <h2 class="h5 fw-semibold mb-3 text-white">📋 Concrete Basics</h2>
-        <div class="table-responsive small">
-          <table class="table table-dark table-sm align-middle mb-3">
-            <thead>
-              <tr>
-                <th>Property</th>
-                <th>Value</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>Density</td>
-                <td>~2,400 kg/m³</td>
-              </tr>
-              <tr>
-                <td>Bags per m³</td>
-                <td>~30 bags</td>
-              </tr>
-              <tr>
-                <td>1 m³</td>
-                <td>1.308 yd³</td>
-              </tr>
-              <tr>
-                <td>Curing Time</td>
-                <td>28 days (full)</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-
-        <div class="border-top border-secondary my-4"></div>
-        <h3 class="h6 text-white mb-3">Volume Formulas</h3>
-        <div class="table-responsive small">
-          <table class="table table-dark table-sm align-middle">
-            <tbody>
-              <tr>
-                <td class="text-nowrap">Rectangle</td>
-                <td>L × W × H</td>
-              </tr>
-              <tr>
-                <td>Circle</td>
-                <td>π × r² × h</td>
-              </tr>
-              <tr>
-                <td>Tube</td>
-                <td>π × (R² - r²) × h</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </div>
-  </div>
-
+ 
   <!-- Calculator Guidance -->
   <div class="row mt-5">
     <div class="col-12">
       <div class="comprehensive-guide">
-        <h2 class="h4 fw-bold mb-4 text-white text-center">📚 Concrete Calculator Guide</h2>
+        <h2 class="h4 fw-bold mb-4 text-white text-center">📚 Concrete Calculator – Complete Guide</h2>
 
         <div class="row">
           <div class="col-12 col-md-6 col-lg-4 mb-4">
             <div class="guide-section">
-              <h3 class="h6 fw-semibold text-white mb-3">🏗️ Slabs & Footings</h3>
+              <h3 class="h6 fw-semibold text-white mb-3">📋 How to Use the Concrete Calculator</h3>
+              <p class="text-white small mb-2">Using this tool is simple:</p>
+              <ol class="text-white small">
+                <li>Select the structure type (slab, column, footing, etc.)</li>
+                <li>Enter dimensions (length, width, height/depth)</li>
+                <li>Select concrete mix ratio (e.g., 1:2:4)</li>
+                <li>Click Calculate</li>
+              </ol>
+              <p class="text-white small">You will get: Total volume of concrete, Required cement (bags), Sand quantity, Aggregate quantity</p>
+            </div>
+          </div>
+
+          <div class="col-12 col-md-6 col-lg-4 mb-4">
+            <div class="guide-section">
+              <h3 class="h6 fw-semibold text-white mb-3">📐 Concrete Volume Formula</h3>
+              <p class="text-white small mb-2">Concrete volume is calculated using:</p>
+              <p class="text-white small mb-2"><strong>Volume = Length × Width × Height</strong></p>
+              
+              <p class="text-white small mb-2"><strong>Example Calculation</strong><br>
+              Let's calculate concrete for a slab:</p>
               <ul class="text-white small">
-                <li><strong>Use for:</strong> Floors, foundations, driveways, patios</li>
-                <li><strong>Minimum thickness:</strong> 10 cm for light loads</li>
-                <li><strong>Reinforcement:</strong> Use rebar for strength</li>
-                <li><strong>Tip:</strong> Add 5-10% extra for waste</li>
-                <li><strong>Curing:</strong> Keep moist for 7 days minimum</li>
+                <li>• Length = 5 meters</li>
+                <li>• Width = 4 meters</li>
+                <li>• Thickness = 0.15 meters</li>
+              </ul>
+              <p class="text-white small">Volume = 5 × 4 × 0.15 = 3 cubic meters</p>
+            </div>
+          </div>
+
+          <div class="col-12 col-md-6 col-lg-4 mb-4">
+            <div class="guide-section">
+              <h3 class="h6 fw-semibold text-white mb-3">🏗️ Concrete Mix Ratio</h3>
+              <p class="text-white small mb-2">The mix ratio determines the strength of concrete.</p>
+              <p class="text-white small mb-2"><strong>Common Ratios:</strong></p>
+              <div class="table-responsive small">
+                <table class="table table-dark table-sm">
+                  <thead>
+                    <tr>
+                      <th>Mix Ratio</th>
+                      <th>Use</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>1:2:4</td>
+                      <td>General construction</td>
+                    </tr>
+                    <tr>
+                      <td>1:1.5:3</td>
+                      <td>Strong concrete</td>
+                    </tr>
+                    <tr>
+                      <td>1:3:6</td>
+                      <td>Foundation work</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-12 col-md-6 col-lg-4 mb-4">
+            <div class="guide-section">
+              <h3 class="h6 fw-semibold text-white mb-3">📦 Material Calculation</h3>
+              <p class="text-white small mb-2"><strong>For 1 cubic meter of concrete (1:2:4 ratio):</strong></p>
+              <ul class="text-white small">
+                <li>• Cement = 6 to 7 bags</li>
+                <li>• Sand = 0.44 m³</li>
+                <li>• Aggregate = 0.88 m³</li>
+              </ul>
+              <p class="text-white small"><strong>Approximate</strong> - Actual quantities may vary based on material quality and mix design.</p>
+            </div>
+          </div>
+
+          <div class="col-12 col-md-6 col-lg-4 mb-4">
+            <div class="guide-section">
+              <h3 class="h6 fw-semibold text-white mb-3">🏢 Concrete for Different Structures</h3>
+              <p class="text-white small mb-2"><strong>1. Slab</strong><br>
+              Used for floors and roofs.<br>
+              Formula: Length × Width × Thickness</p>
+              
+              <p class="text-white small mb-2"><strong>2. Column</strong><br>
+              Used for vertical support.<br>
+              Formula: Length × Width × Height</p>
+              
+              <p class="text-white small"><strong>3. Footing</strong><br>
+              Foundation base.<br>
+              Formula: Length × Width × Depth<br><strong>4. Beam</strong><br>
+              Horizontal structural element.<br>
+              Formula: Length × Width × Height</p>
+            </div>
+          </div>
+
+          <div class="col-12 col-md-6 col-lg-4 mb-4">
+            <div class="guide-section">
+              <h3 class="h6 fw-semibold text-white mb-3">� Dry Volume vs Wet Volume</h3>
+              <p class="text-white small mb-2">Concrete volume is calculated as wet volume, but materials are measured in dry volume.</p>
+              <p class="text-white small mb-2"><strong>Dry Volume = Wet Volume × 1.54</strong></p>
+              <p class="text-white small">This accounts for: Voids in sand and aggregate, Shrinkage</p>
+            </div>
+          </div>
+
+          <div class="col-12 col-md-6 col-lg-4 mb-4">
+            <div class="guide-section">
+              <h3 class="h6 fw-semibold text-white mb-3">👜 Cement Bag Calculation</h3>
+              <p class="text-white small mb-2"><strong>1 bag of cement = 50 kg</strong></p>
+              <p class="text-white small">To calculate cement:<br>
+              <strong>Cement Bags = Total Cement (kg) ÷ 50</strong></p>
+            </div>
+          </div>
+
+          <div class="col-12 col-md-6 col-lg-4 mb-4">
+            <div class="guide-section">
+              <h3 class="h6 fw-semibold text-white mb-3">🌍 Real-Life Applications</h3>
+              <p class="text-white small mb-2">Concrete calculation is used in:</p>
+              <p class="text-white small mb-2"><strong>1. House Construction</strong><br>
+              To calculate slab and foundation material.</p>
+              
+              <p class="text-white small mb-2"><strong>2. Road Work</strong><br>
+              For pavements and highways.</p>
+              
+              <p class="text-white small"><strong>3. Structural Engineering</strong><br>
+              For beams and columns.<br><strong>4. Renovation Projects</strong><br>
+              For flooring and extensions.</p>
+            </div>
+          </div>
+
+          <div class="col-12 col-md-6 col-lg-4 mb-4">
+            <div class="guide-section">
+              <h3 class="h6 fw-semibold text-white mb-3">💡 Tips for Accurate Concrete Calculation</h3>
+              <ul class="text-white small">
+                <li>• Always measure dimensions correctly</li>
+                <li>• Add 5–10% extra for wastage</li>
+                <li>• Choose correct mix ratio</li>
+                <li>• Use standard units (meters preferred)</li>
+                <li>• Check material quality</li>
               </ul>
             </div>
           </div>
 
           <div class="col-12 col-md-6 col-lg-4 mb-4">
             <div class="guide-section">
-              <h3 class="h6 fw-semibold text-white mb-3">🪜 Stairs</h3>
+              <h3 class="h6 fw-semibold text-white mb-3">⚠️ Common Mistakes to Avoid</h3>
               <ul class="text-white small">
-                <li><strong>Standard rise:</strong> 15-20 cm per step</li>
-                <li><strong>Standard run:</strong> 25-30 cm per step</li>
-                <li><strong>Width:</strong> Minimum 90 cm for residential</li>
-                <li><strong>Platform:</strong> Should be level and stable</li>
-                <li><strong>Safety:</strong> Use formwork and reinforcement</li>
+                <li>• Wrong dimensions</li>
+                <li>• Ignoring dry volume factor</li>
+                <li>• Using incorrect mix ratio</li>
+                <li>• Not adding wastage</li>
+                <li>• Mixing units</li>
               </ul>
             </div>
           </div>
 
           <div class="col-12 col-md-6 col-lg-4 mb-4">
             <div class="guide-section">
-              <h3 class="h6 fw-semibold text-white mb-3">⭕ Circular Slabs</h3>
+              <h3 class="h6 fw-semibold text-white mb-3">✅ Benefits of Using This Calculator</h3>
               <ul class="text-white small">
-                <li><strong>Use for:</strong> Tanks, silos, circular foundations</li>
-                <li><strong>Tubes:</strong> Enter inner diameter for hollow sections</li>
-                <li><strong>Solid slabs:</strong> Leave inner diameter at 0</li>
-                <li><strong>Reinforcement:</strong> Radial and circumferential rebar</li>
-                <li><strong>Formwork:</strong> Use flexible materials for curves</li>
+                <li>• Saves time</li>
+                <li>• Reduces cost</li>
+                <li>• Accurate estimation</li>
+                <li>• Easy to use</li>
+                <li>• Works for all structures</li>
               </ul>
             </div>
           </div>
 
           <div class="col-12 col-md-6 col-lg-4 mb-4">
             <div class="guide-section">
-              <h3 class="h6 fw-semibold text-white mb-3">🕳️ Columns & Holes</h3>
-              <ul class="text-white small">
-                <li><strong>Use for:</strong> Posts, piers, round columns</li>
-                <li><strong>Depth:</strong> Below frost line for footings</li>
-                <li><strong>Diameter:</strong> Based on load requirements</li>
-                <li><strong>Reinforcement:</strong> Vertical rebar with ties</li>
-                <li><strong>Tip:</strong> Use sonotube for easy forming</li>
-              </ul>
+              <h3 class="h6 fw-semibold text-white mb-3">❓ FAQs</h3>
+              <p class="text-white small mb-2"><strong>1. How much cement is needed for 1 m³ concrete?</strong><br>
+              Approximately 6 to 7 bags for a 1:2:4 mix.</p>
+              
+              <p class="text-white small mb-2"><strong>2. What is the standard mix ratio?</strong><br>
+              1:2:4 is commonly used for general construction.</p>
+              
+              <p class="text-white small mb-2"><strong>3. What is dry volume?</strong><br>
+              Dry volume is the actual material volume needed after adjusting for voids.</p>
+              
+              <p class="text-white small"><strong>4. Can I use this calculator for slabs and columns?</strong><br>
+              Yes, it supports multiple structures.<br><strong>5. Should I add extra material?</strong><br>
+              Yes, usually 5–10% extra is recommended.</p>
             </div>
           </div>
 
           <div class="col-12 col-md-6 col-lg-4 mb-4">
             <div class="guide-section">
-              <h3 class="h6 fw-semibold text-white mb-3">🛣️ Curbs & Gutters</h3>
-              <ul class="text-white small">
-                <li><strong>Use for:</strong> Street edges, drainage control</li>
-                <li><strong>Standard height:</strong> 15-20 cm above pavement</li>
-                <li><strong>Gutter slope:</strong> 1-2% for drainage</li>
-                <li><strong>Joints:</strong> Every 3-4 meters</li>
-                <li><strong>Finish:</strong> Smooth trowel finish</li>
-              </ul>
+              <h3 class="h6 fw-semibold text-white mb-3">🎯 Conclusion</h3>
+              <p class="text-white small">A Concrete Calculator is an essential tool for any construction project. It helps you estimate the right number of materials, avoid waste, and manage your budget effectively.</p>
+              <p class="text-white small">Whether you are building a small project or a large structure, this tool ensures accurate and reliable calculations in seconds. Start using it today and make your construction planning easier.</p>
             </div>
           </div>
 
-          <div class="col-12 col-md-6 col-lg-4 mb-4">
-            <div class="guide-section">
-              <h3 class="h6 fw-semibold text-white mb-3">⚖️ Mix Ratios</h3>
-              <ul class="text-white small">
-                <li><strong>Standard:</strong> 1:2:3 (cement:sand:gravel)</li>
-                <li><strong>High strength:</strong> 1:1.5:2.5</li>
-                <li><strong>Foundation:</strong> 1:2:4</li>
-                <li><strong>Water ratio:</strong> 0.4-0.6 by weight</li>
-                <li><strong>Slump:</strong> 5-10 cm for most applications</li>
-              </ul>
-            </div>
-          </div>
-
-          <div class="col-12 col-md-6 col-lg-4 mb-4">
-            <div class="guide-section">
-              <h3 class="h6 fw-semibold text-white mb-3">🌡️ Temperature & Weather</h3>
-              <ul class="text-white small">
-                <li><strong>Ideal temp:</strong> 10-30°C for pouring</li>
-                <li><strong>Hot weather:</strong> Use retarders, keep moist</li>
-                <li><strong>Cold weather:</strong> Use accelerators, protect from frost</li>
-                <li><strong>Rain:</strong> Cover fresh concrete</li>
-                <li><strong>Wind:</strong> Prevent rapid drying</li>
-              </ul>
-            </div>
-          </div>
-
-          <div class="col-12 col-md-6 col-lg-4 mb-4">
-            <div class="guide-section">
-              <h3 class="h6 fw-semibold text-white mb-3">🔧 Tools & Equipment</h3>
-              <ul class="text-white small">
-                <li><strong>Mixing:</strong> Concrete mixer or wheelbarrow</li>
-                <li><strong>Pouring:</strong> Chutes, buckets, pumps</li>
-                <li><strong>Finishing:</strong> Trowels, floats, edgers</li>
-                <li><strong>Safety:</strong> Gloves, boots, eye protection</li>
-                <li><strong>Curing:</strong> Plastic sheeting, curing compound</li>
-              </ul>
-            </div>
-          </div>
-
-          <div class="col-12 col-md-6 col-lg-4 mb-4">
-            <div class="guide-section">
-              <h3 class="h6 fw-semibold text-white mb-3">💡 Pro Tips</h3>
-              <ul class="text-white small">
-                <li><strong>Order extra:</strong> 5-10% more than calculated</li>
-                <li><strong>Pour continuously:</strong> Avoid cold joints</li>
-                <li><strong>Vibrate properly:</strong> Remove air pockets</li>
-                <li><strong>Cure properly:</strong> Critical for strength</li>
-                <li><strong>Plan ahead:</strong> Have all materials ready</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
+          
 
 <app-footer></app-footer>

@@ -16,6 +16,8 @@ export class CalculatorVolume {
   selectedShape: string = 'capsule';
   selectedUnit: string = 'm';
   result: number | null = null;
+  volumeFaqOpen: boolean[] = [false, false, false, false, false, false, false];
+  faqOpen: boolean[] = [false, false, false, false, false, false];
 
   inputs: {
     side: number;
@@ -131,5 +133,10 @@ export class CalculatorVolume {
       length: 0,
       width: 0
     };
+    this.faqOpen = [false, false, false, false, false, false];
+  }
+
+  toggleFaq(index: number) {
+    this.faqOpen[index] = !this.faqOpen[index];
   }
 }

@@ -12,6 +12,8 @@ import { CalculatorWords } from './pages/calculator-words/calculator-words';
 import { CalculatorLoan } from './pages/calculator-loan/calculator-loan';
 import { CalculatorConcrete } from './pages/calculator-concrete/calculator-concrete';
 import { CalculatorCooking } from './pages/calculator-cooking/calculator-cooking';
+import { OurCalculators } from './pages/our-calculators/our-calculators';
+
 
 import { AboutUs } from './pages/about-us/about-us';
 import { ContactUs } from './pages/contact-us/contact-us';
@@ -24,7 +26,15 @@ import { LoanCalculatorsFinancePlanning } from './blog/loan-calculators-finance-
 import { ConcreteCalculatorGuide } from './blog/concrete-calculator-guide/concrete-calculator-guide';
 import { PracticalGuideOnlineCalculators } from './blog/practical-guide-online-calculators/practical-guide-online-calculators';
 import { OnlineCalculatorsForStudents } from './blog/online-calculators-for-students/online-calculators-for-students';
+import {BmiCorrect} from './blog/bmi-correct/bmi-correct';
+import {SimpleWaysToSaveMoney} from './blog/simple-ways-to-save-money/simple-ways-to-save-money';
+import { HowToLoseWeightEffectively } from './blog/how-to-lose-weight-effectively/how-to-lose-weight-effectively';
+import { CalculatePercentageGuide } from './blog/calculate-percentage-guide/calculate-percentage-guide';
+
 import { Faqs } from './faqs/faqs';
+import { UnitConverterGuide } from './blog/unit-converter-guide/unit-converter-guide';
+import { InterestRatesGuide } from './blog/interest-rates-guide/interest-rates-guide';
+import { DailyHealthTips } from './blog/daily-health-tips/daily-health-tips';
 export const routes: Routes = [
   // Home
   { path: '', component: HomeComponent },
@@ -41,6 +51,16 @@ export const routes: Routes = [
   {path: 'blog/concrete-calculator-guide', component: ConcreteCalculatorGuide},
   {path: 'blog/practical-guide-online-calculators', component: PracticalGuideOnlineCalculators},
   {path: 'blog/online-calculators-for-students', component: OnlineCalculatorsForStudents},
+  {path: 'blog/bmi-correct', component: BmiCorrect},
+  {path: 'blog/simple-ways-to-save-money', component: SimpleWaysToSaveMoney},
+  {path: 'blog/how-to-lose-weight-effectively', component: HowToLoseWeightEffectively},
+  {path: 'blog/unit-converter-guide', component: UnitConverterGuide},
+  {path: 'blog/interest-rates-guide', component: InterestRatesGuide},
+  {path: 'blog/calculate-percentage-guide', component: CalculatePercentageGuide},
+  {path: 'blog/daily-health-tips', component: DailyHealthTips},
+  
+
+  //Faq's
   {path: 'faqs', component: Faqs},
 
   // Calculator Routes (SEO-friendly URLs)
@@ -54,6 +74,9 @@ export const routes: Routes = [
   { path: 'loan-emi-calculator', component: CalculatorLoan },
   { path: 'concrete-calculator', component: CalculatorConcrete },
   { path: 'cooking-converter', component: CalculatorCooking },
+  
+  //All Calculator
+  { path: 'our-calculators', component: OurCalculators },
 
   // Fallback
   { path: '**', redirectTo: '' }

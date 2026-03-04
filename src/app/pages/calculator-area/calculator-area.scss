@@ -390,6 +390,75 @@
   }
 }
 
+// Accordion styles
+.accordion {
+  .accordion-item {
+    margin-bottom: 0.5rem;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 8px;
+    overflow: hidden;
+  }
+
+  .accordion-button {
+    width: 100%;
+    background: rgba(255, 255, 255, 0.1);
+    border: none;
+    padding: 0.75rem 1rem;
+    color: #ffffff;
+    text-align: left;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+
+    &:hover {
+      background: rgba(255, 255, 255, 0.2);
+    }
+
+    .question-text {
+      flex: 1;
+      font-size: 0.9rem;
+    }
+
+    .accordion-icon {
+      font-size: 1.2rem;
+      font-weight: bold;
+      transition: transform 0.3s ease;
+
+      &.expanded {
+        transform: rotate(45deg);
+      }
+    }
+  }
+
+  .accordion-content {
+    background: rgba(255, 255, 255, 0.05);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    overflow: hidden;
+    transition: all 0.3s ease;
+
+    &.show {
+      max-height: 200px;
+      padding: 0.75rem 1rem;
+    }
+
+    &.hide {
+      max-height: 0;
+      padding: 0 1rem;
+    }
+  }
+}
+
+// Conclusion section styles
+.conclusion-section {
+  padding: 2rem 1rem;
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  text-align: center;
+}
+
 @media (max-width: 360px) {
   .area-page {
     background: #E3F2FD;

@@ -4,7 +4,7 @@
   <div class="row">
     <!-- Combined Age, Time & Height Calculator Section -->
     <div class="col-12 col-md-12 col-lg-6 mb-4">
-      <h1 class="h4 fw-bold mb-3 text-info text-center">🎂 Age, Time & Height Calculator</h1>
+      <h1 class="h4 fw-bold mb-3 text-info text-center">🎂 Age, Height & Time Calculator – Calculate Age, Height, Time Differences, and Conversions Instantly</h1>
 
       <div class="calculator-shell shadow-lg rounded-4 p-4 mb-4 mx-auto">
         <!-- Tab Navigation -->
@@ -301,26 +301,25 @@
         <h2 class="display-6 fw-bold mb-4 text-dark font-serif">Age, Height & Time<br>Calculator</h2>
 
         <p class="text-secondary mb-4 small">
-          The <strong>Age, Height & Time Calculator</strong> is designed to assist in determining age disparities,
-          height conversions,
-          and time durations with ease. It serves a variety of purposes, including personal, educational, and general
-          calculation needs. Users can accurately compute their age in years, months, and days, switch between different
-          height units, or assess time differences without any manual calculations. This tool streamlines computations
-          that would typically involve several steps. It is ideal for students, parents, healthcare professionals, and
-          everyday users. The calculator operates in web browsers, is quick to use, and is optimized for mobile devices.
-          All outcomes are automatically generated and meant for general informational purposes. For official or medical
-          matters, verification of results is recommended.
-
+          <strong>Calculate Age, Height, Time Differences, and Conversions Instantly</strong><br><br>
+          
+          <strong>Introduction</strong><br>
+          Understanding time, growth, and measurements is an important part of everyday life. Whether you're calculating your exact age, tracking height growth, or converting time units, our Age, Height & Time Calculator provides a simple, fast, and accurate solution.<br><br>
+          
+          This all-in-one tool is designed for students, parents, professionals, and anyone who needs quick calculations without confusion. Instead of doing complex manual calculations, this tool gives instant and accurate results.<br><br>
         </p>
 
         <div class="mt-4 border-top pt-3">
           <h3 class="h6 fw-bold text-dark mb-3">Related Calculators:</h3>
           <div class="d-flex flex-wrap gap-2">
-            <a routerLink="/basic-scientific-calculator" class="btn btn-related">Basic
-              Calculator</a>
+            <a routerLink="/basic-scientific-calculator" class="btn btn-related">Basic & Scientific Calculator
+            </a>
             <a routerLink="/grade-percentage-calculator" class="btn btn-related">Grade and
               Percentage</a>
-            <a routerLink="/numbers-to-words" class="btn btn-related">Number to Words</a>
+            <a routerLink="/area-conversion" class="btn btn-related">Area Calculator</a>
+            <a routerLink="/volume-calculator" class="btn btn-related">Volume Calculator</a>
+            <a routerLink="/loan-emi-calculator" class="btn btn-related">BMI Calculator</a>
+
           </div>
         </div>
 
@@ -344,554 +343,211 @@
     </div>
   </div>
 
-  <div class="row justify-content-center mt-4">
-    <!-- Information Section -->
-    <div class="col-12">
-      <!-- Age Quick Reference -->
-      <div class="functions-section mb-4" *ngIf="activeTab === 'age'">
-        <h2 class="h5 fw-semibold mb-3 text-white">🎂 Age Calculation – Quick Reference</h2>
-        <h3 class="h6 text-white mt-3 mb-2">How Age is Calculated</h3>
-        <div class="table-responsive small">
-          <table class="table table-dark table-sm align-middle mb-3">
-            <thead>
-              <tr>
-                <th>Unit</th>
-                <th>Description</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>Years</td>
-                <td>Complete years lived</td>
-              </tr>
-              <tr>
-                <td>Months</td>
-                <td>Additional complete months</td>
-              </tr>
-              <tr>
-                <td>Days</td>
-                <td>Remaining days in current month</td>
-              </tr>
-              <tr>
-                <td>Total Days</td>
-                <td>Total number of days lived</td>
-              </tr>
-              <tr>
-                <td>Total Weeks</td>
-                <td>Total number of weeks lived</td>
-              </tr>
-              <tr>
-                <td>Total Months</td>
-                <td>Total number of months lived</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-
-        <h3 class="h6 text-white mt-4 mb-2">Age Milestones</h3>
-        <div class="table-responsive small">
-          <table class="table table-dark table-sm align-middle">
-            <thead>
-              <tr>
-                <th>Age</th>
-                <th>Milestone</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>18</td>
-                <td>Legal Adult</td>
-              </tr>
-              <tr>
-                <td>21</td>
-                <td>Legal Drinking Age (US)</td>
-              </tr>
-              <tr>
-                <td>25</td>
-                <td>Brain Fully Developed</td>
-              </tr>
-              <tr>
-                <td>30</td>
-                <td>Prime of Life</td>
-              </tr>
-              <tr>
-                <td>50</td>
-                <td>Half Century</td>
-              </tr>
-              <tr>
-                <td>65</td>
-                <td>Retirement Age</td>
-              </tr>
-              <tr>
-                <td>100</td>
-                <td>Centenarian</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-
-      <!-- Time Quick Reference -->
-      <div class="functions-section mb-4" *ngIf="activeTab === 'time'">
-        <h2 class="h5 fw-semibold mb-3 text-white">⏰ Time Calculator – Quick Reference</h2>
-
-        <h3 class="h6 text-white mt-3 mb-2">Time Unit Conversions</h3>
-        <div class="table-responsive small">
-          <table class="table table-dark table-sm align-middle mb-3">
-            <thead>
-              <tr>
-                <th>Unit</th>
-                <th>Equivalent</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>1 Week</td>
-                <td>7 days</td>
-              </tr>
-              <tr>
-                <td>1 Day</td>
-                <td>24 hours</td>
-              </tr>
-              <tr>
-                <td>1 Hour</td>
-                <td>60 minutes</td>
-              </tr>
-              <tr>
-                <td>1 Minute</td>
-                <td>60 seconds</td>
-              </tr>
-              <tr>
-                <td>1 Hour</td>
-                <td>3,600 seconds</td>
-              </tr>
-              <tr>
-                <td>1 Day</td>
-                <td>86,400 seconds</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-
-        <h3 class="h6 text-white mt-4 mb-2">How It Works</h3>
-        <div class="table-responsive small">
-          <table class="table table-dark table-sm align-middle mb-3">
-            <thead>
-              <tr>
-                <th>Operation</th>
-                <th>Description</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>Add (+)</td>
-                <td>Combines two time values together</td>
-              </tr>
-              <tr>
-                <td>Subtract (−)</td>
-                <td>Finds difference between time values</td>
-              </tr>
-              <tr>
-                <td>Auto-Convert</td>
-                <td>Results normalized to proper format</td>
-              </tr>
-              <tr>
-                <td>Zero Values</td>
-                <td>Empty fields treated as 0</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-
-        <h3 class="h6 text-white mt-4 mb-2">Common Use Cases</h3>
-        <div class="table-responsive small">
-          <table class="table table-dark table-sm align-middle">
-            <thead>
-              <tr>
-                <th>Purpose</th>
-                <th>Example</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>Work Hours</td>
-                <td>Calculate total shift time</td>
-              </tr>
-              <tr>
-                <td>Travel Time</td>
-                <td>Add multiple journey segments</td>
-              </tr>
-              <tr>
-                <td>Project Duration</td>
-                <td>Track task completion time</td>
-              </tr>
-              <tr>
-                <td>Event Planning</td>
-                <td>Schedule with time blocks</td>
-              </tr>
-              <tr>
-                <td>Sleep Tracking</td>
-                <td>Calculate total sleep duration</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-
-      <!-- Height Quick Reference -->
-      <div class="functions-section mb-4" *ngIf="activeTab === 'height'">
-        <h2 class="h5 fw-semibold mb-3 text-white">📏 Height Conversion – Quick Reference</h2>
-
-        <h3 class="h6 text-white mt-3 mb-2">Conversion Formulas</h3>
-        <div class="table-responsive small">
-          <table class="table table-dark table-sm align-middle mb-3">
-            <thead>
-              <tr>
-                <th>From</th>
-                <th>To</th>
-                <th>Formula</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>Feet</td>
-                <td>Centimeters</td>
-                <td>ft × 30.48</td>
-              </tr>
-              <tr>
-                <td>Inches</td>
-                <td>Centimeters</td>
-                <td>in × 2.54</td>
-              </tr>
-              <tr>
-                <td>Meters</td>
-                <td>Centimeters</td>
-                <td>m × 100</td>
-              </tr>
-              <tr>
-                <td>Centimeters</td>
-                <td>Feet</td>
-                <td>cm ÷ 30.48</td>
-              </tr>
-              <tr>
-                <td>Centimeters</td>
-                <td>Inches</td>
-                <td>cm ÷ 2.54</td>
-              </tr>
-              <tr>
-                <td>Feet to Inches</td>
-                <td>Total Inches</td>
-                <td>ft × 12 + in</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-
-        <h3 class="h6 text-white mt-4 mb-2">Quick Conversions</h3>
-        <div class="table-responsive small">
-          <table class="table table-dark table-sm align-middle mb-3">
-            <thead>
-              <tr>
-                <th>Imperial</th>
-                <th>Metric</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>5'0" (60 in)</td>
-                <td>152.4 cm (1.52 m)</td>
-              </tr>
-              <tr>
-                <td>5'6" (66 in)</td>
-                <td>167.6 cm (1.68 m)</td>
-              </tr>
-              <tr>
-                <td>5'9" (69 in)</td>
-                <td>175.3 cm (1.75 m)</td>
-              </tr>
-              <tr>
-                <td>6'0" (72 in)</td>
-                <td>182.9 cm (1.83 m)</td>
-              </tr>
-              <tr>
-                <td>6'3" (75 in)</td>
-                <td>190.5 cm (1.91 m)</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-
-        <h3 class="h6 text-white mt-4 mb-2">Global Average Heights</h3>
-        <div class="table-responsive small">
-          <table class="table table-dark table-sm align-middle">
-            <thead>
-              <tr>
-                <th>Category</th>
-                <th>Height Range</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>Adult Male (Global)</td>
-                <td>5'7" - 5'10" (170-178 cm)</td>
-              </tr>
-              <tr>
-                <td>Adult Female (Global)</td>
-                <td>5'2" - 5'5" (158-165 cm)</td>
-              </tr>
-              <tr>
-                <td>Considered Tall</td>
-                <td>6'0"+ (183+ cm)</td>
-              </tr>
-              <tr>
-                <td>Considered Short</td>
-                <td>5'3" or less (160 cm or less)</td>
-              </tr>
-              <tr>
-                <td>Professional Athletes</td>
-                <td>6'2" - 6'8" (188-203 cm)</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </div>
-  </div>
 
   <div class="row mt-5">
     <div class="col-12">
       <div class="comprehensive-guide">
-        <h2 class="h4 fw-bold mb-4 text-white text-center">📚 Age, Time & Height Calculator Guide</h2>
-
-        <p class="text-white mb-4">Age, time, and height calculators help you make accurate measurements for personal,
-          educational, and professional use. This guide explains how each calculator works and where it can be useful in
-          daily life.</p>
+        <h2 class="h4 fw-bold mb-4 text-white text-center">📚 Age, Height & Time Calculator – Complete Guide</h2>
 
         <div class="row">
           <div class="col-12 col-md-6 col-lg-4 mb-4">
             <div class="guide-section">
-              <h3 class="h6 fw-semibold text-white mb-3">📅 How Age is Determined</h3>
-              <div class="table-responsive">
-                <table class="table table-sm table-borderless text-white small">
-                  <thead>
-                    <tr>
-                      <th>Unit</th>
-                      <th>Meaning</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td><strong>Years</strong></td>
-                      <td>Number of full years completed</td>
-                    </tr>
-                    <tr>
-                      <td><strong>Months</strong></td>
-                      <td>Additional months beyond full years</td>
-                    </tr>
-                    <tr>
-                      <td><strong>Days</strong></td>
-                      <td>Extra days beyond completed months</td>
-                    </tr>
-                    <tr>
-                      <td><strong>Total Days</strong></td>
-                      <td>Total days lived from birth to today</td>
-                    </tr>
-                    <tr>
-                      <td><strong>Total Weeks</strong></td>
-                      <td>Total number of weeks lived</td>
-                    </tr>
-                    <tr>
-                      <td><strong>Total Months</strong></td>
-                      <td>Total months lived from birth</td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
+              <h3 class="h6 fw-semibold text-white mb-3">🎂 What is an Age, Height & Time Calculator?</h3>
+              <p class="text-white small mb-2">An Age, Height & Time Calculator is a multi-purpose tool that helps you calculate your exact age in years, months, days, hours, and seconds, convert height between different units (feet, inches, centimeters, meters), calculate time differences between two dates or times, and convert time units like seconds, minutes, hours, days, and years. Instead of doing complex manual calculations, this tool gives instant and accurate results.</p>
             </div>
           </div>
 
           <div class="col-12 col-md-6 col-lg-4 mb-4">
             <div class="guide-section">
-              <h3 class="h6 fw-semibold text-white mb-3">🎯 Key Age Milestones</h3>
-              <div class="table-responsive">
-                <table class="table table-sm table-borderless text-white small">
-                  <thead>
-                    <tr>
-                      <th>Age</th>
-                      <th>Significance</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td><strong>18</strong></td>
-                      <td>Legal adult status in most countries</td>
-                    </tr>
-                    <tr>
-                      <td><strong>21</strong></td>
-                      <td>Legal drinking age in the US</td>
-                    </tr>
-                    <tr>
-                      <td><strong>25</strong></td>
-                      <td>Brain reaches full maturity</td>
-                    </tr>
-                    <tr>
-                      <td><strong>30</strong></td>
-                      <td>Often considered the prime of adulthood</td>
-                    </tr>
-                    <tr>
-                      <td><strong>50</strong></td>
-                      <td>Half-century mark</td>
-                    </tr>
-                    <tr>
-                      <td><strong>65</strong></td>
-                      <td>Common retirement age</td>
-                    </tr>
-                    <tr>
-                      <td><strong>100</strong></td>
-                      <td>Centenarian milestone</td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-12 col-md-6 col-lg-4 mb-4">
-            <div class="guide-section">
-              <h3 class="h6 fw-semibold text-white mb-3">📅 Understanding Age Calculation</h3>
-              <p class="text-white small mb-2">Age is calculated using calendar-accurate logic to ensure precise
-                results:</p>
+              <h3 class="h6 fw-semibold text-white mb-3">⚡ Why Use This Calculator?</h3>
+              <p class="text-white small mb-2">Manual calculations can be time-consuming and prone to errors. This calculator helps you:</p>
               <ul class="text-white small">
-                <li><strong>Accurate Date Handling:</strong> Leap years and varying month lengths are fully considered
-                </li>
-                <li><strong>Multiple Output Formats:</strong> Results can be viewed in years, months, days, or total
-                  days</li>
-                <li><strong>Custom Date Selection:</strong> Calculate age on any past or future date</li>
-                <li><strong>Birthday Countdown:</strong> Instantly see how many days remain until the next birthday</li>
+                <li>• Save time</li>
+                <li>• Avoid calculation mistakes</li>
+                <li>• Get instant results</li>
+                <li>• Perform multiple calculations in one place</li>
+                <li>• Use on mobile, tablet, or desktop</li>
               </ul>
             </div>
           </div>
 
           <div class="col-12 col-md-6 col-lg-4 mb-4">
             <div class="guide-section">
-              <h3 class="h6 fw-semibold text-white mb-3">🎯 Where Age Calculators Are Used</h3>
-              <p class="text-white small mb-2">Age calculators are helpful in many situations:</p>
+              <h3 class="h6 fw-semibold text-white mb-3">🎂 1. Age Calculator</h3>
+              <p class="text-white small mb-2"><strong>What Does It Do?</strong><br>
+              The Age Calculator determines your exact age based on your date of birth.</p>
+              
+              <p class="text-white small mb-2"><strong>How to Use</strong></p>
+              <ol class="text-white small">
+                <li>Enter your Date of Birth</li>
+                <li>Select the current date (or leave default as today)</li>
+                <li>Click Calculate</li>
+              </ol>
+              
+              <p class="text-white small mb-2"><strong>What You Get</strong></p>
               <ul class="text-white small">
-                <li><strong>Personal Tracking:</strong> Know your exact age at any time</li>
-                <li><strong>Official Forms:</strong> Enter accurate age details for documents</li>
-                <li><strong>Future Planning:</strong> Determine age at a specific future date</li>
-                <li><strong>Historical Reference:</strong> Calculate age on previous dates</li>
+                <li>• Age in years, months, days</li>
+                <li>• Total age in days, hours, minutes, seconds</li>
+                <li>• Time until next birthday</li>
+              </ul>
+              
+              <p class="text-white small"><strong>Age Calculation Formula</strong><br>
+              Age = Current Date – Birth Date</p>
+            </div>
+          </div>
+
+          <div class="col-12 col-md-6 col-lg-4 mb-4">
+            <div class="guide-section">
+              <h3 class="h6 fw-semibold text-white mb-3">📏 2. Height Calculator</h3>
+              <p class="text-white small mb-2"><strong>What Does It Do?</strong><br>
+              The Height Calculator converts and calculates height between different units.</p>
+              
+              <p class="text-white small mb-2"><strong>Supported Units</strong></p>
+              <ul class="text-white small">
+                <li>• Feet & Inches</li>
+                <li>• Centimeters (cm)</li>
+                <li>• Meters (m)</li>
+              </ul>
+              
+              <p class="text-white small mb-2"><strong>Conversion Formulas</strong></p>
+              <ul class="text-white small">
+                <li>• Feet to Centimeters: Height (cm) = Feet × 30.48</li>
+                <li>• Inches to Centimeters: Height (cm) = Inches × 2.54</li>
+                <li>• Centimeters to Feet: Height (feet) = cm ÷ 30.48</li>
               </ul>
             </div>
           </div>
 
           <div class="col-12 col-md-6 col-lg-4 mb-4">
             <div class="guide-section">
-              <h3 class="h6 fw-semibold text-white mb-3">⏱️ About the Time Calculator</h3>
-              <p class="text-white small mb-2">The time calculator allows easy manipulation of time values:</p>
+              <h3 class="h6 fw-semibold text-white mb-3">⏰ 3. Time Calculator</h3>
+              <p class="text-white small mb-2"><strong>What Does It Do?</strong><br>
+              The Time Calculator helps you find the difference between two times or dates.</p>
+              
+              <p class="text-white small mb-2"><strong>Features</strong></p>
               <ul class="text-white small">
-                <li><strong>Add Durations:</strong> Combine hours, minutes, and seconds</li>
-                <li><strong>Subtract Time:</strong> Find the difference between two time values</li>
-                <li><strong>Flexible Entry:</strong> Input time in any format</li>
-                <li><strong>Automatic Adjustment:</strong> Results are normalized automatically</li>
+                <li>• Calculate time between two dates</li>
+                <li>• Add or subtract time</li>
+                <li>• Convert time units</li>
+              </ul>
+              
+              <p class="text-white small mb-2"><strong>How to Use</strong></p>
+              <ol class="text-white small">
+                <li>Enter Start Date & Time</li>
+                <li>Enter End Date & Time</li>
+                <li>Click Calculate</li>
+              </ol>
+              
+              <p class="text-white small"><strong>Time Calculation Formula</strong><br>
+              Time Difference = End Time – Start Time</p>
+            </div>
+          </div>
+
+          <div class="col-12 col-md-6 col-lg-4 mb-4">
+            <div class="guide-section">
+              <h3 class="h6 fw-semibold text-white mb-3">🔄 4. Time Unit Converter</h3>
+              <p class="text-white small mb-2"><strong>What Does It Do?</strong><br>
+              Converts time between different units.</p>
+              
+              <p class="text-white small mb-2"><strong>Supported Conversions</strong></p>
+              <ul class="text-white small">
+                <li>• Seconds ↔ Minutes</li>
+                <li>• Minutes ↔ Hours</li>
+                <li>• Hours ↔ Days</li>
+                <li>• Days ↔ Weeks</li>
+                <li>• Years ↔ Months</li>
+              </ul>
+              
+              <p class="text-white small mb-2"><strong>Common Formulas</strong></p>
+              <ul class="text-white small">
+                <li>• 1 Minute = 60 Seconds</li>
+                <li>• 1 Hour = 60 Minutes</li>
+                <li>• 1 Day = 24 Hours</li>
+                <li>• 1 Year ≈ 365 Days</li>
               </ul>
             </div>
           </div>
 
           <div class="col-12 col-md-6 col-lg-4 mb-4">
             <div class="guide-section">
-              <h3 class="h6 fw-semibold text-white mb-3">🌟 Human Life Stages</h3>
-              <p class="text-white small mb-2">Age calculators are often used to classify life stages:</p>
+              <h3 class="h6 fw-semibold text-white mb-3">✅ Benefits of Using Our Calculator</h3>
               <ul class="text-white small">
-                <li><strong>Infant:</strong> Birth to 1 year</li>
-                <li><strong>Toddler:</strong> 1 to 3 years</li>
-                <li><strong>Child:</strong> 3 to 12 years</li>
-                <li><strong>Teenager:</strong> 13 to 19 years</li>
-                <li><strong>Adult:</strong> 20 to 64 years</li>
-                <li><strong>Senior:</strong> 65 years and above</li>
+                <li>• Fast and accurate results</li>
+                <li>• Easy to use interface</li>
+                <li>• Multiple calculations in one tool</li>
+                <li>• Mobile-friendly design</li>
+                <li>• Free to use</li>
               </ul>
             </div>
           </div>
 
           <div class="col-12 col-md-6 col-lg-4 mb-4">
             <div class="guide-section">
-              <h3 class="h6 fw-semibold text-white mb-3">🎓 Educational Age Groups</h3>
-              <p class="text-white small mb-2">Education systems commonly use age ranges:</p>
+              <h3 class="h6 fw-semibold text-white mb-3">👥 Who Can Use This Tool?</h3>
+              <p class="text-white small">This calculator is perfect for students, teachers, parents, engineers, office workers, and travelers.</p>
+            </div>
+          </div>
+
+          <div class="col-12 col-md-6 col-lg-4 mb-4">
+            <div class="guide-section">
+              <h3 class="h6 fw-semibold text-white mb-3">🌟 Real-Life Applications</h3>
+              <p class="text-white small mb-2"><strong>1. For Students</strong><br>
+              Calculate age for school forms and convert height for projects.</p>
+              
+              <p class="text-white small mb-2"><strong>2. For Professionals</strong><br>
+              Track work hours and deadlines easily.</p>
+              
+              <p class="text-white small mb-2"><strong>3. For Parents</strong><br>
+              Monitor children's growth and milestones.</p>
+              
+              <p class="text-white small"><strong>4. For Travelers</strong><br>
+              Convert time zones and calculate trip durations.</p>
+            </div>
+          </div>
+
+          <div class="col-12 col-md-6 col-lg-4 mb-4">
+            <div class="guide-section">
+              <h3 class="h6 fw-semibold text-white mb-3">💡 Tips for Accurate Results</h3>
               <ul class="text-white small">
-                <li><strong>Preschool:</strong> 3 to 5 years</li>
-                <li><strong>Primary School:</strong> 6 to 11 years</li>
-                <li><strong>Middle School:</strong> 12 to 14 years</li>
-                <li><strong>High School:</strong> 15 to 18 years</li>
-                <li><strong>College Level:</strong> 18 to 22 years</li>
-                <li><strong>Postgraduate:</strong> 22 years and above</li>
+                <li>• Always double-check input values</li>
+                <li>• Use correct units</li>
+                <li>• Ensure correct date format</li>
+                <li>• Verify time AM/PM settings</li>
               </ul>
             </div>
           </div>
 
           <div class="col-12 col-md-6 col-lg-4 mb-4">
             <div class="guide-section">
-              <h3 class="h6 fw-semibold text-white mb-3">⏰ Common Time Facts</h3>
-              <p class="text-white small mb-2">Basic time conversions help with planning and calculations:</p>
-              <ul class="text-white small">
-                <li>1 year = 365 days (366 during leap years)</li>
-                <li>1 month ≈ 30.44 days on average</li>
-                <li>1 week = 7 days</li>
-                <li>1 day = 24 hours</li>
-              </ul>
+              <h3 class="h6 fw-semibold text-white mb-3">❓ Frequently Asked Questions (FAQs)</h3>
+              <p class="text-white small mb-2"><strong>1. How accurate is the age calculator?</strong><br>
+              It calculates age based on exact dates, including leap years.</p>
+              
+              <p class="text-white small mb-2"><strong>2. Can I calculate future age?</strong><br>
+              Yes, you can enter a future date to calculate age at that time.</p>
+              
+              <p class="text-white small mb-2"><strong>3. Does the height calculator support all units?</strong><br>
+              Yes, it supports feet, inches, centimeters, and meters.</p>
+              
+              <p class="text-white small mb-2"><strong>4. Can I calculate time differences across days?</strong><br>
+              Yes, it works for hours, days, months, and years.</p>
+              
+              <p class="text-white small"><strong>5. Is this calculator free?</strong><br>
+              Yes, it is completely free to use.</p>
             </div>
           </div>
 
           <div class="col-12 col-md-6 col-lg-4 mb-4">
             <div class="guide-section">
-              <h3 class="h6 fw-semibold text-white mb-3">🎉 Notable Birthday Milestones</h3>
-              <p class="text-white small mb-2">Certain birthdays are widely celebrated:</p>
-              <ul class="text-white small">
-                <li><strong>16th birthday:</strong> Transition toward adulthood</li>
-                <li><strong>21st birthday:</strong> Legal milestone in many regions</li>
-                <li><strong>30th birthday:</strong> Start of a new decade</li>
-                <li><strong>50th birthday:</strong> Often called a golden milestone</li>
-                <li><strong>100th birthday:</strong> Rare centennial celebration</li>
-              </ul>
+              <h3 class="h6 fw-semibold text-white mb-3">🎯 Why Choose Our Calculator?</h3>
+              <p class="text-white small">Unlike many basic tools, our calculator combines age, height, and time calculations into one easy-to-use platform, saving you time and effort. These tools help you perform all types of calculations in one place.</p>
             </div>
           </div>
 
           <div class="col-12 col-md-6 col-lg-4 mb-4">
             <div class="guide-section">
-              <h3 class="h6 fw-semibold text-white mb-3">📏 About Height Conversion</h3>
-              <p class="text-white small mb-2">Height calculators provide fast and accurate unit conversions:</p>
-              <ul class="text-white small">
-                <li><strong>Multiple Unit Support:</strong> Feet, inches, centimeters, and meters</li>
-                <li><strong>Instant Output:</strong> Results update as values are entered</li>
-                <li><strong>Precise Math:</strong> Accurate conversion formulas are applied</li>
-                <li><strong>Global Compatibility:</strong> Works with both metric and imperial systems</li>
-              </ul>
-            </div>
-          </div>
-
-          <div class="col-12 col-md-6 col-lg-4 mb-4">
-            <div class="guide-section">
-              <h3 class="h6 fw-semibold text-white mb-3">🌍 Height Measurement Standards</h3>
-              <p class="text-white small mb-2">Different regions use different systems:</p>
-              <ul class="text-white small">
-                <li><strong>Imperial Units:</strong> Common in the US and UK (feet and inches)</li>
-                <li><strong>Metric Units:</strong> Used globally (centimeters and meters)</li>
-                <li><strong>Medical Records:</strong> Typically recorded in centimeters</li>
-                <li><strong>Sports Measurements:</strong> Vary by discipline</li>
-              </ul>
-            </div>
-          </div>
-
-          <div class="col-12 col-md-6 col-lg-4 mb-4">
-            <div class="guide-section">
-              <h3 class="h6 fw-semibold text-white mb-3">📐 Tips for Measuring Height Accurately</h3>
-              <p class="text-white small mb-2">Follow these best practices for correct height readings:</p>
-              <ul class="text-white small">
-                <li>Stand upright against a flat surface</li>
-                <li>Measure without shoes</li>
-                <li>Height can change by up to 2 cm between morning and evening</li>
-                <li>Use professional tools like a stadiometer if available</li>
-                <li>Track children's growth regularly for accuracy</li>
-              </ul>
+              <h3 class="h6 fw-semibold text-white mb-3"><strong>🎉 Conclusion</strong></h3>
+              <p class="text-white small"><strong>The Age, Height & Time Calculator is a powerful, all-in-one tool that simplifies everyday calculations. Whether you're tracking age, converting height, or calculating time, this tool gives you accurate results instantly. Start using it today to save time and improve accuracy in your daily tasks.</strong></p>
             </div>
           </div>
         </div>

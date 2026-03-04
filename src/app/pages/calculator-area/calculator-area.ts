@@ -39,6 +39,9 @@ export interface CalculationResult {
 export class CalculatorArea {
   selectedShape: string = 'rectangle';
   
+  // FAQ accordion state
+  faqOpen: boolean[] = [false, false, false, false, false, false];
+  
   // Length measurements
   lengthFeet: number = 23;
   lengthInches: number = 32;
@@ -286,5 +289,9 @@ export class CalculatorArea {
 
   getCostUnitLabel(unitValue: string): string {
     return this.costUnits.find(u => u.value === unitValue)?.label || '';
+  }
+
+  toggleFaq(index: number) {
+    this.faqOpen[index] = !this.faqOpen[index];
   }
 }

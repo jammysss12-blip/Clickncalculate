@@ -312,17 +312,21 @@
           <span class="fs-5 symbol-dots">..</span>
         </div>
 
-        <h2 class="display-6 fw-bold mb-4 text-dark font-serif">Loan & EMI<br>Calculator</h2>
+        <h2 class="display-6 fw-bold mb-4 text-dark font-serif">Loan EMI Calculator –<br>Calculate Monthly EMI, Interest & Total Payment</h2>
 
         <p class="text-secondary mb-4 small">
-          The <strong>Loan & EMI Calculator</strong> enables you to calculate your monthly loan repayments by
-          considering the loan
-          amount, interest rate, and repayment period. EMI (Equated Monthly Installment) assists borrowers in managing
-          their repayment plans efficiently. This tool allows users to evaluate various loan options and grasp the
-          effects of interest rates and loan tenure on their monthly payments. It is beneficial for various loan types,
-          including home, auto, and personal loans. The calculator delivers immediate results and is compatible with all
-          devices. The figures provided are approximations and may differ based on lender policies. It is essential to
-          verify the final loan specifics with your financial institution.
+          <strong>Use our free Loan EMI Calculator to calculate monthly EMI, interest, and total loan repayment. Fast, accurate, and easy to use.</strong><br><br>
+          
+          <strong>Introduction</strong><br>
+          Taking a loan is a big financial decision, whether it is for buying a home, car, or funding personal needs. Before applying for any loan, it is important to understand how much you will pay every month and how much interest you will be charged.<br><br>
+          
+          Our Loan & EMI Calculator helps you calculate your monthly EMI (Equated Monthly Installment), total interest, and total repayment amount instantly. This allows you to plan your finances better and choose the right loan. Instead of doing complicated manual calculations, this tool provides quick and accurate results in seconds.<br><br>
+          
+          <strong>What is EMI?</strong><br>
+          EMI stands for Equated Monthly Installment. It is the fixed amount you pay every month to repay your loan. EMI includes Principal amount (loan amount) and Interest amount. Each EMI payment reduces your loan balance over time.<br><br>
+          
+          <strong>Why Use a Loan EMI Calculator?</strong><br>
+          Calculating EMI manually is difficult and prone to errors. Using this calculator helps you get instant results, plan your monthly budget, compare different loan options, avoid financial surprises, and understand total interest cost.
         </p>
 
         <!-- <p class="text-secondary mb-4 small">
@@ -341,6 +345,8 @@
             <a routerLink="/unit-converter" class="btn-related">Unit Calculator</a>
             <a routerLink="/area-conversion" class="btn-related">Area Conversion</a>
             <a routerLink="/grade-percentage-calculator" class="btn-related">Grade and Percentage</a>
+            <a routerLink="/volume-calculator" class="btn-related">Volume Calculator</a>
+            <a routerLink="/numbers-to-words" class="btn-related">Text Tools (Word Counter, Case Converte)</a>
           </div>
         </div>
 
@@ -352,410 +358,246 @@
     </div>
   </div>
 
-  <div class="row justify-content-center mt-4">
-    <!-- Information Section -->
-    <div class="col-12">
-      <!-- Amortized Loan Quick Reference -->
-      <div class="functions-section p-4 rounded-3 mb-4" *ngIf="activeTab === 'amortized'">
-        <h2 class="fw-semibold mb-3 text-dark">💰 Amortized Loan – Quick Reference</h2>
-        <h3 class="text-dark mt-3 mb-3">How Amortization Works</h3>
-        <div class="table-responsive small">
-          <table class="table table-sm align-middle mb-3">
-            <thead>
-              <tr>
-                <th>Term</th>
-                <th>Description</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>Principal</td>
-                <td>Original loan amount</td>
-              </tr>
-              <tr>
-                <td>Interest Rate</td>
-                <td>Annual percentage rate (APR)</td>
-              </tr>
-              <tr>
-                <td>Term</td>
-                <td>Loan duration in years</td>
-              </tr>
-              <tr>
-                <td>Monthly Payment</td>
-                <td>Fixed payment amount</td>
-              </tr>
-              <tr>
-                <td>Amortization</td>
-                <td>Gradual repayment schedule</td>
-              </tr>
-              <tr>
-                <td>Equity</td>
-                <td>Portion of property owned</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-
-        <div class="border-top border-secondary my-4"></div>
-        <h3 class="text-dark mb-3">Key Benefits</h3>
-        <div class="table-responsive small">
-          <table class="table table-sm align-middle">
-            <tbody>
-              <tr>
-                <td class="text-center" style="width: 30px;">✅</td>
-                <td>Fixed monthly payments</td>
-              </tr>
-              <tr>
-                <td class="text-center">✅</td>
-                <td>Builds equity over time</td>
-              </tr>
-              <tr>
-                <td class="text-center">✅</td>
-                <td>Interest may be tax-deductible</td>
-              </tr>
-              <tr>
-                <td class="text-center">✅</td>
-                <td>Fixed rate options available</td>
-              </tr>
-              <tr>
-                <td class="text-center">✅</td>
-                <td>Clear payoff date</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-
-      <!-- Deferred Payment Quick Reference -->
-      <div class="functions-section p-4 rounded-3 mb-4" *ngIf="activeTab === 'deferred'">
-        <h2 class="fw-semibold mb-3 text-dark">⏳ Deferred Payment – Quick Reference</h2>
-        <h3 class="text-dark mt-3 mb-3">How Deferred Payments Work</h3>
-        <div class="table-responsive small">
-          <table class="table table-sm align-middle mb-3">
-            <thead>
-              <tr>
-                <th>Term</th>
-                <th>Description</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>Deferment Period</td>
-                <td>Initial period with no payments</td>
-              </tr>
-              <tr>
-                <td>Accrued Interest</td>
-                <td>Interest accumulates during deferment</td>
-              </tr>
-              <tr>
-                <td>Capitalization</td>
-                <td>Interest added to principal</td>
-              </tr>
-              <tr>
-                <td>Repayment Term</td>
-                <td>Duration after deferment</td>
-              </tr>
-              <tr>
-                <td>Total Cost</td>
-                <td>Principal + Accrued Interest</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-
-        <div class="border-top border-secondary my-4"></div>
-        <h3 class="text-dark mb-3">When to Use</h3>
-        <div class="table-responsive small">
-          <table class="table table-sm align-middle">
-            <tbody>
-              <tr>
-                <td class="text-nowrap">Early Years</td>
-                <td>Higher interest, lower principal</td>
-              </tr>
-              <tr>
-                <td>Later Years</td>
-                <td>Lower interest, higher principal</td>
-              </tr>
-              <tr>
-                <td>Total Interest</td>
-                <td>Higher than simple interest</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-
-        <div class="border-top border-secondary my-4"></div>
-        <h3 class="text-dark mb-3">Common Use Cases</h3>
-        <div class="table-responsive small">
-          <table class="table table-sm align-middle">
-            <tbody>
-              <tr>
-                <td class="text-nowrap">Student Loans</td>
-                <td>During school or residency</td>
-              </tr>
-              <tr>
-                <td>Business Start-up</td>
-                <td>Initial financing for new ventures</td>
-              </tr>
-              <tr>
-                <td>Construction Loans</td>
-                <td>Interest-only payments during construction</td>
-              </tr>
-              <tr>
-                <td>Medical Residency</td>
-                <td>Financing during medical training</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-
-      <!-- Bond Calculator Quick Reference -->
-      <div class="functions-section p-4 rounded-3 mb-4" *ngIf="activeTab === 'bond'">
-        <h2 class="fw-semibold mb-3 text-dark">📈 Bond Calculator – Quick Reference</h2>
-
-        <h3 class="text-dark mt-3 mb-3">Key Bond Terms</h3>
-        <div class="table-responsive small">
-          <table class="table table-sm align-middle mb-3">
-            <thead>
-              <tr>
-                <th>Term</th>
-                <th>Definition</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>Face Value</td>
-                <td>Principal amount at maturity</td>
-              </tr>
-              <tr>
-                <td>Coupon Rate</td>
-                <td>Annual interest payment</td>
-              </tr>
-              <tr>
-                <td>Yield to Maturity</td>
-                <td>Total return if held to maturity</td>
-              </tr>
-              <tr>
-                <td>Maturity Date</td>
-                <td>Bond's expiration date</td>
-              </tr>
-              <tr>
-                <td>Current Yield</td>
-                <td>Annual income / Current price</td>
-              </tr>
-              <tr>
-                <td>Duration</td>
-                <td>Price sensitivity to rate changes</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-
-        <h3 class="text-dark mt-4 mb-2">Bond Types</h3>
-        <div class="table-responsive small">
-          <table class="table table-sm align-middle mb-3">
-            <thead>
-              <tr>
-                <th>Type</th>
-                <th>Features</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>Government</td>
-                <td>Low risk, tax benefits</td>
-              </tr>
-              <tr>
-                <td>Corporate</td>
-                <td>Higher yield, higher risk</td>
-              </tr>
-              <tr>
-                <td>Municipal</td>
-                <td>Tax-free interest, local projects</td>
-              </tr>
-              <tr>
-                <td>Zero-Coupon</td>
-                <td>No periodic interest payments</td>
-              </tr>
-              <tr>
-                <td>Convertible</td>
-                <td>Can convert to stock</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-
-        <h3 class="text-dark mt-4 mb-2">Risk Factors</h3>
-        <div class="table-responsive small">
-          <table class="table table-sm align-middle">
-            <thead>
-              <tr>
-                <th>Risk</th>
-                <th>Impact</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>Interest Rate</td>
-                <td>Prices fall when rates rise</td>
-              </tr>
-              <tr>
-                <td>Credit/Default</td>
-                <td>Issuer may not pay</td>
-              </tr>
-              <tr>
-                <td>Inflation</td>
-                <td>Reduces purchasing power</td>
-              </tr>
-              <tr>
-                <td>Liquidity</td>
-                <td>May be hard to sell</td>
-              </tr>
-              <tr>
-                <td>Call Risk</td>
-                <td>Issuer may redeem early</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </div>
-  </div>
-
   <div class="row mt-5">
     <div class="col-12">
       <div class="comprehensive-guide">
-        <h2 class="fw-bold mb-4 text-dark text-center">📚 Loan Calculator Guide</h2>
+        <h2 class="h4 fw-bold mb-4 text-white text-center">📚 Loan & EMI Calculator – Complete Guide</h2>
 
         <div class="row">
           <div class="col-12 col-md-6 col-lg-4 mb-4">
             <div class="guide-section">
-              <h3 class="fw-semibold text-dark mb-3">💰 About Amortized Loans</h3>
-              <ul class="text-dark small">
-                <li><strong>Fixed Payments:</strong> Equal monthly installments</li>
-                <li><strong>Interest Front-loaded:</strong> Early payments are mostly interest</li>
-                <li><strong>Equity Building:</strong> Principal reduces with each payment</li>
-                <li><strong>Amortization Schedule:</strong> Detailed payment breakdown</li>
-                <li><strong>Prepayment Options:</strong> May reduce total interest</li>
+              <h3 class="h6 fw-semibold text-white mb-3">� How to Use the EMI Calculator</h3>
+              <p class="text-white small mb-2">Using this tool is simple:</p>
+              <ol class="text-white small">
+                <li>Enter the Loan Amount</li>
+                <li>Enter the Interest Rate (%)</li>
+                <li>Enter the Loan Tenure (months/years)</li>
+                <li>Click Calculate</li>
+              </ol>
+              <p class="text-white small">You will get: Monthly EMI, Total Interest, Total Payment</p>
+            </div>
+          </div>
+
+          <div class="col-12 col-md-6 col-lg-4 mb-4">
+            <div class="guide-section">
+              <h3 class="h6 fw-semibold text-white mb-3">🧮 EMI Formula</h3>
+              <p class="text-white small mb-2">The EMI is calculated using the following formula:</p>
+              <p class="text-white small mb-2"><strong>EMI = [P × R × (1+R)^N] / [(1+R)^N – 1]</strong></p>
+              <p class="text-white small mb-2"><strong>Where:</strong></p>
+              <ul class="text-white small">
+                <li>• P = Loan Amount</li>
+                <li>• R = Monthly Interest Rate (Annual Rate ÷ 12 ÷ 100)</li>
+                <li>• N = Number of Months</li>
               </ul>
             </div>
           </div>
 
           <div class="col-12 col-md-6 col-lg-4 mb-4">
             <div class="guide-section">
-              <h3 class="fw-semibold text-dark mb-3">🏠 Common Loan Types</h3>
-              <ul class="text-dark small">
-                <li><strong>Mortgages:</strong> 15-30 year terms, secured by property</li>
-                <li><strong>Auto Loans:</strong> 3-7 year terms, secured by vehicle</li>
-                <li><strong>Personal Loans:</strong> 1-7 year terms, unsecured</li>
-                <li><strong>Student Loans:</strong> 10-25 year terms, education financing</li>
+              <h3 class="h6 fw-semibold text-white mb-3">📊 Example Calculation</h3>
+              <p class="text-white small mb-2">Let's say:</p>
+              <ul class="text-white small">
+                <li>• Loan Amount = 100,000</li>
+                <li>• Interest Rate = 10% per year</li>
+                <li>• Tenure = 12 months</li>
+              </ul>
+              <p class="text-white small"><strong>Results:</strong><br>
+              Monthly EMI ≈ 8,791<br>
+              Total Payment ≈ 105,492<br>
+              Total Interest ≈ 5,492</p>
+            </div>
+          </div>
+
+          <div class="col-12 col-md-6 col-lg-4 mb-4">
+            <div class="guide-section">
+              <h3 class="h6 fw-semibold text-white mb-3">🏠 Types of Loans You Can Calculate</h3>
+              <p class="text-white small mb-2">This calculator works for different types of loans:</p>
+              <p class="text-white small mb-2"><strong>1. Home Loan</strong><br>
+              Used to purchase property or real estate.</p>
+              
+              <p class="text-white small mb-2"><strong>2. Car Loan</strong><br>
+              Used to buy a vehicle.</p>
+              
+              <p class="text-white small"><strong>3. Personal Loan</strong><br>
+              Used for personal expenses.<br><strong>4. Education Loan</strong><br>
+              Used for studies and tuition fees.</p>
+            </div>
+          </div>
+
+          <div class="col-12 col-md-6 col-lg-4 mb-4">
+            <div class="guide-section">
+              <h3 class="h6 fw-semibold text-white mb-3">🔑 Key Factors Affecting EMI</h3>
+              <p class="text-white small mb-2"><strong>1. Loan Amount</strong><br>
+              Higher loan amount = higher EMI</p>
+              
+              <p class="text-white small mb-2"><strong>2. Interest Rate</strong><br>
+              Higher interest = higher EMI</p>
+              
+              <p class="text-white small"><strong>3. Loan Tenure</strong><br>
+              Longer tenure = lower EMI but more interest<br>
+              Shorter tenure = higher EMI but less interest</p>
+            </div>
+          </div>
+
+          <div class="col-12 col-md-6 col-lg-4 mb-4">
+            <div class="guide-section">
+              <h3 class="h6 fw-semibold text-white mb-3">� EMI Comparison Table</h3>
+              <div class="table-responsive small">
+                <table class="table table-dark table-sm">
+                  <thead>
+                    <tr>
+                      <th>Loan Amount</th>
+                      <th>Interest Rate</th>
+                      <th>Tenure</th>
+                      <th>EMI</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>50,000</td>
+                      <td>10%</td>
+                      <td>12 months</td>
+                      <td>4,396</td>
+                    </tr>
+                    <tr>
+                      <td>100,000</td>
+                      <td>10%</td>
+                      <td>12 months</td>
+                      <td>8,791</td>
+                    </tr>
+                    <tr>
+                      <td>200,000</td>
+                      <td>10%</td>
+                      <td>24 months</td>
+                      <td>9,229</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-12 col-md-6 col-lg-4 mb-4">
+            <div class="guide-section">
+              <h3 class="h6 fw-semibold text-white mb-3">✅ Benefits of Using This Calculator</h3>
+              <ul class="text-white small">
+                <li>• Instant results</li>
+                <li>• Accurate calculations</li>
+                <li>• Easy to use</li>
+                <li>• Financial planning</li>
+                <li>• Free access</li>
               </ul>
             </div>
           </div>
 
           <div class="col-12 col-md-6 col-lg-4 mb-4">
             <div class="guide-section">
-              <h3 class="fw-semibold text-dark mb-3">⏳ About Deferred Payments</h3>
-              <ul class="text-dark small">
-                <li><strong>Grace Period:</strong> No payments during deferment</li>
-                <li><strong>Interest Accrual:</strong> Interest continues to accumulate</li>
-                <li><strong>Capitalization:</strong> Interest may be added to principal</li>
-                <li><strong>Extended Terms:</strong> Longer repayment after deferment</li>
+              <h3 class="h6 fw-semibold text-white mb-3">💡 Tips Before Taking a Loan</h3>
+              <ul class="text-white small">
+                <li>• Compare interest rates from different banks</li>
+                <li>• Choose affordable EMI</li>
+                <li>• Avoid long tenure unless needed</li>
+                <li>• Check hidden charges</li>
+                <li>• Maintain good credit score</li>
               </ul>
             </div>
           </div>
 
           <div class="col-12 col-md-6 col-lg-4 mb-4">
             <div class="guide-section">
-              <h3 class="fw-semibold text-dark mb-3">📊 Loan Impact</h3>
-              <ul class="text-dark small">
-                <li><strong>Credit Score:</strong> Affects interest rates</li>
-                <li><strong>Debt-to-Income:</strong> Key approval factor</li>
-                <li><strong>Loan-to-Value:</strong> Collateral requirements</li>
-                <li><strong>Payment History:</strong> Affects future credit</li>
-                <li><strong>Prepayment Penalties:</strong> Check terms</li>
+              <h3 class="h6 fw-semibold text-white mb-3">⚠️ Common Mistakes to Avoid</h3>
+              <ul class="text-white small">
+                <li>• Ignoring interest cost</li>
+                <li>• Choosing very long tenure</li>
+                <li>• Not comparing lenders</li>
+                <li>• Taking higher loan than required</li>
               </ul>
             </div>
           </div>
 
           <div class="col-12 col-md-6 col-lg-4 mb-4">
             <div class="guide-section">
-              <h3 class="fw-semibold text-dark mb-3">📈 Interest Rate Factors</h3>
-              <ul class="text-dark small">
-                <li><strong>Credit Score:</strong> Higher score = lower rates</li>
-                <li><strong>Loan Term:</strong> Shorter terms = lower rates</li>
-                <li><strong>Loan Amount:</strong> Larger loans may have better rates</li>
-                <li><strong>Down Payment:</strong> More down = better rates</li>
-                <li><strong>Market Conditions:</strong> Follows Fed rates</li>
+              <h3 class="h6 fw-semibold text-white mb-3">📅 What is an Amortization Schedule?</h3>
+              <p class="text-white small mb-2">An amortization schedule shows how your EMI is split into:</p>
+              <ul class="text-white small">
+                <li>• Principal</li>
+                <li>• Interest</li>
+              </ul>
+              <p class="text-white small">At the beginning, you pay more interest. Over time, the principal portion increases.</p>
+            </div>
+          </div>
+
+          <div class="col-12 col-md-6 col-lg-4 mb-4">
+            <div class="guide-section">
+              <h3 class="h6 fw-semibold text-white mb-3">🌍 Real-Life Use Cases</h3>
+              <p class="text-white small mb-2"><strong>1. Budget Planning</strong><br>
+              Know how much EMI you can afford.</p>
+              
+              <p class="text-white small mb-2"><strong>2. Loan Comparison</strong><br>
+              Compare multiple loan options.</p>
+              
+              <p class="text-white small"><strong>3. Financial Decisions</strong><br>
+              Plan your expenses better.</p>
+            </div>
+          </div>
+
+          <div class="col-12 col-md-6 col-lg-4 mb-4">
+            <div class="guide-section">
+              <h3 class="h6 fw-semibold text-white mb-3">❓ FAQs</h3>
+              <p class="text-white small mb-2"><strong>1. What is EMI?</strong><br>
+              EMI is the fixed monthly payment for your loan.</p>
+              
+              <p class="text-white small mb-2"><strong>2. How is EMI calculated?</strong><br>
+              Using loan amount, interest rate, and tenure.</p>
+              
+              <p class="text-white small mb-2"><strong>3. Can I reduce my EMI?</strong><br>
+              Yes, by increasing tenure or choosing a lower interest rate.</p>
+              
+              <p class="text-white small"><strong>4. What happens if I miss EMI?</strong><br>
+              You may be charged penalties and it can affect your credit score.<br><strong>5. Is this calculator accurate?</strong><br>
+              Yes, it uses standard EMI formulas.</p>
+            </div>
+          </div>
+
+          <div class="col-12 col-md-6 col-lg-4 mb-4">
+            <div class="guide-section">
+              <h3 class="h6 fw-semibold text-white mb-3">🔗 Internal Linking</h3>
+              <p class="text-white small mb-2"><strong>Use other calculators:</strong></p>
+              <ul class="text-white small">
+                <li>• Unit Converter</li>
+                <li>• Grade & Percentage Calculator</li>
+                <li>• Area Calculator</li>
+                <li>• Volume Calculator</li>
+                <li>• Text Tools (Word Counter, Case Converter)</li>
               </ul>
             </div>
           </div>
 
           <div class="col-12 col-md-6 col-lg-4 mb-4">
             <div class="guide-section">
-              <h3 class="fw-semibold text-dark mb-3">💳 Loan Costs</h3>
-              <ul class="text-dark small">
-                <li><strong>APR:</strong> Annual Percentage Rate</li>
-                <li><strong>Origination Fees:</strong> 0.5-1% of loan amount</li>
-                <li><strong>Prepayment Penalties:</strong> Check terms</li>
-                <li><strong>Late Fees:</strong> Typically 3-5% of payment</li>
-              </ul>
+              <h3 class="h6 fw-semibold text-white mb-3">🎯 Conclusion</h3>
+              <p class="text-white small">A Loan & EMI Calculator is an essential tool for anyone planning to take a loan. It helps you understand your financial commitments and make informed decisions.</p>
+              <p class="text-white small">By using this tool, you can calculate your EMI instantly, compare options, and choose the best loan for your needs.</p>
             </div>
           </div>
-
+<!-- 
           <div class="col-12 col-md-6 col-lg-4 mb-4">
             <div class="guide-section">
-              <h3 class="fw-semibold text-dark mb-3">📅 Loan Terms</h3>
-              <ul class="text-dark small">
-                <li><strong>Short-term:</strong> 1-3 years</li>
-                <li><strong>Medium-term:</strong> 3-7 years</li>
-                <li><strong>Long-term:</strong> 10-30+ years</li>
-                <li><strong>Balloon:</strong> Large final payment</li>
-              </ul>
-            </div>
-          </div>
-
-          <div class="col-12 col-md-6 col-lg-4 mb-4">
-            <div class="guide-section">
-              <h3 class="fw-semibold text-dark mb-3">📈 About Bond Yields</h3>
-              <ul class="text-dark small">
-                <li><strong>Current Yield:</strong> Annual income / Market price</li>
-                <li><strong>Yield to Maturity:</strong> Total return if held to maturity</li>
-                <li><strong>Yield to Call:</strong> If called by issuer</li>
-                <li><strong>Yield to Worst:</strong> Worst-case scenario return</li>
-              </ul>
-            </div>
-          </div>
-
-          <div class="col-12 col-md-6 col-lg-4 mb-4">
-            <div class="guide-section">
-              <h3 class="fw-semibold text-dark mb-3">🌐 Bond Markets</h3>
-              <ul class="text-dark small">
-                <li><strong>Government:</strong> Treasury bonds, bills, notes</li>
-                <li><strong>Corporate:</strong> Investment grade to junk</li>
-                <li><strong>Municipal:</strong> Tax-exempt, local projects</li>
-                <li><strong>International:</strong> Sovereign and corporate</li>
-              </ul>
-            </div>
-          </div>
-
-          <div class="col-12 col-md-6 col-lg-4 mb-4">
-            <div class="guide-section">
-              <h3 class="fw-semibold text-dark mb-3">📊 Bond Strategies</h3>
-              <ul class="text-dark small">
-                <li><strong>Laddering:</strong> Stagger maturities</li>
-                <li><strong>Barbell:</strong> Short and long-term mix</li>
-                <li><strong>Bullet:</strong> All bonds mature same year</li>
-                <li><strong>Active vs Passive:</strong> Managed or index funds</li>
-                <li><strong>Tax-Loss Harvesting:</strong> Offset capital gains</li>
-              </ul>
+              <h3 class="h6 fw-semibold text-white mb-3">🔍 SEO Meta Information</h3>
+              <p class="text-white small mb-2"><strong>Title:</strong><br>
+              Loan EMI Calculator – Calculate Monthly EMI, Interest & Total Payment</p>
+              
+              <p class="text-white small mb-2"><strong>Description:</strong><br>
+              Use our free Loan EMI Calculator to calculate monthly EMI, interest, and total loan repayment. Fast, accurate, and easy to use.</p>
+              
+              <p class="text-white small"><strong>Keywords:</strong><br>
+              loan EMI calculator, EMI calculator, loan calculator, monthly EMI, interest calculator, loan repayment calculator</p>
             </div>
           </div>
         </div>
       </div>
     </div>
   </div>
-</div>
+</div> -->
 
 <app-footer></app-footer>

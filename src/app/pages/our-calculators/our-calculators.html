@@ -1,0 +1,456 @@
+<app-header></app-header>
+
+<div class="calc-page container py-4 text-light">
+  <div class="row">
+    <!-- Calculator Section -->
+    <div class="col-12 col-md-12 col-lg-6 mb-4">
+      <h1 class="h4 fw-bold mb-2 text-info text-center">🧮 Basic & Scientific Calculator</h1>
+      <div class="calculator-shell shadow-lg rounded-4 p-3 mb-4 mx-auto">
+        <!-- Tab Navigation -->
+        <ul class="nav nav-tabs nav-fill mb-3" role="tablist">
+          <li class="nav-item" role="presentation">
+            <button class="nav-link" [class.active]="activeTab === 'basic'" (click)="activeTab = 'basic'" type="button">
+              🧮 Basic
+            </button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button class="nav-link" [class.active]="activeTab === 'scientific'" (click)="activeTab = 'scientific'"
+              type="button">
+              🔬 Scientific
+            </button>
+          </li>
+        </ul>
+
+        <!-- Basic Calculator Tab -->
+        <div *ngIf="activeTab === 'basic'">
+          <div class="screen mb-2">{{ displayValue }}</div>
+          <div class="keypad">
+            <div class="row g-1">
+              <div class="col-3"><button class="btn btn-secondary w-100" (click)="memoryClear()">mc</button></div>
+              <div class="col-3"><button class="btn btn-secondary w-100" (click)="memoryRecall()">mr</button></div>
+              <div class="col-3"><button class="btn btn-secondary w-100" (click)="memorySubtract()">m−</button></div>
+              <div class="col-3"><button class="btn btn-secondary w-100" (click)="memoryAdd()">m+</button></div>
+
+              <div class="col-3"><button class="btn btn-secondary w-100" (click)="allClear()">AC</button></div>
+              <div class="col-3"><button class="btn btn-outline-info w-100" (click)="sqrt()">√x</button></div>
+              <div class="col-3"><button class="btn btn-outline-info w-100" (click)="percent()">%</button></div>
+              <div class="col-3"><button class="btn btn-info w-100" (click)="setOperator('div')">÷</button></div>
+
+              <div class="col-3"><button class="btn btn-dark w-100" (click)="pressDigit('7')">7</button></div>
+              <div class="col-3"><button class="btn btn-dark w-100" (click)="pressDigit('8')">8</button></div>
+              <div class="col-3"><button class="btn btn-dark w-100" (click)="pressDigit('9')">9</button></div>
+              <div class="col-3"><button class="btn btn-info w-100" (click)="setOperator('mul')">×</button></div>
+
+              <div class="col-3"><button class="btn btn-dark w-100" (click)="pressDigit('4')">4</button></div>
+              <div class="col-3"><button class="btn btn-dark w-100" (click)="pressDigit('5')">5</button></div>
+              <div class="col-3"><button class="btn btn-dark w-100" (click)="pressDigit('6')">6</button></div>
+              <div class="col-3"><button class="btn btn-info w-100" (click)="setOperator('sub')">−</button></div>
+
+              <div class="col-3"><button class="btn btn-dark w-100" (click)="pressDigit('1')">1</button></div>
+              <div class="col-3"><button class="btn btn-dark w-100" (click)="pressDigit('2')">2</button></div>
+              <div class="col-3"><button class="btn btn-dark w-100" (click)="pressDigit('3')">3</button></div>
+              <div class="col-3"><button class="btn btn-info w-100" (click)="setOperator('add')">+</button></div>
+
+              <div class="col-3"><button class="btn btn-dark w-100" (click)="pressDigit('0')">0</button></div>
+              <div class="col-3"><button class="btn btn-dark w-100" (click)="pressDecimal()">.</button></div>
+              <div class="col-3"><button class="btn btn-dark w-100" (click)="toggleSign()">+/-</button></div>
+              <div class="col-3"><button class="btn btn-success w-100" (click)="equals()">=</button></div>
+
+              <div class="col-3"><button class="btn btn-outline-info w-100" (click)="pi()">π</button></div>
+              <div class="col-3"><button class="btn btn-outline-info w-100" (click)="setOperator('pow')">xʸ</button>
+              </div>
+              <div class="col-3"><button class="btn btn-outline-secondary w-100" (click)="round(2)">R2</button></div>
+              <div class="col-3"><button class="btn btn-outline-secondary w-100" (click)="round(0)">R0</button></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Scientific Calculator Tab -->
+        <div *ngIf="activeTab === 'scientific'">
+          <div class="screen mb-2">{{ displayValue }}</div>
+          <div class="keypad">
+            <div class="row g-1">
+              <!-- Angle Mode & Memory Row -->
+              <div class="col-3">
+                <div class="btn-group btn-group-sm w-100" role="group">
+                  <input type="radio" class="btn-check" name="angleMode" id="degMode" [(ngModel)]="angleMode"
+                    value="deg" checked>
+                  <label class="btn btn-outline-secondary" for="degMode" style="font-size: 0.7rem;">Deg</label>
+                  <input type="radio" class="btn-check" name="angleMode" id="radMode" [(ngModel)]="angleMode"
+                    value="rad">
+                  <label class="btn btn-outline-secondary" for="radMode" style="font-size: 0.7rem;">Rad</label>
+                </div>
+              </div>
+              <div class="col-3"><button class="btn btn-secondary w-100" (click)="memoryRecall()">mr</button></div>
+              <div class="col-3"><button class="btn btn-secondary w-100" (click)="memorySubtract()">m−</button></div>
+              <div class="col-3"><button class="btn btn-secondary w-100" (click)="memoryAdd()">m+</button></div>
+
+              <!-- Row 1: AC, Functions -->
+              <div class="col-3"><button class="btn btn-secondary w-100" (click)="allClear()">AC</button></div>
+              <div class="col-3"><button class="btn btn-outline-info w-100" (click)="sqrt()">√x</button></div>
+              <div class="col-3"><button class="btn btn-outline-info w-100" (click)="square()">x²</button></div>
+              <div class="col-3"><button class="btn btn-info w-100" (click)="setOperator('div')">÷</button></div>
+
+              <!-- Row 2: Trig Functions -->
+              <div class="col-3"><button class="btn btn-outline-info w-100" (click)="sin()">sin</button></div>
+              <div class="col-3"><button class="btn btn-dark w-100" (click)="pressDigit('7')">7</button></div>
+              <div class="col-3"><button class="btn btn-dark w-100" (click)="pressDigit('8')">8</button></div>
+              <div class="col-3"><button class="btn btn-dark w-100" (click)="pressDigit('9')">9</button></div>
+
+              <!-- Row 3: Trig Functions -->
+              <div class="col-3"><button class="btn btn-outline-info w-100" (click)="cos()">cos</button></div>
+              <div class="col-3"><button class="btn btn-dark w-100" (click)="pressDigit('4')">4</button></div>
+              <div class="col-3"><button class="btn btn-dark w-100" (click)="pressDigit('5')">5</button></div>
+              <div class="col-3"><button class="btn btn-dark w-100" (click)="pressDigit('6')">6</button></div>
+
+              <!-- Row 4: Trig Functions -->
+              <div class="col-3"><button class="btn btn-outline-info w-100" (click)="tan()">tan</button></div>
+              <div class="col-3"><button class="btn btn-dark w-100" (click)="pressDigit('1')">1</button></div>
+              <div class="col-3"><button class="btn btn-dark w-100" (click)="pressDigit('2')">2</button></div>
+              <div class="col-3"><button class="btn btn-dark w-100" (click)="pressDigit('3')">3</button></div>
+
+              <!-- Row 5: Log & Special -->
+              <div class="col-3"><button class="btn btn-outline-info w-100" (click)="ln()">ln</button></div>
+              <div class="col-3"><button class="btn btn-dark w-100" (click)="pressDigit('0')">0</button></div>
+              <div class="col-3"><button class="btn btn-dark w-100" (click)="pressDecimal()">.</button></div>
+              <div class="col-3"><button class="btn btn-dark w-100" (click)="toggleSign()">+/-</button></div>
+
+              <!-- Row 6: More Functions -->
+              <div class="col-3"><button class="btn btn-outline-info w-100" (click)="log()">log</button></div>
+              <div class="col-3"><button class="btn btn-outline-info w-100" (click)="setOperator('pow')">xʸ</button>
+              </div>
+              <div class="col-3"><button class="btn btn-outline-info w-100" (click)="factorial()">n!</button></div>
+              <div class="col-3"><button class="btn btn-info w-100" (click)="setOperator('mul')">×</button></div>
+
+              <!-- Row 7: Advanced Functions -->
+              <div class="col-3"><button class="btn btn-outline-info w-100" (click)="exp()">eˣ</button></div>
+              <div class="col-3"><button class="btn btn-outline-info w-100" (click)="cube()">x³</button></div>
+              <div class="col-3"><button class="btn btn-outline-info w-100" (click)="reciprocal()">1/x</button></div>
+              <div class="col-3"><button class="btn btn-info w-100" (click)="setOperator('sub')">−</button></div>
+
+              <!-- Row 8: Constants & Functions -->
+              <div class="col-3"><button class="btn btn-outline-info w-100" (click)="pi()">π</button></div>
+              <div class="col-3"><button class="btn btn-outline-info w-100" (click)="eulerNumber()">e</button></div>
+              <div class="col-3"><button class="btn btn-outline-info w-100" (click)="percent()">%</button></div>
+              <div class="col-3"><button class="btn btn-info w-100" (click)="setOperator('add')">+</button></div>
+
+              <!-- Row 9: Inverse Trig & Roots -->
+              <div class="col-3"><button class="btn btn-outline-info w-100" (click)="asin()">sin⁻¹</button></div>
+              <div class="col-3"><button class="btn btn-outline-info w-100" (click)="acos()">cos⁻¹</button></div>
+              <div class="col-3"><button class="btn btn-outline-info w-100" (click)="atan()">tan⁻¹</button></div>
+              <div class="col-3"><button class="btn btn-success w-100" (click)="equals()">=</button></div>
+
+              <!-- Row 10: More Advanced -->
+              <div class="col-3"><button class="btn btn-outline-info w-100" (click)="powerOf10()">10ˣ</button></div>
+              <div class="col-3"><button class="btn btn-outline-info w-100" (click)="cubeRoot()">³√x</button></div>
+              <div class="col-3"><button class="btn btn-outline-secondary w-100" (click)="round(2)">R2</button></div>
+              <div class="col-3"><button class="btn btn-outline-secondary w-100" (click)="round(0)">R0</button></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Calculator Links Section -->
+    <div class="col-12 col-md-12 col-lg-6 mb-4">
+      <div class="calculator-links shadow-lg rounded-4 p-4">
+        <h2 class="h4 fw-bold mb-4 text-info">📱 All Calculators</h2>
+        <div class="list-group">
+          <a href="/basic-scientific-calculator" class="list-group-item list-group-item-action d-flex align-items-center">
+            <span class="me-2">🧮</span>
+            <div>
+              <h6 class="mb-0 fw-bold">Basic & Scientific Calculator</h6>
+              <small class="text-muted">Basic & Scientific Calculator – Free Online Math Calculator for Accurate Results - Use our free Basic & Scientific Calculator to perform simple and advanced math calculations instantly. Solve equations, trigonometry, percentages, and more.</small>
+            </div>
+          </a>
+          <a href="/unit-converter" class="list-group-item list-group-item-action d-flex align-items-center">
+            <span class="me-2">📏</span>
+            <div>
+              <h6 class="mb-0 fw-bold">Unit Converter</h6>
+              <small class="text-muted">Convert between different units of measurement</small>
+            </div>
+          </a>
+          <a href="/grade-percentage-calculator" class="list-group-item list-group-item-action d-flex align-items-center">
+            <span class="me-2">📊</span>
+            <div>
+              <h6 class="mb-0 fw-bold">Grade & Percentage Calculator</h6>
+              <small class="text-muted">Calculate grades and percentages</small>
+            </div>
+          </a>
+          <a href="/age-height-time-calculator" class="list-group-item list-group-item-action d-flex align-items-center">
+            <span class="me-2">⏰</span>
+            <div>
+              <h6 class="mb-0 fw-bold">Age, Height & Time Calculator</h6>
+              <small class="text-muted">Calculate age, height conversions, and time calculations</small>
+            </div>
+          </a>
+          <a href="/area-conversion" class="list-group-item list-group-item-action d-flex align-items-center">
+            <span class="me-2">📐</span>
+            <div>
+              <h6 class="mb-0 fw-bold">Area Calculator</h6>
+              <small class="text-muted">Calculate areas of different shapes and surfaces</small>
+            </div>
+          </a>
+          <a href="/volume-calculator" class="list-group-item list-group-item-action d-flex align-items-center">
+            <span class="me-2">📦</span>
+            <div>
+              <h6 class="mb-0 fw-bold">Volume Calculator</h6>
+              <small class="text-muted">Calculate volume of various 3D shapes</small>
+            </div>
+          </a>
+          <a href="/concrete-calculator" class="list-group-item list-group-item-action d-flex align-items-center">
+            <span class="me-2">🏗️</span>
+            <div>
+              <h6 class="mb-0 fw-bold">Concrete Calculator</h6>
+              <small class="text-muted">Calculate concrete requirements for construction</small>
+            </div>
+          </a>
+          <a href="/loan-emi-calculator" class="list-group-item list-group-item-action d-flex align-items-center">
+            <span class="me-2">💰</span>
+            <div>
+              <h6 class="mb-0 fw-bold">Loan & EMI Calculator</h6>
+              <small class="text-muted">Calculate loan amounts and monthly EMIs</small>
+            </div>
+          </a>
+          <a href="/cooking-converter" class="list-group-item list-group-item-action d-flex align-items-center">
+            <span class="me-2">🍳</span>
+            <div>
+              <h6 class="mb-0 fw-bold">Cooking Conversion Calculator</h6>
+              <small class="text-muted">Convert cooking measurements and ingredients</small>
+            </div>
+          </a>
+          <a href="/numbers-to-words" class="list-group-item list-group-item-action d-flex align-items-center">
+            <span class="me-2">📝</span>
+            <div>
+              <h6 class="mb-0 fw-bold">Text Tools</h6>
+              <small class="text-muted">Convert numbers to words and other text manipulations</small>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Welcome Section -->
+  <div class="row mt-4">
+    <div class="col-12">
+      <div class="welcome-card shadow-lg rounded-4 p-4">
+        <h2 class="h3 fw-bold mb-3 text-info">🌟 Welcome to ClickNCalculate.com</h2>
+        <p class="text-dark mb-3">
+          Welcome to ClickNCalculate.com, your all-in-one platform for free online calculators and smart conversion tools. 
+          Our goal is to make everyday calculations simple, fast, and accurate for everyone. Whether you are a student, 
+          professional, business owner, or homemaker, our tools are designed to save your time and reduce errors.
+        </p>
+        <p class="text-dark mb-3">
+          Instead of doing complex manual calculations, you can use our easy-to-use calculators to get instant results. 
+          From basic math and scientific functions to financial planning, construction calculations, cooking conversions, 
+          and health tracking, everything is available in one place.
+        </p>
+        <p class="text-dark">
+         <strong> Our platform is 100% free, mobile-friendly, and easy to use, so you can access it anytime, anywhere.</strong>
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Calculator Tools Overview -->
+  <div class="row mt-4">
+    <div class="col-12">
+      <div class="tools-overview shadow-lg rounded-4 p-4">
+        <h2 class="h3 fw-bold mb-4 text-info">🛠️ Our Calculator Tools</h2>
+        <p class="text-dark mb-4">
+          <strong>Below is a quick overview of all the tools available on ClickNCalculate.com. Each tool is designed to provide 
+          accurate results with a simple and user-friendly interface.</strong>
+        </p>
+        
+        <div class="row">
+          <div class="col-md-6 col-lg-4 mb-3">
+            <div class="tool-card h-100">
+              <h5 class="fw-bold text-info mb-2">1. Basic & Scientific Calculator</h5>
+              <p class="text-dark small">
+                <strong>Basic & Scientific Calculator – Free Online Math Calculator for Accurate Results</strong><br><br>
+                Use our free Basic & Scientific Calculator to perform simple and advanced math calculations instantly. 
+                Solve equations, trigonometry, percentages, and more.<br><br>
+                
+                <strong>Introduction</strong><br>
+                Mathematics is a part of our everyday life, whether we realize it or not. From simple addition 
+                and subtraction to more advanced calculations like trigonometry and logarithms, we often need 
+                a reliable tool to get accurate results quickly. While traditional calculators are helpful, having an 
+                online calculator that is accessible anytime and anywhere makes the process even easier.<br><br>
+                
+                Our Basic & Scientific Calculator is designed to meet both simple and advanced calculation 
+                needs. Whether you are a student solving math problems, a professional performing quick 
+                calculations, or someone managing daily tasks like budgeting, this calculator provides a fast and 
+                accurate solution.<br><br>
+                
+                Unlike a basic calculator that only performs simple operations, this tool also includes scientific 
+                functions such as square roots, powers, trigonometric functions, and logarithms. This makes it 
+                suitable for a wide range of users, from beginners to advanced learners.
+              </p>
+            </div>
+          </div>
+          
+          <div class="col-md-6 col-lg-4 mb-3">
+            <div class="tool-card h-100">
+              <h5 class="fw-bold text-info mb-2">2. Unit Converter</h5>
+              <p class="text-dark small">
+                Convert different units instantly without manual calculations. You can convert length, weight, temperature, 
+                time, and volume in seconds. It is perfect for travel, education, and professional use.
+              </p>
+            </div>
+          </div>
+          
+          <div class="col-md-6 col-lg-4 mb-3">
+            <div class="tool-card h-100">
+              <h5 class="fw-bold text-info mb-2">3. Percentage Calculator</h5>
+              <p class="text-dark small">
+                Easily calculate percentages, increases, decreases, discounts, and profit margins. This tool is useful 
+                for students, shopping calculations, and business analysis.
+              </p>
+            </div>
+          </div>
+          
+          <div class="col-md-6 col-lg-4 mb-3">
+            <div class="tool-card h-100">
+              <h5 class="fw-bold text-info mb-2">4. Grade & Percentage Calculator</h5>
+              <p class="text-dark small">
+                Calculate academic results quickly by converting marks into percentages, grades, and GPA. It helps 
+                students and teachers evaluate performance accurately.
+              </p>
+            </div>
+          </div>
+          
+          <div class="col-md-6 col-lg-4 mb-3">
+            <div class="tool-card h-100">
+              <h5 class="fw-bold text-info mb-2">5. Age, Height & Time Calculator</h5>
+              <p class="text-dark small">
+                Calculate age from date of birth, convert time units, and track height or growth. This tool is useful 
+                for personal, educational, and health purposes.
+              </p>
+            </div>
+          </div>
+          
+          <div class="col-md-6 col-lg-4 mb-3">
+            <div class="tool-card h-100">
+              <h5 class="fw-bold text-info mb-2">6. Area Calculator</h5>
+              <p class="text-dark small">
+                Find the area of different shapes such as rectangles, squares, triangles, and circles. This calculator 
+                is useful for construction, interior design, and land measurement.
+              </p>
+            </div>
+          </div>
+          
+          <div class="col-md-6 col-lg-4 mb-3">
+            <div class="tool-card h-100">
+              <h5 class="fw-bold text-info mb-2">7. Volume Calculator</h5>
+              <p class="text-dark small">
+                Calculate the volume of 3D shapes such as cubes, cylinders, spheres, and cones. It helps in construction, 
+                storage planning, and material estimation.
+              </p>
+            </div>
+          </div>
+          
+          <div class="col-md-6 col-lg-4 mb-3">
+            <div class="tool-card h-100">
+              <h5 class="fw-bold text-info mb-2">8. Concrete Calculator</h5>
+              <p class="text-dark small">
+                Estimate the quantity of concrete required for slabs, columns, footings, and beams. It helps reduce 
+                material waste and improve construction planning.
+              </p>
+            </div>
+          </div>
+          
+          <div class="col-md-6 col-lg-4 mb-3">
+            <div class="tool-card h-100">
+              <h5 class="fw-bold text-info mb-2">9. Loan & EMI Calculator</h5>
+              <p class="text-dark small">
+                Plan your finances by calculating monthly loan payments (EMI), total interest, and total repayment. 
+                This tool is ideal for personal, car, and home loans.
+              </p>
+            </div>
+          </div>
+          
+          <div class="col-md-6 col-lg-4 mb-3">
+            <div class="tool-card h-100">
+              <h5 class="fw-bold text-info mb-2">10. Cooking Conversion Calculator</h5>
+              <p class="text-dark small">
+                Convert cooking measurements such as cups, tablespoons, grams, and milliliters. It helps you follow 
+                recipes accurately from different countries.
+              </p>
+            </div>
+          </div>
+          
+          <div class="col-md-6 col-lg-4 mb-3">
+            <div class="tool-card h-100">
+              <h5 class="fw-bold text-info mb-2">11. Text Tools (Word Counter & Case Converter)</h5>
+              <p class="text-dark small">
+                Improve your writing productivity with tools like word counter, character counter, and case converter. 
+                Easily convert text to uppercase, lowercase, or title case.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Why Choose Section -->
+  <div class="row mt-4">
+    <div class="col-12">
+      <div class="why-choose-card shadow-lg rounded-4 p-4">
+        <h2 class="h3 fw-bold mb-4 text-info">🎯 Why Choose ClickNCalculate.com?</h2>
+        <div class="row">
+          <div class="col-md-6">
+            <ul class="list-unstyled">
+              <li class="mb-2">
+                <span class="text-info me-2">✓</span>
+                <strong>Free to use</strong> – No registration required
+              </li>
+              <li class="mb-2">
+                <span class="text-info me-2">✓</span>
+                <strong>Accurate results</strong> – Reliable formulas and calculations
+              </li>
+              <li class="mb-2">
+                <span class="text-info me-2">✓</span>
+                <strong>Fast and simple</strong> – Get instant answers
+              </li>
+            </ul>
+          </div>
+          <div class="col-md-6">
+            <ul class="list-unstyled">
+              <li class="mb-2">
+                <span class="text-info me-2">✓</span>
+                <strong>Mobile-friendly</strong> – Use on any device
+              </li>
+              <li class="mb-2">
+                <span class="text-info me-2">✓</span>
+                <strong>All-in-one platform</strong> – Multiple tools in one place
+              </li>
+            </ul>
+          </div>
+        </div>
+        <p class="text-dark mt-3 mb-0">
+         <strong> Our goal is to provide a simple and reliable solution for all your calculation needs.</strong>
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Conclusion Section -->
+  <div class="row mt-4 mb-4">
+    <div class="col-12">
+      <div class="conclusion-card shadow-lg rounded-4 p-4">
+        <h2 class="h4 fw-bold mb-3 text-info">🎉 Conclusion</h2>
+        <p class="text-dark mb-0">
+          ClickNCalculate.com is designed to make your life easier by providing quick, accurate, and free calculation tools. 
+          Whether you need to calculate percentages, convert units, plan finances, or track health, our platform has everything you need.
+        </p>
+        <p class="text-dark mt-2 mb-0">
+          <strong>Explore our tools today and simplify your daily calculations with ease.</strong>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<app-footer></app-footer>

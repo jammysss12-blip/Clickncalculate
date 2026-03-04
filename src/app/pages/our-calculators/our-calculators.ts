@@ -8,11 +8,11 @@ import { Footer } from '../../shared/components/footer/footer';
 @Component({
   selector: 'app-calculator-basic',
   imports: [CommonModule, FormsModule, Header, Footer, RouterModule],
-  templateUrl: './calculator-basic.html',
-  styleUrl: './calculator-basic.scss',
+  templateUrl: './our-calculators.html',
+  styleUrl: './our-calculators.scss',
   standalone: true,
 })
-export class CalculatorBasic {
+export class OurCalculators {
   activeTab: 'basic' | 'scientific' = 'basic';
   angleMode: 'deg' | 'rad' = 'deg';
   displayValue = '0';
@@ -21,7 +21,6 @@ export class CalculatorBasic {
   waitingForNewEntry = false;
   lastOperand: number | null = null;
   memory = 0;
-  faqOpen: boolean[] = [false, false, false, false, false, false, false];
 
   constructor(private router: Router) { }
 
@@ -391,9 +390,5 @@ export class CalculatorBasic {
   closeParen() {
     // Placeholder for future parentheses support
     console.log('Close parenthesis');
-  }
-
-  toggleFaq(index: number) {
-    this.faqOpen[index] = !this.faqOpen[index];
   }
 }

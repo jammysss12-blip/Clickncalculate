@@ -239,6 +239,424 @@
     }
   }
 
+  // Calculator Links Section Styling
+  .calculator-links {
+    background: #ffffff;
+    border: 1px solid #d0d0d0;
+    border-radius: 16px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+    padding: 2rem;
+    height: 100%;
+
+    @media (max-width: 768px) {
+      padding: 1.5rem;
+    }
+
+    @media (max-width: 576px) {
+      padding: 1rem;
+    }
+
+    .list-group {
+      border-radius: 8px;
+      overflow: hidden;
+
+      .list-group-item {
+        border: 1px solid #e9ecef;
+        border-left: 4px solid transparent;
+        transition: all 0.3s ease;
+        padding: 1rem 1.25rem;
+        background: #ffffff;
+        color: #212529;
+
+        &:hover {
+          background: #f8f9fa;
+          border-left-color: #42A5F5;
+          transform: translateX(4px);
+          box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        &:not(:last-child) {
+          border-bottom: 1px solid #e9ecef;
+        }
+
+        .me-2 {
+          font-size: 1.25rem;
+          min-width: 30px;
+          text-align: center;
+        }
+
+        h6 {
+          color: #212529;
+          font-size: 0.95rem;
+          margin-bottom: 0.25rem;
+        }
+
+        small {
+          color: #6c757d;
+          font-size: 0.8rem;
+        }
+
+        @media (max-width: 768px) {
+          padding: 0.875rem 1rem;
+
+          .me-2 {
+            font-size: 1.1rem;
+            min-width: 25px;
+          }
+
+          h6 {
+            font-size: 0.9rem;
+          }
+
+          small {
+            font-size: 0.75rem;
+          }
+        }
+
+        @media (max-width: 576px) {
+          padding: 0.75rem 0.875rem;
+
+          .me-2 {
+            font-size: 1rem;
+            min-width: 20px;
+          }
+
+          h6 {
+            font-size: 0.85rem;
+          }
+
+          small {
+            font-size: 0.7rem;
+          }
+        }
+      }
+    }
+  }
+
+  // Info Section Styling
+  .info-section {
+    background: #ffffff;
+    border: 1px solid #d0d0d0;
+    border-radius: 16px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+    padding: 2rem;
+
+    @media (max-width: 768px) {
+      padding: 1.5rem;
+    }
+
+    @media (max-width: 576px) {
+      padding: 1rem;
+    }
+
+    h3 {
+      color: #000000;
+      margin-bottom: 1.5rem;
+      font-size: 1.25rem;
+
+      @media (max-width: 768px) {
+        font-size: 1.1rem;
+        margin-bottom: 1.25rem;
+      }
+
+      @media (max-width: 576px) {
+        font-size: 1rem;
+        margin-bottom: 1rem;
+      }
+    }
+
+    p {
+      color: #212529;
+      line-height: 1.6;
+      margin-bottom: 1rem;
+
+      strong {
+        color: #000000;
+        font-weight: 600;
+      }
+
+      @media (max-width: 768px) {
+        font-size: 0.9rem;
+        margin-bottom: 0.875rem;
+      }
+
+      @media (max-width: 576px) {
+        font-size: 0.85rem;
+        margin-bottom: 0.75rem;
+      }
+    }
+  }
+
+  // Welcome Card Styling
+  .welcome-card {
+    background: #ffffff;
+    border: 1px solid #d0d0d0;
+    border-radius: 16px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+    padding: 2rem;
+
+    @media (max-width: 768px) {
+      padding: 1.5rem;
+    }
+
+    @media (max-width: 576px) {
+      padding: 1rem;
+    }
+
+    h3 {
+      color: #000000;
+      margin-bottom: 1.5rem;
+
+      @media (max-width: 768px) {
+        font-size: 1.25rem;
+        margin-bottom: 1.25rem;
+      }
+
+      @media (max-width: 576px) {
+        font-size: 1.1rem;
+        margin-bottom: 1rem;
+      }
+    }
+
+    p {
+      color: #212529;
+      line-height: 1.6;
+      margin-bottom: 1rem;
+
+      @media (max-width: 768px) {
+        font-size: 0.9rem;
+        margin-bottom: 0.875rem;
+      }
+
+      @media (max-width: 576px) {
+        font-size: 0.85rem;
+        margin-bottom: 0.75rem;
+      }
+    }
+  }
+
+  // Tools Overview Styling
+  .tools-overview {
+    background: #ffffff;
+    border: 1px solid #d0d0d0;
+    border-radius: 16px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+    padding: 2rem;
+
+    @media (max-width: 768px) {
+      padding: 1.5rem;
+    }
+
+    @media (max-width: 576px) {
+      padding: 1rem;
+    }
+
+    h3 {
+      color: #000000;
+      margin-bottom: 1.5rem;
+
+      @media (max-width: 768px) {
+        font-size: 1.25rem;
+        margin-bottom: 1.25rem;
+      }
+
+      @media (max-width: 576px) {
+        font-size: 1.1rem;
+        margin-bottom: 1rem;
+      }
+    }
+
+    p {
+      color: #212529;
+      line-height: 1.6;
+      margin-bottom: 1.5rem;
+
+      @media (max-width: 768px) {
+        font-size: 0.9rem;
+        margin-bottom: 1.25rem;
+      }
+
+      @media (max-width: 576px) {
+        font-size: 0.85rem;
+        margin-bottom: 1rem;
+      }
+    }
+
+    .tool-card {
+      background: #f8f9fa;
+      border: 1px solid #e9ecef;
+      border-radius: 12px;
+      padding: 1.25rem;
+      transition: all 0.3s ease;
+
+      &:hover {
+        background: #e9ecef;
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      }
+
+      h5 {
+        color: #000000;
+        font-size: 0.95rem;
+        margin-bottom: 0.75rem;
+
+        @media (max-width: 768px) {
+          font-size: 0.9rem;
+          margin-bottom: 0.625rem;
+        }
+
+        @media (max-width: 576px) {
+          font-size: 0.85rem;
+          margin-bottom: 0.5rem;
+        }
+      }
+
+      p {
+        color: #495057;
+        line-height: 1.5;
+        margin-bottom: 0;
+
+        @media (max-width: 768px) {
+          font-size: 0.8rem;
+        }
+
+        @media (max-width: 576px) {
+          font-size: 0.75rem;
+        }
+      }
+
+      @media (max-width: 768px) {
+        padding: 1rem;
+      }
+
+      @media (max-width: 576px) {
+        padding: 0.875rem;
+      }
+    }
+  }
+
+  // Why Choose Card Styling
+  .why-choose-card {
+    background: #ffffff;
+    border: 1px solid #d0d0d0;
+    border-radius: 16px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+    padding: 2rem;
+
+    @media (max-width: 768px) {
+      padding: 1.5rem;
+    }
+
+    @media (max-width: 576px) {
+      padding: 1rem;
+    }
+
+    h3 {
+      color: #000000;
+      margin-bottom: 1.5rem;
+
+      @media (max-width: 768px) {
+        font-size: 1.25rem;
+        margin-bottom: 1.25rem;
+      }
+
+      @media (max-width: 576px) {
+        font-size: 1.1rem;
+        margin-bottom: 1rem;
+      }
+    }
+
+    ul {
+      margin-bottom: 1rem;
+
+      li {
+        color: #212529;
+        line-height: 1.5;
+        margin-bottom: 0.75rem;
+
+        @media (max-width: 768px) {
+          font-size: 0.9rem;
+          margin-bottom: 0.625rem;
+        }
+
+        @media (max-width: 576px) {
+          font-size: 0.85rem;
+          margin-bottom: 0.5rem;
+        }
+
+        strong {
+          color: #000000;
+        }
+      }
+    }
+
+    p {
+      color: #212529;
+      line-height: 1.6;
+      margin-bottom: 0;
+
+      @media (max-width: 768px) {
+        font-size: 0.9rem;
+      }
+
+      @media (max-width: 576px) {
+        font-size: 0.85rem;
+      }
+    }
+  }
+
+  // Conclusion Card Styling
+  .conclusion-card {
+    background: #ffffff;
+    border: 1px solid #d0d0d0;
+    border-radius: 16px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+    padding: 2rem;
+
+    @media (max-width: 768px) {
+      padding: 1.5rem;
+    }
+
+    @media (max-width: 576px) {
+      padding: 1rem;
+    }
+
+    h4 {
+      color: #000000;
+      margin-bottom: 1.25rem;
+
+      @media (max-width: 768px) {
+        font-size: 1.1rem;
+        margin-bottom: 1rem;
+      }
+
+      @media (max-width: 576px) {
+        font-size: 1rem;
+        margin-bottom: 0.875rem;
+      }
+    }
+
+    p {
+      color: #212529;
+      line-height: 1.6;
+      margin-bottom: 0.75rem;
+
+      strong {
+        color: #000000;
+      }
+
+      @media (max-width: 768px) {
+        font-size: 0.9rem;
+        margin-bottom: 0.625rem;
+      }
+
+      @media (max-width: 576px) {
+        font-size: 0.85rem;
+        margin-bottom: 0.5rem;
+      }
+    }
+  }
+
   .ad-space {
     display: flex;
     align-items: center;
@@ -901,104 +1319,5 @@
 
   .screen {
     border-width: 0.5px;
-  }
-}
-
-// FAQ Accordion Styles
-.accordion {
-  .accordion-item {
-    margin-bottom: 1rem;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 8px;
-    overflow: hidden;
-    transition: all 0.3s ease;
-
-    .accordion-button {
-      width: 100%;
-      background: rgba(255, 255, 255, 0.05);
-      border: none;
-      padding: 1rem;
-      text-align: left;
-      cursor: pointer;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      transition: background-color 0.3s ease;
-
-      &:hover {
-        background: rgba(255, 255, 255, 0.1);
-      }
-
-      .question-text {
-        color: #ffffff;
-        font-weight: 600;
-        font-size: 0.9rem;
-        flex: 1;
-      }
-
-      .accordion-icon {
-        color: #ffffff;
-        font-weight: bold;
-        font-size: 1.2rem;
-        transition: transform 0.3s ease;
-        min-width: 30px;
-        text-align: right;
-
-        &.collapsed {
-          transform: rotate(0deg);
-        }
-
-        &.expanded {
-          transform: rotate(45deg);
-        }
-      }
-    }
-
-    .accordion-content {
-      max-height: 0;
-      overflow: hidden;
-      transition: max-height 0.3s ease, padding 0.3s ease;
-      background: rgba(255, 255, 255, 0.02);
-
-      &.show {
-        max-height: 500px;
-        padding: 1rem;
-        border-top: 1px solid rgba(255, 255, 255, 0.2);
-      }
-
-      p {
-        margin: 0;
-        line-height: 1.5;
-      }
-    }
-  }
-
-  .screen {
-    border-width: 0.5px;
-  }
-}
-// Conclusion Section Styles
-.conclusion-section {
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 12px;
-  padding: 2rem;
-  text-align: center;
-  margin-bottom: 2rem;
-
-  h2 {
-    color: #ffffff;
-    margin-bottom: 1.5rem;
-    font-weight: 700;
-  }
-
-  p {
-    color: #ffffff;
-    font-size: 1rem;
-    line-height: 1.6;
-    margin-bottom: 1rem;
-    max-width: 800px;
-    margin-left: auto;
-    margin-right: auto;
   }
 }

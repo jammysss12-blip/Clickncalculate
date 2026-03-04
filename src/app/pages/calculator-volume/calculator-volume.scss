@@ -370,7 +370,102 @@
       }
     }
   }
+}
 
+// FAQ Accordion Styles
+.accordion {
+  .accordion-item {
+    margin-bottom: 1rem;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+
+    .accordion-button {
+      width: 100%;
+      background: rgba(255, 255, 255, 0.05);
+      border: none;
+      padding: 1rem;
+      text-align: left;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: background-color 0.3s ease;
+
+      &:hover {
+        background: rgba(255, 255, 255, 0.1);
+      }
+
+      .question-text {
+        color: #ffffff;
+        font-weight: 600;
+        font-size: 0.9rem;
+        flex: 1;
+      }
+
+      .accordion-icon {
+        color: #ffffff;
+        font-weight: bold;
+        font-size: 1.2rem;
+        transition: transform 0.3s ease;
+        min-width: 30px;
+        text-align: right;
+
+        &.collapsed {
+          transform: rotate(0deg);
+        }
+
+        &.expanded {
+          transform: rotate(45deg);
+        }
+      }
+    }
+
+    .accordion-content {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease, padding 0.3s ease;
+      background: rgba(255, 255, 255, 0.02);
+
+      &.show {
+        max-height: 500px;
+        padding: 1rem;
+        border-top: 1px solid rgba(255, 255, 255, 0.2);
+      }
+
+      p {
+        margin: 0;
+        line-height: 1.5;
+      }
+    }
+  }
+}
+
+// Conclusion Section Styles
+.conclusion-section {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 2rem;
+  text-align: center;
+  margin-bottom: 2rem;
+
+  h2 {
+    color: #ffffff;
+    margin-bottom: 1.5rem;
+    font-weight: 700;
+  }
+
+  p {
+    color: #ffffff;
+    font-size: 1rem;
+    line-height: 1.6;
+    margin-bottom: 1rem;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+  }
 }
 
 @media (max-width: 360px) {
@@ -391,5 +486,4 @@
       padding: 0 10px;
     }
   }
-
 }

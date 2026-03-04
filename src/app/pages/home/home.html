@@ -17,8 +17,8 @@
         
       </div>
     </div>
-    <p class="lead text-secondary mb-5">ClicknCalculate – Free Online Calculators & Smart Converters</p>
-    <p>ClicknCalculate is a free online calculator platform designed to help users perform fast,
+    <p class="lead text-secondary mb-5"><strong>ClicknCalculate – Free Online Calculators & Smart Converters</strong></p>
+    <!-- <p>ClicknCalculate is a free online calculator platform designed to help users perform fast,
 accurate, and easy calculations across multiple categories. From basic and scientific
 calculators to finance, health, education, and unit conversion tools, our website offers a
 wide range of smart calculators built for everyday needs.
@@ -26,9 +26,9 @@ Whether you want to calculate loan EMI, body mass index (BMI), age, percentage,
 GPA, calories, or convert units, ClicknCalculate provides reliable and user-friendly tools
 that save time and improve accuracy. Our calculators are optimized for speed, mobile
 compatibility, and ease of use, making them perfect for students, professionals,
-business users, and anyone who needs quick calculations online.</p>
+business users, and anyone who needs quick calculations online.</p> -->
 
-    <div class="row g-4">
+    <!-- <div class="row g-4">
       <div class="col-12 col-sm-6 col-md-4 col-lg-3" *ngFor="let calc of calculators">
         <div class="card calculator-card h-100 text-light shadow-lg border-0" (click)="openCalc(calc.route)">
           <div class="card-body d-flex flex-column align-items-center">
@@ -39,8 +39,66 @@ business users, and anyone who needs quick calculations online.</p>
           </div>
         </div>
       </div>
+    </div> -->
+
+  <!-- Categories Section -->
+  <section class="categories container">
+
+    <div class="category-card">
+      <div class="circle-img" ><a class="nav-link"  routerLink="/loan-emi-calculator">💰</a></div>
+      <h2><strong>Financial Calculators</strong></h2>
+      <ul>
+        <!-- <li>Mortgage Calculator</li> -->
+        <li><a class="nav-link" routerLink="/loan-emi-calculator">Loan Calculator</a></li>
+        <li><a class="nav-link" routerLink="/loan-emi-calculator">EMI Calculator</a></li>
+        <!-- <li>Compound Interest Calculator</li>
+        <li>Salary Calculator</li> -->
+      </ul>
     </div>
 
+    <div class="category-card">
+      <div class="circle-img" ><a class="nav-link" routerLink="/age-height-time-calculator">💪</a></div>
+      <h2><strong>Fitness & Health Calculators</strong></h2>
+      <ul>
+        <li><a class="nav-link" routerLink="/loan-emi-calculator">BMI Calculator</a></li>
+        <li><a class="nav-link" routerLink="/age-height-time-calculator">Age Calculator</a></li>
+        <li><a class="nav-link" routerLink="/age-height-time-calculator">Height Calculator</a></li>
+        <li><a class="nav-link" routerLink="/age-height-time-calculator">Time Calculator</a></li>
+       
+      </ul>
+    </div>
+
+    <div class="category-card">
+      <div class="circle-img" ><a class="nav-link" routerLink="/basic-scientific-calculator">🧮</a></div>
+      <h2><strong>Math Calculators</strong></h2>
+      <ul>
+        <li><a class="nav-link" routerLink="/basic-scientific-calculator">Basic & Scientific Calculator</a></li>
+        <li><a class="nav-link" routerLink="/grade-percentage-calculator">Grade & Percentage Calculator</a></li>
+        <li><a class="nav-link" routerLink="/volume-calculator">Volume Calculator</a></li>
+        <!-- <li>Random Number Generator</li> -->
+        <li><a class="nav-link" routerLink="/numbers-to-words">Number To Word Calculator</a></li>
+        <!-- <li>Standard Deviation Calculator</li> -->
+      </ul>
+    </div>
+
+    <div class="category-card">
+      <div class="circle-img" ><a class="nav-link"routerLink="/volume-calculator">🔧</a></div>
+      <h2><strong>Other Calculators</strong></h2>
+      <ul>
+        <li><a class="nav-link" routerLink="/volume-calculator">Volume Calculator</a></li>
+        <li><a class="nav-link" routerLink="/area-conversion">Area Conversion Calculator</a></li>
+        <li><a class="nav-link" routerLink="/unit-converter">Unit Converter Calculator</a></li>
+        <li><a class="nav-link" routerLink="/concrete-calculator">Concrete Calculator</a></li>
+        <li><a class="nav-link" routerLink="/cooking-converter">Cooking Convertor Calculator</a></li>
+      </ul>
+    </div>
+
+  </section>
+
+  <!-- All Calculators Button -->
+  <div class="all-btn-container">
+    <button class="all-btn" routerLink="/our-calculators">All Calculators ▶</button>
+  </div>
 
   </div>
 </div>

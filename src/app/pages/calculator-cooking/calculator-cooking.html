@@ -85,18 +85,18 @@
                               <span class="fs-5 symbol-dots">..</span>
                         </div>
 
-                        <h2 class="display-6 fw-bold mb-4 text-dark font-serif">Cooking<br>Conversion<br>Calculator</h2>
+                        <h2 class="display-6 fw-bold mb-4 text-dark font-serif">Cooking Conversion Calculator –<br>Convert Cups, Tablespoons, Teaspoons & Grams</h2>
 
                         <p class="text-secondary mb-4 small">
-                              The <strong>Cooking Converter Calculator</strong> assists in transforming cooking
-                              measurements, including
-                              cups, grams, tablespoons, ounces, and milliliters. It is perfect for home cooks, bakers,
-                              and professional chefs. This tool removes uncertainty when using recipes that employ
-                              various measurement systems. Users can swiftly convert ingredients to achieve precise
-                              cooking outcomes. The calculator is user-friendly, quick, and compatible with all devices.
-                              It aids in maintaining consistency in recipes and enhances cooking efficiency. All
-                              conversions are meant for general culinary use and may vary slightly based on the type of
-                              ingredient.
+                              <strong>Use our free Cooking Conversion Calculator to convert cups, tablespoons, teaspoons, grams, and ounces instantly. Accurate, fast, and easy to use.</strong><br><br>
+                              
+                              <strong>Introduction</strong><br>
+                              Cooking often requires precise measurements. Recipes from different countries or sources can use cups, tablespoons, teaspoons, grams, ounces, or liters, which can be confusing. Our Cooking Conversion Calculator makes it easy to convert any measurement quickly, ensuring your recipes turn out perfectly every time. It's ideal for home cooks, chefs, bakers, and culinary students.<br><br>
+                              
+                              With this tool, you can convert ingredients, scale recipes, and measure accurately, saving time and preventing errors.<br><br>
+                              
+                              <strong>Why Use a Cooking Conversion Calculator?</strong><br>
+                              Cooking conversions are tricky because recipes use different units (metric vs imperial), ingredient density affects measurement, and manual conversion takes time and is error-prone. This calculator helps you convert between cups, tablespoons, teaspoons, grams, ounces, and liters, scale recipes for different servings, save time, and improve accuracy in cooking and baking.
                         </p>
 
                         <!-- <p class="text-secondary mb-4 small">
@@ -118,10 +118,11 @@
                         <div class="mt-4">
                               <h3 class="fw-bold text-dark mb-3">Related Calculators:</h3>
                               <div class="d-flex flex-wrap gap-2">
-                                    <a routerLink="/age-height-time-calculator" class="btn-related">Age and Time</a>
-                                    <a routerLink="/basic-scientific-calculator" class="btn-related">Basic
-                                          Calculator</a>
-                                    <a routerLink="/numbers-to-words" class="btn-related">Number to words</a>
+                                    <a routerLink="/unit-converter" class="btn-related">Unit Converter (for general conversions)</a>
+                                    <a routerLink="/volume-calculator" class="btn-related">Volume Calculator (for liquids)</a>
+                                    <a routerLink="/grade-percentage-calculator" class="btn-related">Weight & Percentage Calculator (for nutrition tracking)</a>
+                                    <a routerLink="/loan-emi-calculator" class="btn-related">Loan EMI Calculator</a>
+                                    <a routerLink="/cooking-converter" class="btn-related">Cooking Recipes Blog</a>
                               </div>
                         </div>
 
@@ -133,264 +134,167 @@
             </div>
       </div>
 
-      <div class="row justify-content-center mt-4">
-            <!-- Information Section -->
-            <div class="col-12">
-                  <!-- Liquid Measures Reference -->
-                  <div class="functions-section p-4 rounded-3 mb-4" *ngIf="currentType === 'liquid'">
-                        <h2 class="fw-semibold mb-3 text-dark">💧 Liquid Measures</h2>
-                        <div class="table-responsive small">
-                              <table class="table table-sm align-middle mb-0">
-                                    <tbody>
-                                          <tr>
-                                                <td>1 tbsp</td>
-                                                <td>3 tsp</td>
-                                          </tr>
-                                          <tr>
-                                                <td>1 cup</td>
-                                                <td>16 tbsp</td>
-                                          </tr>
-                                          <tr>
-                                                <td>1 cup</td>
-                                                <td>8 fl oz</td>
-                                          </tr>
-                                          <tr>
-                                                <td>1 gal</td>
-                                                <td>4 qt</td>
-                                          </tr>
-                                    </tbody>
-                              </table>
-                        </div>
-                  </div>
-
-                  <!-- Weight Measures Reference -->
-                  <div class="functions-section p-4 rounded-3 mb-4" *ngIf="currentType === 'weight'">
-                        <h2 class="fw-semibold mb-3 text-dark">⚖️ Weight Measures</h2>
-                        <div class="table-responsive small">
-                              <table class="table table-sm align-middle mb-0">
-                                    <tbody>
-                                          <tr>
-                                                <td>1 kg</td>
-                                                <td>1000 g</td>
-                                          </tr>
-                                          <tr>
-                                                <td>1 lb</td>
-                                                <td>16 oz</td>
-                                          </tr>
-                                          <tr>
-                                                <td>1 lb</td>
-                                                <td>≈ 454 g</td>
-                                          </tr>
-                                          <tr>
-                                                <td>1 oz</td>
-                                                <td>≈ 28 g</td>
-                                          </tr>
-                                    </tbody>
-                              </table>
-                        </div>
-                  </div>
-
-                  <!-- Temperature Reference -->
-                  <div class="functions-section p-4 rounded-3 mb-4" *ngIf="currentType === 'temperature'">
-                        <h2 class="fw-semibold mb-3 text-dark">🌡️ Temperature</h2>
-                        <div class="table-responsive small">
-                              <table class="table table-sm align-middle mb-0">
-                                    <thead>
-                                          <tr>
-                                                <th>Type</th>
-                                                <th>°F</th>
-                                                <th>°C</th>
-                                          </tr>
-                                    </thead>
-                                    <tbody>
-                                          <tr>
-                                                <td>Slow</td>
-                                                <td>300-325</td>
-                                                <td>150-165</td>
-                                          </tr>
-                                          <tr>
-                                                <td>Mod</td>
-                                                <td>350-375</td>
-                                                <td>175-190</td>
-                                          </tr>
-                                          <tr>
-                                                <td>Hot</td>
-                                                <td>400-425</td>
-                                                <td>200-220</td>
-                                          </tr>
-                                    </tbody>
-                              </table>
-                        </div>
-                  </div>
-
-                  <!-- Length Reference -->
-                  <div class="functions-section p-4 rounded-3 mb-4" *ngIf="currentType === 'length'">
-                        <h2 class="fw-semibold mb-3 text-dark">📏 Length</h2>
-                        <div class="table-responsive small">
-                              <table class="table table-sm align-middle mb-0">
-                                    <tbody>
-                                          <tr>
-                                                <td>1 in</td>
-                                                <td>2.54 cm</td>
-                                          </tr>
-                                          <tr>
-                                                <td>1 ft</td>
-                                                <td>12 in</td>
-                                          </tr>
-                                          <tr>
-                                                <td>1 m</td>
-                                                <td>100 cm</td>
-                                          </tr>
-                                    </tbody>
-                              </table>
-                        </div>
-                  </div>
-
-                  <!-- General Cooking Basics -->
-                  <div class="functions-section p-4 rounded-3 mb-4">
-                        <h2 class="fw-semibold mb-3 text-dark">📋 Basics</h2>
-                        <div class="table-responsive small">
-                              <table class="table table-sm align-middle mb-0">
-                                    <tbody>
-                                          <tr>
-                                                <td><strong>Pinch</strong></td>
-                                                <td>Thumb & finger</td>
-                                          </tr>
-                                          <tr>
-                                                <td><strong>Dash</strong></td>
-                                                <td>~1/8 tsp</td>
-                                          </tr>
-                                    </tbody>
-                              </table>
-                        </div>
-                  </div>
-            </div>
-      </div>
-
+     
       <div class="row mt-5">
             <div class="col-12">
                   <div class="comprehensive-guide">
-                        <h2 class="fw-bold mb-4 text-dark text-center">📚 Cooking Calculator Guide</h2>
+                        <h2 class="h4 fw-bold mb-4 text-white text-center">📚 Cooking Conversion Calculator – Complete Guide</h2>
 
                         <div class="row">
                               <div class="col-12 col-md-6 col-lg-4 mb-4">
                                     <div class="guide-section">
-                                          <h3 class="fw-semibold text-dark mb-3">💧 Liquid Measurements</h3>
-                                          <ul class="text-dark small">
-                                                <li><strong>Fluid Ounces:</strong> Standard US liquid measure</li>
-                                                <li><strong>Cups:</strong> 8 fluid ounces or 16 tablespoons</li>
-                                                <li><strong>Pints:</strong> 2 cups or 16 fluid ounces</li>
-                                                <li><strong>Quarts:</strong> 2 pints or 4 cups</li>
-                                                <li><strong>Gallons:</strong> 4 quarts or 128 fluid ounces</li>
+                                          <h3 class="h6 fw-semibold text-white mb-3">� How to Use the Cooking Conversion Calculator</h3>
+                                          <p class="text-white small mb-2">1. Select the ingredient type (optional for density-based conversion)</p>
+                                          <p class="text-white small mb-2">2. Enter the measurement value</p>
+                                          <p class="text-white small mb-2">3. Choose the original unit (cups, tbsp, tsp, g, oz, ml)</p>
+                                          <p class="text-white small mb-2">4. Choose the target unit</p>
+                                          <p class="text-white small">5. Click Convert</p>
+                                          <p class="text-white small">The tool instantly displays the converted value.</p>
+                                    </div>
+                              </div>
+
+                              <div class="col-12 col-md-6 col-lg-4 mb-4">
+                                    <div class="guide-section">
+                                          <h3 class="h6 fw-semibold text-white mb-3">📏 Common Conversion Units</h3>
+                                          <p class="text-white small mb-2"><strong>1. Volume Units</strong></p>
+                                          <ul class="text-white small">
+                                                <li>• Cups – standard US or metric cup</li>
+                                                <li>• Tablespoons (Tbsp) – 1 cup = 16 Tbsp</li>
+                                                <li>• Teaspoons (Tsp) – 1 Tbsp = 3 Tsp</li>
+                                                <li>• Milliliters (ml) – 1 cup ≈ 240 ml</li>
+                                                <li>• Liters (L) – 1000 ml = 1 L</li>
+                                          </ul>
+                                          
+                                          <p class="text-white small mb-2"><strong>2. Weight Units</strong></p>
+                                          <ul class="text-white small">
+                                                <li>• Grams (g) – metric unit</li>
+                                                <li>• Kilograms (kg) – 1000 g = 1 kg</li>
+                                                <li>• Ounces (oz) – 1 oz ≈ 28.35 g</li>
+                                                <li>• Pounds (lb) – 1 lb = 16 oz</li>
                                           </ul>
                                     </div>
                               </div>
 
                               <div class="col-12 col-md-6 col-lg-4 mb-4">
                                     <div class="guide-section">
-                                          <h3 class="fw-semibold text-dark mb-3">⚖️ Dry Measurements</h3>
-                                          <ul class="text-dark small">
-                                                <li><strong>Teaspoons:</strong> Smallest common unit (tsp)</li>
-                                                <li><strong>Tablespoons:</strong> 3 teaspoons (tbsp)</li>
-                                                <li><strong>Ounces:</strong> Weight measurement (oz)</li>
-                                                <li><strong>Pounds:</strong> 16 ounces (lb)</li>
-                                                <li><strong>Grams/Kilograms:</strong> Metric weight units</li>
+                                          <h3 class="h6 fw-semibold text-white mb-3">🥄 Common Ingredient Conversions</h3>
+                                          <ul class="text-white small">
+                                                <li>• 1 cup flour ≈ 125 g</li>
+                                                <li>• 1 cup sugar ≈ 200 g</li>
+                                                <li>• 1 cup butter ≈ 227 g</li>
+                                                <li>• 1 tbsp = 15 ml</li>
+                                                <li>• 1 tsp = 5 ml</li>
+                                          </ul>
+                                          <p class="text-white small"><strong>Note:</strong> Different ingredients have different densities, so weight-to-volume conversion varies.</p>
+                                    </div>
+                              </div>
+
+                              <div class="col-12 col-md-6 col-lg-4 mb-4">
+                                    <div class="guide-section">
+                                          <h3 class="h6 fw-semibold text-white mb-3">� Example Usage</h3>
+                                          <ul class="text-white small">
+                                                <li>• Convert 2 cups of sugar to grams: 2 × 200 g = 400 g</li>
+                                                <li>• Convert 3 tablespoons of olive oil to ml: 3 × 15 ml = 45 ml</li>
+                                                <li>• Convert 500 g flour to cups: 500 ÷ 125 g = 4 cups</li>
                                           </ul>
                                     </div>
                               </div>
 
                               <div class="col-12 col-md-6 col-lg-4 mb-4">
                                     <div class="guide-section">
-                                          <h3 class="fw-semibold text-dark mb-3">🌡️ Temperature Guide</h3>
-                                          <ul class="text-dark small">
-                                                <li><strong>Fahrenheit:</strong> Standard US oven scale</li>
-                                                <li><strong>Celsius:</strong> Metric temperature scale</li>
-                                                <li><strong>Water Boils:</strong> 212°F / 100°C</li>
-                                                <li><strong>Water Freezes:</strong> 32°F / 0°C</li>
-                                                <li><strong>Simmer:</strong> 185-205°F / 85-96°C</li>
+                                          <h3 class="h6 fw-semibold text-white mb-3">📊 Scaling Recipes</h3>
+                                          <p class="text-white small mb-2">The calculator also helps scale recipes. For example:</p>
+                                          <p class="text-white small mb-2">Original recipe serves 4 people; you want to serve 6. Multiply all ingredient amounts by 6 ÷ 4 = 1.5.</p>
+                                          <ul class="text-white small">
+                                                <li>• 2 cups flour × 1.5 = 3 cups flour</li>
+                                                <li>• 1 cup sugar × 1.5 = 1.5 cups sugar</li>
                                           </ul>
                                     </div>
                               </div>
 
                               <div class="col-12 col-md-6 col-lg-4 mb-4">
                                     <div class="guide-section">
-                                          <h3 class="fw-semibold text-dark mb-3">📏 Length Conversions</h3>
-                                          <ul class="text-dark small">
-                                                <li><strong>Inches:</strong> Common for pan sizes</li>
-                                                <li><strong>Centimeters:</strong> Metric length unit</li>
-                                                <li><strong>Baking Pans:</strong> Often measured in inches</li>
-                                                <li><strong>Thickness:</strong> Dough rolling thickness</li>
-                                                <li><strong>1 Inch:</strong> Exactly 2.54 centimeters</li>
+                                          <h3 class="h6 fw-semibold text-white mb-3">🎯 Why Accuracy Matters in Cooking</h3>
+                                          <ul class="text-white small">
+                                                <li>• Baking requires precise measurements for correct texture</li>
+                                                <li>• Cooking sauces, soups, and beverages rely on proportions</li>
+                                                <li>• Prevents waste and improves taste</li>
+                                                <li>• Ensures consistent results every time</li>
                                           </ul>
                                     </div>
                               </div>
 
                               <div class="col-12 col-md-6 col-lg-4 mb-4">
                                     <div class="guide-section">
-                                          <h3 class="fw-semibold text-dark mb-3">📝 Common Abbreviations</h3>
-                                          <ul class="text-dark small">
-                                                <li><strong>tsp:</strong> Teaspoon (t)</li>
-                                                <li><strong>tbsp:</strong> Tablespoon (T)</li>
-                                                <li><strong>c:</strong> Cup</li>
-                                                <li><strong>oz:</strong> Ounce</li>
-                                                <li><strong>lb:</strong> Pound (#)</li>
+                                          <h3 class="h6 fw-semibold text-white mb-3">🏠 Real-Life Applications</h3>
+                                          <p class="text-white small mb-2"><strong>1. Home Cooking</strong><br>
+                                          Convert family recipes from metric to imperial or vice versa.</p>
+                                          
+                                          <p class="text-white small mb-2"><strong>2. Baking</strong><br>
+                                          Accurately measure ingredients for cakes, cookies, and bread.</p>
+                                          
+                                          <p class="text-white small"><strong>3. Professional Kitchens</strong><br>
+                                          Chefs convert recipes for scaling or consistency.<br><strong>4. International Recipes</strong><br>
+                                          Easily adapt recipes from cookbooks or online sources using different units.</p>
+                                    </div>
+                              </div>
+
+                              <div class="col-12 col-md-6 col-lg-4 mb-4">
+                                    <div class="guide-section">
+                                          <h3 class="h6 fw-semibold text-white mb-3">� Tips for Using the Cooking Conversion Calculator</h3>
+                                          <ul class="text-white small">
+                                                <li>✔ Always double-check the ingredient type for weight-volume conversions</li>
+                                                <li>✔ Use standard cups (US/metric) for consistency</li>
+                                                <li>✔ Scale ingredients proportionally</li>
+                                                <li>✔ Round off small measurements for ease of use</li>
+                                                <li>✔ Store frequent conversions for quick access</li>
                                           </ul>
                                     </div>
                               </div>
 
                               <div class="col-12 col-md-6 col-lg-4 mb-4">
                                     <div class="guide-section">
-                                          <h3 class="fw-semibold text-dark mb-3">💡 Measuring Tips</h3>
-                                          <ul class="text-dark small">
-                                                <li><strong>Flour:</strong> Spoon into cup and level off</li>
-                                                <li><strong>Brown Sugar:</strong> Pack firmly into cup</li>
-                                                <li><strong>Liquids:</strong> Use glass measuring cup at eye level</li>
-                                                <li><strong>Sticky Items:</strong> Oil the cup first (honey/syrup)</li>
-                                                <li><strong>Sifting:</strong> Sift before measuring if specified</li>
-                                          </ul>
+                                          <h3 class="h6 fw-semibold text-white mb-3">❓ Frequently Asked Questions (FAQs)</h3>
+                                          <p class="text-white small mb-2"><strong>1. Can I convert cups to grams for all ingredients?</strong><br>
+                                          Yes, but different ingredients have different densities. The calculator provides standard conversion values.</p>
+                                          
+                                          <p class="text-white small mb-2"><strong>2. Is this calculator free?</strong><br>
+                                          Yes, it is completely free.</p>
+                                          
+                                          <p class="text-white small mb-2"><strong>3. Can I scale a recipe?</strong><br>
+                                          Yes, you can multiply ingredient quantities by the serving ratio.</p>
+                                          
+                                          <p class="text-white small"><strong>4. Does it include liquids and solids?</strong><br>
+                                          Yes, the tool supports both volume (cups, ml) and weight (grams, oz).<br><strong>5. Can I convert teaspoons to tablespoons?</strong><br>
+                                          Yes, 1 tablespoon = 3 teaspoons.</p>
                                     </div>
                               </div>
 
                               <div class="col-12 col-md-6 col-lg-4 mb-4">
                                     <div class="guide-section">
-                                          <h3 class="fw-semibold text-dark mb-3">🔄 Metric vs Imperial</h3>
-                                          <ul class="text-dark small">
-                                                <li><strong>US System:</strong> Cups, spoons, ounces</li>
-                                                <li><strong>Metric:</strong> Grams, liters, milliliters</li>
-                                                <li><strong>Baking:</strong> Metric (weight) is more accurate</li>
-                                                <li><strong>Conversion:</strong> 1 cup flour ≈ 120g</li>
-                                                <li><strong>Conversion:</strong> 1 cup sugar ≈ 200g</li>
-                                          </ul>
+                                          <h3 class="h6 fw-semibold text-white mb-3">🎯 Conclusion</h3>
+                                          <p class="text-white small">The Cooking Conversion Calculator is an essential tool for anyone in the kitchen. Whether you are converting ingredients, scaling recipes, or measuring precisely, this tool saves time and improves accuracy.</p>
+                                          <p class="text-white small">Stop guessing and start cooking with confidence today!</p>
                                     </div>
                               </div>
 
-                              <div class="col-12 col-md-6 col-lg-4 mb-4">
+                              <!-- <div class="col-12 col-md-6 col-lg-4 mb-4">
                                     <div class="guide-section">
-                                          <h3 class="fw-semibold text-dark mb-3">🧈 Butter Conversions</h3>
-                                          <ul class="text-dark small">
-                                                <li><strong>1 Stick:</strong> 1/2 cup or 8 tbsp</li>
-                                                <li><strong>1 Stick:</strong> 4 ounces or 113 grams</li>
-                                                <li><strong>1 Pound:</strong> 4 sticks or 2 cups</li>
-                                                <li><strong>1 Tbsp:</strong> Approx 14 grams</li>
-                                                <li><strong>Wrapper:</strong> Usually marked in tbsp</li>
+                                          <h3 class="h6 fw-semibold text-white mb-3">🔍 Internal Linking (SEO Boost)</h3>
+                                          <p class="text-white small mb-2"><strong>Use other tools on your site::</strong><br>
+                                          </p>
+                                          <ul>
+                                                <li> Unit Converter (for general conversions)</li>
+                                                <li> Volume Calculator (for liquids)</li>
+                                                <li> Weight & Percentage Calculator (for nutrition tracking)</li>
+                                                <li> BMI Calculator</li>
+                                                <li> Cooking Recipes Blog</li>
                                           </ul>
-                                    </div>
-                              </div>
-
-                              <div class="col-12 col-md-6 col-lg-4 mb-4">
-                                    <div class="guide-section">
-                                          <h3 class="fw-semibold text-dark mb-3">🥚 Egg Sizes</h3>
-                                          <ul class="text-dark small">
-                                                <li><strong>Large Egg:</strong> Standard for recipes</li>
-                                                <li><strong>Volume:</strong> Approx 3.25 tbsp per large egg</li>
-                                                <li><strong>White:</strong> Approx 2 tbsp per large egg</li>
-                                                <li><strong>Yolk:</strong> Approx 1 tbsp per large egg</li>
-                                                <li><strong>Weight:</strong> Approx 50g (without shell)</li>
-                                          </ul>
+                                         
                                     </div>
                               </div>
                         </div>
-                  </div>
+                  </div> -->
             </div>
       </div>
 
