@@ -2,12 +2,11 @@ import { CommonModule } from '@angular/common';
 import { Component, HostListener } from '@angular/core';
 import { Router, RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
-import { Header } from '../../shared/components/header/header';
 import { Footer } from '../../shared/components/footer/footer';
 
 @Component({
   selector: 'app-calculator-basic',
-  imports: [CommonModule, FormsModule, Header, Footer, RouterModule],
+  imports: [CommonModule, FormsModule, Footer, RouterModule],
   templateUrl: './our-calculators.html',
   styleUrl: './our-calculators.scss',
   standalone: true,
@@ -390,5 +389,8 @@ export class OurCalculators {
   closeParen() {
     // Placeholder for future parentheses support
     console.log('Close parenthesis');
+  }
+   goBack() {
+    this.router.navigate(['/home']);
   }
 }

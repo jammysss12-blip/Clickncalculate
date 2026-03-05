@@ -1,3 +1,71 @@
+/* Header component styles */
+header,
+.home-container {
+  background-color: #E3F2FD !important;
+}
+
+h1 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #1a2a4a !important;
+  font-weight: 750;
+  font-size: 3rem;
+  margin-bottom: 1rem;
+
+  img.site-logo {
+    height: 45px;
+    width: 45px;
+    object-fit: contain;
+    background-color: white;
+    padding: 4px;
+    margin-right: 16px;
+    border-radius: 4px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+
+  .logo-link {
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    transition: opacity 0.3s ease;
+
+    &:hover {
+      opacity: 0.8;
+    }
+  }
+}
+
+/* Override Bootstrap text classes to ensure visibility */
+.text-light,
+.text-info {
+  color: #1a2a4a !important;
+}
+
+.back-btn-container {
+  position: fixed;
+  top: 10px;
+  color: #1a2a4a;
+  left: 20px;
+  z-index: 1000;
+
+  .back-btn {
+    // background: rgba(255, 255, 255, 0.1);
+    border-radius: 5px;
+    background: #2c4370;
+    // border: 1px solid rgba(255, 255, 255, 0.3);
+    color: #f2f3f7;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+
+    &:hover {
+      background: #596a8e;
+      border-color: #596a8e;
+      color: #eff1f3;
+      transform: translateX(-2px);
+    }
+  }
+}
 .calc-page {
   background: #E3F2FD;
   margin-left: 70px;
@@ -535,789 +603,790 @@
     }
   }
 
-  // Why Choose Card Styling
-  .why-choose-card {
-    background: #ffffff;
-    border: 1px solid #d0d0d0;
-    border-radius: 16px;
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
-    padding: 2rem;
-
-    @media (max-width: 768px) {
-      padding: 1.5rem;
-    }
-
-    @media (max-width: 576px) {
-      padding: 1rem;
-    }
-
-    h3 {
-      color: #000000;
-      margin-bottom: 1.5rem;
-
-      @media (max-width: 768px) {
-        font-size: 1.25rem;
-        margin-bottom: 1.25rem;
-      }
-
-      @media (max-width: 576px) {
-        font-size: 1.1rem;
-        margin-bottom: 1rem;
-      }
-    }
-
-    ul {
-      margin-bottom: 1rem;
-
-      li {
-        color: #212529;
-        line-height: 1.5;
-        margin-bottom: 0.75rem;
-
-        @media (max-width: 768px) {
-          font-size: 0.9rem;
-          margin-bottom: 0.625rem;
-        }
-
-        @media (max-width: 576px) {
-          font-size: 0.85rem;
-          margin-bottom: 0.5rem;
-        }
-
-        strong {
-          color: #000000;
-        }
-      }
-    }
-
-    p {
-      color: #212529;
-      line-height: 1.6;
-      margin-bottom: 0;
-
-      @media (max-width: 768px) {
-        font-size: 0.9rem;
-      }
-
-      @media (max-width: 576px) {
-        font-size: 0.85rem;
-      }
-    }
-  }
-
-  // Conclusion Card Styling
-  .conclusion-card {
-    background: #ffffff;
-    border: 1px solid #d0d0d0;
-    border-radius: 16px;
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
-    padding: 2rem;
-
-    @media (max-width: 768px) {
-      padding: 1.5rem;
-    }
-
-    @media (max-width: 576px) {
-      padding: 1rem;
-    }
-
-    h4 {
-      color: #000000;
-      margin-bottom: 1.25rem;
-
-      @media (max-width: 768px) {
-        font-size: 1.1rem;
-        margin-bottom: 1rem;
-      }
-
-      @media (max-width: 576px) {
-        font-size: 1rem;
-        margin-bottom: 0.875rem;
-      }
-    }
-
-    p {
-      color: #212529;
-      line-height: 1.6;
-      margin-bottom: 0.75rem;
-
-      strong {
-        color: #000000;
-      }
-
-      @media (max-width: 768px) {
-        font-size: 0.9rem;
-        margin-bottom: 0.625rem;
-      }
-
-      @media (max-width: 576px) {
-        font-size: 0.85rem;
-        margin-bottom: 0.5rem;
-      }
-    }
-  }
-
-  .ad-space {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 300px;
-    background-color: #343a40;
-    border: 1px solid #495057;
-    border-radius: 12px;
-  }
-
-  .functions-section {
-    padding: 1rem;
-
-    h2,
-    h3 {
-      color: #000000;
-    }
-
-    @media (max-width: 768px) {
-      padding: 0.5rem;
-
-      h2,
-      h3 {
-        font-size: 1.1rem;
-      }
-
-      .small {
-        font-size: 0.85rem;
-      }
-    }
-
-    @media (max-width: 576px) {
-
-      h2,
-      h3 {
-        font-size: 1rem;
-      }
-
-      .small {
-        font-size: 0.8rem;
-      }
-    }
-
-    @media (max-width: 480px) {
-
-      h2,
-      h3 {
-        font-size: 0.9rem;
-      }
-
-      .small {
-        font-size: 0.75rem;
-      }
-    }
-  }
-
-  .comprehensive-guide {
-    padding: 2rem 1rem;
-
-    .guide-section {
-      padding: 1.5rem;
-      background: rgba(255, 255, 255, 0.05);
-      border-radius: 12px;
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      transition: all 0.3s ease;
-      height: 100%;
-
-      &:hover {
-        background: rgba(255, 255, 255, 0.08);
-        border-color: rgba(255, 255, 255, 0.2);
-        transform: translateY(-2px);
-        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
-      }
-
-      h3 {
-        color: #000000;
-        margin-bottom: 1rem;
-      }
-
-      ul {
-        margin-bottom: 0;
-
-        li {
-          margin-bottom: 0.5rem;
-
-          &:last-child {
-            margin-bottom: 0;
-          }
-        }
-      }
-
-      p {
-        color: #000000;
-        margin-bottom: 0.5rem;
-      }
-    }
-
-    @media (max-width: 768px) {
-      padding: 1.5rem 0.5rem;
-
-      .guide-section {
-        padding: 1rem;
-
-        h3 {
-          font-size: 1rem;
-        }
-
-        .small {
-          font-size: 0.85rem;
-        }
-      }
-    }
-
-    @media (max-width: 576px) {
-      padding: 1rem 0.5rem;
-
-      .guide-section {
-        padding: 0.875rem;
-
-        h3 {
-          font-size: 0.95rem;
-        }
-
-        .small {
-          font-size: 0.8rem;
-        }
-      }
-    }
-
-    @media (max-width: 480px) {
-      .guide-section {
-        padding: 0.75rem;
-
-        h3 {
-          font-size: 0.9rem;
-        }
-
-        .small {
-          font-size: 0.75rem;
-        }
-      }
-    }
-  }
-
-
-  .table {
-    --bs-table-bg: transparent;
-
-    thead {
-      background-color: #e9ecef !important;
-
-      th {
-        background-color: #e9ecef !important;
-        color: #000000 !important;
-        border-bottom: 2px solid #dee2e6 !important;
-        font-weight: 600 !important;
-        padding: 0.75rem !important;
-        text-align: left !important;
-        vertical-align: middle !important;
-      }
-    }
-
-    tbody {
-      td {
-        color: #000000 !important;
-        border-color: #000000 !important;
-        padding: 0.5rem 0.75rem !important;
-      }
-    }
-
-    @media (max-width: 768px) {
-
-      thead th,
-      tbody td {
-        padding: 0.4rem 0.5rem !important;
-        font-size: 0.9rem;
-      }
-    }
-
-    @media (max-width: 576px) {
-
-      thead th,
-      tbody td {
-        padding: 0.3rem 0.4rem !important;
-        font-size: 0.8rem;
-      }
-    }
-
-    @media (max-width: 480px) {
-
-      thead th,
-      tbody td {
-        padding: 0.25rem 0.3rem !important;
-        font-size: 0.75rem;
-      }
-    }
-  }
-
-}
-
-@media (max-width: 360px) {
-  .calc-page {
-    background: #E3F2FD;
-    margin-left: 0;
-    padding: 0 15px;
-
-    @media (min-width: 1200px) {
-      padding: 0 70px;
-    }
-
-    @media (min-width: 768px) and (max-width: 1199px) {
-      padding: 0 30px;
-    }
-
-    @media (max-width: 767px) {
-      padding: 0 10px;
-    }
-  }
-
-  .calculator-shell {
-    border: 1px solid #d0d0d0;
-    border-radius: 12px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15), inset 0 1px 2px rgba(0, 0, 0, 0.1);
-    padding: 1rem;
-    max-width: 100%;
-    width: 100%;
-
-    @media (max-width: 768px) {
-      padding: 0.875rem;
-      max-width: 350px;
-    }
-
-    @media (max-width: 576px) {
-      padding: 0.75rem;
-      max-width: 320px;
-    }
-
-    @media (max-width: 480px) {
-      padding: 0.625rem;
-    }
-
-    @media (max-width: 360px) {
-      padding: 0.5rem;
-    }
-  }
-
-  .screen {
-    background: white;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    padding: 12px 16px;
-    text-align: right;
-    font-size: 1.5rem;
-    letter-spacing: 0.5px;
-    min-height: 70px;
-    color: black;
-    font-weight: bold;
-    font-family: 'Arial', sans-serif;
-    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
-    word-wrap: break-word;
-    overflow-wrap: break-word;
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-
-    @media (max-width: 768px) {
-      font-size: 1.3rem;
-      padding: 10px 14px;
-      min-height: 60px;
-    }
-
-    @media (max-width: 576px) {
-      font-size: 1.2rem;
-      padding: 8px 12px;
-      min-height: 55px;
-    }
-
-    @media (max-width: 480px) {
-      font-size: 1.1rem;
-      padding: 6px 10px;
-      min-height: 50px;
-    }
-
-    @media (max-width: 360px) {
-      font-size: 1rem;
-      padding: 5px 8px;
-      min-height: 45px;
-    }
-  }
-
-  .keypad .btn {
-    border-radius: 6px;
-    padding: 12px 8px;
-    font-weight: bold;
-    font-family: 'Arial', sans-serif;
-    border: 1px solid #ccc;
-    color: black;
-    font-size: 0.9rem;
-    min-height: 48px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: all 0.2s ease;
-    cursor: pointer;
-    user-select: none;
-    -webkit-tap-highlight-color: transparent;
-
-    &:active {
-      transform: scale(0.95);
-      box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.2);
-    }
-
-    &:hover {
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    }
-
-    @media (max-width: 768px) {
-      padding: 10px 6px;
-      font-size: 0.85rem;
-      min-height: 44px;
-    }
-
-    @media (max-width: 576px) {
-      padding: 8px 4px;
-      font-size: 0.8rem;
-      min-height: 40px;
-    }
-
-    @media (max-width: 480px) {
-      padding: 6px 3px;
-      font-size: 0.75rem;
-      min-height: 36px;
-    }
-
-    @media (max-width: 360px) {
-      padding: 5px 2px;
-      font-size: 0.7rem;
-      min-height: 32px;
-    }
-
-    &.btn-dark {
-      background-color: #ffffff;
-      border-color: #ddd;
-      color: black;
-
-      &:hover {
-        background-color: #f8f9fa;
-        border-color: #ccc;
-      }
-
-      &:active {
-        background-color: #e9ecef;
-      }
-    }
-
-    &.btn-secondary,
-    &.btn-outline-warning,
-    &.btn-outline-light,
-    &.btn-outline-info,
-    &.btn-outline-secondary {
-      background-color: #e9ecef;
-      border-color: #adb5bd;
-      color: #495057;
-
-      &:hover {
-        background-color: black;
-        border-color: black;
-      }
-
-      &:active {
-        background-color: black;
-      }
-    }
-
-    &.btn-info,
-    &.btn-success {
-      background-color: #42A5F5;
-      border-color: #42A5F5;
-      color: black;
-      font-weight: 700;
-
-      &:hover {
-        background-color: #333333;
-        border-color: #000000;
-      }
-
-      &:active {
-        background-color: #000000;
-      }
-    }
-  }
-
-  .functions-section {
-    padding: 1rem;
-
-    h2,
-    h3 {
-      color: #000000;
-    }
-
-    @media (max-width: 768px) {
-      padding: 0.5rem;
-
-      h2,
-      h3 {
-        font-size: 1.1rem;
-      }
-
-      .small {
-        font-size: 0.85rem;
-      }
-    }
-
-    @media (max-width: 576px) {
-
-      h2,
-      h3 {
-        font-size: 1rem;
-      }
-
-      .small {
-        font-size: 0.8rem;
-      }
-    }
-
-    @media (max-width: 480px) {
-
-      h2,
-      h3 {
-        font-size: 0.9rem;
-      }
-
-      .small {
-        font-size: 0.75rem;
-      }
-    }
-  }
-
-  .comprehensive-guide {
-    padding: 2rem 1rem;
-
-    .guide-section {
-      padding: 1.5rem;
-      background: rgba(255, 255, 255, 0.05);
-      border-radius: 12px;
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      transition: all 0.3s ease;
-      height: 100%;
-
-      &:hover {
-        background: rgba(255, 255, 255, 0.08);
-        border-color: rgba(255, 255, 255, 0.2);
-        transform: translateY(-2px);
-        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
-      }
-
-      h3 {
-        color: #000000;
-        margin-bottom: 1rem;
-      }
-
-      ul {
-        margin-bottom: 0;
-
-        li {
-          margin-bottom: 0.5rem;
-
-          &:last-child {
-            margin-bottom: 0;
-          }
-        }
-      }
-
-      p {
-        color: #000000;
-        margin-bottom: 0.5rem;
-      }
-    }
-
-    @media (max-width: 768px) {
-      padding: 1.5rem 0.5rem;
-
-      .guide-section {
-        padding: 1rem;
-
-        h3 {
-          font-size: 1rem;
-        }
-
-        .small {
-          font-size: 0.85rem;
-        }
-      }
-    }
-
-    @media (max-width: 576px) {
-      padding: 1rem 0.5rem;
-
-      .guide-section {
-        padding: 0.875rem;
-
-        h3 {
-          font-size: 0.95rem;
-        }
-
-        .small {
-          font-size: 0.8rem;
-        }
-      }
-    }
-
-    @media (max-width: 480px) {
-      .guide-section {
-        padding: 0.75rem;
-
-        h3 {
-          font-size: 0.9rem;
-        }
-
-        .small {
-          font-size: 0.75rem;
-        }
-      }
-    }
-  }
-
-
-  .table {
-    --bs-table-bg: transparent;
-
-    thead {
-      background-color: #e9ecef !important;
-
-      th {
-        background-color: #e9ecef !important;
-        color: #000000 !important;
-        border-bottom: 2px solid #dee2e6 !important;
-        font-weight: 600 !important;
-        padding: 0.75rem !important;
-        text-align: left !important;
-        vertical-align: middle !important;
-      }
-    }
-
-    tbody {
-      td {
-        color: #000000 !important;
-        border-color: #000000 !important;
-        padding: 0.5rem 0.75rem !important;
-      }
-    }
-
-    // Responsive table adjustments
-    @media (max-width: 768px) {
-
-      thead th,
-      tbody td {
-        padding: 0.4rem 0.5rem !important;
-        font-size: 0.9rem;
-      }
-    }
-
-    @media (max-width: 576px) {
-
-      thead th,
-      tbody td {
-        padding: 0.3rem 0.4rem !important;
-        font-size: 0.8rem;
-      }
-    }
-
-    @media (max-width: 480px) {
-
-      thead th,
-      tbody td {
-        padding: 0.25rem 0.3rem !important;
-        font-size: 0.75rem;
-      }
-    }
-  }
-
-}
-
-// Additional responsive adjustments for very small screens
-@media (max-width: 360px) {
-  .calc-page {
-    margin-left: 2px;
-
-    .calculator-shell {
-      padding: 0.5rem;
-      max-width: 240px;
-    }
-
-    .screen {
-      font-size: 1rem;
-      padding: 5px 8px;
-      min-height: 40px;
-    }
-
-    .keypad .btn {
-      padding: 4px 2px;
-      font-size: 0.7rem;
-      min-height: 30px;
-    }
-
-    .guide {
-
-      h2,
-      h3 {
-        font-size: 0.85rem;
-      }
-
-      .small {
-        font-size: 0.7rem;
-      }
-    }
-
-    .table {
-
-      thead th,
-      tbody td {
-        padding: 0.2rem 0.25rem !important;
-        font-size: 0.7rem;
-      }
-    }
-  }
-}
-
-// Touch optimization for mobile devices
-@media (hover: none) and (pointer: coarse) {
-  .keypad .btn {
-    min-height: 48px;
-    padding: 12px 8px;
-
-    &:active {
-      transform: scale(0.9);
-      transition: transform 0.1s ease;
-    }
-  }
-
-  .calculator-shell {
-    padding: 1.25rem;
-  }
-
-  .screen {
-    min-height: 60px;
-    font-size: 1.4rem;
-  }
-}
-
-@media (-webkit-min-device-pixel-ratio: 2),
-(min-resolution: 192dpi) {
-  .keypad .btn {
-    border-width: 0.5px;
-  }
-
-  .calculator-shell {
-    border-width: 0.5px;
-  }
-
-  .screen {
-    border-width: 0.5px;
-  }
+//   // Why Choose Card Styling
+//   .why-choose-card {
+//     background: #ffffff;
+//     border: 1px solid #d0d0d0;
+//     border-radius: 16px;
+//     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+//     padding: 2rem;
+
+//     @media (max-width: 768px) {
+//       padding: 1.5rem;
+//     }
+
+//     @media (max-width: 576px) {
+//       padding: 1rem;
+//     }
+
+//     h3 {
+//       color: #000000;
+//       margin-bottom: 1.5rem;
+
+//       @media (max-width: 768px) {
+//         font-size: 1.25rem;
+//         margin-bottom: 1.25rem;
+//       }
+
+//       @media (max-width: 576px) {
+//         font-size: 1.1rem;
+//         margin-bottom: 1rem;
+//       }
+//     }
+
+//     ul {
+//       margin-bottom: 1rem;
+
+//       li {
+//         color: #212529;
+//         line-height: 1.5;
+//         margin-bottom: 0.75rem;
+
+//         @media (max-width: 768px) {
+//           font-size: 0.9rem;
+//           margin-bottom: 0.625rem;
+//         }
+
+//         @media (max-width: 576px) {
+//           font-size: 0.85rem;
+//           margin-bottom: 0.5rem;
+//         }
+
+//         strong {
+//           color: #000000;
+//         }
+//       }
+//     }
+
+//     p {
+//       color: #212529;
+//       line-height: 1.6;
+//       margin-bottom: 0;
+
+//       @media (max-width: 768px) {
+//         font-size: 0.9rem;
+//       }
+
+//       @media (max-width: 576px) {
+//         font-size: 0.85rem;
+//       }
+//     }
+//   }
+
+//   // Conclusion Card Styling
+//   .conclusion-card {
+//     background: #ffffff;
+//     border: 1px solid #d0d0d0;
+//     border-radius: 16px;
+//     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+//     padding: 2rem;
+
+//     @media (max-width: 768px) {
+//       padding: 1.5rem;
+//     }
+
+//     @media (max-width: 576px) {
+//       padding: 1rem;
+//     }
+
+//     h4 {
+//       color: #000000;
+//       margin-bottom: 1.25rem;
+
+//       @media (max-width: 768px) {
+//         font-size: 1.1rem;
+//         margin-bottom: 1rem;
+//       }
+
+//       @media (max-width: 576px) {
+//         font-size: 1rem;
+//         margin-bottom: 0.875rem;
+//       }
+//     }
+
+//     p {
+//       color: #212529;
+//       line-height: 1.6;
+//       margin-bottom: 0.75rem;
+
+//       strong {
+//         color: #000000;
+//       }
+
+//       @media (max-width: 768px) {
+//         font-size: 0.9rem;
+//         margin-bottom: 0.625rem;
+//       }
+
+//       @media (max-width: 576px) {
+//         font-size: 0.85rem;
+//         margin-bottom: 0.5rem;
+//       }
+//     }
+//   }
+
+//   .ad-space {
+//     display: flex;
+//     align-items: center;
+//     justify-content: center;
+//     height: 300px;
+//     background-color: #343a40;
+//     border: 1px solid #495057;
+//     border-radius: 12px;
+//   }
+
+//   .functions-section {
+//     padding: 1rem;
+
+//     h2,
+//     h3 {
+//       color: #000000;
+//     }
+
+//     @media (max-width: 768px) {
+//       padding: 0.5rem;
+
+//       h2,
+//       h3 {
+//         font-size: 1.1rem;
+//       }
+
+//       .small {
+//         font-size: 0.85rem;
+//       }
+//     }
+
+//     @media (max-width: 576px) {
+
+//       h2,
+//       h3 {
+//         font-size: 1rem;
+//       }
+
+//       .small {
+//         font-size: 0.8rem;
+//       }
+//     }
+
+//     @media (max-width: 480px) {
+
+//       h2,
+//       h3 {
+//         font-size: 0.9rem;
+//       }
+
+//       .small {
+//         font-size: 0.75rem;
+//       }
+//     }
+//   }
+
+//   .comprehensive-guide {
+//     padding: 2rem 1rem;
+
+//     .guide-section {
+//       padding: 1.5rem;
+//       background: rgba(255, 255, 255, 0.05);
+//       border-radius: 12px;
+//       border: 1px solid rgba(255, 255, 255, 0.1);
+//       transition: all 0.3s ease;
+//       height: 100%;
+
+//       &:hover {
+//         background: rgba(255, 255, 255, 0.08);
+//         border-color: rgba(255, 255, 255, 0.2);
+//         transform: translateY(-2px);
+//         box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+//       }
+
+//       h3 {
+//         color: #000000;
+//         margin-bottom: 1rem;
+//       }
+
+//       ul {
+//         margin-bottom: 0;
+
+//         li {
+//           margin-bottom: 0.5rem;
+
+//           &:last-child {
+//             margin-bottom: 0;
+//           }
+//         }
+//       }
+
+//       p {
+//         color: #000000;
+//         margin-bottom: 0.5rem;
+//       }
+//     }
+
+//     @media (max-width: 768px) {
+//       padding: 1.5rem 0.5rem;
+
+//       .guide-section {
+//         padding: 1rem;
+
+//         h3 {
+//           font-size: 1rem;
+//         }
+
+//         .small {
+//           font-size: 0.85rem;
+//         }
+//       }
+//     }
+
+//     @media (max-width: 576px) {
+//       padding: 1rem 0.5rem;
+
+//       .guide-section {
+//         padding: 0.875rem;
+
+//         h3 {
+//           font-size: 0.95rem;
+//         }
+
+//         .small {
+//           font-size: 0.8rem;
+//         }
+//       }
+//     }
+
+//     @media (max-width: 480px) {
+//       .guide-section {
+//         padding: 0.75rem;
+
+//         h3 {
+//           font-size: 0.9rem;
+//         }
+
+//         .small {
+//           font-size: 0.75rem;
+//         }
+//       }
+//     }
+//   }
+
+
+//   .table {
+//     --bs-table-bg: transparent;
+
+//     thead {
+//       background-color: #e9ecef !important;
+
+//       th {
+//         background-color: #e9ecef !important;
+//         color: #000000 !important;
+//         border-bottom: 2px solid #dee2e6 !important;
+//         font-weight: 600 !important;
+//         padding: 0.75rem !important;
+//         text-align: left !important;
+//         vertical-align: middle !important;
+//       }
+//     }
+
+//     tbody {
+//       td {
+//         color: #000000 !important;
+//         border-color: #000000 !important;
+//         padding: 0.5rem 0.75rem !important;
+//       }
+//     }
+
+//     @media (max-width: 768px) {
+
+//       thead th,
+//       tbody td {
+//         padding: 0.4rem 0.5rem !important;
+//         font-size: 0.9rem;
+//       }
+//     }
+
+//     @media (max-width: 576px) {
+
+//       thead th,
+//       tbody td {
+//         padding: 0.3rem 0.4rem !important;
+//         font-size: 0.8rem;
+//       }
+//     }
+
+//     @media (max-width: 480px) {
+
+//       thead th,
+//       tbody td {
+//         padding: 0.25rem 0.3rem !important;
+//         font-size: 0.75rem;
+//       }
+//     }
+//   }
+
+// }
+
+// @media (max-width: 360px) {
+//   .calc-page {
+//     background: #E3F2FD;
+//     margin-left: 0;
+//     padding: 0 15px;
+
+//     @media (min-width: 1200px) {
+//       padding: 0 70px;
+//     }
+
+//     @media (min-width: 768px) and (max-width: 1199px) {
+//       padding: 0 30px;
+//     }
+
+//     @media (max-width: 767px) {
+//       padding: 0 10px;
+//     }
+//   }
+
+//   .calculator-shell {
+//     border: 1px solid #d0d0d0;
+//     border-radius: 12px;
+//     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15), inset 0 1px 2px rgba(0, 0, 0, 0.1);
+//     padding: 1rem;
+//     max-width: 100%;
+//     width: 100%;
+
+//     @media (max-width: 768px) {
+//       padding: 0.875rem;
+//       max-width: 350px;
+//     }
+
+//     @media (max-width: 576px) {
+//       padding: 0.75rem;
+//       max-width: 320px;
+//     }
+
+//     @media (max-width: 480px) {
+//       padding: 0.625rem;
+//     }
+
+//     @media (max-width: 360px) {
+//       padding: 0.5rem;
+//     }
+//   }
+
+//   .screen {
+//     background: white;
+//     border: 1px solid #ccc;
+//     border-radius: 8px;
+//     padding: 12px 16px;
+//     text-align: right;
+//     font-size: 1.5rem;
+//     letter-spacing: 0.5px;
+//     min-height: 70px;
+//     color: black;
+//     font-weight: bold;
+//     font-family: 'Arial', sans-serif;
+//     box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+//     word-wrap: break-word;
+//     overflow-wrap: break-word;
+//     display: flex;
+//     align-items: center;
+//     justify-content: flex-end;
+
+//     @media (max-width: 768px) {
+//       font-size: 1.3rem;
+//       padding: 10px 14px;
+//       min-height: 60px;
+//     }
+
+//     @media (max-width: 576px) {
+//       font-size: 1.2rem;
+//       padding: 8px 12px;
+//       min-height: 55px;
+//     }
+
+//     @media (max-width: 480px) {
+//       font-size: 1.1rem;
+//       padding: 6px 10px;
+//       min-height: 50px;
+//     }
+
+//     @media (max-width: 360px) {
+//       font-size: 1rem;
+//       padding: 5px 8px;
+//       min-height: 45px;
+//     }
+//   }
+
+//   .keypad .btn {
+//     border-radius: 6px;
+//     padding: 12px 8px;
+//     font-weight: bold;
+//     font-family: 'Arial', sans-serif;
+//     border: 1px solid #ccc;
+//     color: black;
+//     font-size: 0.9rem;
+//     min-height: 48px;
+//     display: flex;
+//     align-items: center;
+//     justify-content: center;
+//     transition: all 0.2s ease;
+//     cursor: pointer;
+//     user-select: none;
+//     -webkit-tap-highlight-color: transparent;
+
+//     &:active {
+//       transform: scale(0.95);
+//       box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.2);
+//     }
+
+//     &:hover {
+//       box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+//     }
+
+//     @media (max-width: 768px) {
+//       padding: 10px 6px;
+//       font-size: 0.85rem;
+//       min-height: 44px;
+//     }
+
+//     @media (max-width: 576px) {
+//       padding: 8px 4px;
+//       font-size: 0.8rem;
+//       min-height: 40px;
+//     }
+
+//     @media (max-width: 480px) {
+//       padding: 6px 3px;
+//       font-size: 0.75rem;
+//       min-height: 36px;
+//     }
+
+//     @media (max-width: 360px) {
+//       padding: 5px 2px;
+//       font-size: 0.7rem;
+//       min-height: 32px;
+//     }
+
+//     &.btn-dark {
+//       background-color: #ffffff;
+//       border-color: #ddd;
+//       color: black;
+
+//       &:hover {
+//         background-color: #f8f9fa;
+//         border-color: #ccc;
+//       }
+
+//       &:active {
+//         background-color: #e9ecef;
+//       }
+//     }
+
+//     &.btn-secondary,
+//     &.btn-outline-warning,
+//     &.btn-outline-light,
+//     &.btn-outline-info,
+//     &.btn-outline-secondary {
+//       background-color: #e9ecef;
+//       border-color: #adb5bd;
+//       color: #495057;
+
+//       &:hover {
+//         background-color: black;
+//         border-color: black;
+//       }
+
+//       &:active {
+//         background-color: black;
+//       }
+//     }
+
+//     &.btn-info,
+//     &.btn-success {
+//       background-color: #42A5F5;
+//       border-color: #42A5F5;
+//       color: black;
+//       font-weight: 700;
+
+//       &:hover {
+//         background-color: #333333;
+//         border-color: #000000;
+//       }
+
+//       &:active {
+//         background-color: #000000;
+//       }
+//     }
+//   }
+
+//   .functions-section {
+//     padding: 1rem;
+
+//     h2,
+//     h3 {
+//       color: #000000;
+//     }
+
+//     @media (max-width: 768px) {
+//       padding: 0.5rem;
+
+//       h2,
+//       h3 {
+//         font-size: 1.1rem;
+//       }
+
+//       .small {
+//         font-size: 0.85rem;
+//       }
+//     }
+
+//     @media (max-width: 576px) {
+
+//       h2,
+//       h3 {
+//         font-size: 1rem;
+//       }
+
+//       .small {
+//         font-size: 0.8rem;
+//       }
+//     }
+
+//     @media (max-width: 480px) {
+
+//       h2,
+//       h3 {
+//         font-size: 0.9rem;
+//       }
+
+//       .small {
+//         font-size: 0.75rem;
+//       }
+//     }
+//   }
+
+//   .comprehensive-guide {
+//     padding: 2rem 1rem;
+
+//     .guide-section {
+//       padding: 1.5rem;
+//       background: rgba(255, 255, 255, 0.05);
+//       border-radius: 12px;
+//       border: 1px solid rgba(255, 255, 255, 0.1);
+//       transition: all 0.3s ease;
+//       height: 100%;
+
+//       &:hover {
+//         background: rgba(255, 255, 255, 0.08);
+//         border-color: rgba(255, 255, 255, 0.2);
+//         transform: translateY(-2px);
+//         box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+//       }
+
+//       h3 {
+//         color: #000000;
+//         margin-bottom: 1rem;
+//       }
+
+//       ul {
+//         margin-bottom: 0;
+
+//         li {
+//           margin-bottom: 0.5rem;
+
+//           &:last-child {
+//             margin-bottom: 0;
+//           }
+//         }
+//       }
+
+//       p {
+//         color: #000000;
+//         margin-bottom: 0.5rem;
+//       }
+//     }
+
+//     @media (max-width: 768px) {
+//       padding: 1.5rem 0.5rem;
+
+//       .guide-section {
+//         padding: 1rem;
+
+//         h3 {
+//           font-size: 1rem;
+//         }
+
+//         .small {
+//           font-size: 0.85rem;
+//         }
+//       }
+//     }
+
+//     @media (max-width: 576px) {
+//       padding: 1rem 0.5rem;
+
+//       .guide-section {
+//         padding: 0.875rem;
+
+//         h3 {
+//           font-size: 0.95rem;
+//         }
+
+//         .small {
+//           font-size: 0.8rem;
+//         }
+//       }
+//     }
+
+//     @media (max-width: 480px) {
+//       .guide-section {
+//         padding: 0.75rem;
+
+//         h3 {
+//           font-size: 0.9rem;
+//         }
+
+//         .small {
+//           font-size: 0.75rem;
+//         }
+//       }
+//     }
+//   }
+
+
+//   .table {
+//     --bs-table-bg: transparent;
+
+//     thead {
+//       background-color: #e9ecef !important;
+
+//       th {
+//         background-color: #e9ecef !important;
+//         color: #000000 !important;
+//         border-bottom: 2px solid #dee2e6 !important;
+//         font-weight: 600 !important;
+//         padding: 0.75rem !important;
+//         text-align: left !important;
+//         vertical-align: middle !important;
+//       }
+//     }
+
+//     tbody {
+//       td {
+//         color: #000000 !important;
+//         border-color: #000000 !important;
+//         padding: 0.5rem 0.75rem !important;
+//       }
+//     }
+
+//     // Responsive table adjustments
+//     @media (max-width: 768px) {
+
+//       thead th,
+//       tbody td {
+//         padding: 0.4rem 0.5rem !important;
+//         font-size: 0.9rem;
+//       }
+//     }
+
+//     @media (max-width: 576px) {
+
+//       thead th,
+//       tbody td {
+//         padding: 0.3rem 0.4rem !important;
+//         font-size: 0.8rem;
+//       }
+//     }
+
+//     @media (max-width: 480px) {
+
+//       thead th,
+//       tbody td {
+//         padding: 0.25rem 0.3rem !important;
+//         font-size: 0.75rem;
+//       }
+//     }
+//   }
+
+// }
+
+// // Additional responsive adjustments for very small screens
+// @media (max-width: 360px) {
+//   .calc-page {
+//     margin-left: 2px;
+
+//     .calculator-shell {
+//       padding: 0.5rem;
+//       max-width: 240px;
+//     }
+
+//     .screen {
+//       font-size: 1rem;
+//       padding: 5px 8px;
+//       min-height: 40px;
+//     }
+
+//     .keypad .btn {
+//       padding: 4px 2px;
+//       font-size: 0.7rem;
+//       min-height: 30px;
+//     }
+
+//     .guide {
+
+//       h2,
+//       h3 {
+//         font-size: 0.85rem;
+//       }
+
+//       .small {
+//         font-size: 0.7rem;
+//       }
+//     }
+
+//     .table {
+
+//       thead th,
+//       tbody td {
+//         padding: 0.2rem 0.25rem !important;
+//         font-size: 0.7rem;
+//       }
+//     }
+//   }
+// }
+
+// // Touch optimization for mobile devices
+// @media (hover: none) and (pointer: coarse) {
+//   .keypad .btn {
+//     min-height: 48px;
+//     padding: 12px 8px;
+
+//     &:active {
+//       transform: scale(0.9);
+//       transition: transform 0.1s ease;
+//     }
+//   }
+
+//   .calculator-shell {
+//     padding: 1.25rem;
+//   }
+
+//   .screen {
+//     min-height: 60px;
+//     font-size: 1.4rem;
+//   }
+// }
+
+// @media (-webkit-min-device-pixel-ratio: 2),
+// (min-resolution: 192dpi) {
+//   .keypad .btn {
+//     border-width: 0.5px;
+//   }
+
+//   .calculator-shell {
+//     border-width: 0.5px;
+//   }
+
+//   .screen {
+//     border-width: 0.5px;
+//   }
+// }
 }

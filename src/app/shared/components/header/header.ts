@@ -11,7 +11,7 @@ import { Router, RouterModule } from '@angular/router';
 })
 export class Header {
   goBack() {
-    this.router.navigate(['/home']);
+    this.router.navigate(['/our-calculators']);
   }
 
 

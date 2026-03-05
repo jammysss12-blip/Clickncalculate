@@ -99,6 +99,12 @@
       color: #1a237e;
       margin-bottom: 15px;
       letter-spacing: -0.5px;
+       max-width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+    position: relative;
+    z-index: 2;
+    animation: fadeInUp 0.8s ease-out;
     }
 
     .blog-subtitle {
@@ -106,6 +112,11 @@
       color: #546e7a;
       line-height: 1.6;
       max-width: 900px;
+       margin: 0 auto;
+    text-align: center;
+    position: relative;
+    z-index: 2;
+    animation: fadeInUp 0.8s ease-out;
     }
 
     /* Blog Grid */
