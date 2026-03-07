@@ -500,39 +500,41 @@
 // Guide Section Styling
 .comprehensive-guide {
   .guide-section {
-    background: #ffffff;
-    border: 1px solid rgba(0, 0, 0, 0.1);
+    background: #f8f9fa;
+    border: 1px solid rgba(0, 0, 0, 0.08);
     border-radius: 12px;
+    padding: 1.5rem;
     transition: all 0.3s ease;
     height: 100%;
 
     &:hover {
       transform: translateY(-3px);
-      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
+      border-color: #42A5F5;
     }
 
     h3 {
-      color: #000000;
+      color: #1a2a4a;
       font-size: 1.1rem;
       font-weight: 600;
       margin-bottom: 1.25rem;
       padding-bottom: 0.75rem;
-      border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+      border-bottom: 2px solid #e9ecef;
       position: relative;
 
       &::after {
         content: '';
         position: absolute;
-        bottom: -1px;
+        bottom: -2px;
         left: 0;
         width: 50px;
         height: 2px;
-        background: #000000;
+        background: #42A5F5;
       }
     }
 
     h4 {
-      color: #000000;
+      color: #1a2a4a;
       font-size: 0.95rem;
       font-weight: 600;
       margin-top: 1.5rem;
@@ -540,9 +542,9 @@
     }
 
     p {
-      color: #666;
+      color: #495057;
       font-size: 0.9rem;
-      line-height: 1.6;
+      line-height: 1.7;
     }
 
     ul,
@@ -552,11 +554,16 @@
 
       li {
         margin-bottom: 0.5rem;
-        line-height: 1.5;
-        color: #333;
+        line-height: 1.6;
+        color: #495057;
 
         &::marker {
-          color: #000000;
+          color: #42A5F5;
+        }
+
+        strong {
+          color: #1a2a4a;
+          font-weight: 600;
         }
       }
     }
