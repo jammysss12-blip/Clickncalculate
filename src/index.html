@@ -44,6 +44,16 @@
 
 <body>
   <app-root></app-root>
+<!-- Cookie Consent Banner -->
+<div id="cookieBanner" style="position:fixed;bottom:0;left:0;width:100%;background:#1a1a2e;color:#fff;padding:15px 20px;display:flex;justify-content:space-between;align-items:center;z-index:9999;font-family:sans-serif;font-size:14px;">
+  <span>🍪 We use cookies to improve your experience. By using this site, you agree to our <a href="/privacy-policy" style="color:#f0c040;">Privacy Policy</a>.</span>
+  <button onclick="document.getElementById('cookieBanner').style.display='none';localStorage.setItem('cookieAccepted','true')" style="background:#f0c040;color:#000;border:none;padding:8px 18px;border-radius:5px;cursor:pointer;font-weight:bold;margin-left:20px;">Accept</button>
+</div>
+<script>
+  if(localStorage.getItem('cookieAccepted')==='true'){
+    document.getElementById('cookieBanner').style.display='none';
+  }
+</script>
 </body>
 
 </html>
