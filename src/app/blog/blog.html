@@ -54,12 +54,14 @@
                       <path d="M 150 40 Q 157 45 164 40" stroke="#2196F3" stroke-width="2" fill="none"/>
                     }
                     
-                    @if (post.id === 2) {
-                      <rect x="25" y="85" width="20" height="30" rx="3" fill="#C8E6C9" stroke="#4CAF50" stroke-width="2"/>
-                      <text x="35" y="105" font-size="18" text-anchor="middle" fill="#4CAF50" font-weight="bold">%</text>
-                      <circle cx="155" cy="100" r="12" fill="#C8E6C9" stroke="#4CAF50" stroke-width="2"/>
-                      <text x="155" y="106" font-size="16" text-anchor="middle" fill="#4CAF50" font-weight="bold">$</text>
-                    }
+                   @if (post.id === 2) {
+  <rect x="20" y="80" width="22" height="35" rx="3" fill="#C8E6C9" stroke="#4CAF50" stroke-width="2"/>
+  <rect x="20" y="95" width="22" height="3" fill="#4CAF50"/>
+  <rect x="20" y="102" width="22" height="3" fill="#4CAF50"/>
+  <circle cx="155" cy="100" r="12" fill="#C8E6C9" stroke="#4CAF50" stroke-width="2"/>
+  <rect x="149" y="98" width="12" height="2" fill="#4CAF50"/>
+  <rect x="154" y="93" width="2" height="12" fill="#4CAF50"/>
+}
                     
                     @if (post.id === 3) {
                       <circle cx="30" cy="100" r="15" fill="#FFF9C4" stroke="#FFC107" stroke-width="2"/>
