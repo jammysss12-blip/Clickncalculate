@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { SchemaService } from '../../services/schema.service';
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -56,7 +57,58 @@ interface BondResult {
   templateUrl: './calculator-loan.html',
   styleUrl: './calculator-loan.scss',
 })
-export class CalculatorLoan {
+export class CalculatorLoan implements OnInit, OnDestroy {
+
+  constructor(private schemaService: SchemaService) {}
+
+  ngOnInit() {
+    this.schemaService.addSchema({
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "WebApplication",
+          "name": "Loan EMI Calculator",
+          "url": "https://clickncalculate.com/loan-emi-calculator",
+          "description": "Calculate your monthly loan EMI instantly. Enter loan amount, interest rate and tenure to get your exact monthly payment and total interest.",
+          "applicationCategory": "FinanceApplication",
+          "operatingSystem": "Web Browser",
+          "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+        },
+        {
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://clickncalculate.com" },
+            { "@type": "ListItem", "position": 2, "name": "Loan EMI Calculator", "item": "https://clickncalculate.com/loan-emi-calculator" }
+          ]
+        },
+        {
+          "@type": "FAQPage",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "How is EMI calculated?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "EMI = [P × R × (1+R)^N] / [(1+R)^N - 1], where P is principal, R is monthly interest rate, and N is number of installments."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "What is a good EMI to income ratio?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Keep total monthly EMIs below 40% of your take-home income to avoid financial strain."
+              }
+            }
+          ]
+        }
+      ]
+    });
+  }
+
+  ngOnDestroy() {
+    this.schemaService.removeSchema();
+  }
   // Active tab control
   activeTab: 'amortized' | 'deferred' | 'bond' = 'amortized';
 
