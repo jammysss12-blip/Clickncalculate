@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { SchemaService } from '../../services/schema.service';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
@@ -12,7 +13,50 @@ import { Footer } from '../../shared/components/footer/footer';
   styleUrl: './calculator-age.scss',
   standalone: true,
 })
-export class CalculatorAge {
+export class CalculatorAge implements OnInit, OnDestroy {
+
+  constructor(private schemaService: SchemaService) {}
+
+  ngOnInit() {
+    this.schemaService.addSchema({
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "WebApplication",
+          "name": "Age Calculator",
+          "url": "https://clickncalculate.com/calculator-age",
+          "description": "Calculate your exact age in years, months, and days instantly. Free online age calculator.",
+          "applicationCategory": "UtilitiesApplication",
+          "operatingSystem": "Web Browser",
+          "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+        },
+        {
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://clickncalculate.com" },
+            { "@type": "ListItem", "position": 2, "name": "Age Calculator", "item": "https://clickncalculate.com/calculator-age" }
+          ]
+        },
+        {
+          "@type": "FAQPage",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "How do I calculate my exact age?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Enter your date of birth in our Age Calculator and it will instantly show your exact age in years, months, and days based on today's date."
+              }
+            }
+          ]
+        }
+      ]
+    });
+  }
+
+  ngOnDestroy() {
+    this.schemaService.removeSchema();
+  }
   birthDate: string = '';
   targetDate: string = '';
 
