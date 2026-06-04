@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { SchemaService } from '../../services/schema.service';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
@@ -36,7 +37,58 @@ export interface CalculationResult {
   styleUrl: './calculator-area.scss',
   standalone: true,
 })
-export class CalculatorArea {
+export class CalculatorArea implements OnInit, OnDestroy {
+
+  constructor(private schemaService: SchemaService) {}
+
+  ngOnInit() {
+    this.schemaService.addSchema({
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "WebApplication",
+          "name": "Area Calculator",
+          "url": "https://clickncalculate.com/calculator-area",
+          "description": "Calculate area of any shape — rectangle, circle, triangle, and more. Free online area calculator with unit conversion.",
+          "applicationCategory": "UtilitiesApplication",
+          "operatingSystem": "Web Browser",
+          "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+        },
+        {
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://clickncalculate.com" },
+            { "@type": "ListItem", "position": 2, "name": "Area Calculator", "item": "https://clickncalculate.com/calculator-area" }
+          ]
+        },
+        {
+          "@type": "FAQPage",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "How do I calculate the area of a rectangle?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Multiply the length by the width. For example, a rectangle 10ft long and 5ft wide has an area of 50 square feet."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "How do I calculate the area of a circle?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Use the formula: Area = π × radius². For example, a circle with radius 7cm has an area of 3.14159 × 49 = 153.94 square centimeters."
+              }
+            }
+          ]
+        }
+      ]
+    });
+  }
+
+  ngOnDestroy() {
+    this.schemaService.removeSchema();
+  }
   selectedShape: string = 'rectangle';
   
   // FAQ accordion state
