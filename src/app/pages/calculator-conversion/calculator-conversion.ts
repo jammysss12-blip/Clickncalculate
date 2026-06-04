@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { SchemaService } from '../../services/schema.service';
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -17,7 +18,58 @@ interface Unit {
   styleUrl: './calculator-conversion.scss',
   standalone: true,
 })
-export class CalculatorConversion {
+export class CalculatorConversion implements OnInit, OnDestroy {
+
+  constructor(private schemaService: SchemaService) {}
+
+  ngOnInit() {
+    this.schemaService.addSchema({
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "WebApplication",
+          "name": "Unit Conversion Calculator",
+          "url": "https://clickncalculate.com/calculator-conversion",
+          "description": "Convert length, temperature, mass, speed, and density units instantly. Free online unit conversion calculator.",
+          "applicationCategory": "UtilitiesApplication",
+          "operatingSystem": "Web Browser",
+          "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+        },
+        {
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://clickncalculate.com" },
+            { "@type": "ListItem", "position": 2, "name": "Unit Conversion Calculator", "item": "https://clickncalculate.com/calculator-conversion" }
+          ]
+        },
+        {
+          "@type": "FAQPage",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "How do I convert kilometers to miles?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Multiply kilometers by 0.621371 to get miles. For example, 10 km = 6.21 miles. Use our unit converter for instant results across all units."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "How do I convert Celsius to Fahrenheit?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Use the formula: °F = (°C × 9/5) + 32. For example, 100°C = 212°F. Our temperature converter handles this instantly."
+              }
+            }
+          ]
+        }
+      ]
+    });
+  }
+
+  ngOnDestroy() {
+    this.schemaService.removeSchema();
+  }
   activeTab: 'length' | 'temperature' | 'mass' | 'speed' = 'length';
 
   fromValue: number = 0;
