@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { SchemaService } from '../../services/schema.service';
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -20,7 +21,58 @@ interface ConcreteResult {
   templateUrl: './calculator-concrete.html',
   styleUrl: './calculator-concrete.scss',
 })
-export class CalculatorConcrete {
+export class CalculatorConcrete implements OnInit, OnDestroy {
+
+  constructor(private schemaService: SchemaService) {}
+
+  ngOnInit() {
+    this.schemaService.addSchema({
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "WebApplication",
+          "name": "Concrete Calculator",
+          "url": "https://clickncalculate.com/calculator-concrete",
+          "description": "Calculate concrete volume for slabs, stairs, columns, and holes. Get exact cement bags needed for your project.",
+          "applicationCategory": "UtilitiesApplication",
+          "operatingSystem": "Web Browser",
+          "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+        },
+        {
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://clickncalculate.com" },
+            { "@type": "ListItem", "position": 2, "name": "Concrete Calculator", "item": "https://clickncalculate.com/calculator-concrete" }
+          ]
+        },
+        {
+          "@type": "FAQPage",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "How do I calculate how much concrete I need?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Multiply the length × width × thickness of your slab to get the volume in cubic meters or cubic yards. Our concrete calculator does this instantly and also tells you how many cement bags you need."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "How many bags of concrete do I need per cubic meter?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "A standard 50kg bag of cement covers approximately 0.035 cubic meters. So for 1 cubic meter you need around 29 bags, depending on the mix ratio used."
+              }
+            }
+          ]
+        }
+      ]
+    });
+  }
+
+  ngOnDestroy() {
+    this.schemaService.removeSchema();
+  }
   // Active tab control
   activeTab: 'slab' | 'stairs' | 'circular' | 'hole' | 'curb' = 'slab';
 
