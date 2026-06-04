@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { SchemaService } from '../../services/schema.service';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
@@ -18,7 +19,58 @@ interface Assignment {
   styleUrl: './calculator-grade.scss',
   standalone: true,
 })
-export class CalculatorGrade {
+export class CalculatorGrade implements OnInit, OnDestroy {
+
+  constructor(private schemaService: SchemaService) {}
+
+  ngOnInit() {
+    this.schemaService.addSchema({
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "WebApplication",
+          "name": "Grade & Percentage Calculator",
+          "url": "https://clickncalculate.com/calculator-grade",
+          "description": "Calculate your exam percentage, weighted grades, and the score you need to pass. Free tool for students of all levels.",
+          "applicationCategory": "EducationApplication",
+          "operatingSystem": "Web Browser",
+          "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+        },
+        {
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://clickncalculate.com" },
+            { "@type": "ListItem", "position": 2, "name": "Grade Calculator", "item": "https://clickncalculate.com/calculator-grade" }
+          ]
+        },
+        {
+          "@type": "FAQPage",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "How do I calculate my overall grade with different weightings?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Multiply each assessment score by its weight as a decimal, then add the results. For example: midterm 75% × 0.40 + final 80% × 0.60 = 30 + 48 = 78% overall."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "What score do I need on my final exam to pass?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Use this formula: Required Score = (Pass Mark - Current Weighted Score) / Final Exam Weight × 100. Our Grade Calculator does this automatically."
+              }
+            }
+          ]
+        }
+      ]
+    });
+  }
+
+  ngOnDestroy() {
+    this.schemaService.removeSchema();
+  }
   activeTab: 'grade' | 'percentage' = 'grade';
 
   // Grade Calculator
