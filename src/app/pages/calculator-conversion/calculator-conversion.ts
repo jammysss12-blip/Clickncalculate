@@ -359,7 +359,6 @@ export class CalculatorConversion implements OnInit, OnDestroy {
   // Distance units for speed calculator (references lengthUnits)
   distanceUnits: Unit[] = this.lengthUnits;
 
-  ngOnInit() {
     this.setDefaultUnits();
   }
 
