@@ -48,66 +48,73 @@ export class HomeComponent implements OnInit {
     {
       icon: '🧮',
       title: 'Basic & Scientific Calculator',
-      desc: 'Perform simple and scientific calculations.',
+      desc: 'Perform simple and advanced math — addition, trigonometry, powers, and more.',
       route: '/basic-scientific-calculator',
-    },
-    {
-      icon: '📦',
-      title: 'Volume Calculator',
-      desc: 'Find volume of cubes, spheres, and cylinders.',
-      route: '/volume-calculator',
-    },
-    {
-      icon: '📏',
-      title: 'Area Conversion Calculator',
-      desc: 'Convert between sq.ft, sq.m, acres, and more.',
-      route: '/area-conversion',
-    },
-    {
-      icon: '⏱️',
-      title: 'Age, Height & Time Calculator',
-      desc: 'Calculate age, height, and time differences.',
-      route: '/age-height-time-calculator',
+      category: 'math'
     },
     {
       icon: '📊',
       title: 'Grade & Percentage Calculator',
-      desc: 'Compute grades and percentage scores.',
+      desc: 'Calculate grades, GPA, percentages, and required marks instantly.',
       route: '/grade-percentage-calculator',
+      category: 'math'
+    },
+    {
+      icon: '📦',
+      title: 'Volume Calculator',
+      desc: 'Find the volume of cubes, cylinders, spheres, cones, and more.',
+      route: '/volume-calculator',
+      category: 'math'
+    },
+    {
+      icon: '📐',
+      title: 'Area Conversion Calculator',
+      desc: 'Convert between sq.ft, sq.m, acres, and more.',
+      route: '/area-conversion',
+      category: 'math'
+    },
+    {
+      icon: '💰',
+      title: 'Loan & EMI Calculator',
+      desc: 'Calculate monthly EMIs, total interest, and loan payments instantly.',
+      route: '/loan-emi-calculator',
+      category: 'finance'
+    },
+    {
+      icon: '⏱️',
+      title: 'Age, Height & Time Calculator',
+      desc: 'Calculate exact age, height conversions, and time differences.',
+      route: '/age-height-time-calculator',
+      category: 'health'
     },
     {
       icon: '🔄',
       title: 'Unit Converter Calculator',
-      desc: 'Convert temperature, length, mass, and speed.',
+      desc: 'Convert temperature, length, mass, speed, and density instantly.',
       route: '/unit-converter',
+      category: 'converters'
     },
     {
       icon: '🔢',
-      title: 'Numbers ↔️ Words Calculator ',
-      desc: 'Convert numbers to words and vice versa.',
+      title: 'Number to Words Calculator',
+      desc: 'Convert numbers to words and vice versa for cheques and documents.',
       route: '/numbers-to-words',
-    },
-    {
-      icon: '🏦',
-      title: 'Loan & EMI Calculator',
-      desc: 'Calculate monthly EMIs and loan payments.',
-      route: '/loan-emi-calculator',
+      category: 'converters'
     },
     {
       icon: '🏗️',
       title: 'Concrete Calculator',
-      desc: 'Estimate cement, sand, and aggregate quantity.',
+      desc: 'Estimate cement, sand, and aggregate quantity for your project.',
       route: '/concrete-calculator',
+      category: 'converters'
     },
     {
       icon: '🍳',
       title: 'Cooking Converter Calculator',
-      desc: 'Convert cups, grams, tablespoons, and ounces.',
+      desc: 'Convert cups, grams, tablespoons, and ounces for any recipe.',
       route: '/cooking-converter',
+      category: 'cooking'
     },
   ];
 
-  openCalc(route: string): void {
-    this.router.navigateByUrl(route);
   }
-}
