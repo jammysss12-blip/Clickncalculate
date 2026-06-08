@@ -12,8 +12,10 @@ import { Footer } from '../../shared/components/footer/footer';
   standalone: true,
 })
 export class HomeComponent implements OnInit {
+
   filteredCalculators: any[] = [];
   activeFilter: string = 'all';
+
   constructor(
     private router: Router,
     private titleService: Title,
@@ -21,22 +23,20 @@ export class HomeComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    // Set page title
-    this.titleService.setTitle('ClicknCalculate – Free Online Calculators & Smart Converters');
-
-    // Set meta description
+    this.titleService.setTitle('ClicknCalculate - Free Online Calculators & Smart Converters');
     this.metaService.updateTag({
       name: 'description',
       content: 'Use free online calculators for math, finance, health, unit conversion, cooking, grades & more. Fast, accurate & mobile-friendly tools.'
     });
- this.filteredCalculators = this.calculators;
+    this.filteredCalculators = this.calculators;
+  }
 
   filterCalc(category: string) {
     this.activeFilter = category;
     if (category === 'all') {
       this.filteredCalculators = this.calculators;
     } else {
-      this.filteredCalculators = this.calculators.filter(c => c.category === category);
+      this.filteredCalculators = this.calculators.filter((c: any) => c.category === category);
     }
   }
 
@@ -116,5 +116,4 @@ export class HomeComponent implements OnInit {
       category: 'cooking'
     },
   ];
-
-  }
+}
