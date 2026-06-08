@@ -359,9 +359,6 @@ export class CalculatorConversion implements OnInit, OnDestroy {
   // Distance units for speed calculator (references lengthUnits)
   distanceUnits: Unit[] = this.lengthUnits;
 
-    this.setDefaultUnits();
-  }
-
   switchTab(tab: 'length' | 'temperature' | 'mass' | 'speed') {
     this.activeTab = tab;
     this.fromValue = 0;
