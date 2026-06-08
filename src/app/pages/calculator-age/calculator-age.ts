@@ -87,10 +87,6 @@ export class CalculatorAge implements OnInit, OnDestroy {
   heightMeters: number | null = null;
   heightResult: any = null;
 
-  constructor() {
-    // Set today's date as default target date
-    const today = new Date();
-    this.targetDate = this.formatDate(today);
   }
 
   formatDate(date: Date): string {
