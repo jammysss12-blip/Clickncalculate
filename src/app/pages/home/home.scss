@@ -173,9 +173,9 @@
   border-radius: 50px;
   text-decoration: none;
   transition: all 0.2s;
-  &:hover {
-    background: #f0f4ff;
-    transform: translateY(-2px);
-  }
 }
-  
+
+.all-calc-btn:hover {
+  background: #f0f4ff;
+  transform: translateY(-2px);
+}
