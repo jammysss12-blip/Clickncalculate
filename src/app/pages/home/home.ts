@@ -12,6 +12,8 @@ import { Footer } from '../../shared/components/footer/footer';
   standalone: true,
 })
 export class HomeComponent implements OnInit {
+  filteredCalculators: any[] = [];
+  activeFilter: string = 'all';
   constructor(
     private router: Router,
     private titleService: Title,
@@ -27,6 +29,19 @@ export class HomeComponent implements OnInit {
       name: 'description',
       content: 'Use free online calculators for math, finance, health, unit conversion, cooking, grades & more. Fast, accurate & mobile-friendly tools.'
     });
+ this.filteredCalculators = this.calculators;
+
+  filterCalc(category: string) {
+    this.activeFilter = category;
+    if (category === 'all') {
+      this.filteredCalculators = this.calculators;
+    } else {
+      this.filteredCalculators = this.calculators.filter(c => c.category === category);
+    }
+  }
+
+  openCalc(route: string) {
+    this.router.navigate([route]);
   }
 
   calculators = [
