@@ -1,319 +1,87 @@
-<div class="home-container text-center text-light py-5">
-  <div class="container">
-    <div class="header-nav d-flex flex-column flex-md-row justify-content-between align-items-center mb-3">
-      <div class="header-spacer d-none d-md-block" style="flex: 1;"></div>
-      <h1 class="mb-0 display-5 fw-bold text-info text-center flex-grow-1">
-        <img src="/assets/images/logo.png" alt="ClicknCalculate logo" class="site-logo"> ClicknCalculate
-      </h1>
-   
-      
-      <div class="header-links d-flex align-items-center justify-content-center justify-content-md-end mt-2 mt-md-0"
-        style="flex: 1;">
-        <a routerLink="/blog" class="nav-link-item">Blog</a>
-      <span class="mx-2 separator text-secondary">|</span>
-        <a routerLink="/contact-us" class="nav-link-item">Contact Us</a>
-        <span class="mx-2 separator text-secondary">|</span>
-        <a routerLink="/about-us" class="nav-link-item">About Us</a>
-        
+<div class="home-container">
+
+  <!-- HERO SECTION -->
+  <div class="hero-section">
+    <div class="hero-badge">✓ 100% Free · No Sign-up · Mobile Friendly</div>
+    <h1 class="hero-title">Free Online Calculators for<br><strong>Everything You Need</strong></h1>
+    <p class="hero-subtitle">From math and finance to health, cooking, and construction — accurate results in seconds.</p>
+    <div class="hero-stats">
+      <div class="stat-item">
+        <span class="stat-number">15+</span>
+        <span class="stat-label">Free Tools</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-number">100%</span>
+        <span class="stat-label">Free Always</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-number">0</span>
+        <span class="stat-label">Sign-ups Needed</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-number">Fast</span>
+        <span class="stat-label">Instant Results</span>
       </div>
     </div>
-    <p class="lead text-secondary mb-5"><strong>ClicknCalculate – Free Online Calculators & Smart Converters</strong></p>
-  <p class="lead text-secondary mb-4">ClicknCalculate is a free online calculator platform designed to help users perform fast, accurate, and easy calculations across multiple categories. From basic and scientific calculators to finance, health, education, and unit conversion tools, our website offers a wide range of smart calculators built for everyday needs. Whether you want to calculate loan EMI, body mass index (BMI), age, percentage, GPA, calories, or convert units, ClicknCalculate provides reliable and user-friendly tools that save time and improve accuracy. Our calculators are optimized for speed, mobile compatibility, and ease of use, making them perfect for students, professionals, business users, and anyone who needs quick calculations online.</p>
+  </div>
 
-    <!-- <div class="row g-4">
-      <div class="col-12 col-sm-6 col-md-4 col-lg-3" *ngFor="let calc of calculators">
-        <div class="card calculator-card h-100 text-light shadow-lg border-0" (click)="openCalc(calc.route)">
-          <div class="card-body d-flex flex-column align-items-center">
-            <div class="icon mb-3">{{ calc.icon }}</div>
-            <h2 class="card-title fw-semibold mb-2 text-info">{{ calc.title }}</h2>
-            <p class="card-text small mb-3">{{ calc.desc }}</p>
-            <button class="btn btn-success btn-sm rounded-pill px-3">Open-Calculator</button>
-          </div>
-        </div>
+  <!-- CALCULATORS SECTION -->
+  <div class="calculators-section">
+    <div class="section-header">
+      <p class="section-label">ALL CALCULATORS</p>
+      <h2 class="section-title">Choose Your Calculator</h2>
+      <p class="section-subtitle">Click any category to filter, or scroll to browse all tools.</p>
+    </div>
+
+    <!-- FILTER BUTTONS -->
+    <div class="filter-buttons">
+      <button class="filter-btn active" (click)="filterCalc('all')">All Tools</button>
+      <button class="filter-btn" (click)="filterCalc('math')">Math</button>
+      <button class="filter-btn" (click)="filterCalc('finance')">Finance</button>
+      <button class="filter-btn" (click)="filterCalc('health')">Health</button>
+      <button class="filter-btn" (click)="filterCalc('converters')">Converters</button>
+      <button class="filter-btn" (click)="filterCalc('cooking')">Cooking</button>
+    </div>
+
+    <!-- CALCULATOR CARDS -->
+    <div class="cards-grid">
+      <div class="calc-card" *ngFor="let calc of filteredCalculators" (click)="openCalc(calc.route)">
+        <div class="card-icon">{{ calc.icon }}</div>
+        <h3 class="card-title">{{ calc.title }}</h3>
+        <p class="card-desc">{{ calc.desc }}</p>
       </div>
-    </div> -->
-
-  <!-- Categories Section -->
-  <section class="categories container">
-
-    <div class="category-card">
-      <div class="circle-img" ><a class="nav-link"  routerLink="/loan-emi-calculator">💰</a></div>
-      <h2><strong>Financial Calculators</strong></h2>
-      <ul>
-        <!-- <li>Mortgage Calculator</li> -->
-        <li><a class="nav-link" routerLink="/loan-emi-calculator">Loan Calculator</a></li>
-        <li><a class="nav-link" routerLink="/loan-emi-calculator">EMI Calculator</a></li>
-        <!-- <li>Compound Interest Calculator</li>
-        <li>Salary Calculator</li> -->
-      </ul>
     </div>
-
-    <div class="category-card">
-      <div class="circle-img" ><a class="nav-link" routerLink="/age-height-time-calculator">💪</a></div>
-      <h2><strong>Fitness & Health Calculators</strong></h2>
-      <ul>
-        <li><a class="nav-link" routerLink="/cooking-converter">Cooking Convertor Calculator</a></li>
-        <li><a class="nav-link" routerLink="/age-height-time-calculator">Age Calculator</a></li>
-        <li><a class="nav-link" routerLink="/age-height-time-calculator">Height Calculator</a></li>
-        <li><a class="nav-link" routerLink="/age-height-time-calculator">Time Calculator</a></li>
-       
-      </ul>
-    </div>
-
-    <div class="category-card">
-      <div class="circle-img" ><a class="nav-link" routerLink="/basic-scientific-calculator">🧮</a></div>
-      <h2><strong>Math Calculators</strong></h2>
-      <ul>
-        <li><a class="nav-link" routerLink="/basic-scientific-calculator">Basic & Scientific Calculator</a></li>
-        <li><a class="nav-link" routerLink="/grade-percentage-calculator">Grade & Percentage Calculator</a></li>
-        <li><a class="nav-link" routerLink="/volume-calculator">Volume Calculator</a></li>
-        <!-- <li>Random Number Generator</li> -->
-        <li><a class="nav-link" routerLink="/numbers-to-words">Number To Word Calculator</a></li>
-        <!-- <li>Standard Deviation Calculator</li> -->
-      </ul>
-    </div>
-
-    <div class="category-card">
-      <div class="circle-img" ><a class="nav-link"routerLink="/volume-calculator">🔧</a></div>
-      <h2><strong>Construction & Measurement Calculator</strong></h2>
-      <ul>
-        <li><a class="nav-link" routerLink="/volume-calculator">Volume Calculator</a></li>
-        <li><a class="nav-link" routerLink="/area-conversion">Area Conversion Calculator</a></li>
-        <li><a class="nav-link" routerLink="/unit-converter">Unit Converter Calculator</a></li>
-        <li><a class="nav-link" routerLink="/concrete-calculator">Concrete Calculator</a></li>
-      </ul>
-    </div>
-
-  </section>
-
-  <!-- All Calculators Button -->
-  <div class="all-btn-container">
-    <button class="all-btn" routerLink="/our-calculators">All Calculators ▶</button>
   </div>
 
+  <!-- WHY SECTION -->
+  <div class="why-section">
+    <h2>Why Use ClickNCalculate?</h2>
+    <p>ClickNCalculate is built for everyone — students, professionals, homemakers, and business owners. Every calculator is designed to give you fast, accurate results without any registration, subscription, or hidden fees.</p>
+    <div class="why-grid">
+      <div class="why-card">
+        <span class="why-icon">⚡</span>
+        <h3>Instant Results</h3>
+        <p>Get accurate answers in real time as you type. No waiting, no page reloads.</p>
+      </div>
+      <div class="why-card">
+        <span class="why-icon">📱</span>
+        <h3>Mobile Friendly</h3>
+        <p>All calculators work perfectly on phones, tablets, and desktops.</p>
+      </div>
+      <div class="why-card">
+        <span class="why-icon">🔒</span>
+        <h3>100% Free</h3>
+        <p>No sign-up required. No hidden fees. All tools are completely free to use.</p>
+      </div>
+      <div class="why-card">
+        <span class="why-icon">🎯</span>
+        <h3>Easy to Use</h3>
+        <p>Clean, simple interface designed for everyone — no math degree needed.</p>
+      </div>
+    </div>
   </div>
+
 </div>
-
-<!-- Welcome Section -->
- <div class="devi-section">
-  <div class="row">
-    <div class="col-12">
-      <div class="welcome-card shadow-lg rounded-4 p-4">
-        <h2 class="h3 fw-bold mb-3 text-info">🌟 Welcome to ClickNCalculate.com</h2>
-        <p class="text-dark mb-3">
-          Welcome to ClickNCalculate.com, your all-in-one platform for free online calculators and smart conversion tools. 
-          Our goal is to make everyday calculations simple, fast, and accurate for everyone. Whether you are a student, 
-          professional, business owner, or homemaker, our tools are designed to save your time and reduce errors.
-        </p>
-        <p class="text-dark mb-3">
-          Instead of doing complex manual calculations, you can use our easy-to-use calculators to get instant results. 
-          From basic math and scientific functions to financial planning, construction calculations, cooking conversions, 
-          and health tracking, everything is available in one place.
-        </p>
-        <p class="text-dark">
-         <strong> Our platform is 100% free, mobile-friendly, and easy to use, so you can access it anytime, anywhere.</strong>
-        </p>
-      </div>
-    </div>
-  </div>
-
-  <!-- Calculator Tools Overview -->
-  <div class="row mt-4">
-    <div class="col-12">
-      <div class="tools-overview shadow-lg rounded-4 p-4">
-        <h2 class="h3 fw-bold mb-4 text-info">🛠️ Our Calculator Tools</h2>
-        <p class="text-dark mb-4">
-          <strong>Below is a quick overview of all the tools available on ClickNCalculate.com. Each tool is designed to provide 
-          accurate results with a simple and user-friendly interface.</strong>
-        </p>
-        
-        <div class="row">
-          <div class="col-md-6 col-lg-4 mb-3">
-            <div class="tool-card h-100">
-              <h5 class="fw-bold text-info mb-2">1. Basic & Scientific Calculator</h5>
-              <p class="text-dark small">
-                <strong>Basic & Scientific Calculator – Free Online Math Calculator for Accurate Results</strong><br><br>
-                Use our free Basic & Scientific Calculator to perform simple and advanced math calculations instantly. 
-                Solve equations, trigonometry, percentages, and more.<br><br>
-                
-                <strong>Introduction</strong><br>
-                Mathematics is a part of our everyday life, whether we realize it or not. From simple addition 
-                and subtraction to more advanced calculations like trigonometry and logarithms, we often need 
-                a reliable tool to get accurate results quickly. While traditional calculators are helpful, having an 
-                online calculator that is accessible anytime and anywhere makes the process even easier.<br><br>
-                
-                Our Basic & Scientific Calculator is designed to meet both simple and advanced calculation 
-                needs. Whether you are a student solving math problems, a professional performing quick 
-                calculations, or someone managing daily tasks like budgeting, this calculator provides a fast and 
-                accurate solution.<br><br>
-                
-                Unlike a basic calculator that only performs simple operations, this tool also includes scientific 
-                functions such as square roots, powers, trigonometric functions, and logarithms. This makes it 
-                suitable for a wide range of users, from beginners to advanced learners.
-              </p>
-            </div>
-          </div>
-          
-          <div class="col-md-6 col-lg-4 mb-3">
-            <div class="tool-card h-100">
-              <h5 class="fw-bold text-info mb-2">2. Unit Converter</h5>
-              <p class="text-dark small">
-                Convert different units instantly without manual calculations. You can convert length, weight, temperature, 
-                time, and volume in seconds. It is perfect for travel, education, and professional use.
-              </p>
-            </div>
-          </div>
-          
-          <div class="col-md-6 col-lg-4 mb-3">
-            <div class="tool-card h-100">
-              <h5 class="fw-bold text-info mb-2">3. Percentage Calculator</h5>
-              <p class="text-dark small">
-                Easily calculate percentages, increases, decreases, discounts, and profit margins. This tool is useful 
-                for students, shopping calculations, and business analysis.
-              </p>
-            </div>
-          </div>
-          
-          <div class="col-md-6 col-lg-4 mb-3">
-            <div class="tool-card h-100">
-              <h5 class="fw-bold text-info mb-2">4. Grade & Percentage Calculator</h5>
-              <p class="text-dark small">
-                Calculate academic results quickly by converting marks into percentages, grades, and GPA. It helps 
-                students and teachers evaluate performance accurately.
-              </p>
-            </div>
-          </div>
-          
-          <div class="col-md-6 col-lg-4 mb-3">
-            <div class="tool-card h-100">
-              <h5 class="fw-bold text-info mb-2">5. Age, Height & Time Calculator</h5>
-              <p class="text-dark small">
-                Calculate age from date of birth, convert time units, and track height or growth. This tool is useful 
-                for personal, educational, and health purposes.
-              </p>
-            </div>
-          </div>
-          
-          <div class="col-md-6 col-lg-4 mb-3">
-            <div class="tool-card h-100">
-              <h5 class="fw-bold text-info mb-2">6. Area Calculator</h5>
-              <p class="text-dark small">
-                Find the area of different shapes such as rectangles, squares, triangles, and circles. This calculator 
-                is useful for construction, interior design, and land measurement.
-              </p>
-            </div>
-          </div>
-          
-          <div class="col-md-6 col-lg-4 mb-3">
-            <div class="tool-card h-100">
-              <h5 class="fw-bold text-info mb-2">7. Volume Calculator</h5>
-              <p class="text-dark small">
-                Calculate the volume of 3D shapes such as cubes, cylinders, spheres, and cones. It helps in construction, 
-                storage planning, and material estimation.
-              </p>
-            </div>
-          </div>
-          
-          <div class="col-md-6 col-lg-4 mb-3">
-            <div class="tool-card h-100">
-              <h5 class="fw-bold text-info mb-2">8. Concrete Calculator</h5>
-              <p class="text-dark small">
-                Estimate the quantity of concrete required for slabs, columns, footings, and beams. It helps reduce 
-                material waste and improve construction planning.
-              </p>
-            </div>
-          </div>
-          
-          <div class="col-md-6 col-lg-4 mb-3">
-            <div class="tool-card h-100">
-              <h5 class="fw-bold text-info mb-2">9. Loan & EMI Calculator</h5>
-              <p class="text-dark small">
-                Plan your finances by calculating monthly loan payments (EMI), total interest, and total repayment. 
-                This tool is ideal for personal, car, and home loans.
-              </p>
-            </div>
-          </div>
-          
-          <div class="col-md-6 col-lg-4 mb-3">
-            <div class="tool-card h-100">
-              <h5 class="fw-bold text-info mb-2">10. Cooking Conversion Calculator</h5>
-              <p class="text-dark small">
-                Convert cooking measurements such as cups, tablespoons, grams, and milliliters. It helps you follow 
-                recipes accurately from different countries.
-              </p>
-            </div>
-          </div>
-          
-          <div class="col-md-6 col-lg-4 mb-3">
-            <div class="tool-card h-100">
-              <h5 class="fw-bold text-info mb-2">11. Text Tools (Word Counter & Case Converter)</h5>
-              <p class="text-dark small">
-                Improve your writing productivity with tools like word counter, character counter, and case converter. 
-                Easily convert text to uppercase, lowercase, or title case.
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Why Choose Section -->
-  <div class="row mt-4">
-    <div class="col-12">
-      <div class="why-choose-card shadow-lg rounded-4 p-4">
-        <h2 class="h3 fw-bold mb-4 text-info">🎯 Why Choose ClickNCalculate.com?</h2>
-        <div class="row">
-          <div class="col-md-6">
-            <ul class="list-unstyled">
-              <li class="mb-2">
-                <span class="text-info me-2">✓</span>
-                <strong>Free to use</strong> – No registration required
-              </li>
-              <li class="mb-2">
-                <span class="text-info me-2">✓</span>
-                <strong>Accurate results</strong> – Reliable formulas and calculations
-              </li>
-              <li class="mb-2">
-                <span class="text-info me-2">✓</span>
-                <strong>Fast and simple</strong> – Get instant answers
-              </li>
-            </ul>
-          </div>
-          <div class="col-md-6">
-            <ul class="list-unstyled">
-              <li class="mb-2">
-                <span class="text-info me-2">✓</span>
-                <strong>Mobile-friendly</strong> – Use on any device
-              </li>
-              <li class="mb-2">
-                <span class="text-info me-2">✓</span>
-                <strong>All-in-one platform</strong> – Multiple tools in one place
-              </li>
-            </ul>
-          </div>
-        </div>
-        <p class="text-dark mt-3 mb-0">
-         <strong> Our goal is to provide a simple and reliable solution for all your calculation needs.</strong>
-        </p>
-      </div>
-    </div>
-  </div>
-
-  <!-- Conclusion Section -->
-  <div class="row mt-4 mb-4">
-    <div class="col-12">
-      <div class="conclusion-card shadow-lg rounded-4 p-4">
-        <h2 class="h4 fw-bold mb-3 text-info">🎉 Conclusion</h2>
-        <p class="text-dark mb-0">
-          ClickNCalculate.com is designed to make your life easier by providing quick, accurate, and free calculation tools. 
-          Whether you need to calculate percentages, convert units, plan finances, or track health, our platform has everything you need.
-        </p>
-        <p class="text-dark mt-2 mb-0">
-          <strong>Explore our tools today and simplify your daily calculations with ease.</strong>
-        </p>
-      </div>
-    </div>
   </div>
  </div>
 
