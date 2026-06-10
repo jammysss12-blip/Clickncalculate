@@ -44,15 +44,34 @@
       <button class="filter-btn" (click)="filterCalc('cooking')">Cooking</button>
     </div>
 
-    <!-- CALCULATOR CARDS -->
-    <div class="cards-grid">
-      <div class="calc-card" *ngFor="let calc of filteredCalculators" (click)="openCalc(calc.route)">
-        <div class="card-icon">{{ calc.icon }}</div>
-        <h3 class="card-title">{{ calc.title }}</h3>
-        <p class="card-desc">{{ calc.desc }}</p>
-      </div>
+   <!-- CALCULATOR CARDS -->
+<div class="calc-layout">
+
+  <!-- LEFT: Calculator list in 3 columns -->
+  <div class="calc-list">
+    <div class="calc-card" *ngFor="let calc of filteredCalculators" (click)="openCalc(calc.route)">
+      <div class="card-icon">{{ calc.icon }}</div>
+      <h3 class="card-title">{{ calc.title }}</h3>
+      <p class="card-desc">{{ calc.desc }}</p>
     </div>
   </div>
+
+  <!-- RIGHT: Info text -->
+  <div class="calc-info">
+    <h3>Why Use ClickNCalculate?</h3>
+    <p>Our free online calculators are built for speed, accuracy, and ease of use. No sign-up required — just open and calculate.</p>
+    <ul>
+      <li>💰 <strong>Finance</strong> — Plan loans, EMIs, and savings</li>
+      <li>📊 <strong>Math & Grades</strong> — Calculate percentages and GPA</li>
+      <li>🏗️ <strong>Construction</strong> — Concrete, area, and volume</li>
+      <li>🍳 <strong>Cooking</strong> — Convert recipe measurements</li>
+      <li>💪 <strong>Health</strong> — Track BMI, age, and height</li>
+      <li>🔧 <strong>Converters</strong> — Units, numbers, and more</li>
+    </ul>
+    <a href="/our-calculators" class="all-calc-btn">View All Calculators →</a>
+  </div>
+
+</div>
 
   <!-- WHY SECTION -->
   <div class="why-section">
