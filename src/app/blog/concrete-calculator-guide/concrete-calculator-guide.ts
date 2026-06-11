@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
+import { Title, Meta } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-concrete-calculator-guide',
@@ -10,12 +11,11 @@ import { Router } from '@angular/router';
   standalone: true,
 })
 export class ConcreteCalculatorGuide {
-  constructor(private router: Router) {}
+  constructor(private router: Router, private title: Title, private meta: Meta) {
+    this.title.setTitle('Concrete Calculator Guide – How to Calculate Concrete | ClickNCalculate');
+    this.meta.updateTag({ name: 'description', content: 'Learn how to calculate the right amount of concrete for slabs, columns, and foundations. Includes volume formula and practical tips.' });
+  }
 
-  goToBlog() {
-    this.router.navigate(['/blog']);
-  }
-  Try_Our_Concrete_Calculator(){
-    this.router.navigate(['/concrete-calculator']);
-  }
+  goToBlog() { this.router.navigate(['/blog']); }
+  Try_Our_Concrete_Calculator() { this.router.navigate(['/concrete-calculator']); }
 }
