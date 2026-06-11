@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
+import { Title, Meta } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-online-calculators-for-students',
@@ -10,12 +11,11 @@ import { Router } from '@angular/router';
   standalone: true,
 })
 export class OnlineCalculatorsForStudents {
-  constructor(private router: Router) {}
+  constructor(private router: Router, private title: Title, private meta: Meta) {
+    this.title.setTitle('How Online Calculators Improve Learning for Students | ClickNCalculate');
+    this.meta.updateTag({ name: 'description', content: 'Explore how free online calculators help students solve math problems faster, improve grades, and understand concepts better.' });
+  }
 
-  goToBlog() {
-    this.router.navigate(['/blog']);
-  }
-  Try_Our_Educational_Calculators(){
-    this.router.navigate(['/basic-scientific-calculator']);
-  }
+  goToBlog() { this.router.navigate(['/blog']); }
+  Try_Our_Educational_Calculators() { this.router.navigate(['/grade-percentage-calculator']); }
 }
