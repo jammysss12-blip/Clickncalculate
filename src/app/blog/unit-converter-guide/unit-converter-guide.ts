@@ -11,11 +11,15 @@ import { Title, Meta } from '@angular/platform-browser';
   standalone: true,
 })
 export class UnitConverterGuide {
-  constructor(private router: Router, private title: Title, private meta: Meta) {
-    this.title.setTitle('Unit Converter Guide – Master Measurements Online | ClickNCalculate');
-    this.meta.updateTag({ name: 'description', content: 'Learn how to convert length, weight, temperature, speed and more with our free online unit converter tool. Fast, accurate, no signup needed.' });
-  }
-
+constructor(private router: Router, private title: Title, private meta: Meta) {
+  this.title.setTitle('Unit Converter Guide - Master Accurate Conversions | ClickNCalculate');
+  this.meta.updateTag({ name: 'description', content: 'Understand how unit converters work and learn quick methods for accurate length, weight, volume, and temperature conversions.' });
+  this.meta.updateTag({ name: 'keywords', content: 'unit converter, unit conversion, length converter, weight converter, temperature converter, volume converter, measurement conversion' });
+  this.meta.updateTag({ property: 'og:title', content: 'Unit Converter Guide | ClickNCalculate' });
+  this.meta.updateTag({ property: 'og:description', content: 'Learn quick methods for accurate length, weight, volume, and temperature conversions.' });
+  this.meta.updateTag({ property: 'og:url', content: 'https://clickncalculate.com/blog/unit-converter-guide' });
+  this.meta.updateTag({ property: 'og:type', content: 'article' });
+}
   goToBlog() { this.router.navigate(['/blog']); }
   Try_Our_Calculators() { this.router.navigate(['/unit-converter']); }
 }
