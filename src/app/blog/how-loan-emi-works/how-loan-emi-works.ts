@@ -12,8 +12,13 @@ import { Title, Meta } from '@angular/platform-browser';
 })
 export class HowLoanEmiWorks {
   constructor(private router: Router, private title: Title, private meta: Meta) {
-    this.title.setTitle('How Loan EMI Works – Complete Guide | ClickNCalculate');
+    this.title.setTitle('How Loan EMI Works - Complete Guide | ClickNCalculate');
     this.meta.updateTag({ name: 'description', content: 'Learn how Loan EMI is calculated, what factors affect it, and how to manage your loan payments effectively. Includes formula, examples, and tips.' });
+    this.meta.updateTag({ name: 'keywords', content: 'loan EMI, EMI calculation, equated monthly installment, EMI formula, loan repayment, monthly installment, home loan EMI, personal loan EMI' });
+    this.meta.updateTag({ property: 'og:title', content: 'How Loan EMI Works - Complete Guide | ClickNCalculate' });
+    this.meta.updateTag({ property: 'og:description', content: 'Learn how Loan EMI is calculated, what factors affect it, and how to manage your loan payments effectively.' });
+    this.meta.updateTag({ property: 'og:url', content: 'https://clickncalculate.com/blog/how-loan-emi-works' });
+    this.meta.updateTag({ property: 'og:type', content: 'article' });
   }
 
   goToBlog() {
