@@ -41,6 +41,42 @@
               "entry": "src/server.ts"
             }
           },
+          "prerender": {
+  "discoverRoutes": false,
+  "routes": [
+    "/",
+    "/about-us",
+    "/contact-us",
+    "/blog",
+    "/faqs",
+    "/privacy-policy",
+    "/terms-conditions",
+    "/our-calculators",
+    "/loan-emi-calculator",
+    "/age-height-time-calculator",
+    "/cooking-converter",
+    "/basic-scientific-calculator",
+    "/grade-percentage-calculator",
+    "/numbers-to-words",
+    "/volume-calculator",
+    "/area-conversion",
+    "/unit-converter",
+    "/concrete-calculator",
+    "/blog/how-loan-emi-works",
+    "/blog/calculate-percentage-guide",
+    "/blog/concrete-calculator-guide",
+    "/blog/bmi-correct",
+    "/blog/unit-converter-guide",
+    "/blog/interest-rates-guide",
+    "/blog/loan-calculators-finance-planning",
+    "/blog/online-calculators-for-students",
+    "/blog/simple-ways-to-save-money",
+    "/blog/how-to-lose-weight-effectively",
+    "/blog/daily-health-tips",
+    "/blog/best-free-online-calculators-2026",
+    "/blog/practical-guide-online-calculators"
+  ]
+},
           "configurations": {
             "production": {
               "budgets": [
